@@ -444,6 +444,7 @@
       <change beforePath="$PROJECT_DIR$/out/production/SpriteParser/Main.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/SpriteParser/Main.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/SpriteParser/Pixel.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/SpriteParser/Pixel.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../gameandwatch/gameandwatch_minimal.png" beforeDir="false" afterPath="$PROJECT_DIR$/../gameandwatch/gameandwatch_minimal.png" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../jigglypuff/jigglypuff_minimal.png" beforeDir="false" afterPath="$PROJECT_DIR$/../jigglypuff/jigglypuff_minimal.png" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../kirby/cropped/.vs/ProjectSettings.json" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/../kirby/cropped/.vs/slnx.sqlite" beforeDir="false" />
@@ -977,7 +978,7 @@
       <option name="presentableId" value="Default" />
       <updated>1580159749853</updated>
       <workItem from="1580159753858" duration="12586000" />
-      <workItem from="1580266796167" duration="2896000" />
+      <workItem from="1580266796167" duration="3180000" />
     </task>
     <servers />
   </component>
