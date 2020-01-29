@@ -12,15 +12,16 @@ import java.util.ArrayList;
 public class Main
 {
 
-    static String filename = "kirby.png";
-    static Pixel background = new Pixel(0xFFAEAEFF);
-    static int cropTolerance = 1;  // pixels
-    static int minimumDiagonalLength = 3;
+    static String filename = "gameandwatch_minimal.png";
+    static Pixel background = new Pixel(0xff882c3f);
+    static int cropTolerance = 3;  // pixels
+    static int minimumDiagonalLength = 1;
 
     static int width, height;
 
     static Pixel[][] img;
     static boolean[][] visited;
+    static boolean[][] processed;
     static int[][] tolerance;
     static ArrayList<Point> list = new ArrayList<>();
 
@@ -35,6 +36,7 @@ public class Main
         height = bi.getHeight();
         img = new Pixel[height][width];
         visited = new boolean[height][width];
+        processed = new boolean[height][width];
 
         for(int h = 0; h < height; h++) {
             for(int w = 0; w < width; w++) {
@@ -42,6 +44,8 @@ public class Main
                 img[h][w] = new Pixel(rgb);
             }
         }
+
+        System.out.println(img[0][0]);
 
         int imageCounter = 0;
         for(int r = 0; r < height; r++) {
@@ -72,15 +76,26 @@ public class Main
                 if(Point2D.distance(lowR, lowC, highR, highC) < minimumDiagonalLength) continue;
                 BufferedImage newImage = new BufferedImage(
                         highC - lowC+1, highR - lowR+1, BufferedImage.TYPE_INT_ARGB);
+                boolean write = true;
                 for(int row = 0; row <= highR - lowR; row++) {
                     for(int col = 0; col <= highC - lowC; col++) {
                         if(img[lowR + row][lowC + col].equals(background))
                             newImage.setRGB(col, row, 0x00000000);
-                        else newImage.setRGB(col, row, img[lowR + row][lowC + col].rgb);
+                        else if(processed[lowR+row][lowC+col]) {
+                            write = false;
+                            break;
+                        }
+                        else {
+                            newImage.setRGB(col, row, img[lowR + row][lowC + col].rgb);
+                            processed[lowR+row][lowC+col] = true;
+                        }
                     }
+                    if(!write) break;
                 }
-                ImageIO.write(newImage, "png", new File("cropped/" + imageCounter + ".png"));
-                imageCounter++;
+                if(write) {
+                    ImageIO.write(newImage, "png", new File("cropped/" + imageCounter + ".png"));
+                    imageCounter++;
+                }
             }
         }
     }
@@ -90,8 +105,8 @@ public class Main
 
     // floodfill to get all of the image
     static void FF(int r, int c, int toleranceAllowed) {
-        if(r < 0 || c < 0 || visited[r][c] && toleranceAllowed <= tolerance[r][c] ||
-                r >= height || c >= width) return;
+        if(r < 0 || c < 0 || r >= height || c >= width || (visited[r][c] && toleranceAllowed <= tolerance[r][c]))
+            return;
         visited[r][c] = true;
         tolerance[r][c] = toleranceAllowed;
         if(img[r][c].equals(background)) {
@@ -125,7 +140,7 @@ class Pixel
 
     public String toString()
     {
-        return a + " " + r + " " + g + " " + b;
+        return a + " " + r + " " + g + " " + b + " " + Integer.toUnsignedString(rgb, 16);
     }
 
     public boolean equals(Pixel p)
