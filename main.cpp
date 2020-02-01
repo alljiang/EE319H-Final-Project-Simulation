@@ -55,7 +55,7 @@ void drawPixel(uint16_t x, uint16_t y, uint8_t r, uint8_t g, uint8_t b) {
 
     y = 239 - y;
 
-    SDL_SetRenderDrawColor(renderer, 255, 0, 0, 255);
+    SDL_SetRenderDrawColor(renderer, r, g, b, 255);
 
     for(int i = x*4; i < x*4+4; i++) {
         for(int j = y * 4; j < y*4+4; j++) {
