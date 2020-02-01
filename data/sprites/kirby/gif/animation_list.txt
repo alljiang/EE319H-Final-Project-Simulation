@@ -1,0 +1,10 @@
+crouching
+dash
+falling_jumpsavailable
+falling_nojumpsavailable
+firstjump
+multijump
+resting
+slow
+slowstop
+walk
