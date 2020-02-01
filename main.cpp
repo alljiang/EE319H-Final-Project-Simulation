@@ -6,8 +6,9 @@
 
 using namespace std;
 
-#define WINDOW_HEIGHT 960  // 240 * 4, y
-#define WINDOW_WIDTH 1280  // 320 * 4, x
+#define WINDOW_SCALE 3
+#define WINDOW_HEIGHT 240  // y
+#define WINDOW_WIDTH 320  // x
 #define NUM_THREADS 5
 
 SDL_Event event;
@@ -42,7 +43,8 @@ int main(int argc, char *argv[]) {
 
 void startLCD() {
     SDL_Init(SDL_INIT_VIDEO);
-    SDL_CreateWindowAndRenderer(WINDOW_WIDTH, WINDOW_HEIGHT, 0, &window, &renderer);
+    SDL_CreateWindowAndRenderer(WINDOW_WIDTH*WINDOW_SCALE, WINDOW_HEIGHT*WINDOW_SCALE,
+            0, &window, &renderer);
     SDL_SetRenderDrawColor(renderer, 0, 0, 0, 0);
     SDL_RenderClear(renderer);
     SDL_RenderPresent(renderer);
@@ -57,8 +59,8 @@ void drawPixel(uint16_t x, uint16_t y, uint8_t r, uint8_t g, uint8_t b) {
 
     SDL_SetRenderDrawColor(renderer, r, g, b, 255);
 
-    for(int i = x*4; i < x*4+4; i++) {
-        for(int j = y * 4; j < y*4+4; j++) {
+    for(int i = x*WINDOW_SCALE; i < x*WINDOW_SCALE+WINDOW_SCALE; i++) {
+        for(int j = y * WINDOW_SCALE; j < y*WINDOW_SCALE+WINDOW_SCALE; j++) {
             SDL_RenderDrawPoint(renderer, i, j);
         }
     }
