@@ -12,9 +12,9 @@ import java.util.ArrayList;
 public class Main
 {
 
-    static String filename = "gameandwatch_minimal.png";
-    static Pixel background = new Pixel(0xff882c3f);
-    static int cropTolerance = 3;  // pixels
+    static String filename = "kirby.png";
+    static Pixel background = new Pixel(0xffaeaeff);
+    static int cropTolerance = 1;  // pixels
     static int minimumDiagonalLength = 1;
 
     static int width, height;
@@ -80,7 +80,7 @@ public class Main
                 for(int row = 0; row <= highR - lowR; row++) {
                     for(int col = 0; col <= highC - lowC; col++) {
                         if(img[lowR + row][lowC + col].equals(background))
-                            newImage.setRGB(col, row, 0x00000000);
+                            newImage.setRGB(col, row, 0xFF00FF00);
                         else if(processed[lowR+row][lowC+col]) {
                             write = false;
                             break;
@@ -140,7 +140,7 @@ class Pixel
 
     public String toString()
     {
-        return a + " " + r + " " + g + " " + b + " " + Integer.toUnsignedString(rgb, 16);
+        return a + " " + r + " " + g + " " + b + " 0x" + Integer.toUnsignedString(rgb, 16);
     }
 
     public boolean equals(Pixel p)
