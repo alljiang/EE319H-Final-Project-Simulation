@@ -8,7 +8,7 @@ output = open("data.txt", "w")
 indexed_rgb = []
 
 for filename in os.listdir(os.getcwd()):
-    if filename.endswith(".gif"):
+    if filename.endswith(".gif") or filename.endswith(".png"):
         img = Image.open(filename)
         frames = np.array([np.array(frame.copy().convert('RGB').getdata(), dtype=np.uint8)
                           .reshape(frame.size[1], frame.size[0], 3) for frame in ImageSequence.Iterator(img)])
@@ -41,12 +41,15 @@ for filename in os.listdir(os.getcwd()):
 
         # Write to file
         output.write(f"{filename}: \n")
+        output.write(f"{len(frames)}\n")
         for frame in compressed_rgb:
             for row in frame:
-                output.write(str(row) + "\n")
+                output.write(f"{len(row)}")
+                for line in row:
+                    output.write(f" {line[0]} {line[1]}")
+                output.write("\n")
             output.write("\n")
-        output.write(f"End of {filename}\n\n")
-output.write(f"Colors: \n {indexed_rgb}\n\n")
+output.write(f"Colors: \n {indexed_rgb}\n")
 
 
 
