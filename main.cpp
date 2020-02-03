@@ -41,7 +41,7 @@ long long lastLoopMillis = millis();
 
 //  runs once at beginning
 void startup() {
-
+    
 }
 
 //  continually loops
@@ -56,7 +56,7 @@ void loop() {
     x += joystick_h * pps * dt / 1000.;
     y += joystick_v * pps * dt / 1000.;
 
-    sprintf(strBuffer, "%f+", x);
+    sprintf(strBuffer, "%f", x);
     print(strBuffer);
 
     drawPixel(x, y, 0xFF0000);
