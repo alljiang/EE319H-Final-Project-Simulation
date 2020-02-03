@@ -21,9 +21,9 @@ for filename in os.listdir(os.getcwd()):
                 prev_color = 0
                 line_len = 1
                 for i, pixel in enumerate(row):
-                    red = int(pixel[0]/4)
-                    green = int(pixel[1]/4)
-                    blue = int(pixel[2]/4)
+                    red = int(pixel[0])
+                    green = int(pixel[1])
+                    blue = int(pixel[2])
                     rgb_int = red << 16 | green << 8 | blue
                     if rgb_int == prev_color:
                         line_len += 1
