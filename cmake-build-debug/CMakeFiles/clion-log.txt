@@ -1,4 +1,4 @@
-"C:\Program Files\JetBrains\CLion 2019.2\bin\cmake\win\bin\cmake.exe" -DCMAKE_BUILD_TYPE=Debug -G "CodeBlocks - MinGW Makefiles" C:\Users\Allen\Documents\GitHub\EE319K-Final-Project-Initial-Testing
+"C:\Program Files\JetBrains\CLion 2019.3.3\bin\cmake\win\bin\cmake.exe" -DCMAKE_BUILD_TYPE=Debug -G "CodeBlocks - MinGW Makefiles" C:\Users\Allen\Documents\GitHub\EE319H-Final-Project-Initial-Testing
 -- The C compiler identification is GNU 8.1.0
 -- The CXX compiler identification is GNU 8.1.0
 -- Check for working C compiler: C:/Program Files/mingw-w64/x86_64-8.1.0-posix-seh-rt_v6-rev0/mingw64/bin/gcc.exe
@@ -15,10 +15,10 @@
 -- Detecting CXX compile features - done
 -- Looking for pthread.h
 -- Looking for pthread.h - found
--- Looking for pthread_create
--- Looking for pthread_create - found
+-- Performing Test CMAKE_HAVE_LIBC_PTHREAD
+-- Performing Test CMAKE_HAVE_LIBC_PTHREAD - Success
 -- Found Threads: TRUE  
 -- Found SDL: mingw32;-mwindows;C:/Program Files/mingw-w64/x86_64-8.1.0-posix-seh-rt_v6-rev0/mingw64/lib/libSDL2.dll.a  
 -- Configuring done
 -- Generating done
--- Build files have been written to: C:/Users/Allen/Documents/GitHub/EE319K-Final-Project-Initial-Testing/cmake-build-debug
+-- Build files have been written to: C:/Users/Allen/Documents/GitHub/EE319H-Final-Project-Initial-Testing/cmake-build-debug

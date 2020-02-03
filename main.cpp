@@ -32,11 +32,12 @@ bool btn_start;
 bool btn_l;
 bool btn_r;
 
-uint32_t x = 0;
-uint32_t y = 0;
+float x = 0;
+float y = 0;
 
 char strBuffer[100];
 char *windowTitle;
+long long lastLoopMillis = millis();
 
 //  runs once at beginning
 void startup() {
@@ -45,13 +46,25 @@ void startup() {
 
 //  continually loops
 void loop() {
-    sprintf(strBuffer, "%d+", millis());
+    float dt = millis() - lastLoopMillis;
+    lastLoopMillis = millis();
+
+//    sprintf(strBuffer, "%d+", millis());
+//    print(strBuffer);
+
+    float pps = 100.;
+    x += joystick_h * pps * dt / 1000.;
+    y += joystick_v * pps * dt / 1000.;
+
+    sprintf(strBuffer, "%f+", x);
     print(strBuffer);
+
     drawPixel(x, y, 0xFF0000);
 }
 
 int main(int argc, char *argv[]) {
     startLCD();
+    const Uint8 *keys = SDL_GetKeyboardState(NULL);
 
     startup();
     //  wait for window to close
@@ -60,51 +73,56 @@ int main(int argc, char *argv[]) {
         SDL_SetWindowTitle(window, windowTitle);
         SDL_PollEvent(&event);
 
+        joystick_h = 0;
+        joystick_v = 0;
+        btn_a = false;
+        btn_b = false;
+        btn_start = false;
+        btn_l = false;
+        btn_r = false;
         switch (event.type)
         {
             case SDL_QUIT:
                 quit = true;
                 break;
-            case SDL_KEYDOWN:
-                switch (event.key.keysym.sym)
-                {
-                    case SDLK_LEFT:
-                        joystick_h = -0.3;
-                        break;
-                    case SDLK_RIGHT:
-                        joystick_h = 0.3;
-                        break;
-                    case SDLK_UP:
-                        joystick_v = 1.0;
-                        break;
-                    case SDLK_DOWN:
-                        joystick_v = -1.0;
-                        break;
-                    case SDLK_w:
-                        break;
-                    case SDLK_s:
-                        break;
-                    case SDLK_a:
-                        break;
-                    case SDLK_d:
-                        break;
-                    case SDLK_v:
-                        break;
-                    case SDLK_b:
-                        break;
-                    case SDLK_SPACE:
-                        break;
-                    case SDLK_RSHIFT:
-                        break;
-                    case SDLK_LSHIFT:
-                    break;
-                }
+        }
+
+        if(keys[SDL_SCANCODE_LEFT]) {
+            joystick_h += -0.3;
+        }
+        if(keys[SDL_SCANCODE_RIGHT]) {
+            joystick_h += 0.3;
+        }
+        if(keys[SDL_SCANCODE_UP]) {
+            joystick_v += 0.3;
+        }
+        if(keys[SDL_SCANCODE_DOWN]) {
+            joystick_v -= 0.3;
+        }
+        if(keys[SDL_SCANCODE_W]) {
+            joystick_v += 1.0;
+        }
+        if(keys[SDL_SCANCODE_S]) {
+            print("S");
+            joystick_v += -1.0;
+        }
+        if(keys[SDL_SCANCODE_A]) {
+            joystick_h += -1.0;
+        }
+        if(keys[SDL_SCANCODE_D]) {
+            joystick_h += 1.0;
+        }
+        if(keys[SDL_SCANCODE_LSHIFT]) {
+            btn_l = true;
+        }
+        if(keys[SDL_SCANCODE_RSHIFT]) {
+            btn_r = true;
+        }
+        if(keys[SDL_SCANCODE_SPACE]) {
+            btn_start = true;
         }
 
         loop();
-
-//        SDL_RenderClear(renderer);
-//        SDL_RenderPresent(renderer);
     }
 
     // cleanup SDL
@@ -136,7 +154,7 @@ void drawPixel(uint16_t x, uint16_t y, uint32_t rgb) {
             SDL_RenderDrawPoint(renderer, i, j);
         }
     }
-//    SDL_RenderPresent(renderer);
+    SDL_RenderPresent(renderer);
 
 }
 
