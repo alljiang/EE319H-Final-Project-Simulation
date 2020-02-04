@@ -82,6 +82,12 @@
 				</MakeCommands>
 			</Target>
 		</Build>
+		<Unit filename="C:/Users/Allen/Documents/GitHub/EE319H-Final-Project-Initial-Testing/SRAM.cpp">
+			<Option target="EE319K_Final_Project_Initial_Testing"/>
+		</Unit>
+		<Unit filename="C:/Users/Allen/Documents/GitHub/EE319H-Final-Project-Initial-Testing/SRAM.h">
+			<Option target="EE319K_Final_Project_Initial_Testing"/>
+		</Unit>
 		<Unit filename="C:/Users/Allen/Documents/GitHub/EE319H-Final-Project-Initial-Testing/main.cpp">
 			<Option target="EE319K_Final_Project_Initial_Testing"/>
 		</Unit>

@@ -7,6 +7,8 @@
 #include <chrono>
 #include <cstdio>
 
+#include "SRAM.h"
+
 using namespace std;
 using namespace chrono;
 
