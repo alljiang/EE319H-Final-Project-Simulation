@@ -3,13 +3,14 @@
 #include <SDL.h>
 #include <cstdlib>
 #include <synchapi.h>
+#include <fstream>
 #include <chrono>
 #include <cstdio>
 
 using namespace std;
 using namespace chrono;
 
-#define WINDOW_SCALE 3
+#define WINDOW_SCALE 1
 #define WINDOW_HEIGHT 240  // y
 #define WINDOW_WIDTH 320  // x
 #define NUM_THREADS 5
@@ -18,6 +19,7 @@ void startLCD();
 void drawPixel(uint16_t x, uint16_t y, uint32_t rgb);
 void print(char *str);
 long long int millis();
+void update();
 
 SDL_Event event;
 SDL_Renderer *renderer;
@@ -59,7 +61,12 @@ void loop() {
     sprintf(strBuffer, "%f", x);
     print(strBuffer);
 
-    drawPixel(x, y, 0xFF0000);
+    for(int xx = 0; xx < 320; xx++) {
+        for(int yy = 0; yy < 240; yy++) {
+            drawPixel(xx, yy, 0xFF0000);
+        }
+        update();
+    }
 }
 
 int main(int argc, char *argv[]) {
@@ -103,7 +110,6 @@ int main(int argc, char *argv[]) {
             joystick_v += 1.0;
         }
         if(keys[SDL_SCANCODE_S]) {
-            print("S");
             joystick_v += -1.0;
         }
         if(keys[SDL_SCANCODE_A]) {
@@ -154,8 +160,10 @@ void drawPixel(uint16_t x, uint16_t y, uint32_t rgb) {
             SDL_RenderDrawPoint(renderer, i, j);
         }
     }
-    SDL_RenderPresent(renderer);
+}
 
+void update() {
+    SDL_RenderPresent(renderer);
 }
 
 long long int millis() {
