@@ -10,7 +10,7 @@
 using namespace std;
 using namespace chrono;
 
-#define WINDOW_SCALE 1
+#define WINDOW_SCALE 3
 #define WINDOW_HEIGHT 240  // y
 #define WINDOW_WIDTH 320  // x
 #define NUM_THREADS 5
@@ -61,12 +61,16 @@ void loop() {
     sprintf(strBuffer, "%f", x);
     print(strBuffer);
 
-    for(int xx = 0; xx < 320; xx++) {
-        for(int yy = 0; yy < 240; yy++) {
-            drawPixel(xx, yy, 0xFF0000);
-        }
-        update();
-    }
+    drawPixel(x, y, 0x00FF00);
+    update();
+
+//
+//    for(int xx = 0; xx < 320; xx++) {
+//        for(int yy = 0; yy < 240; yy++) {
+//            drawPixel(xx, yy, 0xFF0000);
+//        }
+//        update();
+//    }
 }
 
 int main(int argc, char *argv[]) {
