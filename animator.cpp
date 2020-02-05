@@ -23,4 +23,5 @@ void animator_readAnimations(char* name) {
     SD_read(buffer, 10);
 
     printf(buffer);
+    printf("asdf%d", buffer[2] == '\n');
 }

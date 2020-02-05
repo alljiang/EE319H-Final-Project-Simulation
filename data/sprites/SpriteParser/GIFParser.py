@@ -33,10 +33,10 @@ if len(colorsRawLine) != 0:
 colors.close()
 
 # Output file
-output = open(characterName + ".txt", "w")
+output = open(characterName + ".txt", "wb")
 
 numFiles = len(os.listdir(os.getcwd() + "/gif-kirby/"))
-output.write(str(numFiles))
+output.write(str(numFiles).encode())
 for filename in os.listdir(os.getcwd() + "/gif-kirby/"):
     if filename.endswith(".gif") or filename.endswith(".png"):
         img = Image.open("./gif-kirby/" + filename)
@@ -78,17 +78,17 @@ for filename in os.listdir(os.getcwd() + "/gif-kirby/"):
             compressed_rgb.append(compressed_frame)
 
         # Write to file
-        output.write("\n")
-        output.write(filename.split(".")[0] + "\n")
-        output.write(str(len(frames)) + "\n")
-        output.write(str(frame_width) + "\n")
-        output.write(str(frame_height))
+        output.write("\n".encode())
+        output.write((filename.split(".")[0] + "\n").encode())
+        output.write((str(len(frames)) + "\n").encode())
+        output.write((str(frame_width) + "\n").encode())
+        output.write((str(frame_height)).encode())
         for frame in compressed_rgb:
             for row in frame:
-                output.write("\n")
-                output.write(f"{len(row)}")
+                output.write(("\n").encode())
+                output.write((str(len(row))).encode())
                 for line in row:
-                    output.write(f" {line[0]} {line[1]}")
+                    output.write((str(line[0]) + " " + str(line[1])).encode())
 # output.write(f"Colors: \n {indexed_rgb}\n")
 
 # output colors.txt file
