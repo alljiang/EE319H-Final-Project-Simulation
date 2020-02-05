@@ -66,7 +66,6 @@ void loop() {
     drawPixel(x, y, 0x00FF00);
     update();
 
-//
 //    for(int xx = 0; xx < 320; xx++) {
 //        for(int yy = 0; yy < 240; yy++) {
 //            drawPixel(xx, yy, 0xFF0000);
