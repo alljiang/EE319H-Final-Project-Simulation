@@ -23,7 +23,7 @@ bool quit;
 float x = 0;
 float y = 0;
 
-char strBuffer[100];
+uint8_t strBuffer[100];
 long long lastLoopMillis = millis();
 
 
@@ -45,7 +45,6 @@ void loop() {
     x += getJoystick_h(1) * pps * dt / 1000.;
     y += getJoystick_v(1) * pps * dt / 1000.;
 
-    sprintf(strBuffer, "%f", x);
     print(strBuffer);
 
     LCD_drawPixel(x, y, 0x00FF00);

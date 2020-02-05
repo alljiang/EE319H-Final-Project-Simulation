@@ -56,8 +56,11 @@ CMakeFiles/EE319K_Final_Project_Initial_Testing.dir/SRAM.cpp.obj
  C:/Users/Allen/Documents/GitHub/EE319H-Final-Project-Initial-Testing/SRAM.cpp
  C:/Users/Allen/Documents/GitHub/EE319H-Final-Project-Initial-Testing/SRAM.h
 CMakeFiles/EE319K_Final_Project_Initial_Testing.dir/animator.cpp.obj
+ C:/Users/Allen/Documents/GitHub/EE319H-Final-Project-Initial-Testing/SDCard.h
+ C:/Users/Allen/Documents/GitHub/EE319H-Final-Project-Initial-Testing/SRAM.h
  C:/Users/Allen/Documents/GitHub/EE319H-Final-Project-Initial-Testing/animator.cpp
  C:/Users/Allen/Documents/GitHub/EE319H-Final-Project-Initial-Testing/animator.h
+ C:/Users/Allen/Documents/GitHub/EE319H-Final-Project-Initial-Testing/metadata.h
 CMakeFiles/EE319K_Final_Project_Initial_Testing.dir/controller.cpp.obj
  C:/Program Files/mingw-w64/x86_64-8.1.0-posix-seh-rt_v6-rev0/mingw64/include/SDL2/SDL.h
  C:/Program Files/mingw-w64/x86_64-8.1.0-posix-seh-rt_v6-rev0/mingw64/include/SDL2/SDL_assert.h

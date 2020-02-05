@@ -1,6 +1,9 @@
 
 #include <cstdlib>
+#include <cstdio>
 #include "SDL.h"
+#include <fstream>
+#include <iostream>
 #include "LCD.h"
 
 #define WINDOW_SCALE 3
@@ -9,10 +12,15 @@
 
 SDL_Renderer *renderer;
 SDL_Window *window;
-char *windowTitle;
+uint8_t *windowTitle;
 
-void LCD_startLCD() {
+void LCD_startLCD() {https://sdl.beuc.net/sdl.wiki/FAQ_Console
     SDL_Init(SDL_INIT_VIDEO);
+    ofstream ctt("CON");
+    freopen( "CON", "w", stdout );
+    freopen( "CON", "w", stderr );
+    printf("asdf");
+
     SDL_CreateWindowAndRenderer(WINDOW_WIDTH*WINDOW_SCALE, WINDOW_HEIGHT*WINDOW_SCALE,
                                 0, &window, &renderer);
     SDL_SetRenderDrawColor(renderer, 0, 0, 0, 0);
@@ -46,9 +54,9 @@ void stopSDL2() {
 }
 
 void updateWindowTitle() {
-    SDL_SetWindowTitle(window, windowTitle);
+    SDL_SetWindowTitle(window, (char*)windowTitle);
 }
 
-void print(char str[]) {
+void print(uint8_t str[]) {
     windowTitle = str;
 }

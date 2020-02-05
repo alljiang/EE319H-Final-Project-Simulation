@@ -610,41 +610,21 @@ C:/Program Files/mingw-w64/x86_64-8.1.0-posix-seh-rt_v6-rev0/mingw64/include/SDL
 
 C:/Program Files/mingw-w64/x86_64-8.1.0-posix-seh-rt_v6-rev0/mingw64/include/SDL2/close_code.h
 
+C:/Users/Allen/Documents/GitHub/EE319H-Final-Project-Initial-Testing/LCD.cpp
+cstdlib
+-
+cstdio
+-
+SDL.h
+C:/Users/Allen/Documents/GitHub/EE319H-Final-Project-Initial-Testing/SDL.h
+fstream
+-
+LCD.h
+C:/Users/Allen/Documents/GitHub/EE319H-Final-Project-Initial-Testing/LCD.h
+
 C:/Users/Allen/Documents/GitHub/EE319H-Final-Project-Initial-Testing/LCD.h
 cstdlib
 -
 cstdint
 -
-
-C:/Users/Allen/Documents/GitHub/EE319H-Final-Project-Initial-Testing/SDCard.h
-
-C:/Users/Allen/Documents/GitHub/EE319H-Final-Project-Initial-Testing/SRAM.h
-
-C:/Users/Allen/Documents/GitHub/EE319H-Final-Project-Initial-Testing/animator.h
-
-C:/Users/Allen/Documents/GitHub/EE319H-Final-Project-Initial-Testing/controller.h
-
-C:/Users/Allen/Documents/GitHub/EE319H-Final-Project-Initial-Testing/main.cpp
-iostream
--
-cstdlib
--
-synchapi.h
--
-chrono
--
-cstdio
--
-SDL.h
--
-SRAM.h
-C:/Users/Allen/Documents/GitHub/EE319H-Final-Project-Initial-Testing/SRAM.h
-SDCard.h
-C:/Users/Allen/Documents/GitHub/EE319H-Final-Project-Initial-Testing/SDCard.h
-animator.h
-C:/Users/Allen/Documents/GitHub/EE319H-Final-Project-Initial-Testing/animator.h
-LCD.h
-C:/Users/Allen/Documents/GitHub/EE319H-Final-Project-Initial-Testing/LCD.h
-controller.h
-C:/Users/Allen/Documents/GitHub/EE319H-Final-Project-Initial-Testing/controller.h
 
