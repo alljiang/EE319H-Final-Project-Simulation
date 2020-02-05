@@ -1,13 +1,13 @@
-#include <thread>
+
 #include <iostream>
 #include <SDL.h>
 #include <cstdlib>
 #include <synchapi.h>
-#include <fstream>
 #include <chrono>
 #include <cstdio>
 
 #include "SRAM.h"
+#include "SDCard.h"
 
 using namespace std;
 using namespace chrono;
@@ -15,7 +15,6 @@ using namespace chrono;
 #define WINDOW_SCALE 3
 #define WINDOW_HEIGHT 240  // y
 #define WINDOW_WIDTH 320  // x
-#define NUM_THREADS 5
 
 void startLCD();
 void drawPixel(uint16_t x, uint16_t y, uint32_t rgb);
@@ -42,6 +41,7 @@ float y = 0;
 char strBuffer[100];
 char *windowTitle;
 long long lastLoopMillis = millis();
+
 
 //  runs once at beginning
 void startup() {

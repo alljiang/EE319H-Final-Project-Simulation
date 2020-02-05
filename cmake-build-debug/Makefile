@@ -122,6 +122,33 @@ EE319K_Final_Project_Initial_Testing/fast:
 	$(MAKE) -f CMakeFiles\EE319K_Final_Project_Initial_Testing.dir\build.make CMakeFiles/EE319K_Final_Project_Initial_Testing.dir/build
 .PHONY : EE319K_Final_Project_Initial_Testing/fast
 
+SDCard.obj: SDCard.cpp.obj
+
+.PHONY : SDCard.obj
+
+# target to build an object file
+SDCard.cpp.obj:
+	$(MAKE) -f CMakeFiles\EE319K_Final_Project_Initial_Testing.dir\build.make CMakeFiles/EE319K_Final_Project_Initial_Testing.dir/SDCard.cpp.obj
+.PHONY : SDCard.cpp.obj
+
+SDCard.i: SDCard.cpp.i
+
+.PHONY : SDCard.i
+
+# target to preprocess a source file
+SDCard.cpp.i:
+	$(MAKE) -f CMakeFiles\EE319K_Final_Project_Initial_Testing.dir\build.make CMakeFiles/EE319K_Final_Project_Initial_Testing.dir/SDCard.cpp.i
+.PHONY : SDCard.cpp.i
+
+SDCard.s: SDCard.cpp.s
+
+.PHONY : SDCard.s
+
+# target to generate assembly for a file
+SDCard.cpp.s:
+	$(MAKE) -f CMakeFiles\EE319K_Final_Project_Initial_Testing.dir\build.make CMakeFiles/EE319K_Final_Project_Initial_Testing.dir/SDCard.cpp.s
+.PHONY : SDCard.cpp.s
+
 SRAM.obj: SRAM.cpp.obj
 
 .PHONY : SRAM.obj
@@ -185,6 +212,9 @@ help:
 	@echo ... EE319K_Final_Project_Initial_Testing
 	@echo ... edit_cache
 	@echo ... rebuild_cache
+	@echo ... SDCard.obj
+	@echo ... SDCard.i
+	@echo ... SDCard.s
 	@echo ... SRAM.obj
 	@echo ... SRAM.i
 	@echo ... SRAM.s

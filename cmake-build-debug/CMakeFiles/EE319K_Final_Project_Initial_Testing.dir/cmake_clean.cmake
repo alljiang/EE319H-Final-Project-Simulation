@@ -1,4 +1,5 @@
 file(REMOVE_RECURSE
+  "CMakeFiles/EE319K_Final_Project_Initial_Testing.dir/SDCard.cpp.obj"
   "CMakeFiles/EE319K_Final_Project_Initial_Testing.dir/SRAM.cpp.obj"
   "CMakeFiles/EE319K_Final_Project_Initial_Testing.dir/main.cpp.obj"
   "EE319K_Final_Project_Initial_Testing.exe"
