@@ -122,6 +122,141 @@ EE319K_Final_Project_Initial_Testing/fast:
 	$(MAKE) -f CMakeFiles\EE319K_Final_Project_Initial_Testing.dir\build.make CMakeFiles/EE319K_Final_Project_Initial_Testing.dir/build
 .PHONY : EE319K_Final_Project_Initial_Testing/fast
 
+LCD.obj: LCD.cpp.obj
+
+.PHONY : LCD.obj
+
+# target to build an object file
+LCD.cpp.obj:
+	$(MAKE) -f CMakeFiles\EE319K_Final_Project_Initial_Testing.dir\build.make CMakeFiles/EE319K_Final_Project_Initial_Testing.dir/LCD.cpp.obj
+.PHONY : LCD.cpp.obj
+
+LCD.i: LCD.cpp.i
+
+.PHONY : LCD.i
+
+# target to preprocess a source file
+LCD.cpp.i:
+	$(MAKE) -f CMakeFiles\EE319K_Final_Project_Initial_Testing.dir\build.make CMakeFiles/EE319K_Final_Project_Initial_Testing.dir/LCD.cpp.i
+.PHONY : LCD.cpp.i
+
+LCD.s: LCD.cpp.s
+
+.PHONY : LCD.s
+
+# target to generate assembly for a file
+LCD.cpp.s:
+	$(MAKE) -f CMakeFiles\EE319K_Final_Project_Initial_Testing.dir\build.make CMakeFiles/EE319K_Final_Project_Initial_Testing.dir/LCD.cpp.s
+.PHONY : LCD.cpp.s
+
+SDCard.obj: SDCard.cpp.obj
+
+.PHONY : SDCard.obj
+
+# target to build an object file
+SDCard.cpp.obj:
+	$(MAKE) -f CMakeFiles\EE319K_Final_Project_Initial_Testing.dir\build.make CMakeFiles/EE319K_Final_Project_Initial_Testing.dir/SDCard.cpp.obj
+.PHONY : SDCard.cpp.obj
+
+SDCard.i: SDCard.cpp.i
+
+.PHONY : SDCard.i
+
+# target to preprocess a source file
+SDCard.cpp.i:
+	$(MAKE) -f CMakeFiles\EE319K_Final_Project_Initial_Testing.dir\build.make CMakeFiles/EE319K_Final_Project_Initial_Testing.dir/SDCard.cpp.i
+.PHONY : SDCard.cpp.i
+
+SDCard.s: SDCard.cpp.s
+
+.PHONY : SDCard.s
+
+# target to generate assembly for a file
+SDCard.cpp.s:
+	$(MAKE) -f CMakeFiles\EE319K_Final_Project_Initial_Testing.dir\build.make CMakeFiles/EE319K_Final_Project_Initial_Testing.dir/SDCard.cpp.s
+.PHONY : SDCard.cpp.s
+
+SRAM.obj: SRAM.cpp.obj
+
+.PHONY : SRAM.obj
+
+# target to build an object file
+SRAM.cpp.obj:
+	$(MAKE) -f CMakeFiles\EE319K_Final_Project_Initial_Testing.dir\build.make CMakeFiles/EE319K_Final_Project_Initial_Testing.dir/SRAM.cpp.obj
+.PHONY : SRAM.cpp.obj
+
+SRAM.i: SRAM.cpp.i
+
+.PHONY : SRAM.i
+
+# target to preprocess a source file
+SRAM.cpp.i:
+	$(MAKE) -f CMakeFiles\EE319K_Final_Project_Initial_Testing.dir\build.make CMakeFiles/EE319K_Final_Project_Initial_Testing.dir/SRAM.cpp.i
+.PHONY : SRAM.cpp.i
+
+SRAM.s: SRAM.cpp.s
+
+.PHONY : SRAM.s
+
+# target to generate assembly for a file
+SRAM.cpp.s:
+	$(MAKE) -f CMakeFiles\EE319K_Final_Project_Initial_Testing.dir\build.make CMakeFiles/EE319K_Final_Project_Initial_Testing.dir/SRAM.cpp.s
+.PHONY : SRAM.cpp.s
+
+animator.obj: animator.cpp.obj
+
+.PHONY : animator.obj
+
+# target to build an object file
+animator.cpp.obj:
+	$(MAKE) -f CMakeFiles\EE319K_Final_Project_Initial_Testing.dir\build.make CMakeFiles/EE319K_Final_Project_Initial_Testing.dir/animator.cpp.obj
+.PHONY : animator.cpp.obj
+
+animator.i: animator.cpp.i
+
+.PHONY : animator.i
+
+# target to preprocess a source file
+animator.cpp.i:
+	$(MAKE) -f CMakeFiles\EE319K_Final_Project_Initial_Testing.dir\build.make CMakeFiles/EE319K_Final_Project_Initial_Testing.dir/animator.cpp.i
+.PHONY : animator.cpp.i
+
+animator.s: animator.cpp.s
+
+.PHONY : animator.s
+
+# target to generate assembly for a file
+animator.cpp.s:
+	$(MAKE) -f CMakeFiles\EE319K_Final_Project_Initial_Testing.dir\build.make CMakeFiles/EE319K_Final_Project_Initial_Testing.dir/animator.cpp.s
+.PHONY : animator.cpp.s
+
+controller.obj: controller.cpp.obj
+
+.PHONY : controller.obj
+
+# target to build an object file
+controller.cpp.obj:
+	$(MAKE) -f CMakeFiles\EE319K_Final_Project_Initial_Testing.dir\build.make CMakeFiles/EE319K_Final_Project_Initial_Testing.dir/controller.cpp.obj
+.PHONY : controller.cpp.obj
+
+controller.i: controller.cpp.i
+
+.PHONY : controller.i
+
+# target to preprocess a source file
+controller.cpp.i:
+	$(MAKE) -f CMakeFiles\EE319K_Final_Project_Initial_Testing.dir\build.make CMakeFiles/EE319K_Final_Project_Initial_Testing.dir/controller.cpp.i
+.PHONY : controller.cpp.i
+
+controller.s: controller.cpp.s
+
+.PHONY : controller.s
+
+# target to generate assembly for a file
+controller.cpp.s:
+	$(MAKE) -f CMakeFiles\EE319K_Final_Project_Initial_Testing.dir\build.make CMakeFiles/EE319K_Final_Project_Initial_Testing.dir/controller.cpp.s
+.PHONY : controller.cpp.s
+
 main.obj: main.cpp.obj
 
 .PHONY : main.obj
@@ -158,6 +293,21 @@ help:
 	@echo ... EE319K_Final_Project_Initial_Testing
 	@echo ... edit_cache
 	@echo ... rebuild_cache
+	@echo ... LCD.obj
+	@echo ... LCD.i
+	@echo ... LCD.s
+	@echo ... SDCard.obj
+	@echo ... SDCard.i
+	@echo ... SDCard.s
+	@echo ... SRAM.obj
+	@echo ... SRAM.i
+	@echo ... SRAM.s
+	@echo ... animator.obj
+	@echo ... animator.i
+	@echo ... animator.s
+	@echo ... controller.obj
+	@echo ... controller.i
+	@echo ... controller.s
 	@echo ... main.obj
 	@echo ... main.i
 	@echo ... main.s
