@@ -19,8 +19,8 @@ void animator_readAnimations(char* name) {
 
     SD_openFile(filename);
 
-    uint8_t buffer[100];
+    char buffer[100];
     SD_read(buffer, 10);
 
-    printf("asdf");
+    printf(buffer);
 }

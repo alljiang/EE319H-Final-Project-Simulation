@@ -1,3 +1,3 @@
-"C:\Program Files\JetBrains\CLion 2019.3.3\bin\cmake\win\bin\cmake.exe" -E remove -f CMakeFiles\EE319K_Final_Project_Initial_Testing.dir/objects.a
+"C:\Program Files\JetBrains\CLion 2019.2\bin\cmake\win\bin\cmake.exe" -E remove -f CMakeFiles\EE319K_Final_Project_Initial_Testing.dir/objects.a
 C:\PROGRA~1\MINGW-~1\X86_64~1.0-P\mingw64\bin\ar.exe cr CMakeFiles\EE319K_Final_Project_Initial_Testing.dir/objects.a @CMakeFiles\EE319K_Final_Project_Initial_Testing.dir\objects1.rsp
 C:\PROGRA~1\MINGW-~1\X86_64~1.0-P\mingw64\bin\G__~1.EXE -g   -Wl,--whole-archive CMakeFiles\EE319K_Final_Project_Initial_Testing.dir/objects.a -Wl,--no-whole-archive  -o EE319K_Final_Project_Initial_Testing.exe -Wl,--out-implib,libEE319K_Final_Project_Initial_Testing.dll.a -Wl,--major-image-version,0,--minor-image-version,0 @CMakeFiles\EE319K_Final_Project_Initial_Testing.dir\linklibs.rsp

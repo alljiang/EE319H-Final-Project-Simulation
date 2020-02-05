@@ -6,21 +6,16 @@
 #include <iostream>
 #include "LCD.h"
 
+using namespace std;
+
 #define WINDOW_SCALE 3
 #define WINDOW_HEIGHT 240  // y
 #define WINDOW_WIDTH 320  // x
 
 SDL_Renderer *renderer;
 SDL_Window *window;
-uint8_t *windowTitle;
 
-void LCD_startLCD() {https://sdl.beuc.net/sdl.wiki/FAQ_Console
-    SDL_Init(SDL_INIT_VIDEO);
-    ofstream ctt("CON");
-    freopen( "CON", "w", stdout );
-    freopen( "CON", "w", stderr );
-    printf("asdf");
-
+void LCD_startLCD() {
     SDL_CreateWindowAndRenderer(WINDOW_WIDTH*WINDOW_SCALE, WINDOW_HEIGHT*WINDOW_SCALE,
                                 0, &window, &renderer);
     SDL_SetRenderDrawColor(renderer, 0, 0, 0, 0);
@@ -51,12 +46,4 @@ void stopSDL2() {
     SDL_DestroyRenderer(renderer);
     SDL_DestroyWindow(window);
     SDL_Quit();
-}
-
-void updateWindowTitle() {
-    SDL_SetWindowTitle(window, (char*)windowTitle);
-}
-
-void print(uint8_t str[]) {
-    windowTitle = str;
 }

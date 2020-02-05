@@ -1,4 +1,4 @@
-# Install script for directory: C:/Users/Allen/Documents/GitHub/EE319H-Final-Project-Initial-Testing
+# Install script for directory: C:/Users/Allen/Documents/GitHub/EE319K-Final-Project-Initial-Testing
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)
@@ -40,5 +40,5 @@ endif()
 
 string(REPLACE ";" "\n" CMAKE_INSTALL_MANIFEST_CONTENT
        "${CMAKE_INSTALL_MANIFEST_FILES}")
-file(WRITE "C:/Users/Allen/Documents/GitHub/EE319H-Final-Project-Initial-Testing/cmake-build-debug/${CMAKE_INSTALL_MANIFEST}"
+file(WRITE "C:/Users/Allen/Documents/GitHub/EE319K-Final-Project-Initial-Testing/cmake-build-debug/${CMAKE_INSTALL_MANIFEST}"
      "${CMAKE_INSTALL_MANIFEST_CONTENT}")
