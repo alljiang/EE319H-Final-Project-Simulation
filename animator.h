@@ -1,0 +1,10 @@
+//
+// Created by Allen on 2/5/2020.
+//
+
+#ifndef EE319K_FINAL_PROJECT_INITIAL_TESTING_ANIMATOR_H
+#define EE319K_FINAL_PROJECT_INITIAL_TESTING_ANIMATOR_H
+
+extern void animator_readAnimations(char* name);
+
+#endif //EE319K_FINAL_PROJECT_INITIAL_TESTING_ANIMATOR_H
