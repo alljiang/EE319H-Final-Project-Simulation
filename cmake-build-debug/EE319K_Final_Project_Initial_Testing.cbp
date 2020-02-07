@@ -118,6 +118,9 @@
 		<Unit filename="C:/Users/Allen/Documents/GitHub/EE319K-Final-Project-Initial-Testing/metadata.h">
 			<Option target="EE319K_Final_Project_Initial_Testing"/>
 		</Unit>
+		<Unit filename="C:/Users/Allen/Documents/GitHub/EE319K-Final-Project-Initial-Testing/utils.h">
+			<Option target="EE319K_Final_Project_Initial_Testing"/>
+		</Unit>
 		<Unit filename="C:/Users/Allen/Documents/GitHub/EE319K-Final-Project-Initial-Testing/CMakeLists.txt">
 			<Option virtualFolder="CMake Files\"/>
 		</Unit>

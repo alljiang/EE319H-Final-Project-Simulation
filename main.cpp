@@ -1,16 +1,11 @@
 
 #include <iostream>
-#include <cstdlib>
-#include <synchapi.h>
-#include <chrono>
-#include <cstdio>
 #include <SDL.h>
 
-#include "SRAM.h"
-#include "SDCard.h"
 #include "animator.h"
 #include "LCD.h"
 #include "controller.h"
+#include "utils.h"
 
 #include <windows.h>
 #include <fcntl.h>
@@ -19,7 +14,6 @@ using namespace std;
 using namespace chrono;
 
 SDL_Event event;
-long long int millis();
 
 bool quit;
 
@@ -31,8 +25,7 @@ long long lastLoopMillis = millis();
 
 //  runs once at beginning
 void startup() {
-    char name[] = "kirby";
-    animator_readAnimations(name);
+    animator_readCharacterSDCard(0);
 }
 
 //  continually loops
@@ -50,7 +43,6 @@ void loop() {
 
 int main(int argc, char *argv[]) {
     LCD_startLCD();
-    const uint8_t *keys = SDL_GetKeyboardState(NULL);
 
     // Print console setup
     AllocConsole();
@@ -86,10 +78,4 @@ int main(int argc, char *argv[]) {
     stopSDL2();
 
     return EXIT_SUCCESS;
-}
-
-long long int millis() {
-    return duration_cast< milliseconds >(
-            system_clock::now().time_since_epoch()
-    ).count();
 }

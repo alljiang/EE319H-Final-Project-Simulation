@@ -6,27 +6,15 @@
 
 #IncludeRegexTransform: 
 
-C:/Users/Allen/Documents/GitHub/EE319K-Final-Project-Initial-Testing/SDCard.h
-
-C:/Users/Allen/Documents/GitHub/EE319K-Final-Project-Initial-Testing/SRAM.h
-
-C:/Users/Allen/Documents/GitHub/EE319K-Final-Project-Initial-Testing/animator.cpp
-cstring
--
-cstdint
+C:/Users/Allen/Documents/GitHub/EE319K-Final-Project-Initial-Testing/SRAM.cpp
+cstdlib
 -
 cstdio
 -
-animator.h
-C:/Users/Allen/Documents/GitHub/EE319K-Final-Project-Initial-Testing/animator.h
-metadata.h
-C:/Users/Allen/Documents/GitHub/EE319K-Final-Project-Initial-Testing/metadata.h
+cstdint
+-
 SRAM.h
 C:/Users/Allen/Documents/GitHub/EE319K-Final-Project-Initial-Testing/SRAM.h
-SDCard.h
-C:/Users/Allen/Documents/GitHub/EE319K-Final-Project-Initial-Testing/SDCard.h
 
-C:/Users/Allen/Documents/GitHub/EE319K-Final-Project-Initial-Testing/animator.h
-
-C:/Users/Allen/Documents/GitHub/EE319K-Final-Project-Initial-Testing/metadata.h
+C:/Users/Allen/Documents/GitHub/EE319K-Final-Project-Initial-Testing/SRAM.h
 

@@ -2,27 +2,34 @@
 #include <fstream>
 #include <cstdint>
 #include <cstdlib>
-using namespace std;
-
+#include <cstdio>
 #include "SDCard.h"
 
-ifstream file;
+using namespace std;
 
-void SD_read(char* buffer, uint8_t bytesToRead) {
-    if (!file.is_open()) {
+
+FILE *fp;
+
+void SD_read(char* buffer, uint16_t bytesToRead) {
+    if (fp == NULL) {
+        printf("FILE ERROR");
         while (1);  // file is not open! program will stop here
     }
 
-    char b;
-    for(uint32_t i = 0; i < bytesToRead && file >> b; i++) {
-        buffer[i] = b;
-    }
+    char lineBuffer[10000];
+    fread(buffer, 1, bytesToRead, fp);
+}
+
+char SD_readNextChar() {
+    char c[1];
+    fread(c, 1, 1, fp);
+    return c[0];
 }
 
 void SD_openFile(char* filename) {
-    file.open(filename);
+    fp = fopen(filename, "r");
 }
 
 void SD_closeFile() {
-    file.close();
+    fclose(fp);
 }

@@ -17,7 +17,8 @@
  * After reading an array from the SRAM memory, free up that space once you're done with "delete <variable name>;"
  */
 
-uint8_t SRAM_storage[8388608];     // 8 megabytes of SRAM: 8 * 1024 * 1024 = 8388608 bytes
+uint8_t SRAM_storage[8*1024*1024];     // 8 megabytes of SRAM: 8 * 1024 * 1024 = 8388608 bytes
+uint32_t wordsUsed = 0;
 
 void SRAM_readMemory(uint8_t* buffer, uint16_t location, uint16_t bytesToRead) {
     for(uint16_t i = 0; i < bytesToRead; i++) {
