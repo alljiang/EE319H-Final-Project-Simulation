@@ -5,6 +5,6 @@
 #ifndef EE319K_FINAL_PROJECT_INITIAL_TESTING_ANIMATOR_H
 #define EE319K_FINAL_PROJECT_INITIAL_TESTING_ANIMATOR_H
 
-extern void animator_readAnimations(char* name);
+extern void animator_readCharacterSDCard(uint8_t name);
 
 #endif //EE319K_FINAL_PROJECT_INITIAL_TESTING_ANIMATOR_H
