@@ -43,7 +43,7 @@ void animator_readCharacterSDCard(uint8_t charIndex) {
 
     SD_openFile(filename);
 
-    char buffer[1000];
+    char buffer[100];
     uint16_t chars;
 
     //  get number of animations
@@ -74,6 +74,20 @@ void animator_readCharacterSDCard(uint8_t charIndex) {
         printint(animation[charIndex][animationIndex].width);
         animation[charIndex][animationIndex].height =  readNextNumber('\n', buffer);
         printint(animation[charIndex][animationIndex].height);
+        println("");
+
+        uint8_t buffer[animation[chars][animationIndex].width];
+        for(uint8_t f = 0; f < animation[charIndex][animationIndex].frames; f++) {
+            for (uint8_t r = 0; r < animation[charIndex][animationIndex].height; r++) {
+                for (uint8_t c = 0; c < animation[chars][animationIndex].width; c += 2) {
+                    buffer[
+                    f * animation[charIndex][animationIndex].height * animation[charIndex][animationIndex].width
+                    + r * animation[charIndex][animationIndex].width + c
+                    ] = readNextNumber(' ', (char*)buffer);
+//                    SRAM_writeMemory()
+                }
+            }
+        }
 
         break;
     }

@@ -82,13 +82,11 @@ for filename in os.listdir(os.getcwd() + "/gif-kirby/"):
         output.write((filename.split(".")[0] + "\n").encode())
         output.write((str(len(frames)) + "\n").encode())
         output.write((str(frame_width) + "\n").encode())
-        output.write((str(frame_height)).encode())
+        output.write((str(frame_height) + "\n").encode())
         for frame in compressed_rgb:
             for row in frame:
-                output.write(("\n").encode())
-                output.write((str(len(row))).encode())
                 for line in row:
-                    output.write((str(line[0]) + " " + str(line[1])).encode())
+                    output.write((str(line[0]) + " " + str(line[1]) + " ").encode())
 # output.write(f"Colors: \n {indexed_rgb}\n")
 
 # output colors.txt file
