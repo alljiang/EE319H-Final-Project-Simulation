@@ -83,7 +83,7 @@ void animator_readCharacterSDCard(uint8_t charIndex) {
                     buffer[
                     f * animation[charIndex][animationIndex].height * animation[charIndex][animationIndex].width
                     + r * animation[charIndex][animationIndex].width + c
-                    ] = readNextNumber(' ', buffer);
+                    ] = readNextNumber(' ', (char*)buffer);
 //                    SRAM_writeMemory()
                 }
             }
