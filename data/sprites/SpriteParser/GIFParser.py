@@ -25,7 +25,7 @@ imageDirectory = "/gif-" + characterName + "/"
 indexed_rgb = list()
 colors = open("colors.txt", 'r')
 colorsRawLine = colors.readline()
-colorsRawLine = colorsRawLine[1:len(colorsRawLine)-1]  # trim out brackets
+colorsRawLine = colorsRawLine[colorsRawLine.index("{") + 1:len(colorsRawLine)-3]  # trim out brackets
 if len(colorsRawLine) != 0:
     colorsSplit = colorsRawLine.split(',')
     for c in colorsSplit:
@@ -71,7 +71,9 @@ for filename in os.listdir(os.getcwd() + "/gif-kirby/"):
                         if not indexed_rgb.__contains__(rgb_int):
                             indexed_rgb.append(rgb_int)
                         if i != 0:
-                            compressed_row.append([indexed_rgb.index(rgb_int), line_len])
+                            compressed_row.append([indexed_rgb.index(prev_color), line_len])
+                        if i == len(row) - 1:
+                            compressed_row.append([indexed_rgb.index(rgb_int), 1])
                         prev_color = rgb_int
                         line_len = 1
                 compressed_frame.append(compressed_row)
@@ -87,16 +89,16 @@ for filename in os.listdir(os.getcwd() + "/gif-kirby/"):
             for row in frame:
                 for line in row:
                     output.write((str(line[0]) + " " + str(line[1]) + " ").encode())
-                output.write(('\n').encode())       # debug purposes only
-# output.write(f"Colors: \n {indexed_rgb}\n")
+                # output.write(('\n').encode())       # debug purposes only
+output.write("\n".encode())
 
 # output colors.txt file
 colors = open("colors.txt", 'w')
-colors.write('{')
+colors.write('const uint32_t colors[' + str(len(indexed_rgb)) + '] = {')
 colors.write(str(indexed_rgb[0]))
 for i in range(1, len(indexed_rgb)):
     colors.write(',')
     colors.write(str(indexed_rgb[i]))
 
-colors.write('}')
+colors.write('};\n')
 colors.close()

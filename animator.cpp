@@ -9,7 +9,7 @@
 #include "utils.h"
 #include <cmath>
 
-Animation animation[4][50];
+Animation animation[4][numberOfAnimations];
 
 void prBuf(uint16_t endIndex, char* buffer) {
     for(uint16_t  i = 0; i < endIndex; i++) {
@@ -71,11 +71,8 @@ void animator_readCharacterSDCard(uint8_t charIndex) {
         anim->animationIndex = animationIndex;
         anim->characterIndex = charIndex;
         anim->frames = readNextNumber('\n', buffer);
-//        printint(animation[charIndex][animationIndex].frames);
         anim->width =  readNextNumber('\n', buffer);
-//        printint(animation[charIndex][animationIndex].width);
         anim->height =  readNextNumber('\n', buffer);
-//        printint(animation[charIndex][animationIndex].height);
         println("");
 
 
@@ -85,11 +82,9 @@ void animator_readCharacterSDCard(uint8_t charIndex) {
             for (uint8_t r = 0; r < anim->height; r++) {
                 uint16_t pairCount = 0;
                 uint16_t pixels = anim->width;
-//                int16_t pixels = anim->width;
                 for (uint8_t c = 0; pixels > 0; c++) {
                     lineBuffer[2*c] = readNextNumber(' ', (char*)buffer);   //  color index
                     lineBuffer[2*c + 1] = readNextNumber(' ', (char*)buffer);   //  number of pixels
-                    printint(lineBuffer[2*c+1]);
                     pixels -= lineBuffer[2*c + 1];
                     pairCount++;
                 }
@@ -101,11 +96,7 @@ void animator_readCharacterSDCard(uint8_t charIndex) {
                         2*pairCount, lineBuffer);
             }
         }
-
-        break;
+        readUntil('\n', buffer);    //  clear the new line
     }
-
-
-
 
 }
