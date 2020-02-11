@@ -55,6 +55,10 @@ CMakeFiles/EE319K_Final_Project_Initial_Testing.dir/SDCard.cpp.obj
 CMakeFiles/EE319K_Final_Project_Initial_Testing.dir/SRAM.cpp.obj
  C:/Users/Allen/Documents/GitHub/EE319H-Final-Project-Initial-Testing/SRAM.cpp
  C:/Users/Allen/Documents/GitHub/EE319H-Final-Project-Initial-Testing/SRAM.h
+CMakeFiles/EE319K_Final_Project_Initial_Testing.dir/UART.cpp.obj
+ C:/Users/Allen/Documents/GitHub/EE319H-Final-Project-Initial-Testing/UART.cpp
+ C:/Users/Allen/Documents/GitHub/EE319H-Final-Project-Initial-Testing/UART.h
+ C:/Users/Allen/Documents/GitHub/EE319H-Final-Project-Initial-Testing/animator.h
 CMakeFiles/EE319K_Final_Project_Initial_Testing.dir/animator.cpp.obj
  C:/Users/Allen/Documents/GitHub/EE319H-Final-Project-Initial-Testing/SDCard.h
  C:/Users/Allen/Documents/GitHub/EE319H-Final-Project-Initial-Testing/SRAM.h
@@ -157,6 +161,7 @@ CMakeFiles/EE319K_Final_Project_Initial_Testing.dir/main.cpp.obj
  C:/Program Files/mingw-w64/x86_64-8.1.0-posix-seh-rt_v6-rev0/mingw64/include/SDL2/begin_code.h
  C:/Program Files/mingw-w64/x86_64-8.1.0-posix-seh-rt_v6-rev0/mingw64/include/SDL2/close_code.h
  C:/Users/Allen/Documents/GitHub/EE319H-Final-Project-Initial-Testing/LCD.h
+ C:/Users/Allen/Documents/GitHub/EE319H-Final-Project-Initial-Testing/UART.h
  C:/Users/Allen/Documents/GitHub/EE319H-Final-Project-Initial-Testing/animator.h
  C:/Users/Allen/Documents/GitHub/EE319H-Final-Project-Initial-Testing/controller.h
  C:/Users/Allen/Documents/GitHub/EE319H-Final-Project-Initial-Testing/main.cpp

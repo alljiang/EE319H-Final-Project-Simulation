@@ -203,6 +203,33 @@ SRAM.cpp.s:
 	$(MAKE) -f CMakeFiles\EE319K_Final_Project_Initial_Testing.dir\build.make CMakeFiles/EE319K_Final_Project_Initial_Testing.dir/SRAM.cpp.s
 .PHONY : SRAM.cpp.s
 
+UART.obj: UART.cpp.obj
+
+.PHONY : UART.obj
+
+# target to build an object file
+UART.cpp.obj:
+	$(MAKE) -f CMakeFiles\EE319K_Final_Project_Initial_Testing.dir\build.make CMakeFiles/EE319K_Final_Project_Initial_Testing.dir/UART.cpp.obj
+.PHONY : UART.cpp.obj
+
+UART.i: UART.cpp.i
+
+.PHONY : UART.i
+
+# target to preprocess a source file
+UART.cpp.i:
+	$(MAKE) -f CMakeFiles\EE319K_Final_Project_Initial_Testing.dir\build.make CMakeFiles/EE319K_Final_Project_Initial_Testing.dir/UART.cpp.i
+.PHONY : UART.cpp.i
+
+UART.s: UART.cpp.s
+
+.PHONY : UART.s
+
+# target to generate assembly for a file
+UART.cpp.s:
+	$(MAKE) -f CMakeFiles\EE319K_Final_Project_Initial_Testing.dir\build.make CMakeFiles/EE319K_Final_Project_Initial_Testing.dir/UART.cpp.s
+.PHONY : UART.cpp.s
+
 animator.obj: animator.cpp.obj
 
 .PHONY : animator.obj
@@ -302,6 +329,9 @@ help:
 	@echo ... SRAM.obj
 	@echo ... SRAM.i
 	@echo ... SRAM.s
+	@echo ... UART.obj
+	@echo ... UART.i
+	@echo ... UART.s
 	@echo ... animator.obj
 	@echo ... animator.i
 	@echo ... animator.s

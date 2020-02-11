@@ -1,14 +1,13 @@
 
 #include <iostream>
 #include <SDL.h>
+#include <windows.h>
+#include <fcntl.h>
 
-#include "animator.h"
 #include "LCD.h"
 #include "controller.h"
 #include "utils.h"
-
-#include <windows.h>
-#include <fcntl.h>
+#include "UART.h"
 
 using namespace std;
 using namespace chrono;
@@ -25,7 +24,7 @@ long long lastLoopMillis = millis();
 
 //  runs once at beginning
 void startup() {
-    animator_readCharacterSDCard(0);
+    UART_readCharacterSDCard(0);
 }
 
 //  continually loops

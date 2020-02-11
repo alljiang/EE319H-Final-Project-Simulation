@@ -2,14 +2,18 @@
 #include <cstring>
 #include <cstdint>
 #include <cstdio>
+#include <cstdlib>
 #include "animator.h"
 #include "metadata.h"
 #include "SRAM.h"
 #include "SDCard.h"
 #include "utils.h"
 #include <cmath>
+using namespace std;
 
 Animation animation[4][numberOfAnimations];
+SpriteSendable animationSlots[16];    // up to 16 sprites on screen at once
+uint16_t activeAnimations;      // each bit represents if the corresponding sendable should be displayed. MSB = [15], LSB = [0]
 
 void prBuf(uint16_t endIndex, char* buffer) {
     for(uint16_t  i = 0; i < endIndex; i++) {
@@ -32,6 +36,33 @@ uint32_t readNextNumber(char delimeter, char* buffer) {
     uint8_t chars = readUntil(delimeter, buffer);
     for(uint8_t i = 0; i < chars; i++) number += pow(10, chars - i - 1) * (buffer[i] - '0');
     return number;
+}
+
+//  updates screen segment by segment using animation data
+void update() {
+}
+
+//  receive from UART, adds an animation to be displayed
+void animator_animate(uint8_t charIndex, uint8_t animationIndex,
+        uint8_t x, uint16_t y, uint8_t frame, uint8_t persistent) {
+
+    //  find first unused animation slot
+    uint8_t slot;
+    for(slot = 0; slot < 16; slot++) {
+        bool inUse = (activeAnimations >> slot) & 1;
+        if(!inUse) {
+            //  we about to start using it, so flag it as in use
+            activeAnimations |= (1 << slot);
+            break;
+        }
+    }
+
+    animationSlots[slot].charIndex = charIndex;
+    animationSlots[slot].animationIndex = animationIndex;
+    animationSlots[slot].x = x;
+    animationSlots[slot].y = y;
+    animationSlots[slot].frame = frame;
+    animationSlots[slot].persistent = persistent;
 }
 
 void animator_readCharacterSDCard(uint8_t charIndex) {
@@ -88,9 +119,9 @@ void animator_readCharacterSDCard(uint8_t charIndex) {
                     pixels -= lineBuffer[2*c + 1];
                     pairCount++;
                 }
-                printf("%d, %d, %d, %d, %d, %d, %d, %d", lineBuffer[0], lineBuffer[1], lineBuffer[2],
-                        lineBuffer[3], lineBuffer[4], lineBuffer[5], lineBuffer[6], lineBuffer[7]);
-                println("");
+//                printf("%d, %d, %d, %d, %d, %d, %d, %d", lineBuffer[0], lineBuffer[1], lineBuffer[2],
+//                        lineBuffer[3], lineBuffer[4], lineBuffer[5], lineBuffer[6], lineBuffer[7]);
+//                println("");
                 SRAM_writeMemory_specifiedAddress(
                         anim->memLocation + f * (anim->height * anim->width) + r * anim->width,
                         2*pairCount, lineBuffer);

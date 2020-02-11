@@ -49,4 +49,14 @@ struct Animation {
         uint8_t animationIndex;
 };
 
+struct SpriteSendable {
+    public:
+        uint16_t x;
+        uint8_t y;
+        uint8_t charIndex;
+        uint8_t animationIndex;
+        uint8_t frame;      //  current frame of animation
+        bool persistent;        //  if the animation is persistent,
+};
+
 #endif //EE319K_FINAL_PROJECT_INITIAL_TESTING_METADATA_H
