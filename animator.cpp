@@ -43,7 +43,7 @@ void animator_readCharacterSDCard(uint8_t charIndex) {
 
     SD_openFile(filename);
 
-    char buffer[100];
+    char buffer[10];
     uint16_t chars;
 
     //  get number of animations
@@ -52,7 +52,7 @@ void animator_readCharacterSDCard(uint8_t charIndex) {
     while(numAnimations--) {
         chars = readUntil('\n', buffer);
 
-        //  get index of this animation
+        //  get reference index of this animation name inside metadata
         uint16_t animationIndex;
         for(animationIndex = 0;; animationIndex++) {
             bool found = true;
@@ -65,27 +65,40 @@ void animator_readCharacterSDCard(uint8_t charIndex) {
             if(found) break;
         }
 
+        Animation* anim = &animation[charIndex][animationIndex];
+
         //  construct animation struct
-        animation[charIndex][animationIndex].animationIndex = animationIndex;
-        animation[charIndex][animationIndex].characterIndex = charIndex;
-        animation[charIndex][animationIndex].frames = readNextNumber('\n', buffer);
-        printint(animation[charIndex][animationIndex].frames);
-        animation[charIndex][animationIndex].width =  readNextNumber('\n', buffer);
-        printint(animation[charIndex][animationIndex].width);
-        animation[charIndex][animationIndex].height =  readNextNumber('\n', buffer);
-        printint(animation[charIndex][animationIndex].height);
+        anim->animationIndex = animationIndex;
+        anim->characterIndex = charIndex;
+        anim->frames = readNextNumber('\n', buffer);
+//        printint(animation[charIndex][animationIndex].frames);
+        anim->width =  readNextNumber('\n', buffer);
+//        printint(animation[charIndex][animationIndex].width);
+        anim->height =  readNextNumber('\n', buffer);
+//        printint(animation[charIndex][animationIndex].height);
         println("");
 
-        uint8_t buffer[animation[chars][animationIndex].width];
-        for(uint8_t f = 0; f < animation[charIndex][animationIndex].frames; f++) {
-            for (uint8_t r = 0; r < animation[charIndex][animationIndex].height; r++) {
-                for (uint8_t c = 0; c < animation[chars][animationIndex].width; c += 2) {
-                    buffer[
-                    f * animation[charIndex][animationIndex].height * animation[charIndex][animationIndex].width
-                    + r * animation[charIndex][animationIndex].width + c
-                    ] = readNextNumber(' ', (char*)buffer);
-//                    SRAM_writeMemory()
+
+        uint8_t lineBuffer[anim->width*2];
+        anim->memLocation = getCurrentMemoryLocation();
+        for(uint8_t f = 0; f < anim->frames; f++) {
+            for (uint8_t r = 0; r < anim->height; r++) {
+                uint16_t pairCount = 0;
+                uint16_t pixels = anim->width;
+//                int16_t pixels = anim->width;
+                for (uint8_t c = 0; pixels > 0; c++) {
+                    lineBuffer[2*c] = readNextNumber(' ', (char*)buffer);   //  color index
+                    lineBuffer[2*c + 1] = readNextNumber(' ', (char*)buffer);   //  number of pixels
+                    printint(lineBuffer[2*c+1]);
+                    pixels -= lineBuffer[2*c + 1];
+                    pairCount++;
                 }
+                printf("%d, %d, %d, %d, %d, %d, %d, %d", lineBuffer[0], lineBuffer[1], lineBuffer[2],
+                        lineBuffer[3], lineBuffer[4], lineBuffer[5], lineBuffer[6], lineBuffer[7]);
+                println("");
+                SRAM_writeMemory_specifiedAddress(
+                        anim->memLocation + f * (anim->height * anim->width) + r * anim->width,
+                        2*pairCount, lineBuffer);
             }
         }
 

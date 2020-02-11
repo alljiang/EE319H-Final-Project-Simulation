@@ -54,7 +54,7 @@ for filename in os.listdir(os.getcwd() + "/gif-kirby/"):
             for row in frame:
                 frame_width = len(row)
                 compressed_row = []
-                prev_color = 0
+                prev_color = -99
                 line_len = 1
                 for i, pixel in enumerate(row):
                     red = int(pixel[0])
@@ -62,16 +62,16 @@ for filename in os.listdir(os.getcwd() + "/gif-kirby/"):
                     blue = int(pixel[2])
                     rgb_int = red << 16 | green << 8 | blue
                     if rgb_int == backgroundColor:
-                        rgb_int = -1
+                        rgb_int = 0xFFFFFFFF
                     if rgb_int == prev_color:
                         line_len += 1
                         if i == len(row)-1:
-                            compressed_row.append([indexed_rgb.index(prev_color), line_len])
+                            compressed_row.append([indexed_rgb.index(rgb_int), line_len])
                     else:
                         if not indexed_rgb.__contains__(rgb_int):
                             indexed_rgb.append(rgb_int)
                         if i != 0:
-                            compressed_row.append([indexed_rgb.index(prev_color), line_len])
+                            compressed_row.append([indexed_rgb.index(rgb_int), line_len])
                         prev_color = rgb_int
                         line_len = 1
                 compressed_frame.append(compressed_row)
@@ -87,15 +87,16 @@ for filename in os.listdir(os.getcwd() + "/gif-kirby/"):
             for row in frame:
                 for line in row:
                     output.write((str(line[0]) + " " + str(line[1]) + " ").encode())
+                output.write(('\n').encode())       # debug purposes only
 # output.write(f"Colors: \n {indexed_rgb}\n")
 
 # output colors.txt file
 colors = open("colors.txt", 'w')
-colors.write('[')
+colors.write('{')
 colors.write(str(indexed_rgb[0]))
 for i in range(1, len(indexed_rgb)):
     colors.write(',')
     colors.write(str(indexed_rgb[i]))
 
-colors.write(']')
+colors.write('}')
 colors.close()
