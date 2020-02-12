@@ -1,5 +1,5 @@
 # EE319H-Final-Project-Initial-Testing
-Creating the game on the PC before porting it on the TM4C
+Writing & simulating Smash Bros on the PC before porting it on the TM4C
 
 Uses C++ and SDL2
 
