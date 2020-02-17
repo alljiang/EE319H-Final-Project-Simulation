@@ -50,40 +50,56 @@ void update() {
         uint8_t buffer[321];
 
         for(uint8_t slot = 0; slot < 16; slot++) {
-            if(!((activeAnimations >> slot) & 1))   //  skip if not using animation
-                continue;
+            //  loop through toRemoves and set as -1s in background
+        }
 
+//        for(uint8_t slot = 0; slot < 16; slot++) {
+//            if(!((activeAnimations >> slot) & 1))   //  skip if not using animation
+//                continue;
+//
+//            SpriteSendable* ss = &spriteSendables[slot];
+//            Animation* a = &animation[ss->charIndex][ss->animationIndex];
+///*
+// *          put all sprites on row if sprite is inside row (can affect row)
+// */
+//            if(row >= ss->y && row < ss->y + a->height) {       //  if sprite affects current row
+//
+//                uint32_t memLocation = a->memLocation + ss->frame * a->width * a->height + (a->height - 1 - (row - ss->y));
+//                SRAM_readMemory(memLocation, a->width, buffer); //  read sprite data into buffer (contains excess)
+//
+//                uint16_t currentX = ss->x;
+//                uint16_t arrayTrasversal = 0;
+//                for(uint16_t pixel = 0; pixel < a->width; pixel++) {
+//                    uint8_t repetitions = buffer[arrayTrasversal++];
+//                    uint8_t colorIndex = buffer[arrayTrasversal++];
+//                    while(repetitions-- && pixel < a->width) {
+//                        colorIndexes[pixel + currentX] = colorIndex;
+//                        if(layer[pixel] < ss->layer) {
+//                            layer[pixel] = ss->layer;
+//                            changed[pixel] = true;
+//                        }
+//                        pixel++;
+//                    }
+//                }
+//            }
+//        }
+        for(uint8_t slot = 0; slot < 16; slot++) {
             SpriteSendable* ss = &spriteSendables[slot];
             Animation* a = &animation[ss->charIndex][ss->animationIndex];
-/*
- *          put all sprites on row if sprite is inside row (can affect row)
- */
-            if(row >= ss->y && row < ss->y + a->height) {       //  if sprite affects current row
-                //  erase sprites that are to be removed
-                if((toRemove >> slot) & 1) {
-                    /*
-                     * TODO: persistent array in SRAM, only contains persistent sprites and will be used when removing sprites
-                    */
 
-                }
+            //  erase sprites that are to be removed
+            if((toRemove >> slot) & 1) {
+                //  Read the background of the sprite that is to be removed
+                SRAM_readMemory(persistentBackgroundMemLocation + 321 * row + ss->x, a->width, buffer);
 
-                uint32_t memLocation = a->memLocation + ss->frame * a->width * a->height + (a->height - 1 - (row - ss->y));
-                SRAM_readMemory(memLocation, a->width, buffer); //  read sprite data into buffer (contains excess)
-
-                uint16_t currentX = ss->x;
-                uint16_t arrayTrasversal = 0;
-                for(uint16_t pixel = 0; pixel < a->width; pixel++) {
-                    uint8_t repetitions = buffer[arrayTrasversal++];
-                    uint8_t colorIndex = buffer[arrayTrasversal++];
-                    while(repetitions-- && pixel < a->width) {
-                        colorIndexes[pixel + currentX] = colorIndex;
-                        if(layer[pixel] < ss->layer) {
-                            layer[pixel] = ss->layer;
-                            changed[pixel] = true;
-                        }
-                        pixel++;
+                //  Set only the spots that are unchanged and need to be removed
+                for(uint16_t c = 0; c < a->width; c++) {
+                    if(!changed[c + ss->x]) {
+                        colorIndexes[c + ss->x] = buffer[c];
+                        changed[c + ss->x] = true;
                     }
                 }
+
             }
         }
     }
