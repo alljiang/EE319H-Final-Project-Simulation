@@ -5,6 +5,22 @@
 #ifndef EE319K_FINAL_PROJECT_INITIAL_TESTING_METADATA_H
 #define EE319K_FINAL_PROJECT_INITIAL_TESTING_METADATA_H
 
+/*
+ *  Note: if the sprite is persistent, then the layer will be ignored when painting the background, so send them in the right order!
+ */
+
+#define LAYER_NULL = 0;
+#define LAYER_BOTTOM = 1;
+#define LAYER_BACKGROUND = 10;
+#define LAYER_BACKGROUND_ANIMATION = 20;
+#define LAYER_CHARACTER = 30;
+#define LAYER_CHARACTER_ATTACK = 40;
+#define LAYER_NAMETAG = 50;
+#define LAYER_CHARACTER_PROJECTILE = 60;
+#define LAYER_OVERLAY = 100;
+#define LAYER_PERCENTAGE = 110;
+#define LAYER_TOP = 255;
+
 const uint32_t colors[12] = {4294967295,9987429,14326448,16234959,16633064,4215765,15132390,3552822,13123886,16340024,9643805,16776960};
 
 const char characterNames[4][15] = {
@@ -57,6 +73,7 @@ struct SpriteSendable {
         uint8_t animationIndex;
         uint8_t frame;      //  current frame of animation
         bool persistent;        //  if the animation is persistent,
+        uint8_t layer;       //  priority for layering over other sprites. high layer value = top layer
 };
 
 #endif //EE319K_FINAL_PROJECT_INITIAL_TESTING_METADATA_H

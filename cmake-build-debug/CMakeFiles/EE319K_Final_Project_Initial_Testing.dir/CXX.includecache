@@ -610,6 +610,20 @@ C:/Program Files/mingw-w64/x86_64-8.1.0-posix-seh-rt_v6-rev0/mingw64/include/SDL
 
 C:/Program Files/mingw-w64/x86_64-8.1.0-posix-seh-rt_v6-rev0/mingw64/include/SDL2/close_code.h
 
+C:/Users/Allen/Documents/GitHub/EE319H-Final-Project-Initial-Testing/LCD.cpp
+cstdlib
+-
+cstdio
+-
+SDL.h
+C:/Users/Allen/Documents/GitHub/EE319H-Final-Project-Initial-Testing/SDL.h
+fstream
+-
+iostream
+-
+LCD.h
+C:/Users/Allen/Documents/GitHub/EE319H-Final-Project-Initial-Testing/LCD.h
+
 C:/Users/Allen/Documents/GitHub/EE319H-Final-Project-Initial-Testing/LCD.h
 cstdlib
 -
@@ -618,11 +632,23 @@ cstdint
 
 C:/Users/Allen/Documents/GitHub/EE319H-Final-Project-Initial-Testing/SDCard.h
 
+C:/Users/Allen/Documents/GitHub/EE319H-Final-Project-Initial-Testing/SRAM.cpp
+cstdlib
+-
+cstdio
+-
+cstdint
+-
+SRAM.h
+C:/Users/Allen/Documents/GitHub/EE319H-Final-Project-Initial-Testing/SRAM.h
+
 C:/Users/Allen/Documents/GitHub/EE319H-Final-Project-Initial-Testing/SRAM.h
 
 C:/Users/Allen/Documents/GitHub/EE319H-Final-Project-Initial-Testing/UART.cpp
 UART.h
 C:/Users/Allen/Documents/GitHub/EE319H-Final-Project-Initial-Testing/UART.h
+metadata.h
+C:/Users/Allen/Documents/GitHub/EE319H-Final-Project-Initial-Testing/metadata.h
 animator.h
 C:/Users/Allen/Documents/GitHub/EE319H-Final-Project-Initial-Testing/animator.h
 
@@ -638,6 +664,8 @@ cstring
 cstdint
 -
 cstdio
+-
+cstdlib
 -
 animator.h
 C:/Users/Allen/Documents/GitHub/EE319H-Final-Project-Initial-Testing/animator.h

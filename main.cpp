@@ -25,6 +25,7 @@ long long lastLoopMillis = millis();
 //  runs once at beginning
 void startup() {
     UART_readCharacterSDCard(0);
+    animator_initialize();
 }
 
 //  continually loops

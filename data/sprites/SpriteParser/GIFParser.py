@@ -64,7 +64,7 @@ for filename in os.listdir(os.getcwd() + "/gif-kirby/"):
                     if rgb_int == backgroundColor:
                         rgb_int = 0xFFFFFFFF
                     if rgb_int == prev_color:
-                        line_len += 1
+                        line_len += 1           # max line length = 255
                         if i == len(row)-1:
                             compressed_row.append([indexed_rgb.index(rgb_int), line_len])
                     else:

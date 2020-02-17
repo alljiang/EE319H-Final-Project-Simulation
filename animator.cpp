@@ -11,9 +11,11 @@
 #include <cmath>
 using namespace std;
 
+uint32_t persistentBackgroundMemLocation;
 Animation animation[4][numberOfAnimations];
-SpriteSendable animationSlots[16];    // up to 16 sprites on screen at once
-uint16_t activeAnimations;      // each bit represents if the corresponding sendable should be displayed. MSB = [15], LSB = [0]
+SpriteSendable spriteSendables[16];    // up to 16 sprites on screen at once
+uint16_t activeAnimations;      // each bit represents if the corresponding sendable is being used MSB = [15], LSB = [0]
+uint16_t toRemove;      // each bit represents if the corresponding sendable should be removed next update
 
 void prBuf(uint16_t endIndex, char* buffer) {
     for(uint16_t  i = 0; i < endIndex; i++) {
@@ -38,13 +40,68 @@ uint32_t readNextNumber(char delimeter, char* buffer) {
     return number;
 }
 
-//  updates screen segment by segment using animation data
+//  updates screen line by line, segment by segment using animation data
+//  1.25 KB
 void update() {
+    for(uint8_t row = 0; row < 241; row++) {
+        uint8_t colorIndexes[321];
+        uint8_t layer[321];
+        bool changed[321];
+        uint8_t buffer[321];
+
+        for(uint8_t slot = 0; slot < 16; slot++) {
+            if(!((activeAnimations >> slot) & 1))   //  skip if not using animation
+                continue;
+
+            SpriteSendable* ss = &spriteSendables[slot];
+            Animation* a = &animation[ss->charIndex][ss->animationIndex];
+/*
+ *          put all sprites on row if sprite is inside row (can affect row)
+ */
+            if(row >= ss->y && row < ss->y + a->height) {       //  if sprite affects current row
+                //  erase sprites that are to be removed
+                if((toRemove >> slot) & 1) {
+                    /*
+                     * TODO: persistent array in SRAM, only contains persistent sprites and will be used when removing sprites
+                    */
+
+                }
+
+                uint32_t memLocation = a->memLocation + ss->frame * a->width * a->height + (a->height - 1 - (row - ss->y));
+                SRAM_readMemory(memLocation, a->width, buffer); //  read sprite data into buffer (contains excess)
+
+                uint16_t currentX = ss->x;
+                uint16_t arrayTrasversal = 0;
+                for(uint16_t pixel = 0; pixel < a->width; pixel++) {
+                    uint8_t repetitions = buffer[arrayTrasversal++];
+                    uint8_t colorIndex = buffer[arrayTrasversal++];
+                    while(repetitions-- && pixel < a->width) {
+                        colorIndexes[pixel + currentX] = colorIndex;
+                        if(layer[pixel] < ss->layer) {
+                            layer[pixel] = ss->layer;
+                            changed[pixel] = true;
+                        }
+                        pixel++;
+                    }
+                }
+            }
+        }
+    }
+
+    //  flag all non-persistent sprite animations to be erased next update
+    for(uint8_t slot = 0; slot < 16; slot++) {
+        if((activeAnimations >> slot) & 1) {
+            // animation active
+            if(!spriteSendables[slot].persistent) {
+                toRemove |= (1 << slot);
+            }
+        }
+    }
 }
 
 //  receive from UART, adds an animation to be displayed
 void animator_animate(uint8_t charIndex, uint8_t animationIndex,
-        uint8_t x, uint16_t y, uint8_t frame, uint8_t persistent) {
+        uint8_t x, uint16_t y, uint8_t frame, uint8_t layer, uint8_t persistent) {
 
     //  find first unused animation slot
     uint8_t slot;
@@ -57,14 +114,31 @@ void animator_animate(uint8_t charIndex, uint8_t animationIndex,
         }
     }
 
-    animationSlots[slot].charIndex = charIndex;
-    animationSlots[slot].animationIndex = animationIndex;
-    animationSlots[slot].x = x;
-    animationSlots[slot].y = y;
-    animationSlots[slot].frame = frame;
-    animationSlots[slot].persistent = persistent;
+    spriteSendables[slot].charIndex = charIndex;
+    spriteSendables[slot].animationIndex = animationIndex;
+    spriteSendables[slot].x = x;
+    spriteSendables[slot].y = y;
+    spriteSendables[slot].frame = frame;
+    spriteSendables[slot].layer = layer;
+    spriteSendables[slot].persistent = persistent;
+
+    if(spriteSendables[slot].persistent) {
+        //  add to persistent array in SRAM
+
+        uint8_t buffer[321];
+        //  paint row by row
+        for(uint8_t row = y; row < y + animation[charIndex][animationIndex].height; row++) {
+            SRAM_readMemory(animation[charIndex][animationIndex].memLocation,
+                            animation[charIndex][animationIndex].width, buffer);
+
+            uint32_t memInsertLocation = persistentBackgroundMemLocation + row * 321 + x;
+
+            SRAM_writeMemory_specifiedAddress(memInsertLocation, animation[charIndex][animationIndex].width, buffer);
+        }
+    }
 }
 
+//  1 KB
 void animator_readCharacterSDCard(uint8_t charIndex) {
     char filename[] = "../data/sprites/";
     char fileType[] = ".txt";
@@ -107,7 +181,7 @@ void animator_readCharacterSDCard(uint8_t charIndex) {
         println("");
 
 
-        uint8_t lineBuffer[anim->width*2];
+        uint8_t lineBuffer[1000];
         anim->memLocation = getCurrentMemoryLocation();
         for(uint8_t f = 0; f < anim->frames; f++) {
             for (uint8_t r = 0; r < anim->height; r++) {
@@ -119,15 +193,16 @@ void animator_readCharacterSDCard(uint8_t charIndex) {
                     pixels -= lineBuffer[2*c + 1];
                     pairCount++;
                 }
-//                printf("%d, %d, %d, %d, %d, %d, %d, %d", lineBuffer[0], lineBuffer[1], lineBuffer[2],
-//                        lineBuffer[3], lineBuffer[4], lineBuffer[5], lineBuffer[6], lineBuffer[7]);
-//                println("");
+
                 SRAM_writeMemory_specifiedAddress(
                         anim->memLocation + f * (anim->height * anim->width) + r * anim->width,
-                        2*pairCount, lineBuffer);
+                        pairCount, lineBuffer);
             }
         }
         readUntil('\n', buffer);    //  clear the new line
     }
+}
 
+void animator_initialize() {
+    persistentBackgroundMemLocation = SRAM_allocateMemory(241*321);
 }
