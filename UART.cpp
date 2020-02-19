@@ -13,9 +13,10 @@ void UART_sendAnimation(SpriteSendable sendable) {
     uint16_t y = sendable.y;
     uint8_t frame = sendable.frame;
     uint8_t persistent = sendable.persistent;
+    uint8_t layer = sendable.layer;
 
     animator_animate(animation_charIndex, animation_animationIndex,
-            x, y, frame, persistent);
+            x, y, frame, persistent, layer);
 }
 
 void UART_readCharacterSDCard(uint8_t charIndex) {
