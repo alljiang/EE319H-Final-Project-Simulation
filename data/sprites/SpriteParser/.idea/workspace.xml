@@ -2,10 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="2349ddb4-96f3-4450-a885-5dac0c7a4023" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/../../../SRAM.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/../../../SRAM.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../../animator.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/../../../animator.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/GIFParser.py" beforeDir="false" afterPath="$PROJECT_DIR$/GIFParser.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../../metadata.h" beforeDir="false" afterPath="$PROJECT_DIR$/../../../metadata.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/kirby.txt" beforeDir="false" afterPath="$PROJECT_DIR$/kirby.txt" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -81,6 +80,7 @@
       <workItem from="1580939695335" duration="452000" />
       <workItem from="1581048352717" duration="661000" />
       <workItem from="1581103306149" duration="840000" />
+      <workItem from="1582132234120" duration="3662000" />
     </task>
     <servers />
   </component>
@@ -101,7 +101,7 @@
     </option>
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
-    <SUITE FILE_PATH="coverage/SpriteParser$GIFParser.coverage" NAME="GIFParser Coverage Results" MODIFIED="1581443418642" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/SpriteParser$GIFParser.coverage" NAME="GIFParser Coverage Results" MODIFIED="1582140476269" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/SpriteParser$Python.coverage" NAME="Python Coverage Results" MODIFIED="1580763931265" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
   </component>
 </project>

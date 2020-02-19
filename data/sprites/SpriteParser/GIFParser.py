@@ -2,19 +2,18 @@ from PIL import Image, ImageSequence
 import numpy as np
 import os
 
-#   Format:
+#   Format (all big endian):
 #
-#   number of sequences
-#   {
-#       sequence name
-#       number of frames in sequence
-#       width of each frame (pixels)
-#       height of each frame (pixels)
-#       {
-#           (total number of colors in line) (color index) (number of repeated color) ...
-#       }
-#       ...
-#   }
+#   number of sequences/animations (2 bytes) + '\n'
+#       sequence name (ASCII) + '\n'
+#
+#       The following is all on one line, no spaces:
+#       number of frames in sequence (1 byte)
+#       width (w) of each frame (pixels) (2 bytes)
+#       height (h) of each frame (pixels) (1 byte)
+#       h elements each of size 2 bytes each describing the indexes of each row (2*h bytes)
+#       entire picture data:
+#        (total number of pairs in line, 2 bytes) (color index, 2 bytes) (number of repeated color, 2 bytes) (very long)
 
 #   CONFIG
 backgroundColor = 0x00FF00
@@ -36,7 +35,6 @@ colors.close()
 output = open(characterName + ".txt", "wb")
 
 numFiles = len(os.listdir(os.getcwd() + "/gif-kirby/"))
-output.write(str(numFiles).encode())
 for filename in os.listdir(os.getcwd() + "/gif-kirby/"):
     if filename.endswith(".gif") or filename.endswith(".png"):
         img = Image.open("./gif-kirby/" + filename)
@@ -47,15 +45,24 @@ for filename in os.listdir(os.getcwd() + "/gif-kirby/"):
         frame_width = 0
         frame_height = 0
 
+        allRowIndexes = []
+
+        # output.write(str(numFiles).encode())  # human readable, debug purposes only
+        output.write(((int(numFiles) >> 4) & 0xFF).to_bytes(1, byteorder="big", signed=False))
+        output.write((int(numFiles) & 0xFF).to_bytes(1, byteorder="big", signed=False))
+
         # Convert 8-bit color to 6-bit color and store in index array
         for frame in frames:
             compressed_frame = []
             frame_height = len(frame)
+            rowIndexes = []
+            currentRowIndex = 0
             for row in frame:
                 frame_width = len(row)
                 compressed_row = []
                 prev_color = -99
                 line_len = 1
+                rowIndexes.append(currentRowIndex)
                 for i, pixel in enumerate(row):
                     red = int(pixel[0])
                     green = int(pixel[1])
@@ -67,29 +74,63 @@ for filename in os.listdir(os.getcwd() + "/gif-kirby/"):
                         line_len += 1           # max line length = 255
                         if i == len(row)-1:
                             compressed_row.append([indexed_rgb.index(rgb_int), line_len])
+                            currentRowIndex += 2
                     else:
                         if not indexed_rgb.__contains__(rgb_int):
                             indexed_rgb.append(rgb_int)
                         if i != 0:
                             compressed_row.append([indexed_rgb.index(prev_color), line_len])
+                            currentRowIndex += 2
                         if i == len(row) - 1:
                             compressed_row.append([indexed_rgb.index(rgb_int), 1])
+                            currentRowIndex += 2
                         prev_color = rgb_int
                         line_len = 1
                 compressed_frame.append(compressed_row)
             compressed_rgb.append(compressed_frame)
+            allRowIndexes.append(rowIndexes)
 
-        # Write to file
-        output.write("\n".encode())
+        # Write to file (readable string), debug purposes only
+        # output.write("\n".encode())
+        # output.write((filename.split(".")[0] + "\n").encode())
+        # output.write((str(len(frames)) + "\n").encode())
+        # output.write((str(frame_width) + "\n").encode())
+        # output.write((str(frame_height) + "\n").encode())
+        # for i in range (0, len(frames)):
+        #     frame = compressed_rgb[i]
+        #
+        #     for index in allRowIndexes[i]:
+        #         output.write((str(index) + " ").encode())
+        #     output.write('\n'.encode())
+        #
+        #     for row in frame:
+        #         for line in row:
+        #             output.write((str(line[0]) + " " + str(line[1]) + " ").encode())
+        #             output.write(('\n').encode())
+
+        #   Unreadable bytes, but much more efficient
+        output.write('\n'.encode())
         output.write((filename.split(".")[0] + "\n").encode())
-        output.write((str(len(frames)) + "\n").encode())
-        output.write((str(frame_width) + "\n").encode())
-        output.write((str(frame_height) + "\n").encode())
-        for frame in compressed_rgb:
+        output.write((int(len(frames)) & 0xFF).to_bytes(1, byteorder="big", signed=False))
+        output.write(((int(frame_width) >> 4) & 0xFF).to_bytes(1, byteorder="big", signed=False))
+        output.write((int(frame_width) & 0xFF).to_bytes(1, byteorder="big", signed=False))
+        output.write(int(frame_height & 0xFF).to_bytes(1, byteorder="big", signed=False))
+        for i in range (0, len(frames)):
+            frame = compressed_rgb[i]
+
+            for index in allRowIndexes[i]:
+                output.write(((int(index) >> 4) & 0xFF).to_bytes(1, byteorder="big", signed=False))
+                output.write((int(index) & 0xFF).to_bytes(1, byteorder="big", signed=False))
+
             for row in frame:
                 for line in row:
-                    output.write((str(line[0]) + " " + str(line[1]) + " ").encode())
-                # output.write(('\n').encode())       # debug purposes only
+                    output.write(((int(line[0]) >> 4) & 0xFF).to_bytes(1, byteorder="big", signed=False))
+                    output.write((int(line[0]) & 0xFF).to_bytes(1, byteorder="big", signed=False))
+
+                    output.write(((int(line[1]) >> 4) & 0xFF).to_bytes(1, byteorder="big", signed=False))
+                    output.write((int(line[1]) & 0xFF).to_bytes(1, byteorder="big", signed=False))
+
+
 output.write("\n".encode())
 
 # output colors.txt file
