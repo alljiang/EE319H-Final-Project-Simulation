@@ -4,8 +4,8 @@ import os
 
 #   Format (all big endian):
 #
-#   number of sequences/animations (2 bytes) + '\n'
-#       sequence name (ASCII) + '\n'
+#   number of sequences/animations (2 bytes)
+#       sequence name (ASCII) + '\n' (this is on the same line as above)
 #
 #       The following is all on one line, no spaces:
 #       number of frames in sequence (1 byte)
@@ -13,7 +13,7 @@ import os
 #       height (h) of each frame (pixels) (1 byte)
 #       h elements each of size 2 bytes each describing the indexes of each row (2*h bytes)
 #       entire picture data:
-#        (total number of pairs in line, 2 bytes) (color index, 2 bytes) (number of repeated color, 2 bytes) (very long)
+#        (color index, 2 bytes) (number of repeated color, 2 bytes) (very long)
 
 #   CONFIG
 backgroundColor = 0x00FF00
@@ -48,8 +48,7 @@ for filename in os.listdir(os.getcwd() + "/gif-kirby/"):
         allRowIndexes = []
 
         # output.write(str(numFiles).encode())  # human readable, debug purposes only
-        output.write(((int(numFiles) >> 4) & 0xFF).to_bytes(1, byteorder="big", signed=False))
-        output.write((int(numFiles) & 0xFF).to_bytes(1, byteorder="big", signed=False))
+        output.write((int(numFiles) & 0xFF).to_bytes(2, byteorder="big", signed=False))
 
         # Convert 8-bit color to 6-bit color and store in index array
         for frame in frames:
@@ -90,48 +89,24 @@ for filename in os.listdir(os.getcwd() + "/gif-kirby/"):
             compressed_rgb.append(compressed_frame)
             allRowIndexes.append(rowIndexes)
 
-        # Write to file (readable string), debug purposes only
-        # output.write("\n".encode())
-        # output.write((filename.split(".")[0] + "\n").encode())
-        # output.write((str(len(frames)) + "\n").encode())
-        # output.write((str(frame_width) + "\n").encode())
-        # output.write((str(frame_height) + "\n").encode())
-        # for i in range (0, len(frames)):
-        #     frame = compressed_rgb[i]
-        #
-        #     for index in allRowIndexes[i]:
-        #         output.write((str(index) + " ").encode())
-        #     output.write('\n'.encode())
-        #
-        #     for row in frame:
-        #         for line in row:
-        #             output.write((str(line[0]) + " " + str(line[1]) + " ").encode())
-        #             output.write(('\n').encode())
-
         #   Unreadable bytes, but much more efficient
-        output.write('\n'.encode())
         output.write((filename.split(".")[0] + "\n").encode())
         output.write((int(len(frames)) & 0xFF).to_bytes(1, byteorder="big", signed=False))
-        output.write(((int(frame_width) >> 4) & 0xFF).to_bytes(1, byteorder="big", signed=False))
-        output.write((int(frame_width) & 0xFF).to_bytes(1, byteorder="big", signed=False))
+        output.write((int(frame_width) & 0xFFFF).to_bytes(2, byteorder="big", signed=False))
         output.write(int(frame_height & 0xFF).to_bytes(1, byteorder="big", signed=False))
         for i in range (0, len(frames)):
             frame = compressed_rgb[i]
 
             for index in allRowIndexes[i]:
-                output.write(((int(index) >> 4) & 0xFF).to_bytes(1, byteorder="big", signed=False))
-                output.write((int(index) & 0xFF).to_bytes(1, byteorder="big", signed=False))
+                output.write((int(index) & 0xFFFF).to_bytes(2, byteorder="big", signed=False))
 
             for row in frame:
                 for line in row:
-                    output.write(((int(line[0]) >> 4) & 0xFF).to_bytes(1, byteorder="big", signed=False))
-                    output.write((int(line[0]) & 0xFF).to_bytes(1, byteorder="big", signed=False))
-
-                    output.write(((int(line[1]) >> 4) & 0xFF).to_bytes(1, byteorder="big", signed=False))
-                    output.write((int(line[1]) & 0xFF).to_bytes(1, byteorder="big", signed=False))
+                    output.write((int(line[0]) & 0xFFFF).to_bytes(2, byteorder="big", signed=False))    #   color
+                    output.write((int(line[1]) & 0xFFFF).to_bytes(2, byteorder="big", signed=False))    #   quantity
 
 
-output.write("\n".encode())
+# output.write("\n".encode())
 
 # output colors.txt file
 colors = open("colors.txt", 'w')

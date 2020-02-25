@@ -7,8 +7,8 @@
 
 #include <cstdint>
 
-extern uint32_t readNextNumber(char delimeter, char* buf);
-extern char readUntil(char delimeter, char* buf);
+extern uint32_t readNextNumber(char delimeter, uint8_t* buf);
+extern uint16_t readUntil(char delimeter, uint8_t* buf);
 
 extern void update();
 

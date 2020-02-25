@@ -10,13 +10,11 @@ using namespace std;
 
 FILE *fp;
 
-void SD_read(char* buffer, uint16_t bytesToRead) {
+void SD_read(uint8_t* buffer, uint16_t bytesToRead) {
     if (fp == NULL) {
         printf("FILE ERROR");
-        while (1);  // file is not open! program will stop here
+        return;
     }
-
-    char lineBuffer[10000];
     fread(buffer, 1, bytesToRead, fp);
 }
 

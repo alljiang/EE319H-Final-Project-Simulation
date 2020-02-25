@@ -27,11 +27,16 @@ void prBuf(uint16_t endIndex, uint8_t* buf) {
 }
 
 //  returns number of bytes read
-char readUntil(char delimeter, uint8_t* buf) {
+uint16_t readUntil(char delimeter, uint8_t* buf) {
     uint16_t characters = 0;
     do { buf[characters++] = SD_readNextChar(); }
     while(buf[characters-1] != delimeter);
     return characters-1;
+}
+
+//  Big endian!
+uint16_t readHalfInt(uint8_t* buf) {
+    return (buf[0] << 8) + buf[1];
 }
 
 uint32_t readNextNumber(char delimeter, uint8_t* buf) {
@@ -78,6 +83,7 @@ void update() {
                     continue;
                 }
 
+                // loop through entire width
                 for(uint16_t col = 0; col < anim->width; col++) {
                     //  set the color indexes to the background color
                     colorIndexes[spriteSendables[slot].x + col] = backgroundColorIndex;
@@ -95,7 +101,7 @@ void update() {
                 //  see if this current row intersects this sprite animation
                 int16_t heightDifference = row - spriteSendables->y;
                 if(heightDifference < 0 || heightDifference >= anim->height) {
-                    // this row is out of bounds of this animation, skip it
+                    // this row is out of bounds of this animation, skip it and move on to the next sprite
                     continue;
                 }
 
@@ -186,19 +192,21 @@ void animator_readCharacterSDCard(uint8_t charIndex) {
 
     SD_openFile(filename);
 
-    uint16_t chars;
-
     //  get number of animations
-    uint8_t numAnimations = readNextNumber('\n', buffer);
+    SD_read(buffer, 2);
+    uint16_t numAnimations = readHalfInt(buffer);
 
+    uint8_t animationName[15];
     while(numAnimations--) {
-        chars = readUntil('\n', buffer);
-
         //  get reference index of this animation name inside metadata
         uint16_t animationIndex;
+        uint8_t animationNameLength = readUntil('\n', animationName);
+
+        //  loop through all the animation names of this character
         for (animationIndex = 0;; animationIndex++) {
             bool found = true;
-            for (uint16_t i = 0; i < chars; i++) {
+            //  loop through the animation index name. If there's a mismatch, move on to the next animation name
+            for (uint16_t i = 0; i < animationNameLength; i++) {
                 if (buffer[i] != animations[charIndex][animationIndex][i]) {
                     found = false;
                     break;
