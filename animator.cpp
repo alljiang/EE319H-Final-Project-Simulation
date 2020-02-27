@@ -8,17 +8,22 @@
 #include "SRAM.h"
 #include "SDCard.h"
 #include "utils.h"
+#include "LCD.h"
 #include <cmath>
 using namespace std;
 
-uint8_t buffer[500];
+#define maxSprites 16
+
+uint8_t buffer[2000];   // it's big because i can. if this is too big, lower it down to like 700
 uint8_t smallBuffer2[300];
+int16_t colorIndexes[321];  // a color index of -1 means 'do not change'
+uint8_t layer[321];
 
 uint32_t persistentBackgroundMemLocation;
 Animation animation[4][numberOfAnimations];
-SpriteSendable spriteSendables[16];    // up to 16 sprites on screen at once
-uint16_t activeAnimations;      // each bit represents if the corresponding sendable is being used MSB = [15], LSB = [0]
-uint16_t toRemove;      // each bit represents if the corresponding sendable should be removed next update
+SpriteSendable spriteSendables[maxSprites]; // up to maxSprites sprites on screen at once
+uint16_t activeAnimations = 0;  // each bit represents if the corresponding sendable is being used, big endian
+uint16_t toRemove = 0;  // each bit represents if the corresponding sendable should be removed next update, big endian
 
 void printArr(uint16_t size, uint8_t* buf) {
     for(uint16_t  i = 0; i < size; i++) {
@@ -49,28 +54,29 @@ uint16_t readHalfInt(uint8_t* buf) {
 
 //  updates screen line by line, segment by segment using animation data
 //  1.25 KB
-void update() {
-    for(uint8_t row = 0; row < 241; row++) {
-        int16_t colorIndexes[321];  // a color index of -1 means 'do not change'
-        uint8_t layer[321];
-
-        // set all color indexes to -1 initially for 'do not change'
-        memset(colorIndexes, -1, 321);
-
+void animator_update() {
+    for(uint8_t row = 0; row <= 241; row++) {
+        // set all color indexes to -2 initially for 'do not change'
         // set all layers to background
-        memset(colorIndexes, LAYER_BACKGROUND, 10);
+        for(uint16_t col = 0; col <= 321; col++) {
+            colorIndexes[col] = COLOR_DONOTCHANGE;
+            layer[col] = LAYER_BACKGROUND;
+        }
 
-        // Find which color index is -1
-        uint8_t backgroundColorIndex = 0;
+
+        // Find which color index is 0xFFFFFFFF (background)
+        uint16_t backgroundColorIndex = 0;
         for(uint16_t i = 0; i < sizeof(colors); i++) {
-            if(colors[i] == -1) {
+            if(colors[i] == 0xFFFFFFFF) {
                 backgroundColorIndex = i;
                 break;
             }
         }
 
-        //  first, loop through toRemoves and set as -1 background index (not the do not change)
-        for(uint8_t slot = 0; slot < 16; slot++) {
+
+
+        //  first, loop through toRemoves and set as -1 background index (need to change)
+        for(uint8_t slot = 0; slot < maxSprites; slot++) {
             //  check if this slot should be removed, and continue only if it should be
             if((toRemove >> slot) & 1) {
                 //  get the animation (pointer just to not make another copy)
@@ -86,55 +92,115 @@ void update() {
                 // loop through entire width
                 for(uint16_t col = 0; col < anim->width; col++) {
                     //  set the color indexes to the background color
-                    colorIndexes[spriteSendables[slot].x + col] = backgroundColorIndex;
+                    colorIndexes[spriteSendables[slot].x + col] = COLOR_BACKGROUND;
                 }
             }
         }
 
-        //  next, loop through the non-toRemoves, get their data, and set in background
+        //  next, loop through the active non-toRemoves and get their data
         for(uint8_t slot = 0; slot < 16; slot++) {
             //  check if this slot should be removed, and continue only if it shouldn't be
-            if(!((toRemove >> slot) & 1)) {
+            if( ( !((toRemove >> slot) & 1) ) && ( (activeAnimations >> slot) & 1 ) ) {
                 //  get the animation (pointer just to not make another copy)
-                Animation* anim = &animation[spriteSendables[slot].charIndex][spriteSendables[slot].animationIndex];
+                SpriteSendable* ss = &spriteSendables[slot];
+                Animation* anim = &animation[ss->charIndex][ss->animationIndex];
 
                 //  see if this current row intersects this sprite animation
-                int16_t heightDifference = row - spriteSendables->y;
+                int16_t heightDifference = row - ss->y;
                 if(heightDifference < 0 || heightDifference >= anim->height) {
                     // this row is out of bounds of this animation, skip it and move on to the next sprite
                     continue;
                 }
 
                 //  TODO: fix! storage retrieval type is not correct
-                uint16_t col = 0;
-                while(col < anim->width) {
-                    // read this row of animation into the buffer
-                    uint32_t memLocation = anim->memLocation + row * spriteSendables[slot].y;
-                    SRAM_readMemory(memLocation, anim->width, buffer);
-                }
+                //  This row intersects! Now, paint this row of this animation into the color index buffer
 
+                //  get frame location with frame index array
+                SRAM_readMemory(anim->memLocation + ss->frame, 3, buffer);
+                uint32_t frameLocation = anim->memLocation + (buffer[0] << 8u) + buffer[1];
+
+                //  get row location with row index array
+                SRAM_readMemory(frameLocation + heightDifference, 4, buffer);
+                uint32_t rowStart = (buffer[0] << 8u) + buffer[1];
+                uint32_t rowSize = (buffer[2] << 8u) + buffer[3] - rowStart;
+
+                //  read the row of data into the buffer
+                SRAM_readMemory(rowStart, rowSize, buffer);
+
+                //  copy the data over from the buffer into the color index buffer
                 for(uint16_t col = 0; col < anim->width; col++) {
-                    //  write the pixel if this layer is higher than the current layer of the pixel
-                    if(layer[spriteSendables[slot].x + col] < spriteSendables[slot].layer) {
-                        colorIndexes[spriteSendables[slot].x + col] = buffer[col];
+                    if(ss->layer <= layer[ss->x + col]) continue;   //  this sprite has lower layer priority
 
-                        // update that layer
-                        layer[spriteSendables[slot].x + col] = spriteSendables[slot].layer;
+                    uint16_t colorIndex = (buffer[col*4+0] << 8u) + (buffer[col*4+1]);
+                    if(colorIndex == backgroundColorIndex) continue;    //  this is the background color, ignore it
+
+                    uint16_t quantity = (buffer[col*4+2] << 8u) + (buffer[col*4+3]);
+
+                    //  add the colorIndex to colorIndexes quantity times, update the layer there too
+                    while(quantity-- > 0) {
+                        colorIndexes[ss->x + col] = colorIndex;
+                        layer[ss->x + col] = ss->layer;
+                        col++;
                     }
                 }
             }
         }
 
+        //  next, replace all the -1s with the background from SRAM background reserve
+        for(uint16_t col = 0; col <= 321; col++) {
+            if(colorIndexes[col] != COLOR_BACKGROUND) continue;
+
+            //  if there are -1s in a row, read them together to save time
+            uint16_t consecutiveBackgroundRowSize = 1;
+            while((col + consecutiveBackgroundRowSize) < 320) {
+                if(colorIndexes[col + consecutiveBackgroundRowSize + 1] == COLOR_BACKGROUND) {
+                    consecutiveBackgroundRowSize++;
+                }
+                else break;
+            }
+
+            //  read in from SRAM
+            uint32_t backgroundRowLocation = persistentBackgroundMemLocation + row * 321 * 2 + col * 2;
+            SRAM_readMemory(backgroundRowLocation, consecutiveBackgroundRowSize, buffer);
+
+            //  copy from buffer into colorIndexes array
+            for(uint16_t i = 0; i < consecutiveBackgroundRowSize; i++) {
+                colorIndexes[col + i] = (buffer[i*2 + 0] << 8u) + (buffer[i*2 + 1]);
+            }
+
+            col += consecutiveBackgroundRowSize-1;
+        }
+
         //  finally, draw it!
 
+        //  send in segments divided by "Do not change" colors (-2s)
+        for(uint16_t col = 0; col <= 321; col++) {
+            if(colorIndexes[col] == COLOR_DONOTCHANGE) continue;
+
+            //  find length of segment
+            uint16_t consecutiveColorSize = 1;
+            while((col + consecutiveColorSize) < 320) {
+                if(colorIndexes[col + consecutiveColorSize + 1] != COLOR_DONOTCHANGE) {
+                    consecutiveColorSize++;
+                }
+                else break;
+            }
+
+            //  write this section into the LCD
+            ILI9341_drawColors_indexed(col, row, colorIndexes+col, consecutiveColorSize);
+        }
     }
 
-    //  flag all non-persistent sprite animations to be erased next update
+    //  flag all non-persistent sprite animations to move to next frame or be erased next update
     for(uint8_t slot = 0; slot < 16; slot++) {
         if((activeAnimations >> slot) & 1) {
+            SpriteSendable* ss = &spriteSendables[slot];
+            Animation* anim = &animation[ss->charIndex][ss->animationIndex];
+
             // animation active
-            if(!spriteSendables[slot].persistent) {
-                toRemove |= (1u << slot);
+            if(!ss->persistent) {
+                if(++ss->frame > anim->frames)
+                    toRemove |= (1u << slot);
             }
         }
     }
@@ -179,7 +245,7 @@ void animator_animate(uint8_t charIndex, uint8_t animationIndex,
 }
 
 void animator_initialize() {
-    persistentBackgroundMemLocation = SRAM_allocateMemory(241*321);
+    persistentBackgroundMemLocation = SRAM_allocateMemory(241*321*2);
 }
 
 //  1 KB
@@ -202,7 +268,6 @@ void animator_readCharacterSDCard(uint8_t charIndex) {
         //  get reference index of this animation name inside metadata
         uint16_t animationIndex;
         uint8_t animationNameLength = readUntil('\n', animationName);
-        printArr(animationNameLength, animationName);
 
         //  loop through all the animation names of this character
         bool found = false;
@@ -267,7 +332,6 @@ void animator_readCharacterSDCard(uint8_t charIndex) {
                 SRAM_writeMemory(chunkSize, buffer);
 
                 bytesToRead -= chunkSize;
-                printArr(chunkSize, buffer);
             }
         }
     }

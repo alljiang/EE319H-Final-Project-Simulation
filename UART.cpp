@@ -6,7 +6,7 @@
 #include "metadata.h"
 #include "animator.h"
 
-void UART_sendAnimation(SpriteSendable sendable) {
+void UART_sendAnimation(struct SpriteSendable sendable) {
     uint8_t animation_charIndex = sendable.charIndex;
     uint8_t animation_animationIndex = sendable.animationIndex;
     uint8_t x = sendable.x;

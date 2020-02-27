@@ -60,6 +60,7 @@ CMakeFiles/EE319K_Final_Project_Initial_Testing.dir/UART.cpp.obj: ../UART.h
 CMakeFiles/EE319K_Final_Project_Initial_Testing.dir/UART.cpp.obj: ../animator.h
 CMakeFiles/EE319K_Final_Project_Initial_Testing.dir/UART.cpp.obj: ../metadata.h
 
+CMakeFiles/EE319K_Final_Project_Initial_Testing.dir/animator.cpp.obj: ../LCD.h
 CMakeFiles/EE319K_Final_Project_Initial_Testing.dir/animator.cpp.obj: ../SDCard.h
 CMakeFiles/EE319K_Final_Project_Initial_Testing.dir/animator.cpp.obj: ../SRAM.h
 CMakeFiles/EE319K_Final_Project_Initial_Testing.dir/animator.cpp.obj: ../animator.cpp

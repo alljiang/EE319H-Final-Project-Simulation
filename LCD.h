@@ -6,6 +6,7 @@
 #define EE319K_FINAL_PROJECT_INITIAL_TESTING_LCD_H
 
 extern void LCD_startLCD();
+extern void ILI9341_drawColors_indexed(uint32_t x, uint32_t y, int16_t *rgbIndex, uint16_t totalPixels);
 extern void LCD_drawPixel(uint16_t x, uint16_t y, uint32_t rgb);
 extern void LCD_update();
 extern void stopSDL2();

@@ -23,6 +23,12 @@ void LCD_startLCD() {
     SDL_RenderPresent(renderer);
 }
 
+void ILI9341_drawColors_indexed(uint32_t x, uint32_t y, int16_t *rgbIndex, uint16_t totalPixels) {
+    for(int i = 0; i < totalPixels; i++) {
+        LCD_drawPixel(x, y, rgbIndex[i]);
+    }
+}
+
 void LCD_drawPixel(uint16_t x, uint16_t y, uint32_t rgb) {
     if(x >= WINDOW_WIDTH || y >= WINDOW_HEIGHT) {
         return;

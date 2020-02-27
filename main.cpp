@@ -8,6 +8,7 @@
 #include "controller.h"
 #include "utils.h"
 #include "UART.h"
+#include "metadata.h"
 
 using namespace std;
 using namespace chrono;
@@ -26,6 +27,19 @@ long long lastLoopMillis;
 void startup() {
     animator_initialize();
     UART_readCharacterSDCard(0);
+
+    animator_update();
+
+    SpriteSendable s;
+    s.persistent = false;
+    s.charIndex = 0;
+    s.animationIndex = 0;
+    s.x = 50;
+    s.y = 50;
+    s.frame = 0;
+
+    UART_sendAnimation
+
 }
 
 //  continually loops

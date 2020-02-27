@@ -7,10 +7,13 @@
 
 #include <cstdint>
 
+#define COLOR_DONOTCHANGE -2
+#define COLOR_BACKGROUND -1
+
 extern uint32_t readNextNumber(char delimeter, uint8_t* buf);
 extern uint16_t readUntil(char delimeter, uint8_t* buf);
 
-extern void update();
+extern void animator_update();
 
 extern void animator_animate(uint8_t animation_charIndex, uint8_t animation_animationIndex,
                     uint8_t x, uint16_t y, uint8_t frame, uint8_t persistent, uint8_t layer);
