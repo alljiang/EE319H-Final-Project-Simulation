@@ -7,8 +7,8 @@
 
 #include <cstdint>
 
-#define COLOR_DONOTCHANGE -2
-#define COLOR_BACKGROUND -1
+#define ANIMATOR_COLOR_DONOTCHANGE -2
+#define ANIMATOR_COLOR_BACKGROUND -1
 
 extern uint32_t readNextNumber(char delimeter, uint8_t* buf);
 extern uint16_t readUntil(char delimeter, uint8_t* buf);

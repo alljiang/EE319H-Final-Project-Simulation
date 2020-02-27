@@ -34,12 +34,14 @@ void startup() {
     s.persistent = false;
     s.charIndex = 0;
     s.animationIndex = 0;
-    s.x = 50;
-    s.y = 50;
+    s.x = 0;
+    s.y = 0;
     s.frame = 0;
+    s.layer = LAYER_CHARACTER;
 
-    UART_sendAnimation
+    UART_sendAnimation(s);
 
+    animator_update();
 }
 
 //  continually loops

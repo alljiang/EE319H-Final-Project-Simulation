@@ -16,7 +16,7 @@ void UART_sendAnimation(struct SpriteSendable sendable) {
     uint8_t layer = sendable.layer;
 
     animator_animate(animation_charIndex, animation_animationIndex,
-            x, y, frame, persistent, layer);
+            x, y, frame, layer, persistent);
 }
 
 void UART_readCharacterSDCard(uint8_t charIndex) {

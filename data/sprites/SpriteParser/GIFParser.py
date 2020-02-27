@@ -126,7 +126,7 @@ for filename in os.listdir(os.getcwd() + "/gif-kirby/"):
 
 # output colors.txt file
 colors = open("colors.txt", 'w')
-colors.write('const int32_t colors[' + str(len(indexed_rgb)) + '] = {')
+colors.write('const uint32_t colors[' + str(len(indexed_rgb)) + '] = {')
 colors.write(str(indexed_rgb[0]))
 for i in range(1, len(indexed_rgb)):
     colors.write(',')

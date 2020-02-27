@@ -610,41 +610,31 @@ C:/Program Files/mingw-w64/x86_64-8.1.0-posix-seh-rt_v6-rev0/mingw64/include/SDL
 
 C:/Program Files/mingw-w64/x86_64-8.1.0-posix-seh-rt_v6-rev0/mingw64/include/SDL2/close_code.h
 
+C:/Users/Allen/Documents/GitHub/EE319H-Final-Project-Simulation/LCD.cpp
+cstdlib
+-
+cstdio
+-
+SDL.h
+C:/Users/Allen/Documents/GitHub/EE319H-Final-Project-Simulation/SDL.h
+fstream
+-
+iostream
+-
+LCD.h
+C:/Users/Allen/Documents/GitHub/EE319H-Final-Project-Simulation/LCD.h
+metadata.h
+C:/Users/Allen/Documents/GitHub/EE319H-Final-Project-Simulation/metadata.h
+utils.h
+C:/Users/Allen/Documents/GitHub/EE319H-Final-Project-Simulation/utils.h
+
 C:/Users/Allen/Documents/GitHub/EE319H-Final-Project-Simulation/LCD.h
 cstdlib
 -
 cstdint
 -
 
-C:/Users/Allen/Documents/GitHub/EE319H-Final-Project-Simulation/UART.h
-animator.h
-C:/Users/Allen/Documents/GitHub/EE319H-Final-Project-Simulation/animator.h
-cstdint
--
-
-C:/Users/Allen/Documents/GitHub/EE319H-Final-Project-Simulation/animator.h
-cstdint
--
-
-C:/Users/Allen/Documents/GitHub/EE319H-Final-Project-Simulation/controller.h
-
-C:/Users/Allen/Documents/GitHub/EE319H-Final-Project-Simulation/main.cpp
-iostream
--
-SDL.h
--
-windows.h
--
-fcntl.h
--
-LCD.h
-C:/Users/Allen/Documents/GitHub/EE319H-Final-Project-Simulation/LCD.h
-controller.h
-C:/Users/Allen/Documents/GitHub/EE319H-Final-Project-Simulation/controller.h
-utils.h
-C:/Users/Allen/Documents/GitHub/EE319H-Final-Project-Simulation/utils.h
-UART.h
-C:/Users/Allen/Documents/GitHub/EE319H-Final-Project-Simulation/UART.h
+C:/Users/Allen/Documents/GitHub/EE319H-Final-Project-Simulation/metadata.h
 
 C:/Users/Allen/Documents/GitHub/EE319H-Final-Project-Simulation/utils.h
 chrono
