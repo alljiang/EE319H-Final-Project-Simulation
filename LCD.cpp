@@ -28,10 +28,8 @@ void LCD_startLCD() {
 void ILI9341_drawColors_indexed(uint32_t x, uint32_t y, int16_t *rgbIndex, uint16_t totalPixels) {
     for(int i = 0; i < totalPixels; i++) {
         uint32_t rgb = colors[rgbIndex[i]];
-        printf("%d ", rgbIndex[i]);
         LCD_drawPixel(x+i, y, rgb);
     }
-    printf("\n");
 }
 
 void LCD_drawPixel(uint16_t x, uint16_t y, uint32_t rgb) {

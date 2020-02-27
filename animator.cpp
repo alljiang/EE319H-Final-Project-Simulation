@@ -164,7 +164,7 @@ void animator_update() {
             //  if there are -1s in a row, read them together to save time
             uint16_t consecutiveBackgroundRowSize = 1;
             while((col + consecutiveBackgroundRowSize) < 320) {
-                if(colorIndexes[col + consecutiveBackgroundRowSize + 1] == ANIMATOR_COLOR_BACKGROUND) {
+                if(colorIndexes[col + consecutiveBackgroundRowSize] == ANIMATOR_COLOR_BACKGROUND) {
                     consecutiveBackgroundRowSize++;
                 }
                 else break;
@@ -172,7 +172,7 @@ void animator_update() {
 
             //  read in from SRAM
             uint32_t backgroundRowLocation = persistentBackgroundMemLocation + row * 321 * 2 + col * 2;
-            SRAM_readMemory(backgroundRowLocation, consecutiveBackgroundRowSize, buffer);
+            SRAM_readMemory(backgroundRowLocation, 2*consecutiveBackgroundRowSize, buffer);
 
             //  copy from buffer into colorIndexes array
             for(uint16_t i = 0; i < consecutiveBackgroundRowSize; i++) {
@@ -191,7 +191,7 @@ void animator_update() {
             //  find length of segment
             uint16_t consecutiveSize = 1;
             while((col + consecutiveSize) < 320) {
-                if(colorIndexes[col + consecutiveSize + 1] != ANIMATOR_COLOR_DONOTCHANGE) {
+                if(colorIndexes[col + consecutiveSize] != ANIMATOR_COLOR_DONOTCHANGE) {
                     consecutiveSize++;
                 }
                 else break;
@@ -204,6 +204,9 @@ void animator_update() {
         }
     }
 
+    //  clear all toRemove flags
+    toRemove = 0;
+
     //  flag all non-persistent sprite animations to move to next frame or be erased next update
     for(uint8_t slot = 0; slot < 16; slot++) {
         if((activeAnimations >> slot) & 1) {
@@ -212,8 +215,11 @@ void animator_update() {
 
             // animation active
             if(!ss->persistent) {
-                if(++ss->frame > anim->frames)
+                ss->frame += 1;
+                if(ss->frame >= anim->frames) {
+                    activeAnimations &= ~(1u << slot);
                     toRemove |= (1u << slot);
+                }
             }
         }
     }

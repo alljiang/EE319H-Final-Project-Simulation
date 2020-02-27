@@ -9,6 +9,7 @@
 #include "utils.h"
 #include "UART.h"
 #include "metadata.h"
+#include "SRAM.h"
 
 using namespace std;
 using namespace chrono;
@@ -28,8 +29,6 @@ void startup() {
     animator_initialize();
     UART_readCharacterSDCard(0);
 
-    animator_update();
-
     SpriteSendable s;
     s.persistent = false;
     s.charIndex = 0;
@@ -40,20 +39,24 @@ void startup() {
     s.layer = LAYER_CHARACTER;
 
     UART_sendAnimation(s);
-
-    animator_update();
 }
 
 //  continually loops
+uint32_t  t1 = 0;
 void loop() {
-    float dt = millis() - lastLoopMillis;
-    lastLoopMillis = millis();
-
-    float pps = 100.;
-    x += getJoystick_h(1) * pps * dt / 1000.;
-    y += getJoystick_v(1) * pps * dt / 1000.;
-
-    LCD_drawPixel(x, y, 0x00FF00);
+//    float dt = millis() - lastLoopMillis;
+//    lastLoopMillis = millis();
+//
+//    float pps = 100.;
+//    x += getJoystick_h(1) * pps * dt / 1000.;
+//    y += getJoystick_v(1) * pps * dt / 1000.;
+//
+//    LCD_drawPixel(x, y, 0x00FF00);
+    if(millis() - t1 > 2000) {
+        printf("LOOP\n");
+        t1 = millis();
+        animator_update();
+    }
     LCD_update();
 }
 
@@ -73,6 +76,7 @@ int main(int argc, char *argv[]) {
     setvbuf(hf_in, NULL, _IONBF, 128);
     *stdin = *hf_in;
 
+    SRAM_reset();
     startup();
 
     //  wait for window to close
