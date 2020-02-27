@@ -15,7 +15,9 @@ void SD_read(uint32_t bytesToRead, uint8_t* buffer) {
         printf("FILE ERROR");
         return;
     }
-    fread(buffer, 1, bytesToRead, fp);
+    for(int i = 0; i < bytesToRead; i++) {
+        fread(buffer + i, 1, 1, fp);
+    }
 }
 
 char SD_readNextChar() {
@@ -25,9 +27,10 @@ char SD_readNextChar() {
 }
 
 void SD_openFile(char* filename) {
-    fp = fopen(filename, "r");
+    fp = fopen(filename, "rb");
 }
 
 void SD_closeFile() {
-    fclose(fp);
+    if(fp != NULL)
+        fclose(fp);
 }

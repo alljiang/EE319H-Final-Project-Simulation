@@ -190,6 +190,7 @@ void animator_readCharacterSDCard(uint8_t charIndex) {
     strcat(filename, characterNames[charIndex]);
     strcat(filename, fileType);
 
+    SD_closeFile();
     SD_openFile(filename);
 
     //  get number of animations
@@ -201,6 +202,7 @@ void animator_readCharacterSDCard(uint8_t charIndex) {
         //  get reference index of this animation name inside metadata
         uint16_t animationIndex;
         uint8_t animationNameLength = readUntil('\n', animationName);
+        printArr(animationNameLength, animationName);
 
         //  loop through all the animation names of this character
         bool found = false;
@@ -243,22 +245,16 @@ void animator_readCharacterSDCard(uint8_t charIndex) {
         SD_read(1, buffer);
         anim->height = buffer[0];
 
-        printint(anim->frames);
-        printint(anim->width);
-        printint(anim->height);
-
         //  get the frame indexes, store into SRAM and smallBuffer2
         SD_read(anim->frames*3, buffer);
         anim->memLocation = SRAM_writeMemory(anim->frames*3, smallBuffer2);
 
         //  get the data of each frame and store it
         for (uint8_t f = 0; f < anim->frames; f++) {
-            SD_read(2 * (anim->height + 1), buffer);
+            SD_read(2*(anim->height+1), buffer);
             SRAM_writeMemory(2 * (anim->height + 1), buffer);
 
-            printArr(2*(anim->height + 1), buffer);
-
-            uint32_t frameDataSize = (buffer[2 * anim->height + 1] << 8u) + buffer[2 * anim->height + 2];
+            uint32_t frameDataSize = (buffer[2 * anim->height] << 8u) + buffer[2 * anim->height + 1];
             uint32_t bytesToRead = frameDataSize;
 
             // read and write frame data in chunks
@@ -271,6 +267,7 @@ void animator_readCharacterSDCard(uint8_t charIndex) {
                 SRAM_writeMemory(chunkSize, buffer);
 
                 bytesToRead -= chunkSize;
+                printArr(chunkSize, buffer);
             }
         }
     }

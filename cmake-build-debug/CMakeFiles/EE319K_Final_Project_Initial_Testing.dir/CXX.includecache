@@ -6,23 +6,11 @@
 
 #IncludeRegexTransform: 
 
-C:/Users/Allen/Documents/GitHub/EE319H-Final-Project-Initial-Testing/SDCard.cpp
-fstream
--
-cstdint
--
-cstdlib
--
-cstdio
--
-SDCard.h
-C:/Users/Allen/Documents/GitHub/EE319H-Final-Project-Initial-Testing/SDCard.h
+C:/Users/Allen/Documents/GitHub/EE319H-Final-Project-Simulation/SDCard.h
 
-C:/Users/Allen/Documents/GitHub/EE319H-Final-Project-Initial-Testing/SDCard.h
+C:/Users/Allen/Documents/GitHub/EE319H-Final-Project-Simulation/SRAM.h
 
-C:/Users/Allen/Documents/GitHub/EE319H-Final-Project-Initial-Testing/SRAM.h
-
-C:/Users/Allen/Documents/GitHub/EE319H-Final-Project-Initial-Testing/animator.cpp
+C:/Users/Allen/Documents/GitHub/EE319H-Final-Project-Simulation/animator.cpp
 cstring
 -
 cstdint
@@ -32,25 +20,25 @@ cstdio
 cstdlib
 -
 animator.h
-C:/Users/Allen/Documents/GitHub/EE319H-Final-Project-Initial-Testing/animator.h
+C:/Users/Allen/Documents/GitHub/EE319H-Final-Project-Simulation/animator.h
 metadata.h
-C:/Users/Allen/Documents/GitHub/EE319H-Final-Project-Initial-Testing/metadata.h
+C:/Users/Allen/Documents/GitHub/EE319H-Final-Project-Simulation/metadata.h
 SRAM.h
-C:/Users/Allen/Documents/GitHub/EE319H-Final-Project-Initial-Testing/SRAM.h
+C:/Users/Allen/Documents/GitHub/EE319H-Final-Project-Simulation/SRAM.h
 SDCard.h
-C:/Users/Allen/Documents/GitHub/EE319H-Final-Project-Initial-Testing/SDCard.h
+C:/Users/Allen/Documents/GitHub/EE319H-Final-Project-Simulation/SDCard.h
 utils.h
-C:/Users/Allen/Documents/GitHub/EE319H-Final-Project-Initial-Testing/utils.h
+C:/Users/Allen/Documents/GitHub/EE319H-Final-Project-Simulation/utils.h
 cmath
 -
 
-C:/Users/Allen/Documents/GitHub/EE319H-Final-Project-Initial-Testing/animator.h
+C:/Users/Allen/Documents/GitHub/EE319H-Final-Project-Simulation/animator.h
 cstdint
 -
 
-C:/Users/Allen/Documents/GitHub/EE319H-Final-Project-Initial-Testing/metadata.h
+C:/Users/Allen/Documents/GitHub/EE319H-Final-Project-Simulation/metadata.h
 
-C:/Users/Allen/Documents/GitHub/EE319H-Final-Project-Initial-Testing/utils.h
+C:/Users/Allen/Documents/GitHub/EE319H-Final-Project-Simulation/utils.h
 chrono
 -
 cstdlib

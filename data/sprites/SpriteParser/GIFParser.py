@@ -40,6 +40,8 @@ colors.close()
 output = open(characterName + ".txt", "wb")
 
 numFiles = len(os.listdir(os.getcwd() + "/gif-kirby/"))
+output.write((int(numFiles) & 0xFF).to_bytes(2, byteorder="big", signed=False))
+
 for filename in os.listdir(os.getcwd() + "/gif-kirby/"):
     if filename.endswith(".gif") or filename.endswith(".png"):
         img = Image.open("./gif-kirby/" + filename)
@@ -53,8 +55,6 @@ for filename in os.listdir(os.getcwd() + "/gif-kirby/"):
         bytes_written = 0
         frameIndexes = []
         allRowIndexes = []
-
-        output.write((int(numFiles) & 0xFF).to_bytes(2, byteorder="big", signed=False))
 
         # Convert 8-bit color to 6-bit color and store in index array
         for frame in frames:
@@ -108,14 +108,16 @@ for filename in os.listdir(os.getcwd() + "/gif-kirby/"):
         for i in range(0, len(frameIndexes)):
             output.write((int(frameIndexes[i]) & 0xFFFFFF).to_bytes(3, byteorder="big", signed=False))
 
-        print(frameIndexes)
-        for i in range (0, len(frames)):
+        # print(frameIndexes)
+        for i in range(0, len(frames)):
             frame = compressed_rgb[i]
 
+            print(allRowIndexes[i])
             for index in allRowIndexes[i]:
-                output.write((int(index) & 0xFFFF).to_bytes(2, byteorder="big", signed=False))
+                output.write((int(2*index) & 0xFFFF).to_bytes(2, byteorder="big", signed=False))
 
             for row in frame:
+                # print(row)
                 for line in row:
                     output.write((int(line[0]) & 0xFFFF).to_bytes(2, byteorder="big", signed=False))    #   color
                     output.write((int(line[1]) & 0xFFFF).to_bytes(2, byteorder="big", signed=False))    #   quantity
