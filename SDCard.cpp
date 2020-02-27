@@ -10,7 +10,7 @@ using namespace std;
 
 FILE *fp;
 
-void SD_read(uint8_t* buffer, uint16_t bytesToRead) {
+void SD_read(uint32_t bytesToRead, uint8_t* buffer) {
     if (fp == NULL) {
         printf("FILE ERROR");
         return;

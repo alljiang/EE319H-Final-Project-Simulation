@@ -20,12 +20,12 @@ float x = 0;
 float y = 0;
 
 char strBuffer[100];
-long long lastLoopMillis = millis();
+long long lastLoopMillis;
 
 //  runs once at beginning
 void startup() {
-    UART_readCharacterSDCard(0);
     animator_initialize();
+    UART_readCharacterSDCard(0);
 }
 
 //  continually loops

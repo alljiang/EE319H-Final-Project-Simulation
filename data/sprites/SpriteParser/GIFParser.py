@@ -11,9 +11,14 @@ import os
 #       number of frames in sequence (1 byte)
 #       width (w) of each frame (pixels) (2 bytes)
 #       height (h) of each frame (pixels) (1 byte)
-#       h elements each of size 2 bytes each describing the indexes of each row (2*h bytes)
-#       entire picture data:
-#        (color index, 2 bytes) (number of repeated color, 2 bytes) (very long)
+#
+#       f elements each of size 3 bytes each describing the indexes of each frame (3*f bytes)
+#
+#       for each frame:
+#           h+1 elements each of size 2 bytes each describing the indexes of each row (2*(h+1) bytes)
+#               last element is basically the size of all the data
+#           entire picture data:
+#           (color index, 2 bytes) (number of repeated color, 2 bytes) (very long)
 
 #   CONFIG
 backgroundColor = 0x00FF00
@@ -45,13 +50,16 @@ for filename in os.listdir(os.getcwd() + "/gif-kirby/"):
         frame_width = 0
         frame_height = 0
 
+        bytes_written = 0
+        frameIndexes = []
         allRowIndexes = []
 
-        # output.write(str(numFiles).encode())  # human readable, debug purposes only
         output.write((int(numFiles) & 0xFF).to_bytes(2, byteorder="big", signed=False))
 
         # Convert 8-bit color to 6-bit color and store in index array
         for frame in frames:
+            frameIndexes.append(bytes_written)
+
             compressed_frame = []
             frame_height = len(frame)
             rowIndexes = []
@@ -87,13 +95,20 @@ for filename in os.listdir(os.getcwd() + "/gif-kirby/"):
                         line_len = 1
                 compressed_frame.append(compressed_row)
             compressed_rgb.append(compressed_frame)
+            rowIndexes.append(currentRowIndex)
             allRowIndexes.append(rowIndexes)
+            bytes_written += currentRowIndex + len(allRowIndexes)
 
         #   Unreadable bytes, but much more efficient
         output.write((filename.split(".")[0] + "\n").encode())
         output.write((int(len(frames)) & 0xFF).to_bytes(1, byteorder="big", signed=False))
         output.write((int(frame_width) & 0xFFFF).to_bytes(2, byteorder="big", signed=False))
         output.write(int(frame_height & 0xFF).to_bytes(1, byteorder="big", signed=False))
+
+        for i in range(0, len(frameIndexes)):
+            output.write((int(frameIndexes[i]) & 0xFFFFFF).to_bytes(3, byteorder="big", signed=False))
+
+        print(frameIndexes)
         for i in range (0, len(frames)):
             frame = compressed_rgb[i]
 
@@ -105,12 +120,11 @@ for filename in os.listdir(os.getcwd() + "/gif-kirby/"):
                     output.write((int(line[0]) & 0xFFFF).to_bytes(2, byteorder="big", signed=False))    #   color
                     output.write((int(line[1]) & 0xFFFF).to_bytes(2, byteorder="big", signed=False))    #   quantity
 
-
 # output.write("\n".encode())
 
 # output colors.txt file
 colors = open("colors.txt", 'w')
-colors.write('const uint32_t colors[' + str(len(indexed_rgb)) + '] = {')
+colors.write('const int32_t colors[' + str(len(indexed_rgb)) + '] = {')
 colors.write(str(indexed_rgb[0]))
 for i in range(1, len(indexed_rgb)):
     colors.write(',')

@@ -57,7 +57,7 @@ const uint16_t numberOfAnimations = 100;
 
 struct Animation {
     public:
-        uint16_t memLocation;
+        uint32_t memLocation;
         uint8_t width;
         uint8_t height;
         uint8_t frames;

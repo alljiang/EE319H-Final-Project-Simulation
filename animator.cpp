@@ -11,7 +11,8 @@
 #include <cmath>
 using namespace std;
 
-uint8_t buffer[1500];
+uint8_t buffer[500];
+uint8_t smallBuffer2[300];
 
 uint32_t persistentBackgroundMemLocation;
 Animation animation[4][numberOfAnimations];
@@ -19,9 +20,16 @@ SpriteSendable spriteSendables[16];    // up to 16 sprites on screen at once
 uint16_t activeAnimations;      // each bit represents if the corresponding sendable is being used MSB = [15], LSB = [0]
 uint16_t toRemove;      // each bit represents if the corresponding sendable should be removed next update
 
-void prBuf(uint16_t endIndex, uint8_t* buf) {
-    for(uint16_t  i = 0; i < endIndex; i++) {
-        printf("%c", buf[i]);
+void printArr(uint16_t size, uint8_t* buf) {
+    for(uint16_t  i = 0; i < size; i++) {
+        printf("%d,", buf[i]);
+    }
+    printf("\n");
+}
+
+void printStr(uint16_t size, uint8_t* buf) {
+    for(uint16_t  i = 0; i < size; i++) {
+        printf("%c,", buf[i]);
     }
     printf("\n");
 }
@@ -36,15 +44,7 @@ uint16_t readUntil(char delimeter, uint8_t* buf) {
 
 //  Big endian!
 uint16_t readHalfInt(uint8_t* buf) {
-    return (buf[0] << 8) + buf[1];
-}
-
-uint32_t readNextNumber(char delimeter, uint8_t* buf) {
-    //  get number of animations
-    uint8_t number = 0;
-    uint8_t chars = readUntil(delimeter, buf);
-    for(uint8_t i = 0; i < chars; i++) number += pow(10, chars - i - 1) * (buf[i] - '0');
-    return number;
+    return (buf[0] << 8u) + buf[1];
 }
 
 //  updates screen line by line, segment by segment using animation data
@@ -134,7 +134,7 @@ void update() {
         if((activeAnimations >> slot) & 1) {
             // animation active
             if(!spriteSendables[slot].persistent) {
-                toRemove |= (1 << slot);
+                toRemove |= (1u << slot);
             }
         }
     }
@@ -150,7 +150,7 @@ void animator_animate(uint8_t charIndex, uint8_t animationIndex,
         bool inUse = (activeAnimations >> slot) & 1;
         if(!inUse) {
             //  we about to start using it, so flag it as in use
-            activeAnimations |= (1 << slot);
+            activeAnimations |= (1u << slot);
             break;
         }
     }
@@ -193,7 +193,7 @@ void animator_readCharacterSDCard(uint8_t charIndex) {
     SD_openFile(filename);
 
     //  get number of animations
-    SD_read(buffer, 2);
+    SD_read(2, buffer);
     uint16_t numAnimations = readHalfInt(buffer);
 
     uint8_t animationName[15];
@@ -203,16 +203,29 @@ void animator_readCharacterSDCard(uint8_t charIndex) {
         uint8_t animationNameLength = readUntil('\n', animationName);
 
         //  loop through all the animation names of this character
-        for (animationIndex = 0;; animationIndex++) {
-            bool found = true;
+        bool found = false;
+        for (animationIndex = 0; animationIndex < numberOfAnimations; animationIndex++) {
+            bool matchSoFar = true;
             //  loop through the animation index name. If there's a mismatch, move on to the next animation name
             for (uint16_t i = 0; i < animationNameLength; i++) {
-                if (buffer[i] != animations[charIndex][animationIndex][i]) {
-                    found = false;
+                if (animationName[i] != animations[charIndex][animationIndex][i]) {
+                    matchSoFar = false;
                     break;
                 }
             }
-            if (found) break;
+            if (matchSoFar) {
+                found = true;
+                break;
+            }
+        }
+        if(!found) {
+            animationName[animationNameLength] = '\0'; //  prepare to print the string
+            printf("ERROR Animation not found: %s\n", animationName);
+            continue;
+        }
+        else {
+            animationName[animationNameLength] = '\0'; //  prepare to print the string
+            printf("Reading in animation: %s\n", animationName);
         }
 
         Animation *anim = &animation[charIndex][animationIndex];
@@ -220,30 +233,45 @@ void animator_readCharacterSDCard(uint8_t charIndex) {
         //  construct animation struct
         anim->animationIndex = animationIndex;
         anim->characterIndex = charIndex;
-        anim->frames = readNextNumber('\n', buffer);
-        anim->width = readNextNumber('\n', buffer);
-        anim->height = readNextNumber('\n', buffer);
-        println("");
 
+        SD_read(1, buffer);
+        anim->frames = buffer[0];
 
-        uint8_t lineBuffer[1000];
-        anim->memLocation = getCurrentMemoryLocation();
+        SD_read(2, buffer);
+        anim->width = readHalfInt(buffer);
+
+        SD_read(1, buffer);
+        anim->height = buffer[0];
+
+        printint(anim->frames);
+        printint(anim->width);
+        printint(anim->height);
+
+        //  get the frame indexes, store into SRAM and smallBuffer2
+        SD_read(anim->frames*3, buffer);
+        anim->memLocation = SRAM_writeMemory(anim->frames*3, smallBuffer2);
+
+        //  get the data of each frame and store it
         for (uint8_t f = 0; f < anim->frames; f++) {
-            for (uint8_t r = 0; r < anim->height; r++) {
-                uint16_t pairCount = 0;
-                uint16_t pixels = anim->width;
-                for (uint8_t c = 0; pixels > 0; c++) {
-                    lineBuffer[2 * c] = readNextNumber(' ', buffer);   //  color index
-                    lineBuffer[2 * c + 1] = readNextNumber(' ', buffer);   //  number of pixels
-                    pixels -= lineBuffer[2 * c + 1];
-                    pairCount++;
-                }
+            SD_read(2 * (anim->height + 1), buffer);
+            SRAM_writeMemory(2 * (anim->height + 1), buffer);
 
-                SRAM_writeMemory_specifiedAddress(
-                        anim->memLocation + f * (anim->height * anim->width) + r * anim->width,
-                        pairCount, lineBuffer);
+            printArr(2*(anim->height + 1), buffer);
+
+            uint32_t frameDataSize = (buffer[2 * anim->height + 1] << 8u) + buffer[2 * anim->height + 2];
+            uint32_t bytesToRead = frameDataSize;
+
+            // read and write frame data in chunks
+            uint16_t maxChunkSize = 100;
+            while (bytesToRead > 0) {
+                uint16_t chunkSize = bytesToRead;
+                if (chunkSize > maxChunkSize) chunkSize = maxChunkSize;
+
+                SD_read(chunkSize, buffer);
+                SRAM_writeMemory(chunkSize, buffer);
+
+                bytesToRead -= chunkSize;
             }
         }
-        readUntil('\n', buffer);    //  clear the new line
     }
 }

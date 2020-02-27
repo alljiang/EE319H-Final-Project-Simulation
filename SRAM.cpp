@@ -42,9 +42,10 @@ void SRAM_writeMemory_specifiedAddress(uint32_t location, uint32_t bytesToWrite,
  *  Writes to the next available location. Returns the starting location of data.
  */
 uint32_t SRAM_writeMemory(uint32_t bytesToWrite, uint8_t* buffer) {
+    uint32_t toReturn = currentLocation;
     SRAM_writeMemory_specifiedAddress(currentLocation, bytesToWrite, buffer);
     currentLocation += bytesToWrite;
-    return (currentLocation - bytesToWrite);
+    return toReturn;
 }
 
 /*
