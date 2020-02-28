@@ -1,0 +1,16 @@
+//
+// Created by Allen on 2/28/2020.
+//
+
+#ifndef EE319K_FINAL_PROJECT_INITIAL_TESTING_ENTITIES_H
+#define EE319K_FINAL_PROJECT_INITIAL_TESTING_ENTITIES_H
+
+
+class entities {
+
+    
+
+};
+
+
+#endif //EE319K_FINAL_PROJECT_INITIAL_TESTING_ENTITIES_H

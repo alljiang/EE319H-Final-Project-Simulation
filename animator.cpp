@@ -95,10 +95,10 @@ void animator_update() {
             }
         }
 
-        //  next, loop through the active non-toRemoves and get their data
+        //  next, loop through the actives and get their data
         for(uint8_t slot = 0; slot < 16; slot++) {
             //  check if this slot should be removed, and continue only if it shouldn't be
-            if( ( !((toRemove >> slot) & 1) ) && ( (activeAnimations >> slot) & 1 ) ) {
+            if( ( (activeAnimations >> slot) & 1u ) ) {
                 //  get the animation (pointer just to not make another copy)
                 SpriteSendable* ss = &spriteSendables[slot];
                 Animation* anim = &animation[ss->charIndex][ss->animationIndex];
@@ -110,16 +110,16 @@ void animator_update() {
                     continue;
                 }
 
-                //  TODO: fix! storage retrieval type is not correct
                 //  This row intersects! Now, paint this row of this animation into the color index buffer
 
                 //  get frame location with frame index array
-                SRAM_readMemory(anim->memLocation + ss->frame, 3, buffer);
+                SRAM_readMemory(anim->memLocation + 3*ss->frame, 3, buffer);
                 uint32_t frameLocation = anim->memLocation  //  start location
                         + anim->frames*3    //  frame index array
-                        + (buffer[0] << 16u) + (buffer[1] << 8u) + buffer[2];    //  frame location offset
+                        + (anim->height+1)*2 * ss->frame    //  row index array
+                        + ((buffer[0] << 16u) + (buffer[1] << 8u) + buffer[2])*2;    //  frame location offset
 
-                //  get row location with row index array
+                //  get row location with row index array TODO: ISSUE HERE, not getting correct row? MAYBE FROM INPUT?
                 SRAM_readMemory(frameLocation + (anim->height - heightDifference - 1)*2, 4, buffer);
                 uint32_t rowStartOffset = (buffer[0] << 8u) + buffer[1];
                 uint32_t rowSize = ((buffer[2] << 8u) + buffer[3] - rowStartOffset);
@@ -133,7 +133,6 @@ void animator_update() {
                 uint16_t column = 0;
                 uint16_t numPairs = rowSize >> 2u;
                 for(uint16_t pair = 0; pair < numPairs; pair++) {
-                    /*  TODO: layer being overwritten on consecutives */
                     if(ss->layer <= layer[ss->x + column]) continue;   //  this sprite has lower layer priority
 
                     uint16_t colorIndex = (buffer[pair*4+0] << 8u) + (buffer[pair*4+1]);
@@ -207,7 +206,7 @@ void animator_update() {
     //  clear all toRemove flags
     toRemove = 0;
 
-    //  flag all non-persistent sprite animations to move to next frame or be erased next update
+    //  flag all non-persistent sprite animations to move to next frame and be erased next update
     for(uint8_t slot = 0; slot < 16; slot++) {
         if((activeAnimations >> slot) & 1) {
             SpriteSendable* ss = &spriteSendables[slot];
@@ -218,8 +217,8 @@ void animator_update() {
                 ss->frame += 1;
                 if(ss->frame >= anim->frames) {
                     activeAnimations &= ~(1u << slot);
-                    toRemove |= (1u << slot);
                 }
+                toRemove |= (1u << slot);
             }
         }
     }
@@ -333,14 +332,13 @@ void animator_readCharacterSDCard(uint8_t charIndex) {
         anim->height = buffer[0];
 
         //  get the frame indexes, store into SRAM and smallBuffer2
-        SD_read(anim->frames*3, buffer);
+        SD_read(anim->frames*3, smallBuffer2);
         anim->memLocation = SRAM_writeMemory(anim->frames*3, smallBuffer2);
 
         //  get the data of each frame and store it
         for (uint8_t f = 0; f < anim->frames; f++) {
             SD_read(2*(anim->height+1), buffer);
-            SRAM_writeMemory(2 * (anim->height + 1), buffer);
-
+            uint32_t x = SRAM_writeMemory(2 * (anim->height + 1), buffer);
             uint32_t frameDataSize = (buffer[2 * anim->height] << 8u) + buffer[2 * anim->height + 1];
             uint32_t bytesToRead = frameDataSize;
 

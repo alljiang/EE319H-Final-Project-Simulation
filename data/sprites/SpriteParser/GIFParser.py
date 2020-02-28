@@ -97,7 +97,7 @@ for filename in os.listdir(os.getcwd() + "/gif-kirby/"):
             compressed_rgb.append(compressed_frame)
             rowIndexes.append(currentRowIndex)
             allRowIndexes.append(rowIndexes)
-            bytes_written += currentRowIndex + len(allRowIndexes)
+            bytes_written += currentRowIndex
 
         #   Unreadable bytes, but much more efficient
         output.write((filename.split(".")[0] + "\n").encode())
@@ -108,11 +108,11 @@ for filename in os.listdir(os.getcwd() + "/gif-kirby/"):
         for i in range(0, len(frameIndexes)):
             output.write((int(frameIndexes[i]) & 0xFFFFFF).to_bytes(3, byteorder="big", signed=False))
 
-        # print(frameIndexes)
+        print(frameIndexes)
         for i in range(0, len(frames)):
             frame = compressed_rgb[i]
 
-            # print(allRowIndexes[i])
+            print(allRowIndexes[i])
             for index in allRowIndexes[i]:
                 output.write((int(2*index) & 0xFFFF).to_bytes(2, byteorder="big", signed=False))
 

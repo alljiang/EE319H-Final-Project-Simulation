@@ -284,6 +284,33 @@ controller.cpp.s:
 	$(MAKE) -f CMakeFiles\EE319K_Final_Project_Initial_Testing.dir\build.make CMakeFiles/EE319K_Final_Project_Initial_Testing.dir/controller.cpp.s
 .PHONY : controller.cpp.s
 
+entities.obj: entities.cpp.obj
+
+.PHONY : entities.obj
+
+# target to build an object file
+entities.cpp.obj:
+	$(MAKE) -f CMakeFiles\EE319K_Final_Project_Initial_Testing.dir\build.make CMakeFiles/EE319K_Final_Project_Initial_Testing.dir/entities.cpp.obj
+.PHONY : entities.cpp.obj
+
+entities.i: entities.cpp.i
+
+.PHONY : entities.i
+
+# target to preprocess a source file
+entities.cpp.i:
+	$(MAKE) -f CMakeFiles\EE319K_Final_Project_Initial_Testing.dir\build.make CMakeFiles/EE319K_Final_Project_Initial_Testing.dir/entities.cpp.i
+.PHONY : entities.cpp.i
+
+entities.s: entities.cpp.s
+
+.PHONY : entities.s
+
+# target to generate assembly for a file
+entities.cpp.s:
+	$(MAKE) -f CMakeFiles\EE319K_Final_Project_Initial_Testing.dir\build.make CMakeFiles/EE319K_Final_Project_Initial_Testing.dir/entities.cpp.s
+.PHONY : entities.cpp.s
+
 main.obj: main.cpp.obj
 
 .PHONY : main.obj
@@ -365,6 +392,9 @@ help:
 	@echo ... controller.obj
 	@echo ... controller.i
 	@echo ... controller.s
+	@echo ... entities.obj
+	@echo ... entities.i
+	@echo ... entities.s
 	@echo ... main.obj
 	@echo ... main.i
 	@echo ... main.s

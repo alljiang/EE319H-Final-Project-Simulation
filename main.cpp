@@ -32,7 +32,7 @@ void startup() {
     SpriteSendable s;
     s.persistent = false;
     s.charIndex = 0;
-    s.animationIndex = 0;
+    s.animationIndex = 1;
     s.x = 0;
     s.y = 0;
     s.frame = 0;
@@ -43,6 +43,7 @@ void startup() {
 
 //  continually loops
 uint32_t  t1 = 0;
+uint8_t frame = 0;
 void loop() {
 //    float dt = millis() - lastLoopMillis;
 //    lastLoopMillis = millis();
@@ -52,9 +53,25 @@ void loop() {
 //    y += getJoystick_v(1) * pps * dt / 1000.;
 //
 //    LCD_drawPixel(x, y, 0x00FF00);
-    if(millis() - t1 > 2000) {
+    if(millis() - t1 > 32) {
         printf("LOOP\n");
         t1 = millis();
+
+        if(frame++ == 7) {
+            frame = 0;
+            SpriteSendable s;
+            s.persistent = false;
+            s.charIndex = 0;
+            s.animationIndex = 1;
+            s.x = 0;
+            s.y = 0;
+            s.frame = 0;
+            s.layer = LAYER_CHARACTER;
+
+            UART_sendAnimation(s);
+        }
+
+
         animator_update();
     }
     LCD_update();
@@ -62,6 +79,7 @@ void loop() {
 
 int main(int argc, char *argv[]) {
     LCD_startLCD();
+    ILI9341_fillScreen(0xFFFFFF);
 
     // Print console setup
     AllocConsole();

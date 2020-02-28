@@ -32,6 +32,14 @@ void ILI9341_drawColors_indexed(uint32_t x, uint32_t y, int16_t *rgbIndex, uint1
     }
 }
 
+void ILI9341_fillScreen(uint32_t rgb) {
+    for(int r = 0; r < 241; r++) {
+        for(int c = 0; c < 321; c++) {
+            LCD_drawPixel(c, r, rgb);
+        }
+    }
+}
+
 void LCD_drawPixel(uint16_t x, uint16_t y, uint32_t rgb) {
     if(x >= WINDOW_WIDTH || y >= WINDOW_HEIGHT) {
         return;
