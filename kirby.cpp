@@ -46,7 +46,7 @@ void Kirby::controlLoop(double joyH, double joyV, bool btnA, bool btnB, bool shi
         else mirrored = joyH < 0;
 
         //  if just started walking or on last frame, reset frame to 0
-        framePeriod = (uint8_t) ((-8*joyH) + 8);
+        framePeriod = (uint8_t) ((-8*std::abs(joyH)) + 8);
         if(frameLengthCounter++ > framePeriod) {
             frameLengthCounter = 0;
             frameIndex++;
@@ -57,6 +57,24 @@ void Kirby::controlLoop(double joyH, double joyV, bool btnA, bool btnB, bool shi
     }
     else if(running) {
         disabled = false;
+
+        //  x position
+        x += joyH * groundSpeed / dt;
+
+        //  mirrored facing left/right
+        if(joyH == 0) mirrored = l_mirrored;
+        else mirrored = joyH < 0;
+
+        //  if just started walking or on last frame, reset frame to 0
+        framePeriod = (uint8_t) ((3-std::abs(2*joyH) ));
+        printf("%d\n", framePeriod);
+        if(frameLengthCounter++ > framePeriod) {
+            frameLengthCounter = 0;
+            frameIndex++;
+        }
+        if(frameIndex >= 8 || !l_running) frameIndex = 0;
+        continuous = false;
+        animationIndex = 1;
     }
     else if(jumping) {
         disabled = false;
@@ -106,7 +124,7 @@ void Kirby::controlLoop(double joyH, double joyV, bool btnA, bool btnB, bool shi
     if(millis() - l_btnARise_t == 0) {}
     //  movement
     else if(std::abs(joyH) > 0) {
-        if(std::abs(joyH) > 0.5) {
+        if(std::abs(joyH) > 0.6) {
             running = true;
             walking = false;
         }
@@ -134,8 +152,6 @@ void Kirby::controlLoop(double joyH, double joyV, bool btnA, bool btnB, bool shi
 //    s.y = (uint8_t) 50;
     s.layer = LAYER_CHARACTER;
     s.mirrored = mirrored;
-
-    printf("%d\n", s.x);
 
     UART_sendAnimation(s);
 

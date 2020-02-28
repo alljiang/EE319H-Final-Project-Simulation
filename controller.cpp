@@ -51,13 +51,13 @@ void controller_updateController() {
     if(keys[SDL_SCANCODE_DOWN])
         joystick1_v -= 0.3;
     if(keys[SDL_SCANCODE_W])
-        joystick1_v += 1.0;
+        joystick1_v += 0.7;
     if(keys[SDL_SCANCODE_S])
-        joystick1_v += -1.0;
+        joystick1_v += -0.7;
     if(keys[SDL_SCANCODE_A])
-        joystick1_h += -1.0;
+        joystick1_h += -0.7;
     if(keys[SDL_SCANCODE_D])
-        joystick1_h += 1.0;
+        joystick1_h += 0.7;
     if(keys[SDL_SCANCODE_V])
         btn1_a = true;
     if(keys[SDL_SCANCODE_B])
@@ -70,13 +70,13 @@ void controller_updateController() {
         btn1_start = true;
 
     if(keys[SDL_SCANCODE_I])
-        joystick2_v += 1.0;
+        joystick2_v += 0.7;
     if(keys[SDL_SCANCODE_K])
-        joystick2_v += -1.0;
+        joystick2_v += -0.7;
     if(keys[SDL_SCANCODE_J])
-        joystick2_h += -1.0;
+        joystick2_h += -0.7;
     if(keys[SDL_SCANCODE_L])
-        joystick2_h += 1.0;
+        joystick2_h += 0.7;
     if(keys[SDL_SCANCODE_PERIOD])
         btn2_a = true;
     if(keys[SDL_SCANCODE_SLASH])
