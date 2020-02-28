@@ -3,19 +3,20 @@
 //
 
 #include <cstdint>
+#include "stdio.h"
 #include "SDL.h"
 #include "controller.h"
 
-float joystick1_h = 0;  // A, D, Left, Right
-float joystick1_v = 0;  // W, S, Up, Down
+double joystick1_h = 0;  // A, D, Left, Right
+double joystick1_v = 0;  // W, S, Up, Down
 bool btn1_a;    // V
 bool btn1_b;    // B
 bool btn1_start;    // Space
 bool btn1_l;    // LShift
 bool btn1_r;    // RShift
 
-float joystick2_h = 0;  //  J, L
-float joystick2_v = 0;  // I, K
+double joystick2_h = 0;  //  J, L
+double joystick2_v = 0;  // I, K
 bool btn2_a;    //  .
 bool btn2_b;    // /
 bool btn2_start;    // ,
@@ -88,12 +89,12 @@ void controller_updateController() {
         btn2_start = true;
 }
 
-float getJoystick_h(uint8_t player) {
+double getJoystick_h(uint8_t player) {
     if(player == 2) return joystick2_h;
     else return joystick1_h;
 }
 
-float getJoystick_v(uint8_t player) {
+double getJoystick_v(uint8_t player) {
     if(player == 2) return joystick2_v;
     else return joystick1_v;
 }

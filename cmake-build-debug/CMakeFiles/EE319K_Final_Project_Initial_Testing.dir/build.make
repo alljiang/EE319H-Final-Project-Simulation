@@ -168,19 +168,19 @@ CMakeFiles/EE319K_Final_Project_Initial_Testing.dir/utils.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/EE319K_Final_Project_Initial_Testing.dir/utils.cpp.s"
 	C:\PROGRA~1\MINGW-~1\X86_64~1.0-P\mingw64\bin\G__~1.EXE $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S C:\Users\Allen\Documents\GitHub\EE319H-Final-Project-Simulation\utils.cpp -o CMakeFiles\EE319K_Final_Project_Initial_Testing.dir\utils.cpp.s
 
-CMakeFiles/EE319K_Final_Project_Initial_Testing.dir/entities.cpp.obj: CMakeFiles/EE319K_Final_Project_Initial_Testing.dir/flags.make
-CMakeFiles/EE319K_Final_Project_Initial_Testing.dir/entities.cpp.obj: CMakeFiles/EE319K_Final_Project_Initial_Testing.dir/includes_CXX.rsp
-CMakeFiles/EE319K_Final_Project_Initial_Testing.dir/entities.cpp.obj: ../entities.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=C:\Users\Allen\Documents\GitHub\EE319H-Final-Project-Simulation\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_9) "Building CXX object CMakeFiles/EE319K_Final_Project_Initial_Testing.dir/entities.cpp.obj"
-	C:\PROGRA~1\MINGW-~1\X86_64~1.0-P\mingw64\bin\G__~1.EXE  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles\EE319K_Final_Project_Initial_Testing.dir\entities.cpp.obj -c C:\Users\Allen\Documents\GitHub\EE319H-Final-Project-Simulation\entities.cpp
+CMakeFiles/EE319K_Final_Project_Initial_Testing.dir/kirby.cpp.obj: CMakeFiles/EE319K_Final_Project_Initial_Testing.dir/flags.make
+CMakeFiles/EE319K_Final_Project_Initial_Testing.dir/kirby.cpp.obj: CMakeFiles/EE319K_Final_Project_Initial_Testing.dir/includes_CXX.rsp
+CMakeFiles/EE319K_Final_Project_Initial_Testing.dir/kirby.cpp.obj: ../kirby.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=C:\Users\Allen\Documents\GitHub\EE319H-Final-Project-Simulation\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_9) "Building CXX object CMakeFiles/EE319K_Final_Project_Initial_Testing.dir/kirby.cpp.obj"
+	C:\PROGRA~1\MINGW-~1\X86_64~1.0-P\mingw64\bin\G__~1.EXE  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles\EE319K_Final_Project_Initial_Testing.dir\kirby.cpp.obj -c C:\Users\Allen\Documents\GitHub\EE319H-Final-Project-Simulation\kirby.cpp
 
-CMakeFiles/EE319K_Final_Project_Initial_Testing.dir/entities.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/EE319K_Final_Project_Initial_Testing.dir/entities.cpp.i"
-	C:\PROGRA~1\MINGW-~1\X86_64~1.0-P\mingw64\bin\G__~1.EXE $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E C:\Users\Allen\Documents\GitHub\EE319H-Final-Project-Simulation\entities.cpp > CMakeFiles\EE319K_Final_Project_Initial_Testing.dir\entities.cpp.i
+CMakeFiles/EE319K_Final_Project_Initial_Testing.dir/kirby.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/EE319K_Final_Project_Initial_Testing.dir/kirby.cpp.i"
+	C:\PROGRA~1\MINGW-~1\X86_64~1.0-P\mingw64\bin\G__~1.EXE $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E C:\Users\Allen\Documents\GitHub\EE319H-Final-Project-Simulation\kirby.cpp > CMakeFiles\EE319K_Final_Project_Initial_Testing.dir\kirby.cpp.i
 
-CMakeFiles/EE319K_Final_Project_Initial_Testing.dir/entities.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/EE319K_Final_Project_Initial_Testing.dir/entities.cpp.s"
-	C:\PROGRA~1\MINGW-~1\X86_64~1.0-P\mingw64\bin\G__~1.EXE $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S C:\Users\Allen\Documents\GitHub\EE319H-Final-Project-Simulation\entities.cpp -o CMakeFiles\EE319K_Final_Project_Initial_Testing.dir\entities.cpp.s
+CMakeFiles/EE319K_Final_Project_Initial_Testing.dir/kirby.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/EE319K_Final_Project_Initial_Testing.dir/kirby.cpp.s"
+	C:\PROGRA~1\MINGW-~1\X86_64~1.0-P\mingw64\bin\G__~1.EXE $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S C:\Users\Allen\Documents\GitHub\EE319H-Final-Project-Simulation\kirby.cpp -o CMakeFiles\EE319K_Final_Project_Initial_Testing.dir\kirby.cpp.s
 
 # Object files for target EE319K_Final_Project_Initial_Testing
 EE319K_Final_Project_Initial_Testing_OBJECTS = \
@@ -192,7 +192,7 @@ EE319K_Final_Project_Initial_Testing_OBJECTS = \
 "CMakeFiles/EE319K_Final_Project_Initial_Testing.dir/controller.cpp.obj" \
 "CMakeFiles/EE319K_Final_Project_Initial_Testing.dir/UART.cpp.obj" \
 "CMakeFiles/EE319K_Final_Project_Initial_Testing.dir/utils.cpp.obj" \
-"CMakeFiles/EE319K_Final_Project_Initial_Testing.dir/entities.cpp.obj"
+"CMakeFiles/EE319K_Final_Project_Initial_Testing.dir/kirby.cpp.obj"
 
 # External object files for target EE319K_Final_Project_Initial_Testing
 EE319K_Final_Project_Initial_Testing_EXTERNAL_OBJECTS =
@@ -205,7 +205,7 @@ EE319K_Final_Project_Initial_Testing.exe: CMakeFiles/EE319K_Final_Project_Initia
 EE319K_Final_Project_Initial_Testing.exe: CMakeFiles/EE319K_Final_Project_Initial_Testing.dir/controller.cpp.obj
 EE319K_Final_Project_Initial_Testing.exe: CMakeFiles/EE319K_Final_Project_Initial_Testing.dir/UART.cpp.obj
 EE319K_Final_Project_Initial_Testing.exe: CMakeFiles/EE319K_Final_Project_Initial_Testing.dir/utils.cpp.obj
-EE319K_Final_Project_Initial_Testing.exe: CMakeFiles/EE319K_Final_Project_Initial_Testing.dir/entities.cpp.obj
+EE319K_Final_Project_Initial_Testing.exe: CMakeFiles/EE319K_Final_Project_Initial_Testing.dir/kirby.cpp.obj
 EE319K_Final_Project_Initial_Testing.exe: CMakeFiles/EE319K_Final_Project_Initial_Testing.dir/build.make
 EE319K_Final_Project_Initial_Testing.exe: C:/Program\ Files/mingw-w64/x86_64-8.1.0-posix-seh-rt_v6-rev0/mingw64/lib/libSDL2.dll.a
 EE319K_Final_Project_Initial_Testing.exe: CMakeFiles/EE319K_Final_Project_Initial_Testing.dir/linklibs.rsp

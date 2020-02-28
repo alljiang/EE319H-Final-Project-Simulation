@@ -284,32 +284,32 @@ controller.cpp.s:
 	$(MAKE) -f CMakeFiles\EE319K_Final_Project_Initial_Testing.dir\build.make CMakeFiles/EE319K_Final_Project_Initial_Testing.dir/controller.cpp.s
 .PHONY : controller.cpp.s
 
-entities.obj: entities.cpp.obj
+kirby.obj: kirby.cpp.obj
 
-.PHONY : entities.obj
+.PHONY : kirby.obj
 
 # target to build an object file
-entities.cpp.obj:
-	$(MAKE) -f CMakeFiles\EE319K_Final_Project_Initial_Testing.dir\build.make CMakeFiles/EE319K_Final_Project_Initial_Testing.dir/entities.cpp.obj
-.PHONY : entities.cpp.obj
+kirby.cpp.obj:
+	$(MAKE) -f CMakeFiles\EE319K_Final_Project_Initial_Testing.dir\build.make CMakeFiles/EE319K_Final_Project_Initial_Testing.dir/kirby.cpp.obj
+.PHONY : kirby.cpp.obj
 
-entities.i: entities.cpp.i
+kirby.i: kirby.cpp.i
 
-.PHONY : entities.i
+.PHONY : kirby.i
 
 # target to preprocess a source file
-entities.cpp.i:
-	$(MAKE) -f CMakeFiles\EE319K_Final_Project_Initial_Testing.dir\build.make CMakeFiles/EE319K_Final_Project_Initial_Testing.dir/entities.cpp.i
-.PHONY : entities.cpp.i
+kirby.cpp.i:
+	$(MAKE) -f CMakeFiles\EE319K_Final_Project_Initial_Testing.dir\build.make CMakeFiles/EE319K_Final_Project_Initial_Testing.dir/kirby.cpp.i
+.PHONY : kirby.cpp.i
 
-entities.s: entities.cpp.s
+kirby.s: kirby.cpp.s
 
-.PHONY : entities.s
+.PHONY : kirby.s
 
 # target to generate assembly for a file
-entities.cpp.s:
-	$(MAKE) -f CMakeFiles\EE319K_Final_Project_Initial_Testing.dir\build.make CMakeFiles/EE319K_Final_Project_Initial_Testing.dir/entities.cpp.s
-.PHONY : entities.cpp.s
+kirby.cpp.s:
+	$(MAKE) -f CMakeFiles\EE319K_Final_Project_Initial_Testing.dir\build.make CMakeFiles/EE319K_Final_Project_Initial_Testing.dir/kirby.cpp.s
+.PHONY : kirby.cpp.s
 
 main.obj: main.cpp.obj
 
@@ -392,9 +392,9 @@ help:
 	@echo ... controller.obj
 	@echo ... controller.i
 	@echo ... controller.s
-	@echo ... entities.obj
-	@echo ... entities.i
-	@echo ... entities.s
+	@echo ... kirby.obj
+	@echo ... kirby.i
+	@echo ... kirby.s
 	@echo ... main.obj
 	@echo ... main.i
 	@echo ... main.s

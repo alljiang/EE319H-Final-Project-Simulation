@@ -67,13 +67,17 @@ struct Animation {
 
 struct SpriteSendable {
     public:
-        uint16_t x;
-        uint8_t y;
+        int16_t x;
+        int16_t y;
         uint8_t charIndex;
         uint8_t animationIndex;
         uint8_t frame;      //  current frame of animation
         bool persistent;        //  if the animation is persistent,
         uint8_t layer;       //  priority for layering over other sprites. high layer value = top layer
+        bool continuous;    //  continue to next frame of animation
+        uint8_t framePeriod;    //  how many updates each frame lasts
+        uint8_t currentframeLength;
+        bool mirrored;
 };
 
 #endif //EE319K_FINAL_PROJECT_INITIAL_TESTING_METADATA_H

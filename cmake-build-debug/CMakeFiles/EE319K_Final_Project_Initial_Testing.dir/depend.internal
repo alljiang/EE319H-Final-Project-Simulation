@@ -118,6 +118,13 @@ CMakeFiles/EE319K_Final_Project_Initial_Testing.dir/controller.cpp.obj
  C:/Program Files/mingw-w64/x86_64-8.1.0-posix-seh-rt_v6-rev0/mingw64/include/SDL2/close_code.h
  C:/Users/Allen/Documents/GitHub/EE319H-Final-Project-Simulation/controller.cpp
  C:/Users/Allen/Documents/GitHub/EE319H-Final-Project-Simulation/controller.h
+CMakeFiles/EE319K_Final_Project_Initial_Testing.dir/kirby.cpp.obj
+ C:/Users/Allen/Documents/GitHub/EE319H-Final-Project-Simulation/UART.h
+ C:/Users/Allen/Documents/GitHub/EE319H-Final-Project-Simulation/animator.h
+ C:/Users/Allen/Documents/GitHub/EE319H-Final-Project-Simulation/entities.h
+ C:/Users/Allen/Documents/GitHub/EE319H-Final-Project-Simulation/kirby.cpp
+ C:/Users/Allen/Documents/GitHub/EE319H-Final-Project-Simulation/metadata.h
+ C:/Users/Allen/Documents/GitHub/EE319H-Final-Project-Simulation/utils.h
 CMakeFiles/EE319K_Final_Project_Initial_Testing.dir/main.cpp.obj
  C:/Program Files/mingw-w64/x86_64-8.1.0-posix-seh-rt_v6-rev0/mingw64/include/SDL2/SDL.h
  C:/Program Files/mingw-w64/x86_64-8.1.0-posix-seh-rt_v6-rev0/mingw64/include/SDL2/SDL_assert.h
@@ -169,6 +176,7 @@ CMakeFiles/EE319K_Final_Project_Initial_Testing.dir/main.cpp.obj
  C:/Users/Allen/Documents/GitHub/EE319H-Final-Project-Simulation/UART.h
  C:/Users/Allen/Documents/GitHub/EE319H-Final-Project-Simulation/animator.h
  C:/Users/Allen/Documents/GitHub/EE319H-Final-Project-Simulation/controller.h
+ C:/Users/Allen/Documents/GitHub/EE319H-Final-Project-Simulation/entities.h
  C:/Users/Allen/Documents/GitHub/EE319H-Final-Project-Simulation/main.cpp
  C:/Users/Allen/Documents/GitHub/EE319H-Final-Project-Simulation/metadata.h
  C:/Users/Allen/Documents/GitHub/EE319H-Final-Project-Simulation/utils.h

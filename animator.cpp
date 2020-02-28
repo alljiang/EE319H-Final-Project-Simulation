@@ -78,10 +78,11 @@ void animator_update() {
             //  check if this slot should be removed, and continue only if it should be
             if((toRemove >> slot) & 1) {
                 //  get the animation (pointer just to not make another copy)
-                Animation* anim = &animation[spriteSendables[slot].charIndex][spriteSendables[slot].animationIndex];
+                SpriteSendable* ss = &spriteSendables[slot];
+                Animation* anim = &animation[ss->charIndex][ss->animationIndex];
 
                 //  see if this current row intersects this sprite animation
-                int16_t heightDifference = row - spriteSendables->y;
+                int16_t heightDifference = row - ss->y;
                 if(heightDifference < 0 || heightDifference >= anim->height) {
                     // this row is out of bounds of this animation, skip it
                     continue;
@@ -90,7 +91,14 @@ void animator_update() {
                 // loop through entire width
                 for(uint16_t col = 0; col < anim->width; col++) {
                     //  set the color indexes to the background color
-                    colorIndexes[spriteSendables[slot].x + col] = ANIMATOR_COLOR_BACKGROUND;
+                    if(ss->mirrored) {
+                        if(ss->x+(anim->width) - col > 320 || ss->x+(anim->width) - col < 0) continue;
+                        colorIndexes[ss->x+(anim->width) - col] = ANIMATOR_COLOR_BACKGROUND;
+                    }
+                    else {
+                        if(ss->x + col > 320 || ss->x + col < 0) continue;
+                        colorIndexes[ss->x + col] = ANIMATOR_COLOR_BACKGROUND;
+                    }
                 }
             }
         }
@@ -119,7 +127,7 @@ void animator_update() {
                         + (anim->height+1)*2 * ss->frame    //  row index array
                         + ((buffer[0] << 16u) + (buffer[1] << 8u) + buffer[2])*2;    //  frame location offset
 
-                //  get row location with row index array TODO: ISSUE HERE, not getting correct row? MAYBE FROM INPUT?
+                //  get row location with row index array
                 SRAM_readMemory(frameLocation + (anim->height - heightDifference - 1)*2, 4, buffer);
                 uint32_t rowStartOffset = (buffer[0] << 8u) + buffer[1];
                 uint32_t rowSize = ((buffer[2] << 8u) + buffer[3] - rowStartOffset);
@@ -133,7 +141,15 @@ void animator_update() {
                 uint16_t column = 0;
                 uint16_t numPairs = rowSize >> 2u;
                 for(uint16_t pair = 0; pair < numPairs; pair++) {
-                    if(ss->layer <= layer[ss->x + column]) continue;   //  this sprite has lower layer priority
+//                    if(ss->mirrored) {
+//                        if(ss->x + (anim->width) - column > 320 || ss->x + (anim->width) - column < 0) continue;
+//                        if (ss->layer <= layer[ss->x + (anim->width) - column])
+//                            continue;   //  this sprite has lower layer priority
+//                    }
+//                    else {
+//                        if(ss->x + column > 320 || ss->x + column < 0) continue;
+//                        if (ss->layer <= layer[ss->x + column]) continue;   //  this sprite has lower layer priority
+//                    }
 
                     uint16_t colorIndex = (buffer[pair*4+0] << 8u) + (buffer[pair*4+1]);
                     uint16_t quantity = (buffer[pair*4+2] << 8u) + (buffer[pair*4+3]);
@@ -146,9 +162,21 @@ void animator_update() {
 
                     //  add the colorIndex to colorIndexes quantity times, update the layer there too
                     while(quantity-- > 0) {
-                        if(layer[ss->x + column] < ss->layer) {
-                            colorIndexes[ss->x + column] = colorIndex;
-                            layer[ss->x + column] = ss->layer;
+                        if(ss->mirrored) {
+                            if(!(ss->x+(anim->width) - column > 320 || ss->x+(anim->width) - column < 0)) {
+                                if (layer[ss->x + (anim->width) - column] < ss->layer) {
+                                    colorIndexes[ss->x + (anim->width) - column] = colorIndex;
+                                    layer[ss->x + (anim->width) - column] = ss->layer;
+                                }
+                            }
+                        }
+                        else {
+                            if(!(ss->x + column > 320 || ss->x + column < 0)) {
+                                if (layer[ss->x + column] < ss->layer) {
+                                    colorIndexes[ss->x + column] = colorIndex;
+                                    layer[ss->x + column] = ss->layer;
+                                }
+                            }
                         }
                         column++;
                     }
@@ -163,6 +191,7 @@ void animator_update() {
             //  if there are -1s in a row, read them together to save time
             uint16_t consecutiveBackgroundRowSize = 1;
             while((col + consecutiveBackgroundRowSize) < 320) {
+                if(col + consecutiveBackgroundRowSize > 320) continue;
                 if(colorIndexes[col + consecutiveBackgroundRowSize] == ANIMATOR_COLOR_BACKGROUND) {
                     consecutiveBackgroundRowSize++;
                 }
@@ -175,6 +204,7 @@ void animator_update() {
 
             //  copy from buffer into colorIndexes array
             for(uint16_t i = 0; i < consecutiveBackgroundRowSize; i++) {
+                if(col+i > 320 || col + i < 0) continue;
                 colorIndexes[col + i] = (buffer[i*2 + 0] << 8u) + (buffer[i*2 + 1]);
             }
 
@@ -214,8 +244,12 @@ void animator_update() {
 
             // animation active
             if(!ss->persistent) {
+                //  if this is supposed to last longer, let it last longer
+                if(ss->framePeriod - ++ss->currentframeLength > 0) continue;
+                else ss->currentframeLength = 0;
+
                 ss->frame += 1;
-                if(ss->frame >= anim->frames) {
+                if((ss->frame >= anim->frames) || !ss->continuous) {
                     activeAnimations &= ~(1u << slot);
                 }
                 toRemove |= (1u << slot);
@@ -226,12 +260,13 @@ void animator_update() {
 
 //  receive from UART, adds an animation to be displayed
 void animator_animate(uint8_t charIndex, uint8_t animationIndex,
-        uint8_t x, uint16_t y, uint8_t frame, uint8_t layer, uint8_t persistent) {
+        int16_t x, int16_t y, uint8_t frame, uint8_t animationlayer, uint8_t persistent,
+        uint8_t continuous, uint8_t framePeriod, bool mirrored) {
 
     //  find first unused animation slot
     uint8_t slot;
     for(slot = 0; slot < 16; slot++) {
-        bool inUse = (activeAnimations >> slot) & 1;
+        bool inUse = (activeAnimations >> slot) & 1 || (toRemove >> slot) & 1;
         if(!inUse) {
             //  we about to start using it, so flag it as in use
             activeAnimations |= (1u << slot);
@@ -244,12 +279,13 @@ void animator_animate(uint8_t charIndex, uint8_t animationIndex,
     spriteSendables[slot].x = x;
     spriteSendables[slot].y = y;
     spriteSendables[slot].frame = frame;
-    spriteSendables[slot].layer = layer;
+    spriteSendables[slot].layer = animationlayer;
     spriteSendables[slot].persistent = persistent;
+    spriteSendables[slot].continuous = continuous;
+    spriteSendables[slot].framePeriod = framePeriod;
+    spriteSendables[slot].currentframeLength = 0;
+    spriteSendables[slot].mirrored = mirrored;
 
-    /*
-     * TODO: Persistent array in wrong format
-     */
     if(spriteSendables[slot].persistent) {
         //  add to persistent array in SRAM
 

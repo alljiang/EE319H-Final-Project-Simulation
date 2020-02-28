@@ -10,11 +10,18 @@
 #include "UART.h"
 #include "metadata.h"
 #include "SRAM.h"
+#include "entities.h"
 
 using namespace std;
 using namespace chrono;
 
 SDL_Event event;
+
+Player* p1;
+Player* p2;
+
+Kirby k1;
+Kirby k2;
 
 bool quit;
 
@@ -27,54 +34,46 @@ long long lastLoopMillis;
 //  runs once at beginning
 void startup() {
     animator_initialize();
+
+    p1 = &k1;
+    p1->setPlayer(1);
+
+    p2 = &k2;
+    k2.setPlayer(2);
+
     UART_readCharacterSDCard(0);
-
-    SpriteSendable s;
-    s.persistent = false;
-    s.charIndex = 0;
-    s.animationIndex = 1;
-    s.x = 0;
-    s.y = 0;
-    s.frame = 0;
-    s.layer = LAYER_CHARACTER;
-
-    UART_sendAnimation(s);
 }
 
 //  continually loops
 uint32_t  t1 = 0;
 uint8_t frame = 0;
 void loop() {
-//    float dt = millis() - lastLoopMillis;
-//    lastLoopMillis = millis();
-//
-//    float pps = 100.;
-//    x += getJoystick_h(1) * pps * dt / 1000.;
-//    y += getJoystick_v(1) * pps * dt / 1000.;
-//
-//    LCD_drawPixel(x, y, 0x00FF00);
-    if(millis() - t1 > 32) {
-        printf("LOOP\n");
+    if(millis() - t1 > 16) {
         t1 = millis();
+        p1->controlLoop(
+                getJoystick_h(1), getJoystick_v(1),
+                getBtn_a(1), getBtn_b(1),
+                getBtn_l(1) || getBtn_r(1)
+                );
 
-        if(frame++ == 7) {
-            frame = 0;
-            SpriteSendable s;
-            s.persistent = false;
-            s.charIndex = 0;
-            s.animationIndex = 1;
-            s.x = 0;
-            s.y = 0;
-            s.frame = 0;
-            s.layer = LAYER_CHARACTER;
-
-            UART_sendAnimation(s);
-        }
-
+//        if(frame++ == 14) {
+//            frame = 0;
+//            SpriteSendable s;
+//            s.persistent = false;
+//            s.charIndex = 0;
+//            s.animationIndex = 1;
+//            s.x = 50;
+//            s.y = 50;
+//            s.frame = 0;
+//            s.framePeriod = 2;
+//            s.continuous = true;
+//            s.layer = LAYER_CHARACTER;
+//
+//            UART_sendAnimation(s);
+//        }
 
         animator_update();
     }
-    LCD_update();
 }
 
 int main(int argc, char *argv[]) {
@@ -111,6 +110,7 @@ int main(int argc, char *argv[]) {
 
         controller_updateController();
         loop();
+        LCD_update();
     }
 
     stopSDL2();
