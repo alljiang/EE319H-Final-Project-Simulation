@@ -16,8 +16,10 @@ extern uint16_t readUntil(char delimeter, uint8_t* buf);
 extern void animator_update();
 
 extern void animator_animate(uint8_t animation_charIndex, uint8_t animation_animationIndex,
-                    int16_t x, int16_t y, uint8_t frame, uint8_t persistent, uint8_t layer,
+                    int16_t x, int16_t y, uint8_t frame, uint8_t layer, uint8_t persistent,
                     uint8_t continuous, uint8_t framePeriod, bool mirrored);
+
+extern void animator_readPersistentSprite(char* spriteName, uint16_t x, uint8_t y);
 
 extern void animator_readCharacterSDCard(uint8_t charIndex);
 

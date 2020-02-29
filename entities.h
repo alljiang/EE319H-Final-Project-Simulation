@@ -88,10 +88,10 @@ protected:
     //  physics config
     const double groundSpeed = 30;  // pps
     const double airSpeed = 1;
-    const double initialJumpSpeed = 3;
-    const double repeatedJumpSpeed = 2.5;
-    const double gravityRising = 0.15;
-    const double gravityFalling = 0.2;
+    const double initialJumpSpeed = 2.;
+    const double repeatedJumpSpeed = 1.7;
+    const double gravityRising = 0.12;
+    const double gravityFalling = 0.15;
 
     //  standing, resting
     long long lastBlink{0};

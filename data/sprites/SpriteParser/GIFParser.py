@@ -23,7 +23,7 @@ import os
 #   CONFIG
 backgroundColor = 0x00FF00
 characterName = "kirby"
-imageDirectory = "/gif-" + characterName + "/"
+imageDirectory = "./gif-" + characterName + "/"
 
 # color index list
 indexed_rgb = list()
@@ -39,12 +39,12 @@ colors.close()
 # Output file
 output = open(characterName + ".txt", "wb")
 
-numFiles = len(os.listdir(os.getcwd() + "/gif-kirby/"))
+numFiles = len(os.listdir(os.getcwd() + imageDirectory))
 output.write((int(numFiles) & 0xFF).to_bytes(2, byteorder="big", signed=False))
 
-for filename in os.listdir(os.getcwd() + "/gif-kirby/"):
-    if filename.endswith(".gif") or filename.endswith(".png"):
-        img = Image.open("./gif-kirby/" + filename)
+for filename in os.listdir(os.getcwd() + imageDirectory):
+    if filename.endswith(".gif"):
+        img = Image.open(imageDirectory + filename)
         frames = np.array([np.array(frame.copy().convert('RGB').getdata(), dtype=np.uint8)
                           .reshape(frame.size[1], frame.size[0], 3) for frame in ImageSequence.Iterator(img)])
         compressed_rgb = []

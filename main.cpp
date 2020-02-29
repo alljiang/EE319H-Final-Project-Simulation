@@ -42,6 +42,9 @@ void startup() {
     k2.setPlayer(2);
 
     UART_readCharacterSDCard(0);
+
+    char str[] = "towerback";
+    animator_readPersistentSprite(str, 0, 0);
 }
 
 //  continually loops
@@ -78,7 +81,6 @@ void loop() {
 
 int main(int argc, char *argv[]) {
     LCD_startLCD();
-    ILI9341_fillScreen(0xFFFFFF);
 
     // Print console setup
     AllocConsole();

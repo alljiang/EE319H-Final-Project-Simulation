@@ -14,7 +14,7 @@ using namespace std;
 
 #define maxSprites 16
 
-uint8_t buffer[2000];   // it's big because i can. if this is too big, lower it down to like 700
+uint8_t buffer[1000];   // it's big because i can. if this is too big, lower it down to like 700
 uint8_t smallBuffer2[300];
 int16_t colorIndexes[321];  // a color index of -1 means 'do not change'
 uint8_t layer[321];
@@ -305,7 +305,42 @@ void animator_initialize() {
     persistentBackgroundMemLocation = SRAM_allocateMemory(241*321*2);
 }
 
-//  1 KB
+void animator_readPersistentSprite(char* spriteName, uint16_t x, uint8_t y) {
+    char filename[] = "../data/sprites/";
+    char fileType[] = ".txt";
+
+    strcat(filename, spriteName);
+    strcat(filename, fileType);
+
+    SD_closeFile();
+    SD_openFile(filename);
+
+    printf("Reading in sprite: %s\n", spriteName);
+
+
+    SD_read(2, buffer);
+    uint16_t width = readHalfInt(buffer);
+
+    SD_read(1, buffer);
+    uint8_t height = buffer[0];
+
+    //  get the data and store it
+    for(int16_t row = height-1; row >= 0; row--) {
+        SD_read(width*2, buffer);
+
+        uint32_t SRAMRowLocation = persistentBackgroundMemLocation + (row-y) * 321*2 + x;
+        SRAM_writeMemory_specifiedAddress(SRAMRowLocation, width*2, buffer);
+
+        //  change colors to 16 bit array to process in a sec
+        for (uint16_t i = 0; i < 321; i++) {
+            colorIndexes[i] = (buffer[2*i]<<8u) + buffer[2*i+1];
+        }
+
+        ILI9341_drawColors_indexed(x, row, colorIndexes, width);
+        printf("%d\n", row);
+    }
+}
+
 void animator_readCharacterSDCard(uint8_t charIndex) {
     char filename[] = "../data/sprites/";
     char fileType[] = ".txt";

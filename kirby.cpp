@@ -97,7 +97,7 @@ void Kirby::controlLoop(double joyH, double joyV, bool btnA, bool btnB, bool shi
         mirrored = l_mirrored;
         animationIndex = 4;
 
-        framePeriod = 1;
+        framePeriod = 3;
         if(frameLengthCounter++ > framePeriod) {
             frameLengthCounter = 0;
             frameIndex++;
@@ -111,10 +111,11 @@ void Kirby::controlLoop(double joyH, double joyV, bool btnA, bool btnB, bool shi
         yVel -= gravityRising;
         x += airSpeed * joyH;
 
-        mirrored = l_mirrored;
+        if(joyH == 0) mirrored = l_mirrored;
+        else mirrored = joyH < 0;
         animationIndex = 5;
 
-        framePeriod = 1;
+        framePeriod = 3;
         if(frameLengthCounter++ > framePeriod) {
             frameLengthCounter = 0;
             frameIndex++;
