@@ -28,7 +28,7 @@ void Kirby::controlLoop(double joyH, double joyV, bool btnA, bool btnB, bool shi
     if(disabledFrames > 0) disabledFrames--;
 
     //  movement
-    if(walking) {
+    if(action == ACTION_RUNNING) {
 
         //  x position
         x += joyH * groundSpeed / dt;
@@ -37,39 +37,32 @@ void Kirby::controlLoop(double joyH, double joyV, bool btnA, bool btnB, bool shi
         if(joyH == 0) mirrored = l_mirrored;
         else mirrored = joyH < 0;
 
-        //  if just started walking or on last frame, reset frame to 0
-        framePeriod = (uint8_t) ((-8*std::abs(joyH)) + 8);
-        if(frameLengthCounter++ > framePeriod) {
-            frameLengthCounter = 0;
-            frameIndex++;
+        if(std::abs(joyH) > 0.6) {
+            framePeriod = (uint8_t) ((3-std::abs(2*joyH) ));
+            if(frameLengthCounter++ > framePeriod) {
+                frameLengthCounter = 0;
+                frameIndex++;
+            }
+            if(frameIndex >= 8) frameIndex = 0;
+            animationIndex = 1;
         }
-        if(frameIndex >= 12 || !l_walking) frameIndex = 0;
-        continuous = false;
-        animationIndex = 9;
-    }
-    else if(running) {
-
-        //  x position
-        x += joyH * groundSpeed / dt;
-
-        //  mirrored facing left/right
-        if(joyH == 0) mirrored = l_mirrored;
-        else mirrored = joyH < 0;
-
-        //  if just started walking or on last frame, reset frame to 0
-        framePeriod = (uint8_t) ((3-std::abs(2*joyH) ));
-        if(frameLengthCounter++ > framePeriod) {
-            frameLengthCounter = 0;
-            frameIndex++;
+        else {
+            framePeriod = (uint8_t) ((-8*std::abs(joyH)) + 8);
+            if(frameLengthCounter++ > framePeriod) {
+                frameLengthCounter = 0;
+                frameIndex++;
+            }
+            if(frameIndex >= 12) frameIndex = 0;
+            animationIndex = 9;
         }
-        if(frameIndex >= 8 || !l_running) frameIndex = 0;
         continuous = false;
-        animationIndex = 1;
     }
-    else if(falling) {
+    else if(action == ACTION_FALLING) {
         if(y <= 0) {
             y = 0;
-            falling = false;
+            l_action = ACTION_FALLING;
+            action = ACTION_RESTING;
+            lastBlink = currentTime;
             yVel = 0;
         }
         else {
@@ -90,7 +83,7 @@ void Kirby::controlLoop(double joyH, double joyV, bool btnA, bool btnB, bool shi
             if (frameIndex >= 2) frameIndex = 0;
         }
     }
-    else if(jumping) {
+    else if(action == ACTION_JUMPING) {
         yVel -= gravityRising;
         x += airSpeed * joyH;
 
@@ -103,11 +96,11 @@ void Kirby::controlLoop(double joyH, double joyV, bool btnA, bool btnB, bool shi
             frameIndex++;
         }
         if(frameIndex >= 7) {
-            jumping = false;
-            falling = true;
+            l_action = ACTION_JUMPING;
+            action = ACTION_FALLING;
         }
     }
-    else if(multijumping) {
+    else if(action == ACTION_MULTIJUMPING) {
         yVel -= gravityRising;
         x += airSpeed * joyH;
 
@@ -121,24 +114,28 @@ void Kirby::controlLoop(double joyH, double joyV, bool btnA, bool btnB, bool shi
             frameIndex++;
         }
         if(frameIndex >= 3) {
-            multijumping = false;
-            falling = true;
+            l_action = ACTION_MULTIJUMPING;
+            action = ACTION_FALLING;
         }
     }
-    else if(crouching) {
+    else if(action == ACTION_CROUCHING) {
         animationIndex = 0;
+        frameIndex = 0;
 
-        if(joyV >= -0.3) crouching = false;
+        if(joyV > -0.3) {
+            action = ACTION_RESTING;
+            lastBlink = currentTime;
+        }
     }
     //  regular attacks, ground
-    else if(jabbingInitial) {
+    else if(action == ACTION_JABBINGINITIAL) {
     }
-    else if(jabbingRepeating) {
+    else if(action == ACTION_JABBINGREPEATING) {
     }
     //  special attacks, ground
     //  regular attacks, air
     //  special attacks, air
-    else {
+    else if(action == ACTION_RESTING) {
         //  standing, resting
 
         //  mirrored facing left/right
@@ -148,69 +145,63 @@ void Kirby::controlLoop(double joyH, double joyV, bool btnA, bool btnB, bool shi
         continuous = false;
         animationIndex = 6;
 
-        if(currentTime - lastBlink > blinkPeriod) {
-            if(frameLengthCounter++ > framePeriod) {
+        printf("%d\n", l_action);
+        if (l_action != ACTION_RESTING || lastBlink == 0) {
+            lastBlink = currentTime;
+        }
+
+        if (currentTime - lastBlink > blinkPeriod) {
+            if (frameLengthCounter++ > framePeriod) {
                 frameLengthCounter = 0;
                 frameIndex++;
             }
-            if(frameIndex >= 7) {
+            if (frameIndex >= 7) {
                 frameIndex = 0;
                 lastBlink = currentTime;
             }
-        }
-        else frameIndex = 0;
+        } else frameIndex = 0;
     }
 
-    //  start any new sequences
+    l_action = action;
 
+    //  start any new sequences
+    /*  TODO: BLINKING TOO MUCH */
     //  attacks
     if(millis() - l_btnARise_t == 0) {}
 
     //  movement
     //  jumping
-    else if(!jumping && !multijumping && yVel == 0 && (joyV - l_joyV) > joystickJumpSpeed && l_joyV > -0.1) {
+    else if((action == ACTION_RESTING || action == ACTION_CROUCHING || action == ACTION_RUNNING)
+    && (joyV - l_joyV) > joystickJumpSpeed && l_joyV > -0.1) {
         jumpsUsed = 0;
         yVel = initialJumpSpeed;
-        jumping = true;
-        multijumping = false;
-        running = false;
-        walking = false;
+        action = ACTION_JUMPING;
         frameIndex = 0;
     }
     //  multijump
-    else if((jumping || multijumping || falling) && jumpsUsed < 5
-            && (joyV - l_joyV) > joystickJumpSpeed && l_joyV > -0.1) {
+    else if((action == ACTION_JUMPING ||  action == ACTION_FALLING || action == ACTION_MULTIJUMPING)
+            && jumpsUsed < 5 && (joyV - l_joyV) > joystickJumpSpeed && l_joyV > -0.1) {
         jumpsUsed++;
         yVel = repeatedJumpSpeed;
-        multijumping = true;
-        falling = false;
-        jumping = false;
+        action = ACTION_MULTIJUMPING;
         frameIndex = 0;
     }
     //  running/walking
-    else if(!jumping && !multijumping && !falling && std::abs(joyH) > 0) {
-        if(std::abs(joyH) > 0.6) {
-            running = true;
-            walking = false;
-        }
-        else if(std::abs(joyH) > 0.1) {
-            walking = true;
-            running = false;
-        }
+    else if((action == ACTION_RESTING)
+        && std::abs(joyH) > 0) {
+        action = ACTION_RUNNING;
     }
     //  crouching
-    else if(joyV <= -0.3 && y == 0) {
-        crouching = true;
+    else if((action == ACTION_RESTING || action == ACTION_RUNNING) &&
+        joyV <= -0.3 && y == 0) {
+        action = ACTION_CROUCHING;
     }
-    //  standing
-    else if(joyH == 0 && joyV == 0 && yVel == 0) {
-        running = false;
-        walking = false;
-        if(l_running || l_walking) {
-            lastBlink = currentTime;
-        }
+    //  resting
+    else if(joyH == 0 && joyV == 0 && y == 0) {
+        action = ACTION_RESTING;
     }
 
+    if(yVel < maxFallingVelocity) yVel = maxFallingVelocity;
     y += yVel;
 
     SpriteSendable s;
@@ -227,7 +218,6 @@ void Kirby::controlLoop(double joyH, double joyV, bool btnA, bool btnB, bool shi
     UART_sendAnimation(s);
 
     updateLastValues(joyH, joyV, btnA, btnB, shield);
-    printf("%d\n", s.animationIndex);
 }
 
 void Kirby::updateLastValues(double joyH, double joyV, bool btnA, bool btnB, bool shield) {
@@ -236,11 +226,6 @@ void Kirby::updateLastValues(double joyH, double joyV, bool btnA, bool btnB, boo
     l_btnA = btnA;
     l_btnB = btnB;
     l_shield = shield;
-
-    l_walking = walking;
-    l_running = running;
-    l_jumping = jumping;
-    l_crouching = crouching;
 
     l_mirrored = mirrored;
 }
