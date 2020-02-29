@@ -49,8 +49,17 @@ void startup() {
 
 //  continually loops
 uint32_t  t1 = 0;
+uint32_t tt1 = 0;
 uint8_t frame = 0;
 void loop() {
+    if(millis() - tt1 > 1000) {
+        uint32_t sum = SRAM_SPICounter + ILI9341_SPICounter;
+        double max = 4000000;
+        printf("SPI Bus Usage: %0.2f%\n", sum/max*100);
+        SRAM_SPICounter = 0;
+        ILI9341_SPICounter = 0;
+        tt1 = millis();
+    }
     if(millis() - t1 > 16) {
         t1 = millis();
         p1->controlLoop(
@@ -58,6 +67,12 @@ void loop() {
                 getBtn_a(1), getBtn_b(1),
                 getBtn_l(1) || getBtn_r(1)
                 );
+
+//        p2->controlLoop(
+//                getJoystick_h(2), getJoystick_v(2),
+//                getBtn_a(2), getBtn_b(2),
+//                getBtn_l(2) || getBtn_r(2)
+//                );
 
 //        if(frame++ == 14) {
 //            frame = 0;

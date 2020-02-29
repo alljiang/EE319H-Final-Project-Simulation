@@ -72,8 +72,9 @@ class Kirby: public Player {
 #define ACTION_JUMPING 3
 #define ACTION_MULTIJUMPING 4
 #define ACTION_CROUCHING 5
-#define ACTION_JABBINGINITIAL 6
-#define ACTION_JABBINGREPEATING 7
+#define ACTION_JABSINGLE 6
+#define ACTION_JABDOUBLE 7
+#define ACTION_JABREPEATING 8
 
 protected:
     //  animation config
@@ -91,6 +92,11 @@ protected:
 
     //  standing, resting
     long long lastBlink{0};
+
+    //  jabbing
+    long long l_singleJab;
+    long long l_doubleJab;
+    long long l_repeatJab;
 
 public:
     //  general control loop

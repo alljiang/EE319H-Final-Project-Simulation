@@ -5,6 +5,8 @@
 #ifndef EE319K_FINAL_PROJECT_INITIAL_TESTING_LCD_H
 #define EE319K_FINAL_PROJECT_INITIAL_TESTING_LCD_H
 
+extern uint32_t ILI9341_SPICounter;
+
 extern void LCD_startLCD();
 extern void ILI9341_drawColors_indexed(uint32_t x, uint32_t y, int16_t *rgbIndex, uint16_t totalPixels);
 extern void ILI9341_fillScreen(uint32_t rgb);

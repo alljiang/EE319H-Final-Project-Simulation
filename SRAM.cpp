@@ -20,6 +20,8 @@
 uint8_t SRAM_storage[1024*1024];     // 8 megabits of SRAM: 8 Mb / 8 bits * 1024 * 1024 = 1048576 bytes
 uint32_t currentLocation = 0;
 
+uint32_t SRAM_SPICounter = 0;
+
 void SRAM_reset() {
     for(uint32_t i = 0; i < 1024*1024; i++) {
         SRAM_storage[i] = 0;
@@ -30,6 +32,7 @@ void SRAM_readMemory(uint32_t location, uint16_t bytesToRead, uint8_t* buffer) {
     for(uint16_t i = 0; i < bytesToRead; i++) {
         buffer[i] = SRAM_storage[location+i];
     }
+    SRAM_SPICounter += 4 + bytesToRead;
 }
 
 void SRAM_writeMemory_specifiedAddress(uint32_t location, uint32_t bytesToWrite, uint8_t* buffer) {

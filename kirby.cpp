@@ -24,9 +24,6 @@ void Kirby::controlLoop(double joyH, double joyV, bool btnA, bool btnB, bool shi
 
     //  first, follow up on any currently performing actions
 
-    //  disabled means can interrupt current action and start new action
-    if(disabledFrames > 0) disabledFrames--;
-
     //  movement
     if(action == ACTION_RUNNING) {
 
@@ -128,14 +125,59 @@ void Kirby::controlLoop(double joyH, double joyV, bool btnA, bool btnB, bool shi
         }
     }
     //  regular attacks, ground
-    else if(action == ACTION_JABBINGINITIAL) {
+    else if(action == ACTION_JABSINGLE) {
+        animationIndex = 10;
+
+        framePeriod = 3;
+        if(frameLengthCounter++ > framePeriod) {
+            frameLengthCounter = 0;
+            frameIndex++;
+        }
+        if(frameIndex >= 3) {
+            l_action = ACTION_JABSINGLE;
+            action = ACTION_RESTING;
+        }
     }
-    else if(action == ACTION_JABBINGREPEATING) {
+    else if(action == ACTION_JABDOUBLE) {
+        animationIndex = 10;
+
+        framePeriod = 4;
+        if(frameLengthCounter++ > framePeriod) {
+            frameLengthCounter = 0;
+            frameIndex++;
+        }
+        if(frameIndex >= 5) {
+            l_action = ACTION_JABDOUBLE;
+            action = ACTION_RESTING;
+        }
+    }
+    else if(action == ACTION_JABREPEATING) {
+        printf("jabrepeat\n");
+        animationIndex = 10;
+
+        disabledFrames = 2;
+        framePeriod = 3;
+        if(frameLengthCounter++ > framePeriod) {
+            frameLengthCounter = 0;
+            frameIndex++;
+        }
+        if(frameIndex >= 12) {
+            frameIndex = 6;
+            frameLengthCounter = 0;
+        }
+        if(currentTime-l_btnARise_t > 500) {
+            l_action = ACTION_JABREPEATING;
+            action = ACTION_RESTING;
+            l_repeatJab = currentTime;
+
+            disabledFrames = 0;
+        }
+
     }
     //  special attacks, ground
     //  regular attacks, air
     //  special attacks, air
-    else if(action == ACTION_RESTING) {
+    if(action == ACTION_RESTING) {
         //  standing, resting
 
         //  mirrored facing left/right
@@ -145,7 +187,6 @@ void Kirby::controlLoop(double joyH, double joyV, bool btnA, bool btnB, bool shi
         continuous = false;
         animationIndex = 6;
 
-        printf("%d\n", l_action);
         if (l_action != ACTION_RESTING || lastBlink == 0) {
             lastBlink = currentTime;
         }
@@ -164,14 +205,48 @@ void Kirby::controlLoop(double joyH, double joyV, bool btnA, bool btnB, bool shi
 
     l_action = action;
 
+    //  disabled means can interrupt current action and start new action
+    if(disabledFrames > 0) disabledFrames--;
+
     //  start any new sequences
-    /*  TODO: BLINKING TOO MUCH */
     //  attacks
-    if(millis() - l_btnARise_t == 0) {}
+    //  single jab
+
+    if(disabledFrames == 0 && currentTime - l_singleJab > 500 &&
+    currentTime - l_doubleJab > 500 &&
+    (action == ACTION_RESTING) && currentTime - l_btnARise_t == 0) {
+        action = ACTION_JABSINGLE;
+        disabledFrames = 9;
+        frameIndex = 0;
+        frameLengthCounter = 0;
+        l_singleJab = currentTime;
+    }
+    //  double jab
+    else if(disabledFrames == 0 &&
+    (currentTime - l_singleJab < 500) && currentTime - l_btnARise_t == 0) {
+        action = ACTION_JABDOUBLE;
+        disabledFrames = 8;
+        frameIndex = 3;
+        frameLengthCounter = 0;
+        l_doubleJab = millis();
+//        l_doubleJab = currentTime;
+/*      TODO:   w h a t  t h e  h e c k */
+    }
+    //  repeating jab
+    else if(disabledFrames == 0 && action != ACTION_JABREPEATING &&
+    (currentTime - l_doubleJab < 500) && currentTime - l_btnARise_t == 0) {
+        action = ACTION_JABREPEATING;
+        printf("repeat\n");
+        disabledFrames = 18;
+        frameIndex = 5;
+        frameLengthCounter = 0;
+        l_repeatJab = currentTime;
+    }
 
     //  movement
     //  jumping
-    else if((action == ACTION_RESTING || action == ACTION_CROUCHING || action == ACTION_RUNNING)
+    else if(disabledFrames == 0 &&
+    (action == ACTION_RESTING || action == ACTION_CROUCHING || action == ACTION_RUNNING)
     && (joyV - l_joyV) > joystickJumpSpeed && l_joyV > -0.1) {
         jumpsUsed = 0;
         yVel = initialJumpSpeed;
@@ -179,7 +254,8 @@ void Kirby::controlLoop(double joyH, double joyV, bool btnA, bool btnB, bool shi
         frameIndex = 0;
     }
     //  multijump
-    else if((action == ACTION_JUMPING ||  action == ACTION_FALLING || action == ACTION_MULTIJUMPING)
+    else if(disabledFrames == 0 &&
+    (action == ACTION_JUMPING ||  action == ACTION_FALLING || action == ACTION_MULTIJUMPING)
             && jumpsUsed < 5 && (joyV - l_joyV) > joystickJumpSpeed && l_joyV > -0.1) {
         jumpsUsed++;
         yVel = repeatedJumpSpeed;
@@ -187,17 +263,19 @@ void Kirby::controlLoop(double joyH, double joyV, bool btnA, bool btnB, bool shi
         frameIndex = 0;
     }
     //  running/walking
-    else if((action == ACTION_RESTING)
+    else if(disabledFrames == 0 && (action == ACTION_RESTING)
         && std::abs(joyH) > 0) {
         action = ACTION_RUNNING;
     }
     //  crouching
-    else if((action == ACTION_RESTING || action == ACTION_RUNNING) &&
+    else if(disabledFrames == 0 &&
+    (action == ACTION_RESTING || action == ACTION_RUNNING) &&
         joyV <= -0.3 && y == 0) {
         action = ACTION_CROUCHING;
     }
     //  resting
-    else if(joyH == 0 && joyV == 0 && y == 0) {
+    else if(disabledFrames == 0 &&
+            joyH == 0 && joyV == 0 && y == 0) {
         action = ACTION_RESTING;
     }
 

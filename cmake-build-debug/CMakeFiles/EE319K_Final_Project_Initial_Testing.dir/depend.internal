@@ -49,6 +49,7 @@ CMakeFiles/EE319K_Final_Project_Initial_Testing.dir/LCD.cpp.obj
  C:/Program Files/mingw-w64/x86_64-8.1.0-posix-seh-rt_v6-rev0/mingw64/include/SDL2/close_code.h
  C:/Users/Allen/Documents/GitHub/EE319H-Final-Project-Simulation/LCD.cpp
  C:/Users/Allen/Documents/GitHub/EE319H-Final-Project-Simulation/LCD.h
+ C:/Users/Allen/Documents/GitHub/EE319H-Final-Project-Simulation/colors.h
  C:/Users/Allen/Documents/GitHub/EE319H-Final-Project-Simulation/metadata.h
  C:/Users/Allen/Documents/GitHub/EE319H-Final-Project-Simulation/utils.h
 CMakeFiles/EE319K_Final_Project_Initial_Testing.dir/SDCard.cpp.obj
@@ -68,6 +69,7 @@ CMakeFiles/EE319K_Final_Project_Initial_Testing.dir/animator.cpp.obj
  C:/Users/Allen/Documents/GitHub/EE319H-Final-Project-Simulation/SRAM.h
  C:/Users/Allen/Documents/GitHub/EE319H-Final-Project-Simulation/animator.cpp
  C:/Users/Allen/Documents/GitHub/EE319H-Final-Project-Simulation/animator.h
+ C:/Users/Allen/Documents/GitHub/EE319H-Final-Project-Simulation/colors.h
  C:/Users/Allen/Documents/GitHub/EE319H-Final-Project-Simulation/metadata.h
  C:/Users/Allen/Documents/GitHub/EE319H-Final-Project-Simulation/utils.h
 CMakeFiles/EE319K_Final_Project_Initial_Testing.dir/controller.cpp.obj

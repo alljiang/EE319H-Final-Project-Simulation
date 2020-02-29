@@ -9,6 +9,7 @@
 #include "SDCard.h"
 #include "utils.h"
 #include "LCD.h"
+#include "colors.h"
 #include <cmath>
 using namespace std;
 
@@ -337,7 +338,6 @@ void animator_readPersistentSprite(char* spriteName, uint16_t x, uint8_t y) {
         }
 
         ILI9341_drawColors_indexed(x, row, colorIndexes, width);
-        printf("%d\n", row);
     }
 }
 
