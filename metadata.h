@@ -32,16 +32,16 @@ const char characterNames[4][15] = {
 
 const char animations[4][64][10] = {
                                         {
-                                            {"crouch"},
-                                            {"dash"},
-                                            {"fall"},
-                                            {"fallnojmp"},
-                                            {"firstjmp"},
-                                            {"multijmp"},
-                                            {"rest"},
-                                            {"slow"},
-                                            {"slowstop"},
-                                            {"walk"}
+                                            {"crouch"}, // 1
+                                            {"dash"},   // 8
+                                            {"fall"},   // 2
+                                            {"fallnojmp"},  // 2
+                                            {"firstjmp"},   // 8 (use 7 bc staggered)
+                                            {"multijmp"},   // 4 (use 3)
+                                            {"rest"},   // 7
+                                            {"slow"},   // 5
+                                            {"slowstop"},   // 2
+                                            {"walk"}    //  12
                                         },
                                         {
 
@@ -66,6 +66,7 @@ struct Animation {
 };
 
 struct SpriteSendable {
+
     public:
         int16_t x;
         int16_t y;

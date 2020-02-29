@@ -13,7 +13,6 @@ class Entity {
 protected:
     double x; //  [0, 320]
     double y;  //  [0, 240]
-    double xVel;    //  pps
     double yVel;    //  pps
 
     long long l_time;   //  last loop time millis
@@ -22,6 +21,8 @@ protected:
 class Player: public Entity {
 
 protected:
+    const double joystickJumpSpeed = 0.4;   //  joystick must change by this much to activate a jump
+
     uint8_t player;             //  1 or 2
     uint16_t damage;            //  percentage between 0% and 999%
 
@@ -32,6 +33,9 @@ protected:
     bool continuous{false};
     bool mirrored;
     bool l_mirrored;
+
+    long long disabledFrames {0};   //  frames before making a new move
+    bool noJumpsDisabled;           //  disabled until landing because of running out of jumps
 
     double l_joyH;              //  last joystick horizontal value
     double l_joyV;              //  last joystick vertical value
@@ -45,9 +49,6 @@ protected:
     long long l_shieldRise_t;   //  last shield pressed time in millis
     long long l_shieldFall_t;   //  last shield release time in millis
 
-    bool l_facingRight;
-    bool facingRight;   //  true if facing right side, false if facing left side
-
     //  movement
 
     //  running
@@ -59,6 +60,7 @@ protected:
     //  jumping
     bool l_jumping;
     bool jumping;
+    bool multijumping;
     bool falling;
     uint8_t jumpsUsed;  // midair only
 
@@ -73,12 +75,6 @@ public:
     virtual void controlLoop(double joyH, double joyV, bool btnA, bool btnB, bool shield) = 0; //  called every update
     virtual void updateLastValues(double joyH, double joyV, bool btnA, bool btnB, bool shield) = 0;
 
-    //  running
-    virtual void run(bool facingRight) = 0;
-
-    //  jumping
-    virtual void jump() = 0;
-
 };
 
 
@@ -91,6 +87,11 @@ protected:
 
     //  physics config
     const double groundSpeed = 30;  // pps
+    const double airSpeed = 1;
+    const double initialJumpSpeed = 3;
+    const double repeatedJumpSpeed = 2.5;
+    const double gravityRising = 0.15;
+    const double gravityFalling = 0.2;
 
     //  standing, resting
     long long lastBlink{0};
@@ -109,12 +110,6 @@ public:
     //  general control loop
     void controlLoop(double joyH, double joyV, bool btnA, bool btnB, bool shield) override; //  called every update
     void updateLastValues(double joyH, double joyV, bool btnA, bool btnB, bool shield) override ;
-
-    //  running
-    void run(bool facingRight) override;
-
-    //  jumping
-    void jump() override;
 };
 
 #endif //EE319K_FINAL_PROJECT_INITIAL_TESTING_ENTITIES_H
