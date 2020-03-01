@@ -7,8 +7,10 @@
 #include "utils.h"
 #include "metadata.h"
 #include "UART.h"
+#include "stage.h"
 
-void Kirby::controlLoop(double joyH, double joyV, bool btnA, bool btnB, bool shield) {
+void Kirby::controlLoop(double joyH, double joyV, bool btnA, bool btnB, bool shield,
+        class Stage* stage) {
     //  assume joystick deadzone filtering is already done
 
     long long currentTime = millis();
@@ -24,48 +26,75 @@ void Kirby::controlLoop(double joyH, double joyV, bool btnA, bool btnB, bool shi
 
     int16_t x_mirroredOffset = 0;
 
+    if(y < 0) {
+        y = 120;
+        x = 150;
+    }
+
+    double ceiling = stage->ceil(x+STAGE_X_OFFSET, y);
+    double floor = stage->floor(x+STAGE_X_OFFSET, y);
+    double leftBound = stage->leftBound(x+STAGE_X_OFFSET, y) - STAGE_X_OFFSET/2;
+    double rightBound = stage->rightBound(x-STAGE_X_OFFSET, y) - STAGE_X_OFFSET;
+//    double stageVelocity = stage->xVelocity(x, y);
+
     //  first, follow up on any currently performing actions
 
     //  movement
     if(action == ACTION_RUNNING) {
 
-        //  x position
-        x += joyH * groundSpeed / dt;
-
-        //  mirrored facing left/right
-        if(joyH == 0) mirrored = l_mirrored;
-        else mirrored = joyH < 0;
-
-        if(std::abs(joyH) > 0.6) {
-            framePeriod = (uint8_t) ((3-std::abs(2*joyH) ));
-            if(frameLengthCounter++ > framePeriod) {
-                frameLengthCounter = 0;
-                frameIndex++;
-            }
-            if(frameIndex >= 8) frameIndex = 0;
-            animationIndex = 1;
+        if(y != floor) {
+            action = ACTION_FALLING;
+        }
+        else if(joyH == 0) {
+            action = ACTION_RESTING;
         }
         else {
-            framePeriod = (uint8_t) ((-8*std::abs(joyH)) + 8);
-            if(frameLengthCounter++ > framePeriod) {
-                frameLengthCounter = 0;
-                frameIndex++;
+            //  x position
+            x += joyH * groundSpeed / dt;
+            if(x > rightBound) x = rightBound;
+            else if(x < leftBound) x = leftBound;
+
+            //  mirrored facing left/right
+            if (joyH == 0) mirrored = l_mirrored;
+            else mirrored = joyH < 0;
+
+            //  decide between walk and run animation
+            if (std::abs(joyH) > 0.6) {
+                framePeriod = (uint8_t) ((3 - std::abs(2 * joyH)));
+                if (frameLengthCounter++ > framePeriod) {
+                    frameLengthCounter = 0;
+                    frameIndex++;
+                }
+                if (frameIndex >= 8) frameIndex = 0;
+                animationIndex = 1;
+            } else {
+                framePeriod = (uint8_t) ((-8 * std::abs(joyH)) + 8);
+                if (frameLengthCounter++ > framePeriod) {
+                    frameLengthCounter = 0;
+                    frameIndex++;
+                }
+                if (frameIndex >= 12) frameIndex = 0;
+                animationIndex = 9;
             }
-            if(frameIndex >= 12) frameIndex = 0;
-            animationIndex = 9;
+            continuous = false;
         }
-        continuous = false;
     }
     else if(action == ACTION_FALLING) {
-        if(y <= 0) {
-            y = 0;
-            l_action = ACTION_FALLING;
-            action = ACTION_RESTING;
-            lastBlink = currentTime;
+        if(y <= floor) {
+            y = floor;
             yVel = 0;
+            l_action = ACTION_FALLING;
+            if(joyH == 0) {
+                action = ACTION_RESTING;
+                lastBlink = currentTime;
+            } else {
+                action = ACTION_RUNNING;
+            }
         }
         else {
             x += airSpeed * joyH;
+            if(x > rightBound) x = rightBound;
+            else if(x < leftBound) x = leftBound;
 
             noJumpsDisabled = jumpsUsed >= 5;
             yVel -= gravityFalling;
@@ -85,6 +114,8 @@ void Kirby::controlLoop(double joyH, double joyV, bool btnA, bool btnB, bool shi
     else if(action == ACTION_JUMPING) {
         yVel -= gravityRising;
         x += airSpeed * joyH;
+        if(x > rightBound) x = rightBound;
+        else if(x < leftBound) x = leftBound;
 
         mirrored = l_mirrored;
         animationIndex = 4;
@@ -102,6 +133,8 @@ void Kirby::controlLoop(double joyH, double joyV, bool btnA, bool btnB, bool shi
     else if(action == ACTION_MULTIJUMPING) {
         yVel -= gravityRising;
         x += airSpeed * joyH;
+        if(x > rightBound) x = rightBound;
+        else if(x < leftBound) x = leftBound;
 
         if(joyH == 0) mirrored = l_mirrored;
         else mirrored = joyH < 0;
@@ -221,7 +254,6 @@ void Kirby::controlLoop(double joyH, double joyV, bool btnA, bool btnB, bool shi
     //  start any new sequences
     //  attacks
     //  single jab
-
     if(disabledFrames == 0 && currentTime - l_singleJab > 300 &&
     currentTime - l_doubleJab > 300 &&
     (action == ACTION_RESTING) && currentTime - l_btnARise_t == 0) {
@@ -244,7 +276,6 @@ void Kirby::controlLoop(double joyH, double joyV, bool btnA, bool btnB, bool shi
     else if(disabledFrames == 0 && action != ACTION_JABREPEATING &&
     (currentTime - l_doubleJab < 400) && currentTime - l_btnARise_t == 0) {
         action = ACTION_JABREPEATING;
-        printf("repeat\n");
         disabledFrames = 18;
         frameIndex = 5;
         frameLengthCounter = 0;
@@ -255,8 +286,9 @@ void Kirby::controlLoop(double joyH, double joyV, bool btnA, bool btnB, bool shi
     //  jumping
     else if(disabledFrames == 0 &&
     (action == ACTION_RESTING || action == ACTION_CROUCHING || action == ACTION_RUNNING)
-    && (joyV - l_joyV) > joystickJumpSpeed && l_joyV > -0.1) {
+    && (joyV - l_joyV) > joystickJumpSpeed && l_joyV > -0.1 && y == floor) {
         jumpsUsed = 0;
+        disabledFrames = 6;
         yVel = initialJumpSpeed;
         action = ACTION_JUMPING;
         frameIndex = 0;
@@ -278,17 +310,41 @@ void Kirby::controlLoop(double joyH, double joyV, bool btnA, bool btnB, bool shi
     //  crouching
     else if(disabledFrames == 0 &&
     (action == ACTION_RESTING || action == ACTION_RUNNING) &&
-        joyV <= -0.3 && y == 0) {
+        joyV <= -0.3 && y == floor) {
         action = ACTION_CROUCHING;
     }
     //  resting
     else if(disabledFrames == 0 &&
-            joyH == 0 && joyV == 0 && y == 0) {
-        action = ACTION_RESTING;
+            joyH == 0 && joyV == 0 && action == ACTION_FALLING) {
+        if(y == floor) action = ACTION_RESTING;
+        else action = ACTION_FALLING;
     }
 
+
+    //  update velocity and positions
     if(yVel < maxFallingVelocity) yVel = maxFallingVelocity;
     y += yVel;
+    if(y > ceiling) y = ceiling;
+    if(y <= floor) {
+        y = floor;
+        jumpsUsed = 0;
+    }
+
+
+    if(maxHorizontalSpeed < std::abs(xVel)) {
+        if(xVel < 0) xVel = -maxHorizontalSpeed;
+        else xVel = maxHorizontalSpeed;
+    }
+    x += xVel;
+    if(x > rightBound) x = rightBound;
+    else if(x < leftBound) x = leftBound;
+
+    if(xVel != 0) {
+        if(std::abs(xVel) < airResistance) xVel = 0;
+
+        else if(xVel > 0) xVel -= airResistance;
+        else if(xVel < 0) xVel += airResistance;
+    }
 
     if(!mirrored) x_mirroredOffset = 0;
 

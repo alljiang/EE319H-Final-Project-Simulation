@@ -2,366 +2,44 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="2349ddb4-96f3-4450-a885-5dac0c7a4023" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/../../../colors.h" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/png-misc/finaldest.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../finaldest.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../stage notes.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../stage.cpp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../stage.h" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../../../CMakeLists.txt" beforeDir="false" afterPath="$PROJECT_DIR$/../../../CMakeLists.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../../../LCD.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/../../../LCD.cpp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../../../LCD.h" beforeDir="false" afterPath="$PROJECT_DIR$/../../../LCD.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../../SRAM.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/../../../SRAM.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../../SRAM.h" beforeDir="false" afterPath="$PROJECT_DIR$/../../../SRAM.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../animator.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/../../../animator.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../animator.h" beforeDir="false" afterPath="$PROJECT_DIR$/../../../animator.h" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../../../cmake-build-debug/CMakeFiles/EE319K_Final_Project_Initial_Testing.dir/CXX.includecache" beforeDir="false" afterPath="$PROJECT_DIR$/../../../cmake-build-debug/CMakeFiles/EE319K_Final_Project_Initial_Testing.dir/CXX.includecache" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../cmake-build-debug/CMakeFiles/EE319K_Final_Project_Initial_Testing.dir/DependInfo.cmake" beforeDir="false" afterPath="$PROJECT_DIR$/../../../cmake-build-debug/CMakeFiles/EE319K_Final_Project_Initial_Testing.dir/DependInfo.cmake" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../../../cmake-build-debug/CMakeFiles/EE319K_Final_Project_Initial_Testing.dir/LCD.cpp.obj" beforeDir="false" afterPath="$PROJECT_DIR$/../../../cmake-build-debug/CMakeFiles/EE319K_Final_Project_Initial_Testing.dir/LCD.cpp.obj" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../../cmake-build-debug/CMakeFiles/EE319K_Final_Project_Initial_Testing.dir/SRAM.cpp.obj" beforeDir="false" afterPath="$PROJECT_DIR$/../../../cmake-build-debug/CMakeFiles/EE319K_Final_Project_Initial_Testing.dir/SRAM.cpp.obj" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../../cmake-build-debug/CMakeFiles/EE319K_Final_Project_Initial_Testing.dir/UART.cpp.obj" beforeDir="false" afterPath="$PROJECT_DIR$/../../../cmake-build-debug/CMakeFiles/EE319K_Final_Project_Initial_Testing.dir/UART.cpp.obj" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../../../cmake-build-debug/CMakeFiles/EE319K_Final_Project_Initial_Testing.dir/animator.cpp.obj" beforeDir="false" afterPath="$PROJECT_DIR$/../../../cmake-build-debug/CMakeFiles/EE319K_Final_Project_Initial_Testing.dir/animator.cpp.obj" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../cmake-build-debug/CMakeFiles/EE319K_Final_Project_Initial_Testing.dir/build.make" beforeDir="false" afterPath="$PROJECT_DIR$/../../../cmake-build-debug/CMakeFiles/EE319K_Final_Project_Initial_Testing.dir/build.make" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../cmake-build-debug/CMakeFiles/EE319K_Final_Project_Initial_Testing.dir/cmake_clean.cmake" beforeDir="false" afterPath="$PROJECT_DIR$/../../../cmake-build-debug/CMakeFiles/EE319K_Final_Project_Initial_Testing.dir/cmake_clean.cmake" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../cmake-build-debug/CMakeFiles/EE319K_Final_Project_Initial_Testing.dir/depend.internal" beforeDir="false" afterPath="$PROJECT_DIR$/../../../cmake-build-debug/CMakeFiles/EE319K_Final_Project_Initial_Testing.dir/depend.internal" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../cmake-build-debug/CMakeFiles/EE319K_Final_Project_Initial_Testing.dir/depend.make" beforeDir="false" afterPath="$PROJECT_DIR$/../../../cmake-build-debug/CMakeFiles/EE319K_Final_Project_Initial_Testing.dir/depend.make" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../../../cmake-build-debug/CMakeFiles/EE319K_Final_Project_Initial_Testing.dir/kirby.cpp.obj" beforeDir="false" afterPath="$PROJECT_DIR$/../../../cmake-build-debug/CMakeFiles/EE319K_Final_Project_Initial_Testing.dir/kirby.cpp.obj" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../../../cmake-build-debug/CMakeFiles/EE319K_Final_Project_Initial_Testing.dir/main.cpp.obj" beforeDir="false" afterPath="$PROJECT_DIR$/../../../cmake-build-debug/CMakeFiles/EE319K_Final_Project_Initial_Testing.dir/main.cpp.obj" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../../../cmake-build-debug/CMakeFiles/EE319K_Final_Project_Initial_Testing.dir/objects.a" beforeDir="false" afterPath="$PROJECT_DIR$/../../../cmake-build-debug/CMakeFiles/EE319K_Final_Project_Initial_Testing.dir/objects.a" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../../cmake-build-debug/CMakeFiles/EE319K_Final_Project_Initial_Testing.dir/utils.cpp.obj" beforeDir="false" afterPath="$PROJECT_DIR$/../../../cmake-build-debug/CMakeFiles/EE319K_Final_Project_Initial_Testing.dir/utils.cpp.obj" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../cmake-build-debug/CMakeFiles/EE319K_Final_Project_Initial_Testing.dir/objects1.rsp" beforeDir="false" afterPath="$PROJECT_DIR$/../../../cmake-build-debug/CMakeFiles/EE319K_Final_Project_Initial_Testing.dir/objects1.rsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../cmake-build-debug/CMakeFiles/EE319K_Final_Project_Initial_Testing.dir/progress.make" beforeDir="false" afterPath="$PROJECT_DIR$/../../../cmake-build-debug/CMakeFiles/EE319K_Final_Project_Initial_Testing.dir/progress.make" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../cmake-build-debug/CMakeFiles/Makefile2" beforeDir="false" afterPath="$PROJECT_DIR$/../../../cmake-build-debug/CMakeFiles/Makefile2" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../cmake-build-debug/CMakeFiles/progress.marks" beforeDir="false" afterPath="$PROJECT_DIR$/../../../cmake-build-debug/CMakeFiles/progress.marks" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../../../cmake-build-debug/EE319K_Final_Project_Initial_Testing.cbp" beforeDir="false" afterPath="$PROJECT_DIR$/../../../cmake-build-debug/EE319K_Final_Project_Initial_Testing.cbp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../../../cmake-build-debug/EE319K_Final_Project_Initial_Testing.exe" beforeDir="false" afterPath="$PROJECT_DIR$/../../../cmake-build-debug/EE319K_Final_Project_Initial_Testing.exe" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../cmake-build-debug/Makefile" beforeDir="false" afterPath="$PROJECT_DIR$/../../../cmake-build-debug/Makefile" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../colors.h" beforeDir="false" afterPath="$PROJECT_DIR$/../../../colors.h" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/GIFParser.py" beforeDir="false" afterPath="$PROJECT_DIR$/GIFParser.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/colors.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/cropped/1.png" beforeDir="false" afterPath="$PROJECT_DIR$/cropped/1.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cropped/10.png" beforeDir="false" afterPath="$PROJECT_DIR$/cropped/10.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cropped/100.png" beforeDir="false" afterPath="$PROJECT_DIR$/cropped/100.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cropped/101.png" beforeDir="false" afterPath="$PROJECT_DIR$/cropped/101.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cropped/102.png" beforeDir="false" afterPath="$PROJECT_DIR$/cropped/102.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cropped/103.png" beforeDir="false" afterPath="$PROJECT_DIR$/cropped/103.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cropped/104.png" beforeDir="false" afterPath="$PROJECT_DIR$/cropped/104.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cropped/105.png" beforeDir="false" afterPath="$PROJECT_DIR$/cropped/105.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cropped/106.png" beforeDir="false" afterPath="$PROJECT_DIR$/cropped/106.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cropped/107.png" beforeDir="false" afterPath="$PROJECT_DIR$/cropped/107.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cropped/108.png" beforeDir="false" afterPath="$PROJECT_DIR$/cropped/108.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cropped/109.png" beforeDir="false" afterPath="$PROJECT_DIR$/cropped/109.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cropped/11.png" beforeDir="false" afterPath="$PROJECT_DIR$/cropped/11.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cropped/110.png" beforeDir="false" afterPath="$PROJECT_DIR$/cropped/110.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cropped/111.png" beforeDir="false" afterPath="$PROJECT_DIR$/cropped/111.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cropped/112.png" beforeDir="false" afterPath="$PROJECT_DIR$/cropped/112.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cropped/113.png" beforeDir="false" afterPath="$PROJECT_DIR$/cropped/113.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cropped/114.png" beforeDir="false" afterPath="$PROJECT_DIR$/cropped/114.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cropped/115.png" beforeDir="false" afterPath="$PROJECT_DIR$/cropped/115.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cropped/116.png" beforeDir="false" afterPath="$PROJECT_DIR$/cropped/116.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cropped/117.png" beforeDir="false" afterPath="$PROJECT_DIR$/cropped/117.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cropped/118.png" beforeDir="false" afterPath="$PROJECT_DIR$/cropped/118.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cropped/119.png" beforeDir="false" afterPath="$PROJECT_DIR$/cropped/119.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cropped/12.png" beforeDir="false" afterPath="$PROJECT_DIR$/cropped/12.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cropped/120.png" beforeDir="false" afterPath="$PROJECT_DIR$/cropped/120.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cropped/121.png" beforeDir="false" afterPath="$PROJECT_DIR$/cropped/121.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cropped/122.png" beforeDir="false" afterPath="$PROJECT_DIR$/cropped/122.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cropped/123.png" beforeDir="false" afterPath="$PROJECT_DIR$/cropped/123.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cropped/124.png" beforeDir="false" afterPath="$PROJECT_DIR$/cropped/124.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cropped/125.png" beforeDir="false" afterPath="$PROJECT_DIR$/cropped/125.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cropped/126.png" beforeDir="false" afterPath="$PROJECT_DIR$/cropped/126.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cropped/127.png" beforeDir="false" afterPath="$PROJECT_DIR$/cropped/127.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cropped/128.png" beforeDir="false" afterPath="$PROJECT_DIR$/cropped/128.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cropped/129.png" beforeDir="false" afterPath="$PROJECT_DIR$/cropped/129.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cropped/13.png" beforeDir="false" afterPath="$PROJECT_DIR$/cropped/13.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cropped/130.png" beforeDir="false" afterPath="$PROJECT_DIR$/cropped/130.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cropped/131.png" beforeDir="false" afterPath="$PROJECT_DIR$/cropped/131.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cropped/132.png" beforeDir="false" afterPath="$PROJECT_DIR$/cropped/132.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cropped/133.png" beforeDir="false" afterPath="$PROJECT_DIR$/cropped/133.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cropped/134.png" beforeDir="false" afterPath="$PROJECT_DIR$/cropped/134.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cropped/135.png" beforeDir="false" afterPath="$PROJECT_DIR$/cropped/135.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cropped/136.png" beforeDir="false" afterPath="$PROJECT_DIR$/cropped/136.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cropped/137.png" beforeDir="false" afterPath="$PROJECT_DIR$/cropped/137.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cropped/138.png" beforeDir="false" afterPath="$PROJECT_DIR$/cropped/138.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cropped/139.png" beforeDir="false" afterPath="$PROJECT_DIR$/cropped/139.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cropped/140.png" beforeDir="false" afterPath="$PROJECT_DIR$/cropped/140.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cropped/141.png" beforeDir="false" afterPath="$PROJECT_DIR$/cropped/141.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cropped/142.png" beforeDir="false" afterPath="$PROJECT_DIR$/cropped/142.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cropped/143.png" beforeDir="false" afterPath="$PROJECT_DIR$/cropped/143.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cropped/144.png" beforeDir="false" afterPath="$PROJECT_DIR$/cropped/144.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cropped/145.png" beforeDir="false" afterPath="$PROJECT_DIR$/cropped/145.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cropped/146.png" beforeDir="false" afterPath="$PROJECT_DIR$/cropped/146.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cropped/147.png" beforeDir="false" afterPath="$PROJECT_DIR$/cropped/147.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cropped/148.png" beforeDir="false" afterPath="$PROJECT_DIR$/cropped/148.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cropped/149.png" beforeDir="false" afterPath="$PROJECT_DIR$/cropped/149.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cropped/15.png" beforeDir="false" afterPath="$PROJECT_DIR$/cropped/15.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cropped/150.png" beforeDir="false" afterPath="$PROJECT_DIR$/cropped/150.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cropped/151.png" beforeDir="false" afterPath="$PROJECT_DIR$/cropped/151.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cropped/152.png" beforeDir="false" afterPath="$PROJECT_DIR$/cropped/152.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cropped/153.png" beforeDir="false" afterPath="$PROJECT_DIR$/cropped/153.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cropped/154.png" beforeDir="false" afterPath="$PROJECT_DIR$/cropped/154.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cropped/155.png" beforeDir="false" afterPath="$PROJECT_DIR$/cropped/155.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cropped/156.png" beforeDir="false" afterPath="$PROJECT_DIR$/cropped/156.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cropped/157.png" beforeDir="false" afterPath="$PROJECT_DIR$/cropped/157.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cropped/158.png" beforeDir="false" afterPath="$PROJECT_DIR$/cropped/158.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cropped/159.png" beforeDir="false" afterPath="$PROJECT_DIR$/cropped/159.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cropped/16.png" beforeDir="false" afterPath="$PROJECT_DIR$/cropped/16.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cropped/160.png" beforeDir="false" afterPath="$PROJECT_DIR$/cropped/160.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cropped/161.png" beforeDir="false" afterPath="$PROJECT_DIR$/cropped/161.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cropped/162.png" beforeDir="false" afterPath="$PROJECT_DIR$/cropped/162.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cropped/163.png" beforeDir="false" afterPath="$PROJECT_DIR$/cropped/163.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cropped/164.png" beforeDir="false" afterPath="$PROJECT_DIR$/cropped/164.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cropped/165.png" beforeDir="false" afterPath="$PROJECT_DIR$/cropped/165.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cropped/166.png" beforeDir="false" afterPath="$PROJECT_DIR$/cropped/166.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cropped/167.png" beforeDir="false" afterPath="$PROJECT_DIR$/cropped/167.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cropped/168.png" beforeDir="false" afterPath="$PROJECT_DIR$/cropped/168.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cropped/169.png" beforeDir="false" afterPath="$PROJECT_DIR$/cropped/169.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cropped/17.png" beforeDir="false" afterPath="$PROJECT_DIR$/cropped/17.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cropped/170.png" beforeDir="false" afterPath="$PROJECT_DIR$/cropped/170.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cropped/171.png" beforeDir="false" afterPath="$PROJECT_DIR$/cropped/171.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cropped/172.png" beforeDir="false" afterPath="$PROJECT_DIR$/cropped/172.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cropped/173.png" beforeDir="false" afterPath="$PROJECT_DIR$/cropped/173.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cropped/174.png" beforeDir="false" afterPath="$PROJECT_DIR$/cropped/174.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cropped/175.png" beforeDir="false" afterPath="$PROJECT_DIR$/cropped/175.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cropped/176.png" beforeDir="false" afterPath="$PROJECT_DIR$/cropped/176.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cropped/177.png" beforeDir="false" afterPath="$PROJECT_DIR$/cropped/177.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cropped/178.png" beforeDir="false" afterPath="$PROJECT_DIR$/cropped/178.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cropped/179.png" beforeDir="false" afterPath="$PROJECT_DIR$/cropped/179.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cropped/18.png" beforeDir="false" afterPath="$PROJECT_DIR$/cropped/18.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cropped/180.png" beforeDir="false" afterPath="$PROJECT_DIR$/cropped/180.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cropped/181.png" beforeDir="false" afterPath="$PROJECT_DIR$/cropped/181.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cropped/182.png" beforeDir="false" afterPath="$PROJECT_DIR$/cropped/182.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cropped/183.png" beforeDir="false" afterPath="$PROJECT_DIR$/cropped/183.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cropped/184.png" beforeDir="false" afterPath="$PROJECT_DIR$/cropped/184.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cropped/185.png" beforeDir="false" afterPath="$PROJECT_DIR$/cropped/185.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cropped/186.png" beforeDir="false" afterPath="$PROJECT_DIR$/cropped/186.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cropped/187.png" beforeDir="false" afterPath="$PROJECT_DIR$/cropped/187.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cropped/188.png" beforeDir="false" afterPath="$PROJECT_DIR$/cropped/188.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cropped/189.png" beforeDir="false" afterPath="$PROJECT_DIR$/cropped/189.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cropped/19.png" beforeDir="false" afterPath="$PROJECT_DIR$/cropped/19.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cropped/190.png" beforeDir="false" afterPath="$PROJECT_DIR$/cropped/190.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cropped/191.png" beforeDir="false" afterPath="$PROJECT_DIR$/cropped/191.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cropped/192.png" beforeDir="false" afterPath="$PROJECT_DIR$/cropped/192.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cropped/193.png" beforeDir="false" afterPath="$PROJECT_DIR$/cropped/193.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cropped/194.png" beforeDir="false" afterPath="$PROJECT_DIR$/cropped/194.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cropped/195.png" beforeDir="false" afterPath="$PROJECT_DIR$/cropped/195.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cropped/196.png" beforeDir="false" afterPath="$PROJECT_DIR$/cropped/196.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cropped/197.png" beforeDir="false" afterPath="$PROJECT_DIR$/cropped/197.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cropped/198.png" beforeDir="false" afterPath="$PROJECT_DIR$/cropped/198.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cropped/199.png" beforeDir="false" afterPath="$PROJECT_DIR$/cropped/199.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cropped/2.png" beforeDir="false" afterPath="$PROJECT_DIR$/cropped/2.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cropped/20.png" beforeDir="false" afterPath="$PROJECT_DIR$/cropped/20.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cropped/200.png" beforeDir="false" afterPath="$PROJECT_DIR$/cropped/200.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cropped/201.png" beforeDir="false" afterPath="$PROJECT_DIR$/cropped/201.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cropped/202.png" beforeDir="false" afterPath="$PROJECT_DIR$/cropped/202.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cropped/203.png" beforeDir="false" afterPath="$PROJECT_DIR$/cropped/203.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cropped/204.png" beforeDir="false" afterPath="$PROJECT_DIR$/cropped/204.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cropped/205.png" beforeDir="false" afterPath="$PROJECT_DIR$/cropped/205.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cropped/206.png" beforeDir="false" afterPath="$PROJECT_DIR$/cropped/206.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cropped/207.png" beforeDir="false" afterPath="$PROJECT_DIR$/cropped/207.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cropped/208.png" beforeDir="false" afterPath="$PROJECT_DIR$/cropped/208.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cropped/209.png" beforeDir="false" afterPath="$PROJECT_DIR$/cropped/209.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cropped/21.png" beforeDir="false" afterPath="$PROJECT_DIR$/cropped/21.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cropped/210.png" beforeDir="false" afterPath="$PROJECT_DIR$/cropped/210.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cropped/211.png" beforeDir="false" afterPath="$PROJECT_DIR$/cropped/211.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cropped/212.png" beforeDir="false" afterPath="$PROJECT_DIR$/cropped/212.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cropped/213.png" beforeDir="false" afterPath="$PROJECT_DIR$/cropped/213.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cropped/214.png" beforeDir="false" afterPath="$PROJECT_DIR$/cropped/214.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cropped/215.png" beforeDir="false" afterPath="$PROJECT_DIR$/cropped/215.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cropped/216.png" beforeDir="false" afterPath="$PROJECT_DIR$/cropped/216.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cropped/217.png" beforeDir="false" afterPath="$PROJECT_DIR$/cropped/217.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cropped/218.png" beforeDir="false" afterPath="$PROJECT_DIR$/cropped/218.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cropped/219.png" beforeDir="false" afterPath="$PROJECT_DIR$/cropped/219.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cropped/22.png" beforeDir="false" afterPath="$PROJECT_DIR$/cropped/22.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cropped/220.png" beforeDir="false" afterPath="$PROJECT_DIR$/cropped/220.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cropped/221.png" beforeDir="false" afterPath="$PROJECT_DIR$/cropped/221.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cropped/222.png" beforeDir="false" afterPath="$PROJECT_DIR$/cropped/222.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cropped/223.png" beforeDir="false" afterPath="$PROJECT_DIR$/cropped/223.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cropped/224.png" beforeDir="false" afterPath="$PROJECT_DIR$/cropped/224.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cropped/225.png" beforeDir="false" afterPath="$PROJECT_DIR$/cropped/225.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cropped/226.png" beforeDir="false" afterPath="$PROJECT_DIR$/cropped/226.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cropped/227.png" beforeDir="false" afterPath="$PROJECT_DIR$/cropped/227.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cropped/228.png" beforeDir="false" afterPath="$PROJECT_DIR$/cropped/228.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cropped/229.png" beforeDir="false" afterPath="$PROJECT_DIR$/cropped/229.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cropped/23.png" beforeDir="false" afterPath="$PROJECT_DIR$/cropped/23.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cropped/230.png" beforeDir="false" afterPath="$PROJECT_DIR$/cropped/230.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cropped/231.png" beforeDir="false" afterPath="$PROJECT_DIR$/cropped/231.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cropped/232.png" beforeDir="false" afterPath="$PROJECT_DIR$/cropped/232.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cropped/233.png" beforeDir="false" afterPath="$PROJECT_DIR$/cropped/233.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cropped/234.png" beforeDir="false" afterPath="$PROJECT_DIR$/cropped/234.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cropped/235.png" beforeDir="false" afterPath="$PROJECT_DIR$/cropped/235.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cropped/236.png" beforeDir="false" afterPath="$PROJECT_DIR$/cropped/236.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cropped/237.png" beforeDir="false" afterPath="$PROJECT_DIR$/cropped/237.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cropped/238.png" beforeDir="false" afterPath="$PROJECT_DIR$/cropped/238.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cropped/239.png" beforeDir="false" afterPath="$PROJECT_DIR$/cropped/239.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cropped/24.png" beforeDir="false" afterPath="$PROJECT_DIR$/cropped/24.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cropped/240.png" beforeDir="false" afterPath="$PROJECT_DIR$/cropped/240.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cropped/241.png" beforeDir="false" afterPath="$PROJECT_DIR$/cropped/241.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cropped/242.png" beforeDir="false" afterPath="$PROJECT_DIR$/cropped/242.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cropped/243.png" beforeDir="false" afterPath="$PROJECT_DIR$/cropped/243.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cropped/244.png" beforeDir="false" afterPath="$PROJECT_DIR$/cropped/244.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cropped/245.png" beforeDir="false" afterPath="$PROJECT_DIR$/cropped/245.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cropped/246.png" beforeDir="false" afterPath="$PROJECT_DIR$/cropped/246.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cropped/247.png" beforeDir="false" afterPath="$PROJECT_DIR$/cropped/247.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cropped/248.png" beforeDir="false" afterPath="$PROJECT_DIR$/cropped/248.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cropped/249.png" beforeDir="false" afterPath="$PROJECT_DIR$/cropped/249.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cropped/25.png" beforeDir="false" afterPath="$PROJECT_DIR$/cropped/25.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cropped/250.png" beforeDir="false" afterPath="$PROJECT_DIR$/cropped/250.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cropped/251.png" beforeDir="false" afterPath="$PROJECT_DIR$/cropped/251.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cropped/252.png" beforeDir="false" afterPath="$PROJECT_DIR$/cropped/252.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cropped/253.png" beforeDir="false" afterPath="$PROJECT_DIR$/cropped/253.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cropped/254.png" beforeDir="false" afterPath="$PROJECT_DIR$/cropped/254.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cropped/255.png" beforeDir="false" afterPath="$PROJECT_DIR$/cropped/255.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cropped/256.png" beforeDir="false" afterPath="$PROJECT_DIR$/cropped/256.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cropped/258.png" beforeDir="false" afterPath="$PROJECT_DIR$/cropped/258.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cropped/259.png" beforeDir="false" afterPath="$PROJECT_DIR$/cropped/259.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cropped/260.png" beforeDir="false" afterPath="$PROJECT_DIR$/cropped/260.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cropped/261.png" beforeDir="false" afterPath="$PROJECT_DIR$/cropped/261.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cropped/262.png" beforeDir="false" afterPath="$PROJECT_DIR$/cropped/262.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cropped/263.png" beforeDir="false" afterPath="$PROJECT_DIR$/cropped/263.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cropped/264.png" beforeDir="false" afterPath="$PROJECT_DIR$/cropped/264.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cropped/265.png" beforeDir="false" afterPath="$PROJECT_DIR$/cropped/265.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cropped/266.png" beforeDir="false" afterPath="$PROJECT_DIR$/cropped/266.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cropped/267.png" beforeDir="false" afterPath="$PROJECT_DIR$/cropped/267.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cropped/268.png" beforeDir="false" afterPath="$PROJECT_DIR$/cropped/268.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cropped/269.png" beforeDir="false" afterPath="$PROJECT_DIR$/cropped/269.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cropped/27.png" beforeDir="false" afterPath="$PROJECT_DIR$/cropped/27.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cropped/270.png" beforeDir="false" afterPath="$PROJECT_DIR$/cropped/270.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cropped/271.png" beforeDir="false" afterPath="$PROJECT_DIR$/cropped/271.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cropped/272.png" beforeDir="false" afterPath="$PROJECT_DIR$/cropped/272.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cropped/273.png" beforeDir="false" afterPath="$PROJECT_DIR$/cropped/273.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cropped/274.png" beforeDir="false" afterPath="$PROJECT_DIR$/cropped/274.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cropped/275.png" beforeDir="false" afterPath="$PROJECT_DIR$/cropped/275.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cropped/276.png" beforeDir="false" afterPath="$PROJECT_DIR$/cropped/276.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cropped/277.png" beforeDir="false" afterPath="$PROJECT_DIR$/cropped/277.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cropped/278.png" beforeDir="false" afterPath="$PROJECT_DIR$/cropped/278.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cropped/279.png" beforeDir="false" afterPath="$PROJECT_DIR$/cropped/279.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cropped/28.png" beforeDir="false" afterPath="$PROJECT_DIR$/cropped/28.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cropped/280.png" beforeDir="false" afterPath="$PROJECT_DIR$/cropped/280.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cropped/281.png" beforeDir="false" afterPath="$PROJECT_DIR$/cropped/281.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cropped/282.png" beforeDir="false" afterPath="$PROJECT_DIR$/cropped/282.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cropped/283.png" beforeDir="false" afterPath="$PROJECT_DIR$/cropped/283.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cropped/284.png" beforeDir="false" afterPath="$PROJECT_DIR$/cropped/284.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cropped/285.png" beforeDir="false" afterPath="$PROJECT_DIR$/cropped/285.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cropped/286.png" beforeDir="false" afterPath="$PROJECT_DIR$/cropped/286.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cropped/287.png" beforeDir="false" afterPath="$PROJECT_DIR$/cropped/287.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cropped/288.png" beforeDir="false" afterPath="$PROJECT_DIR$/cropped/288.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cropped/289.png" beforeDir="false" afterPath="$PROJECT_DIR$/cropped/289.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cropped/29.png" beforeDir="false" afterPath="$PROJECT_DIR$/cropped/29.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cropped/290.png" beforeDir="false" afterPath="$PROJECT_DIR$/cropped/290.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cropped/291.png" beforeDir="false" afterPath="$PROJECT_DIR$/cropped/291.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cropped/292.png" beforeDir="false" afterPath="$PROJECT_DIR$/cropped/292.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cropped/293.png" beforeDir="false" afterPath="$PROJECT_DIR$/cropped/293.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cropped/294.png" beforeDir="false" afterPath="$PROJECT_DIR$/cropped/294.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cropped/295.png" beforeDir="false" afterPath="$PROJECT_DIR$/cropped/295.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cropped/296.png" beforeDir="false" afterPath="$PROJECT_DIR$/cropped/296.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cropped/297.png" beforeDir="false" afterPath="$PROJECT_DIR$/cropped/297.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cropped/298.png" beforeDir="false" afterPath="$PROJECT_DIR$/cropped/298.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cropped/299.png" beforeDir="false" afterPath="$PROJECT_DIR$/cropped/299.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cropped/30.png" beforeDir="false" afterPath="$PROJECT_DIR$/cropped/30.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cropped/300.png" beforeDir="false" afterPath="$PROJECT_DIR$/cropped/300.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cropped/301.png" beforeDir="false" afterPath="$PROJECT_DIR$/cropped/301.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cropped/302.png" beforeDir="false" afterPath="$PROJECT_DIR$/cropped/302.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cropped/303.png" beforeDir="false" afterPath="$PROJECT_DIR$/cropped/303.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cropped/304.png" beforeDir="false" afterPath="$PROJECT_DIR$/cropped/304.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cropped/305.png" beforeDir="false" afterPath="$PROJECT_DIR$/cropped/305.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cropped/306.png" beforeDir="false" afterPath="$PROJECT_DIR$/cropped/306.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cropped/307.png" beforeDir="false" afterPath="$PROJECT_DIR$/cropped/307.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cropped/308.png" beforeDir="false" afterPath="$PROJECT_DIR$/cropped/308.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cropped/309.png" beforeDir="false" afterPath="$PROJECT_DIR$/cropped/309.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cropped/31.png" beforeDir="false" afterPath="$PROJECT_DIR$/cropped/31.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cropped/310.png" beforeDir="false" afterPath="$PROJECT_DIR$/cropped/310.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cropped/311.png" beforeDir="false" afterPath="$PROJECT_DIR$/cropped/311.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cropped/312.png" beforeDir="false" afterPath="$PROJECT_DIR$/cropped/312.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cropped/313.png" beforeDir="false" afterPath="$PROJECT_DIR$/cropped/313.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cropped/314.png" beforeDir="false" afterPath="$PROJECT_DIR$/cropped/314.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cropped/315.png" beforeDir="false" afterPath="$PROJECT_DIR$/cropped/315.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cropped/316.png" beforeDir="false" afterPath="$PROJECT_DIR$/cropped/316.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cropped/317.png" beforeDir="false" afterPath="$PROJECT_DIR$/cropped/317.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cropped/318.png" beforeDir="false" afterPath="$PROJECT_DIR$/cropped/318.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cropped/319.png" beforeDir="false" afterPath="$PROJECT_DIR$/cropped/319.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cropped/32.png" beforeDir="false" afterPath="$PROJECT_DIR$/cropped/32.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cropped/320.png" beforeDir="false" afterPath="$PROJECT_DIR$/cropped/320.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cropped/321.png" beforeDir="false" afterPath="$PROJECT_DIR$/cropped/321.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cropped/322.png" beforeDir="false" afterPath="$PROJECT_DIR$/cropped/322.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cropped/323.png" beforeDir="false" afterPath="$PROJECT_DIR$/cropped/323.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cropped/324.png" beforeDir="false" afterPath="$PROJECT_DIR$/cropped/324.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cropped/325.png" beforeDir="false" afterPath="$PROJECT_DIR$/cropped/325.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cropped/326.png" beforeDir="false" afterPath="$PROJECT_DIR$/cropped/326.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cropped/327.png" beforeDir="false" afterPath="$PROJECT_DIR$/cropped/327.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cropped/328.png" beforeDir="false" afterPath="$PROJECT_DIR$/cropped/328.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cropped/329.png" beforeDir="false" afterPath="$PROJECT_DIR$/cropped/329.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cropped/33.png" beforeDir="false" afterPath="$PROJECT_DIR$/cropped/33.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cropped/330.png" beforeDir="false" afterPath="$PROJECT_DIR$/cropped/330.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cropped/331.png" beforeDir="false" afterPath="$PROJECT_DIR$/cropped/331.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cropped/332.png" beforeDir="false" afterPath="$PROJECT_DIR$/cropped/332.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cropped/333.png" beforeDir="false" afterPath="$PROJECT_DIR$/cropped/333.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cropped/334.png" beforeDir="false" afterPath="$PROJECT_DIR$/cropped/334.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cropped/335.png" beforeDir="false" afterPath="$PROJECT_DIR$/cropped/335.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cropped/336.png" beforeDir="false" afterPath="$PROJECT_DIR$/cropped/336.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cropped/337.png" beforeDir="false" afterPath="$PROJECT_DIR$/cropped/337.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cropped/338.png" beforeDir="false" afterPath="$PROJECT_DIR$/cropped/338.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cropped/34.png" beforeDir="false" afterPath="$PROJECT_DIR$/cropped/34.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cropped/35.png" beforeDir="false" afterPath="$PROJECT_DIR$/cropped/35.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cropped/36.png" beforeDir="false" afterPath="$PROJECT_DIR$/cropped/36.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cropped/37.png" beforeDir="false" afterPath="$PROJECT_DIR$/cropped/37.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cropped/38.png" beforeDir="false" afterPath="$PROJECT_DIR$/cropped/38.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cropped/39.png" beforeDir="false" afterPath="$PROJECT_DIR$/cropped/39.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cropped/4.png" beforeDir="false" afterPath="$PROJECT_DIR$/cropped/4.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cropped/40.png" beforeDir="false" afterPath="$PROJECT_DIR$/cropped/40.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cropped/41.png" beforeDir="false" afterPath="$PROJECT_DIR$/cropped/41.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cropped/42.png" beforeDir="false" afterPath="$PROJECT_DIR$/cropped/42.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cropped/43.png" beforeDir="false" afterPath="$PROJECT_DIR$/cropped/43.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cropped/44.png" beforeDir="false" afterPath="$PROJECT_DIR$/cropped/44.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cropped/45.png" beforeDir="false" afterPath="$PROJECT_DIR$/cropped/45.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cropped/46.png" beforeDir="false" afterPath="$PROJECT_DIR$/cropped/46.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cropped/47.png" beforeDir="false" afterPath="$PROJECT_DIR$/cropped/47.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cropped/48.png" beforeDir="false" afterPath="$PROJECT_DIR$/cropped/48.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cropped/49.png" beforeDir="false" afterPath="$PROJECT_DIR$/cropped/49.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cropped/5.png" beforeDir="false" afterPath="$PROJECT_DIR$/cropped/5.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cropped/50.png" beforeDir="false" afterPath="$PROJECT_DIR$/cropped/50.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cropped/51.png" beforeDir="false" afterPath="$PROJECT_DIR$/cropped/51.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cropped/52.png" beforeDir="false" afterPath="$PROJECT_DIR$/cropped/52.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cropped/53.png" beforeDir="false" afterPath="$PROJECT_DIR$/cropped/53.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cropped/54.png" beforeDir="false" afterPath="$PROJECT_DIR$/cropped/54.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cropped/55.png" beforeDir="false" afterPath="$PROJECT_DIR$/cropped/55.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cropped/56.png" beforeDir="false" afterPath="$PROJECT_DIR$/cropped/56.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cropped/57.png" beforeDir="false" afterPath="$PROJECT_DIR$/cropped/57.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cropped/58.png" beforeDir="false" afterPath="$PROJECT_DIR$/cropped/58.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cropped/59.png" beforeDir="false" afterPath="$PROJECT_DIR$/cropped/59.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cropped/6.png" beforeDir="false" afterPath="$PROJECT_DIR$/cropped/6.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cropped/61.png" beforeDir="false" afterPath="$PROJECT_DIR$/cropped/61.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cropped/63.png" beforeDir="false" afterPath="$PROJECT_DIR$/cropped/63.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cropped/64.png" beforeDir="false" afterPath="$PROJECT_DIR$/cropped/64.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cropped/65.png" beforeDir="false" afterPath="$PROJECT_DIR$/cropped/65.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cropped/66.png" beforeDir="false" afterPath="$PROJECT_DIR$/cropped/66.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cropped/67.png" beforeDir="false" afterPath="$PROJECT_DIR$/cropped/67.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cropped/68.png" beforeDir="false" afterPath="$PROJECT_DIR$/cropped/68.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cropped/69.png" beforeDir="false" afterPath="$PROJECT_DIR$/cropped/69.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cropped/7.png" beforeDir="false" afterPath="$PROJECT_DIR$/cropped/7.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cropped/70.png" beforeDir="false" afterPath="$PROJECT_DIR$/cropped/70.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cropped/71.png" beforeDir="false" afterPath="$PROJECT_DIR$/cropped/71.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cropped/72.png" beforeDir="false" afterPath="$PROJECT_DIR$/cropped/72.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cropped/74.png" beforeDir="false" afterPath="$PROJECT_DIR$/cropped/74.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cropped/75.png" beforeDir="false" afterPath="$PROJECT_DIR$/cropped/75.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cropped/76.png" beforeDir="false" afterPath="$PROJECT_DIR$/cropped/76.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cropped/77.png" beforeDir="false" afterPath="$PROJECT_DIR$/cropped/77.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cropped/78.png" beforeDir="false" afterPath="$PROJECT_DIR$/cropped/78.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cropped/79.png" beforeDir="false" afterPath="$PROJECT_DIR$/cropped/79.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cropped/8.png" beforeDir="false" afterPath="$PROJECT_DIR$/cropped/8.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cropped/80.png" beforeDir="false" afterPath="$PROJECT_DIR$/cropped/80.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cropped/81.png" beforeDir="false" afterPath="$PROJECT_DIR$/cropped/81.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cropped/82.png" beforeDir="false" afterPath="$PROJECT_DIR$/cropped/82.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cropped/83.png" beforeDir="false" afterPath="$PROJECT_DIR$/cropped/83.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cropped/84.png" beforeDir="false" afterPath="$PROJECT_DIR$/cropped/84.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cropped/85.png" beforeDir="false" afterPath="$PROJECT_DIR$/cropped/85.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cropped/86.png" beforeDir="false" afterPath="$PROJECT_DIR$/cropped/86.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cropped/87.png" beforeDir="false" afterPath="$PROJECT_DIR$/cropped/87.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cropped/88.png" beforeDir="false" afterPath="$PROJECT_DIR$/cropped/88.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cropped/89.png" beforeDir="false" afterPath="$PROJECT_DIR$/cropped/89.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cropped/9.png" beforeDir="false" afterPath="$PROJECT_DIR$/cropped/9.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cropped/90.png" beforeDir="false" afterPath="$PROJECT_DIR$/cropped/90.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cropped/91.png" beforeDir="false" afterPath="$PROJECT_DIR$/cropped/91.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cropped/92.png" beforeDir="false" afterPath="$PROJECT_DIR$/cropped/92.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cropped/93.png" beforeDir="false" afterPath="$PROJECT_DIR$/cropped/93.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cropped/94.png" beforeDir="false" afterPath="$PROJECT_DIR$/cropped/94.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cropped/95.png" beforeDir="false" afterPath="$PROJECT_DIR$/cropped/95.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cropped/96.png" beforeDir="false" afterPath="$PROJECT_DIR$/cropped/96.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cropped/97.png" beforeDir="false" afterPath="$PROJECT_DIR$/cropped/97.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cropped/98.png" beforeDir="false" afterPath="$PROJECT_DIR$/cropped/98.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cropped/99.png" beforeDir="false" afterPath="$PROJECT_DIR$/cropped/99.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/PNGParser.py" beforeDir="false" afterPath="$PROJECT_DIR$/PNGParser.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/colors.h" beforeDir="false" afterPath="$PROJECT_DIR$/colors.h" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/kirby.txt" beforeDir="false" afterPath="$PROJECT_DIR$/kirby.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/SpriteParser/Main.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/SpriteParser/Main.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../colors.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../kirby.txt" beforeDir="false" afterPath="$PROJECT_DIR$/../kirby.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/towerback.txt" beforeDir="false" afterPath="$PROJECT_DIR$/towerback.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../towerback.txt" beforeDir="false" afterPath="$PROJECT_DIR$/../towerback.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../../../entities.h" beforeDir="false" afterPath="$PROJECT_DIR$/../../../entities.h" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../../../kirby.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/../../../kirby.cpp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../../../main.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/../../../main.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../../metadata.h" beforeDir="false" afterPath="$PROJECT_DIR$/../../../metadata.h" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -379,7 +57,7 @@
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/png-misc" />
     <property name="project.structure.last.edited" value="Project" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.2" />
@@ -387,6 +65,7 @@
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\Allen\Documents\GitHub\EE319H-Final-Project-Simulation\data\sprites\SpriteParser\png-misc" />
       <recent name="C:\Users\Allen\Documents\GitHub\EE319H-Final-Project-Simulation\data\sprites\SpriteParser\gif-kirby" />
       <recent name="C:\Users\Allen\Documents\GitHub\EE319H-Final-Project-Simulation\data\sprites\SpriteParser" />
     </key>
@@ -403,7 +82,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Python.GIFParser">
+  <component name="RunManager" selected="Python.PNGParser">
     <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="Main" />
       <module name="SpriteParser" />
@@ -469,6 +148,7 @@
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="Python.PNGParser" />
         <item itemvalue="Python.GIFParser" />
       </list>
     </recent_temporary>
@@ -494,7 +174,7 @@
       <workItem from="1582822177325" duration="17597000" />
       <workItem from="1582955644224" duration="3439000" />
       <workItem from="1582995235629" duration="980000" />
-      <workItem from="1582997204048" duration="1275000" />
+      <workItem from="1582997204048" duration="5705000" />
     </task>
     <servers />
   </component>
@@ -518,6 +198,7 @@
     </option>
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
-    <SUITE FILE_PATH="coverage/SpriteParser$GIFParser.coverage" NAME="GIFParser Coverage Results" MODIFIED="1582997887549" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/SpriteParser$GIFParser.coverage" NAME="GIFParser Coverage Results" MODIFIED="1583031482055" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/SpriteParser$PNGParser.coverage" NAME="PNGParser Coverage Results" MODIFIED="1583031483933" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
   </component>
 </project>

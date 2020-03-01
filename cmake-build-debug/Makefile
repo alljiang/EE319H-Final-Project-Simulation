@@ -338,6 +338,33 @@ main.cpp.s:
 	$(MAKE) -f CMakeFiles\EE319K_Final_Project_Initial_Testing.dir\build.make CMakeFiles/EE319K_Final_Project_Initial_Testing.dir/main.cpp.s
 .PHONY : main.cpp.s
 
+stage.obj: stage.cpp.obj
+
+.PHONY : stage.obj
+
+# target to build an object file
+stage.cpp.obj:
+	$(MAKE) -f CMakeFiles\EE319K_Final_Project_Initial_Testing.dir\build.make CMakeFiles/EE319K_Final_Project_Initial_Testing.dir/stage.cpp.obj
+.PHONY : stage.cpp.obj
+
+stage.i: stage.cpp.i
+
+.PHONY : stage.i
+
+# target to preprocess a source file
+stage.cpp.i:
+	$(MAKE) -f CMakeFiles\EE319K_Final_Project_Initial_Testing.dir\build.make CMakeFiles/EE319K_Final_Project_Initial_Testing.dir/stage.cpp.i
+.PHONY : stage.cpp.i
+
+stage.s: stage.cpp.s
+
+.PHONY : stage.s
+
+# target to generate assembly for a file
+stage.cpp.s:
+	$(MAKE) -f CMakeFiles\EE319K_Final_Project_Initial_Testing.dir\build.make CMakeFiles/EE319K_Final_Project_Initial_Testing.dir/stage.cpp.s
+.PHONY : stage.cpp.s
+
 utils.obj: utils.cpp.obj
 
 .PHONY : utils.obj
@@ -398,6 +425,9 @@ help:
 	@echo ... main.obj
 	@echo ... main.i
 	@echo ... main.s
+	@echo ... stage.obj
+	@echo ... stage.i
+	@echo ... stage.s
 	@echo ... utils.obj
 	@echo ... utils.i
 	@echo ... utils.s

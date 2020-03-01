@@ -26,9 +26,13 @@ imageDirectory = "./png-misc/"
 
 # color index list
 indexed_rgb = list()
-colors = open("colors.txt", 'r')
+colors = open("colors.h", 'r')
+colors.readline()
+colors.readline()
+colors.readline()
+colors.readline()
 colorsRawLine = colors.readline()
-colorsRawLine = colorsRawLine[colorsRawLine.index("{") + 1:len(colorsRawLine)-3]  # trim out brackets
+colorsRawLine = colorsRawLine[colorsRawLine.index("{")+1:colorsRawLine.index("}")]  # trim out brackets
 if len(colorsRawLine) != 0:
     colorsSplit = colorsRawLine.split(',')
     for c in colorsSplit:
@@ -68,12 +72,16 @@ for filename in os.listdir(os.getcwd() + imageDirectory):
 # output.write("\n".encode())
 
 # output colors.txt file
-colors = open("colors.txt", 'w')
-colors.write('const uint32_t colors[' + str(len(indexed_rgb)) + '] = {')
+colors = open("colors.h", 'w')
+colors.write('#include <stdint.h>\n'
+             '#ifndef EE319K_FINAL_PROJECT_INITIAL_TESTING_COLORS_H\n' +\
+             '#define EE319K_FINAL_PROJECT_INITIAL_TESTING_COLORS_H\n\n' +\
+'const uint32_t colors[' + str(len(indexed_rgb)) + '] = {')
 colors.write(str(indexed_rgb[0]))
 for i in range(1, len(indexed_rgb)):
     colors.write(',')
     colors.write(str(indexed_rgb[i]))
 
-colors.write('};\n')
+colors.write('};\n\n')
+colors.write('#endif //EE319K_FINAL_PROJECT_INITIAL_TESTING_COLORS_H\n')
 colors.close()

@@ -1,0 +1,7 @@
+Final destination:
+
+    Top floor: (38, 104) to (280, 104)
+    Left wall: (38, 104) to (38, 70)
+    Right wall: (280, 104) to (280, 70)
+    Left slope: (38, 70) to (159, -5)      ax+b     a=-.6198 b=93.55
+    Right slope: (159, -5) to (280, 70)     ax+b    a=.6198  b=-103.55

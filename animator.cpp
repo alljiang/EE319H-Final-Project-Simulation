@@ -17,7 +17,7 @@ using namespace std;
 
 uint8_t buffer[1000];   // it's big because i can. if this is too big, lower it down to like 700
 uint8_t smallBuffer2[300];
-int16_t colorIndexes[321];  // a color index of -1 means 'do not change'
+int32_t colorIndexes[321];  // a color index of -1 means 'do not change'
 uint8_t layer[321];
 
 uint32_t persistentBackgroundMemLocation;
@@ -308,7 +308,7 @@ void animator_initialize() {
     persistentBackgroundMemLocation = SRAM_allocateMemory(241*321*2);
 }
 
-void animator_readPersistentSprite(char* spriteName, uint16_t x, uint8_t y) {
+void animator_readPersistentSprite(const char* spriteName, uint16_t x, uint8_t y) {
     char filename[] = "../data/sprites/";
     char fileType[] = ".txt";
 

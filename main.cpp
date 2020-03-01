@@ -11,6 +11,7 @@
 #include "metadata.h"
 #include "SRAM.h"
 #include "entities.h"
+#include "stage.h"
 
 using namespace std;
 using namespace chrono;
@@ -19,6 +20,7 @@ SDL_Event event;
 
 Player* p1;
 Player* p2;
+Stage stage;
 
 Kirby k1;
 Kirby k2;
@@ -35,16 +37,19 @@ long long lastLoopMillis;
 void startup() {
     animator_initialize();
 
+    stage.initialize(0);
+
     p1 = &k1;
     p1->setPlayer(1);
+    p1->setX(stage.getStartX(1));
+    p1->setY(stage.getStartY(1));
 
     p2 = &k2;
     k2.setPlayer(2);
+    p2->setX(stage.getStartX(2));
+    p2->setY(stage.getStartY(2));
 
     UART_readCharacterSDCard(0);
-
-    char str[] = "towerback";
-    animator_readPersistentSprite(str, 0, 0);
 }
 
 //  continually loops
@@ -62,10 +67,11 @@ void loop() {
     }
     if(millis() - t1 > 16) {
         t1 = millis();
+        stage.update();
         p1->controlLoop(
                 getJoystick_h(1), getJoystick_v(1),
                 getBtn_a(1), getBtn_b(1),
-                getBtn_l(1) || getBtn_r(1)
+                getBtn_l(1) || getBtn_r(1), &stage
                 );
 
 //        p2->controlLoop(

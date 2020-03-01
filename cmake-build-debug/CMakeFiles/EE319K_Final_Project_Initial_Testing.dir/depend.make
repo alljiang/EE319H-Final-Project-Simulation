@@ -125,6 +125,7 @@ CMakeFiles/EE319K_Final_Project_Initial_Testing.dir/kirby.cpp.obj: ../animator.h
 CMakeFiles/EE319K_Final_Project_Initial_Testing.dir/kirby.cpp.obj: ../entities.h
 CMakeFiles/EE319K_Final_Project_Initial_Testing.dir/kirby.cpp.obj: ../kirby.cpp
 CMakeFiles/EE319K_Final_Project_Initial_Testing.dir/kirby.cpp.obj: ../metadata.h
+CMakeFiles/EE319K_Final_Project_Initial_Testing.dir/kirby.cpp.obj: ../stage.h
 CMakeFiles/EE319K_Final_Project_Initial_Testing.dir/kirby.cpp.obj: ../utils.h
 
 CMakeFiles/EE319K_Final_Project_Initial_Testing.dir/main.cpp.obj: C:/Program\ Files/mingw-w64/x86_64-8.1.0-posix-seh-rt_v6-rev0/mingw64/include/SDL2/SDL.h
@@ -180,7 +181,12 @@ CMakeFiles/EE319K_Final_Project_Initial_Testing.dir/main.cpp.obj: ../controller.
 CMakeFiles/EE319K_Final_Project_Initial_Testing.dir/main.cpp.obj: ../entities.h
 CMakeFiles/EE319K_Final_Project_Initial_Testing.dir/main.cpp.obj: ../main.cpp
 CMakeFiles/EE319K_Final_Project_Initial_Testing.dir/main.cpp.obj: ../metadata.h
+CMakeFiles/EE319K_Final_Project_Initial_Testing.dir/main.cpp.obj: ../stage.h
 CMakeFiles/EE319K_Final_Project_Initial_Testing.dir/main.cpp.obj: ../utils.h
+
+CMakeFiles/EE319K_Final_Project_Initial_Testing.dir/stage.cpp.obj: ../animator.h
+CMakeFiles/EE319K_Final_Project_Initial_Testing.dir/stage.cpp.obj: ../stage.cpp
+CMakeFiles/EE319K_Final_Project_Initial_Testing.dir/stage.cpp.obj: ../stage.h
 
 CMakeFiles/EE319K_Final_Project_Initial_Testing.dir/utils.cpp.obj: ../UART.h
 CMakeFiles/EE319K_Final_Project_Initial_Testing.dir/utils.cpp.obj: ../animator.h

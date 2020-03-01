@@ -14,8 +14,14 @@ protected:
     double x; //  [0, 320]
     double y;  //  [0, 240]
     double yVel;    //  pps
+    double xVel;
 
     long long l_time;   //  last loop time millis
+
+public:
+    void setX(double newX) { x = newX; }
+    void setY(double newY) { y = newY; }
+
 };
 
 class Player: public Entity {
@@ -58,7 +64,7 @@ public:
     void setPlayer(uint8_t p) { player = p; }
 
     //  general control loop
-    virtual void controlLoop(double joyH, double joyV, bool btnA, bool btnB, bool shield) = 0; //  called every update
+    virtual void controlLoop(double joyH, double joyV, bool btnA, bool btnB, bool shield, class Stage* stage) = 0; //  called every update
     virtual void updateLastValues(double joyH, double joyV, bool btnA, bool btnB, bool shield) = 0;
 
 };
@@ -76,6 +82,8 @@ class Kirby: public Player {
 #define ACTION_JABDOUBLE 7
 #define ACTION_JABREPEATING 8
 
+#define STAGE_X_OFFSET 18
+
 protected:
     //  animation config
     const uint8_t charIndex = 0;
@@ -84,11 +92,15 @@ protected:
     //  physics config
     const double groundSpeed = 30;  // pps
     const double airSpeed = 1;
+
     const double initialJumpSpeed = 1.8;
     const double repeatedJumpSpeed = 1.55;
     const double gravityRising = 0.07;
     const double gravityFalling = 0.1;
     const double maxFallingVelocity = -2.3;
+
+    const double airResistance = 0.02;
+    const double maxHorizontalSpeed = 20;
 
     //  standing, resting
     long long lastBlink{0};
@@ -100,7 +112,7 @@ protected:
 
 public:
     //  general control loop
-    void controlLoop(double joyH, double joyV, bool btnA, bool btnB, bool shield) override; //  called every update
+    void controlLoop(double joyH, double joyV, bool btnA, bool btnB, bool shield, class Stage* stage) override; //  called every update
     void updateLastValues(double joyH, double joyV, bool btnA, bool btnB, bool shield) override ;
 };
 
