@@ -287,6 +287,8 @@ void animator_animate(uint8_t charIndex, uint8_t animationIndex,
     spriteSendables[slot].currentframeLength = 0;
     spriteSendables[slot].mirrored = mirrored;
 
+//    if(mirrored) spriteSendables[slot].x
+
     if(spriteSendables[slot].persistent) {
         //  add to persistent array in SRAM
 

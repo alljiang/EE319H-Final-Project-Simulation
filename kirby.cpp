@@ -22,6 +22,8 @@ void Kirby::controlLoop(double joyH, double joyV, bool btnA, bool btnB, bool shi
     if(!l_shield && shield) l_shieldRise_t = currentTime;
     else if(l_shield && !shield) l_shieldFall_t = currentTime;
 
+    int16_t x_mirroredOffset = 0;
+
     //  first, follow up on any currently performing actions
 
     //  movement
@@ -127,6 +129,8 @@ void Kirby::controlLoop(double joyH, double joyV, bool btnA, bool btnB, bool shi
     //  regular attacks, ground
     else if(action == ACTION_JABSINGLE) {
         animationIndex = 10;
+        mirrored = l_mirrored;
+        x_mirroredOffset = -22;
 
         framePeriod = 3;
         if(frameLengthCounter++ > framePeriod) {
@@ -136,10 +140,13 @@ void Kirby::controlLoop(double joyH, double joyV, bool btnA, bool btnB, bool shi
         if(frameIndex >= 3) {
             l_action = ACTION_JABSINGLE;
             action = ACTION_RESTING;
+            x_mirroredOffset = 0;
         }
     }
     else if(action == ACTION_JABDOUBLE) {
         animationIndex = 10;
+        mirrored = l_mirrored;
+        x_mirroredOffset = -22;
 
         framePeriod = 4;
         if(frameLengthCounter++ > framePeriod) {
@@ -149,11 +156,13 @@ void Kirby::controlLoop(double joyH, double joyV, bool btnA, bool btnB, bool shi
         if(frameIndex >= 5) {
             l_action = ACTION_JABDOUBLE;
             action = ACTION_RESTING;
+            x_mirroredOffset = 0;
         }
     }
     else if(action == ACTION_JABREPEATING) {
-        printf("jabrepeat\n");
         animationIndex = 10;
+        mirrored = l_mirrored;
+        x_mirroredOffset = -22;
 
         disabledFrames = 2;
         framePeriod = 3;
@@ -167,6 +176,7 @@ void Kirby::controlLoop(double joyH, double joyV, bool btnA, bool btnB, bool shi
         }
         if(currentTime-l_btnARise_t > 500) {
             l_action = ACTION_JABREPEATING;
+            x_mirroredOffset = 0;
             action = ACTION_RESTING;
             l_repeatJab = currentTime;
 
@@ -212,8 +222,8 @@ void Kirby::controlLoop(double joyH, double joyV, bool btnA, bool btnB, bool shi
     //  attacks
     //  single jab
 
-    if(disabledFrames == 0 && currentTime - l_singleJab > 500 &&
-    currentTime - l_doubleJab > 500 &&
+    if(disabledFrames == 0 && currentTime - l_singleJab > 300 &&
+    currentTime - l_doubleJab > 300 &&
     (action == ACTION_RESTING) && currentTime - l_btnARise_t == 0) {
         action = ACTION_JABSINGLE;
         disabledFrames = 9;
@@ -222,19 +232,17 @@ void Kirby::controlLoop(double joyH, double joyV, bool btnA, bool btnB, bool shi
         l_singleJab = currentTime;
     }
     //  double jab
-    else if(disabledFrames == 0 &&
-    (currentTime - l_singleJab < 500) && currentTime - l_btnARise_t == 0) {
+    else if(disabledFrames == 0 && (currentTime - l_doubleJab > 300) &&
+    (currentTime - l_singleJab < 300) && currentTime - l_btnARise_t == 0) {
         action = ACTION_JABDOUBLE;
         disabledFrames = 8;
         frameIndex = 3;
         frameLengthCounter = 0;
-        l_doubleJab = millis();
-//        l_doubleJab = currentTime;
-/*      TODO:   w h a t  t h e  h e c k */
+        l_doubleJab = currentTime;
     }
     //  repeating jab
     else if(disabledFrames == 0 && action != ACTION_JABREPEATING &&
-    (currentTime - l_doubleJab < 500) && currentTime - l_btnARise_t == 0) {
+    (currentTime - l_doubleJab < 400) && currentTime - l_btnARise_t == 0) {
         action = ACTION_JABREPEATING;
         printf("repeat\n");
         disabledFrames = 18;
@@ -282,13 +290,15 @@ void Kirby::controlLoop(double joyH, double joyV, bool btnA, bool btnB, bool shi
     if(yVel < maxFallingVelocity) yVel = maxFallingVelocity;
     y += yVel;
 
+    if(!mirrored) x_mirroredOffset = 0;
+
     SpriteSendable s;
     s.charIndex = charIndex;
     s.animationIndex = animationIndex;
     s.framePeriod = 1;
     s.frame = frameIndex;
     s.persistent = false;
-    s.x = (int16_t) x;
+    s.x = (int16_t) x + x_mirroredOffset;
     s.y = (int16_t) y;
     s.layer = LAYER_CHARACTER;
     s.mirrored = mirrored;
