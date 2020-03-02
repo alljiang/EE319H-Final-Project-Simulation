@@ -38,19 +38,19 @@ cmake_force:
 SHELL = cmd.exe
 
 # The CMake executable.
-CMAKE_COMMAND = "C:\Program Files\JetBrains\CLion 2019.3.3\bin\cmake\win\bin\cmake.exe"
+CMAKE_COMMAND = "C:\Program Files\JetBrains\CLion 2019.2\bin\cmake\win\bin\cmake.exe"
 
 # The command to remove a file.
-RM = "C:\Program Files\JetBrains\CLion 2019.3.3\bin\cmake\win\bin\cmake.exe" -E remove -f
+RM = "C:\Program Files\JetBrains\CLion 2019.2\bin\cmake\win\bin\cmake.exe" -E remove -f
 
 # Escaping for special characters.
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = C:\Users\Allen\Documents\GitHub\EE319H-Final-Project-Initial-Testing
+CMAKE_SOURCE_DIR = C:\Users\Allen\Documents\GitHub\EE319H-Final-Project-Simulation
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = C:\Users\Allen\Documents\GitHub\EE319H-Final-Project-Initial-Testing\cmake-build-debug
+CMAKE_BINARY_DIR = C:\Users\Allen\Documents\GitHub\EE319H-Final-Project-Simulation\cmake-build-debug
 
 #=============================================================================
 # Targets provided globally by CMake.
@@ -58,7 +58,7 @@ CMAKE_BINARY_DIR = C:\Users\Allen\Documents\GitHub\EE319H-Final-Project-Initial-
 # Special rule for the target edit_cache
 edit_cache:
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "No interactive CMake dialog available..."
-	"C:\Program Files\JetBrains\CLion 2019.3.3\bin\cmake\win\bin\cmake.exe" -E echo "No interactive CMake dialog available."
+	"C:\Program Files\JetBrains\CLion 2019.2\bin\cmake\win\bin\cmake.exe" -E echo "No interactive CMake dialog available."
 .PHONY : edit_cache
 
 # Special rule for the target edit_cache
@@ -69,7 +69,7 @@ edit_cache/fast: edit_cache
 # Special rule for the target rebuild_cache
 rebuild_cache:
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Running CMake to regenerate build system..."
-	"C:\Program Files\JetBrains\CLion 2019.3.3\bin\cmake\win\bin\cmake.exe" -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR)
+	"C:\Program Files\JetBrains\CLion 2019.2\bin\cmake\win\bin\cmake.exe" -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR)
 .PHONY : rebuild_cache
 
 # Special rule for the target rebuild_cache
@@ -79,9 +79,9 @@ rebuild_cache/fast: rebuild_cache
 
 # The main all target
 all: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start C:\Users\Allen\Documents\GitHub\EE319H-Final-Project-Initial-Testing\cmake-build-debug\CMakeFiles C:\Users\Allen\Documents\GitHub\EE319H-Final-Project-Initial-Testing\cmake-build-debug\CMakeFiles\progress.marks
+	$(CMAKE_COMMAND) -E cmake_progress_start C:\Users\Allen\Documents\GitHub\EE319H-Final-Project-Simulation\cmake-build-debug\CMakeFiles C:\Users\Allen\Documents\GitHub\EE319H-Final-Project-Simulation\cmake-build-debug\CMakeFiles\progress.marks
 	$(MAKE) -f CMakeFiles\Makefile2 all
-	$(CMAKE_COMMAND) -E cmake_progress_start C:\Users\Allen\Documents\GitHub\EE319H-Final-Project-Initial-Testing\cmake-build-debug\CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start C:\Users\Allen\Documents\GitHub\EE319H-Final-Project-Simulation\cmake-build-debug\CMakeFiles 0
 .PHONY : all
 
 # The main clean target
@@ -203,6 +203,33 @@ SRAM.cpp.s:
 	$(MAKE) -f CMakeFiles\EE319K_Final_Project_Initial_Testing.dir\build.make CMakeFiles/EE319K_Final_Project_Initial_Testing.dir/SRAM.cpp.s
 .PHONY : SRAM.cpp.s
 
+UART.obj: UART.cpp.obj
+
+.PHONY : UART.obj
+
+# target to build an object file
+UART.cpp.obj:
+	$(MAKE) -f CMakeFiles\EE319K_Final_Project_Initial_Testing.dir\build.make CMakeFiles/EE319K_Final_Project_Initial_Testing.dir/UART.cpp.obj
+.PHONY : UART.cpp.obj
+
+UART.i: UART.cpp.i
+
+.PHONY : UART.i
+
+# target to preprocess a source file
+UART.cpp.i:
+	$(MAKE) -f CMakeFiles\EE319K_Final_Project_Initial_Testing.dir\build.make CMakeFiles/EE319K_Final_Project_Initial_Testing.dir/UART.cpp.i
+.PHONY : UART.cpp.i
+
+UART.s: UART.cpp.s
+
+.PHONY : UART.s
+
+# target to generate assembly for a file
+UART.cpp.s:
+	$(MAKE) -f CMakeFiles\EE319K_Final_Project_Initial_Testing.dir\build.make CMakeFiles/EE319K_Final_Project_Initial_Testing.dir/UART.cpp.s
+.PHONY : UART.cpp.s
+
 animator.obj: animator.cpp.obj
 
 .PHONY : animator.obj
@@ -257,6 +284,33 @@ controller.cpp.s:
 	$(MAKE) -f CMakeFiles\EE319K_Final_Project_Initial_Testing.dir\build.make CMakeFiles/EE319K_Final_Project_Initial_Testing.dir/controller.cpp.s
 .PHONY : controller.cpp.s
 
+kirby.obj: kirby.cpp.obj
+
+.PHONY : kirby.obj
+
+# target to build an object file
+kirby.cpp.obj:
+	$(MAKE) -f CMakeFiles\EE319K_Final_Project_Initial_Testing.dir\build.make CMakeFiles/EE319K_Final_Project_Initial_Testing.dir/kirby.cpp.obj
+.PHONY : kirby.cpp.obj
+
+kirby.i: kirby.cpp.i
+
+.PHONY : kirby.i
+
+# target to preprocess a source file
+kirby.cpp.i:
+	$(MAKE) -f CMakeFiles\EE319K_Final_Project_Initial_Testing.dir\build.make CMakeFiles/EE319K_Final_Project_Initial_Testing.dir/kirby.cpp.i
+.PHONY : kirby.cpp.i
+
+kirby.s: kirby.cpp.s
+
+.PHONY : kirby.s
+
+# target to generate assembly for a file
+kirby.cpp.s:
+	$(MAKE) -f CMakeFiles\EE319K_Final_Project_Initial_Testing.dir\build.make CMakeFiles/EE319K_Final_Project_Initial_Testing.dir/kirby.cpp.s
+.PHONY : kirby.cpp.s
+
 main.obj: main.cpp.obj
 
 .PHONY : main.obj
@@ -284,6 +338,60 @@ main.cpp.s:
 	$(MAKE) -f CMakeFiles\EE319K_Final_Project_Initial_Testing.dir\build.make CMakeFiles/EE319K_Final_Project_Initial_Testing.dir/main.cpp.s
 .PHONY : main.cpp.s
 
+stage.obj: stage.cpp.obj
+
+.PHONY : stage.obj
+
+# target to build an object file
+stage.cpp.obj:
+	$(MAKE) -f CMakeFiles\EE319K_Final_Project_Initial_Testing.dir\build.make CMakeFiles/EE319K_Final_Project_Initial_Testing.dir/stage.cpp.obj
+.PHONY : stage.cpp.obj
+
+stage.i: stage.cpp.i
+
+.PHONY : stage.i
+
+# target to preprocess a source file
+stage.cpp.i:
+	$(MAKE) -f CMakeFiles\EE319K_Final_Project_Initial_Testing.dir\build.make CMakeFiles/EE319K_Final_Project_Initial_Testing.dir/stage.cpp.i
+.PHONY : stage.cpp.i
+
+stage.s: stage.cpp.s
+
+.PHONY : stage.s
+
+# target to generate assembly for a file
+stage.cpp.s:
+	$(MAKE) -f CMakeFiles\EE319K_Final_Project_Initial_Testing.dir\build.make CMakeFiles/EE319K_Final_Project_Initial_Testing.dir/stage.cpp.s
+.PHONY : stage.cpp.s
+
+utils.obj: utils.cpp.obj
+
+.PHONY : utils.obj
+
+# target to build an object file
+utils.cpp.obj:
+	$(MAKE) -f CMakeFiles\EE319K_Final_Project_Initial_Testing.dir\build.make CMakeFiles/EE319K_Final_Project_Initial_Testing.dir/utils.cpp.obj
+.PHONY : utils.cpp.obj
+
+utils.i: utils.cpp.i
+
+.PHONY : utils.i
+
+# target to preprocess a source file
+utils.cpp.i:
+	$(MAKE) -f CMakeFiles\EE319K_Final_Project_Initial_Testing.dir\build.make CMakeFiles/EE319K_Final_Project_Initial_Testing.dir/utils.cpp.i
+.PHONY : utils.cpp.i
+
+utils.s: utils.cpp.s
+
+.PHONY : utils.s
+
+# target to generate assembly for a file
+utils.cpp.s:
+	$(MAKE) -f CMakeFiles\EE319K_Final_Project_Initial_Testing.dir\build.make CMakeFiles/EE319K_Final_Project_Initial_Testing.dir/utils.cpp.s
+.PHONY : utils.cpp.s
+
 # Help Target
 help:
 	@echo The following are some of the valid targets for this Makefile:
@@ -302,15 +410,27 @@ help:
 	@echo ... SRAM.obj
 	@echo ... SRAM.i
 	@echo ... SRAM.s
+	@echo ... UART.obj
+	@echo ... UART.i
+	@echo ... UART.s
 	@echo ... animator.obj
 	@echo ... animator.i
 	@echo ... animator.s
 	@echo ... controller.obj
 	@echo ... controller.i
 	@echo ... controller.s
+	@echo ... kirby.obj
+	@echo ... kirby.i
+	@echo ... kirby.s
 	@echo ... main.obj
 	@echo ... main.i
 	@echo ... main.s
+	@echo ... stage.obj
+	@echo ... stage.i
+	@echo ... stage.s
+	@echo ... utils.obj
+	@echo ... utils.i
+	@echo ... utils.s
 .PHONY : help
 
 

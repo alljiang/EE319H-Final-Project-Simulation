@@ -48,6 +48,9 @@ CMakeFiles/EE319K_Final_Project_Initial_Testing.dir/LCD.cpp.obj: C:/Program\ Fil
 CMakeFiles/EE319K_Final_Project_Initial_Testing.dir/LCD.cpp.obj: C:/Program\ Files/mingw-w64/x86_64-8.1.0-posix-seh-rt_v6-rev0/mingw64/include/SDL2/close_code.h
 CMakeFiles/EE319K_Final_Project_Initial_Testing.dir/LCD.cpp.obj: ../LCD.cpp
 CMakeFiles/EE319K_Final_Project_Initial_Testing.dir/LCD.cpp.obj: ../LCD.h
+CMakeFiles/EE319K_Final_Project_Initial_Testing.dir/LCD.cpp.obj: ../colors.h
+CMakeFiles/EE319K_Final_Project_Initial_Testing.dir/LCD.cpp.obj: ../metadata.h
+CMakeFiles/EE319K_Final_Project_Initial_Testing.dir/LCD.cpp.obj: ../utils.h
 
 CMakeFiles/EE319K_Final_Project_Initial_Testing.dir/SDCard.cpp.obj: ../SDCard.cpp
 CMakeFiles/EE319K_Final_Project_Initial_Testing.dir/SDCard.cpp.obj: ../SDCard.h
@@ -55,10 +58,17 @@ CMakeFiles/EE319K_Final_Project_Initial_Testing.dir/SDCard.cpp.obj: ../SDCard.h
 CMakeFiles/EE319K_Final_Project_Initial_Testing.dir/SRAM.cpp.obj: ../SRAM.cpp
 CMakeFiles/EE319K_Final_Project_Initial_Testing.dir/SRAM.cpp.obj: ../SRAM.h
 
+CMakeFiles/EE319K_Final_Project_Initial_Testing.dir/UART.cpp.obj: ../UART.cpp
+CMakeFiles/EE319K_Final_Project_Initial_Testing.dir/UART.cpp.obj: ../UART.h
+CMakeFiles/EE319K_Final_Project_Initial_Testing.dir/UART.cpp.obj: ../animator.h
+CMakeFiles/EE319K_Final_Project_Initial_Testing.dir/UART.cpp.obj: ../metadata.h
+
+CMakeFiles/EE319K_Final_Project_Initial_Testing.dir/animator.cpp.obj: ../LCD.h
 CMakeFiles/EE319K_Final_Project_Initial_Testing.dir/animator.cpp.obj: ../SDCard.h
 CMakeFiles/EE319K_Final_Project_Initial_Testing.dir/animator.cpp.obj: ../SRAM.h
 CMakeFiles/EE319K_Final_Project_Initial_Testing.dir/animator.cpp.obj: ../animator.cpp
 CMakeFiles/EE319K_Final_Project_Initial_Testing.dir/animator.cpp.obj: ../animator.h
+CMakeFiles/EE319K_Final_Project_Initial_Testing.dir/animator.cpp.obj: ../colors.h
 CMakeFiles/EE319K_Final_Project_Initial_Testing.dir/animator.cpp.obj: ../metadata.h
 CMakeFiles/EE319K_Final_Project_Initial_Testing.dir/animator.cpp.obj: ../utils.h
 
@@ -110,6 +120,14 @@ CMakeFiles/EE319K_Final_Project_Initial_Testing.dir/controller.cpp.obj: C:/Progr
 CMakeFiles/EE319K_Final_Project_Initial_Testing.dir/controller.cpp.obj: ../controller.cpp
 CMakeFiles/EE319K_Final_Project_Initial_Testing.dir/controller.cpp.obj: ../controller.h
 
+CMakeFiles/EE319K_Final_Project_Initial_Testing.dir/kirby.cpp.obj: ../UART.h
+CMakeFiles/EE319K_Final_Project_Initial_Testing.dir/kirby.cpp.obj: ../animator.h
+CMakeFiles/EE319K_Final_Project_Initial_Testing.dir/kirby.cpp.obj: ../entities.h
+CMakeFiles/EE319K_Final_Project_Initial_Testing.dir/kirby.cpp.obj: ../kirby.cpp
+CMakeFiles/EE319K_Final_Project_Initial_Testing.dir/kirby.cpp.obj: ../metadata.h
+CMakeFiles/EE319K_Final_Project_Initial_Testing.dir/kirby.cpp.obj: ../stage.h
+CMakeFiles/EE319K_Final_Project_Initial_Testing.dir/kirby.cpp.obj: ../utils.h
+
 CMakeFiles/EE319K_Final_Project_Initial_Testing.dir/main.cpp.obj: C:/Program\ Files/mingw-w64/x86_64-8.1.0-posix-seh-rt_v6-rev0/mingw64/include/SDL2/SDL.h
 CMakeFiles/EE319K_Final_Project_Initial_Testing.dir/main.cpp.obj: C:/Program\ Files/mingw-w64/x86_64-8.1.0-posix-seh-rt_v6-rev0/mingw64/include/SDL2/SDL_assert.h
 CMakeFiles/EE319K_Final_Project_Initial_Testing.dir/main.cpp.obj: C:/Program\ Files/mingw-w64/x86_64-8.1.0-posix-seh-rt_v6-rev0/mingw64/include/SDL2/SDL_atomic.h
@@ -156,8 +174,23 @@ CMakeFiles/EE319K_Final_Project_Initial_Testing.dir/main.cpp.obj: C:/Program\ Fi
 CMakeFiles/EE319K_Final_Project_Initial_Testing.dir/main.cpp.obj: C:/Program\ Files/mingw-w64/x86_64-8.1.0-posix-seh-rt_v6-rev0/mingw64/include/SDL2/begin_code.h
 CMakeFiles/EE319K_Final_Project_Initial_Testing.dir/main.cpp.obj: C:/Program\ Files/mingw-w64/x86_64-8.1.0-posix-seh-rt_v6-rev0/mingw64/include/SDL2/close_code.h
 CMakeFiles/EE319K_Final_Project_Initial_Testing.dir/main.cpp.obj: ../LCD.h
+CMakeFiles/EE319K_Final_Project_Initial_Testing.dir/main.cpp.obj: ../SRAM.h
+CMakeFiles/EE319K_Final_Project_Initial_Testing.dir/main.cpp.obj: ../UART.h
 CMakeFiles/EE319K_Final_Project_Initial_Testing.dir/main.cpp.obj: ../animator.h
 CMakeFiles/EE319K_Final_Project_Initial_Testing.dir/main.cpp.obj: ../controller.h
+CMakeFiles/EE319K_Final_Project_Initial_Testing.dir/main.cpp.obj: ../entities.h
 CMakeFiles/EE319K_Final_Project_Initial_Testing.dir/main.cpp.obj: ../main.cpp
+CMakeFiles/EE319K_Final_Project_Initial_Testing.dir/main.cpp.obj: ../metadata.h
+CMakeFiles/EE319K_Final_Project_Initial_Testing.dir/main.cpp.obj: ../stage.h
 CMakeFiles/EE319K_Final_Project_Initial_Testing.dir/main.cpp.obj: ../utils.h
+
+CMakeFiles/EE319K_Final_Project_Initial_Testing.dir/stage.cpp.obj: ../animator.h
+CMakeFiles/EE319K_Final_Project_Initial_Testing.dir/stage.cpp.obj: ../stage.cpp
+CMakeFiles/EE319K_Final_Project_Initial_Testing.dir/stage.cpp.obj: ../stage.h
+
+CMakeFiles/EE319K_Final_Project_Initial_Testing.dir/utils.cpp.obj: ../UART.h
+CMakeFiles/EE319K_Final_Project_Initial_Testing.dir/utils.cpp.obj: ../animator.h
+CMakeFiles/EE319K_Final_Project_Initial_Testing.dir/utils.cpp.obj: ../metadata.h
+CMakeFiles/EE319K_Final_Project_Initial_Testing.dir/utils.cpp.obj: ../utils.cpp
+CMakeFiles/EE319K_Final_Project_Initial_Testing.dir/utils.cpp.obj: ../utils.h
 

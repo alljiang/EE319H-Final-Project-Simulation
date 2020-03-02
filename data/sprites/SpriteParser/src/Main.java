@@ -14,7 +14,7 @@ public class Main
 
     static String filename = "kirby.png";
     static Pixel background = new Pixel(0xffaeaeff);
-    static int cropTolerance = 1;  // pixels
+    static int cropTolerance = 2;  // pixels
     static int minimumDiagonalLength = 1;
 
     static int width, height;

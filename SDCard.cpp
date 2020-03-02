@@ -10,14 +10,14 @@ using namespace std;
 
 FILE *fp;
 
-void SD_read(char* buffer, uint16_t bytesToRead) {
+void SD_read(uint32_t bytesToRead, uint8_t* buffer) {
     if (fp == NULL) {
         printf("FILE ERROR");
-        while (1);  // file is not open! program will stop here
+        return;
     }
-
-    char lineBuffer[10000];
-    fread(buffer, 1, bytesToRead, fp);
+    for(int i = 0; i < bytesToRead; i++) {
+        fread(buffer + i, 1, 1, fp);
+    }
 }
 
 char SD_readNextChar() {
@@ -27,9 +27,10 @@ char SD_readNextChar() {
 }
 
 void SD_openFile(char* filename) {
-    fp = fopen(filename, "r");
+    fp = fopen(filename, "rb");
 }
 
 void SD_closeFile() {
-    fclose(fp);
+    if(fp != NULL)
+        fclose(fp);
 }

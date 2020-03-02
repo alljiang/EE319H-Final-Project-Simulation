@@ -3,19 +3,20 @@
 //
 
 #include <cstdint>
+#include "stdio.h"
 #include "SDL.h"
 #include "controller.h"
 
-float joystick1_h = 0;  // A, D, Left, Right
-float joystick1_v = 0;  // W, S, Up, Down
+double joystick1_h = 0;  // A, D, Left, Right
+double joystick1_v = 0;  // W, S, Up, Down
 bool btn1_a;    // V
 bool btn1_b;    // B
 bool btn1_start;    // Space
 bool btn1_l;    // LShift
 bool btn1_r;    // RShift
 
-float joystick2_h = 0;  //  J, L
-float joystick2_v = 0;  // I, K
+double joystick2_h = 0;  //  J, L
+double joystick2_v = 0;  // I, K
 bool btn2_a;    //  .
 bool btn2_b;    // /
 bool btn2_start;    // ,
@@ -50,13 +51,13 @@ void controller_updateController() {
     if(keys[SDL_SCANCODE_DOWN])
         joystick1_v -= 0.3;
     if(keys[SDL_SCANCODE_W])
-        joystick1_v += 1.0;
+        joystick1_v += 0.7;
     if(keys[SDL_SCANCODE_S])
-        joystick1_v += -1.0;
+        joystick1_v += -0.7;
     if(keys[SDL_SCANCODE_A])
-        joystick1_h += -1.0;
+        joystick1_h += -0.7;
     if(keys[SDL_SCANCODE_D])
-        joystick1_h += 1.0;
+        joystick1_h += 0.7;
     if(keys[SDL_SCANCODE_V])
         btn1_a = true;
     if(keys[SDL_SCANCODE_B])
@@ -69,13 +70,13 @@ void controller_updateController() {
         btn1_start = true;
 
     if(keys[SDL_SCANCODE_I])
-        joystick2_v += 1.0;
+        joystick2_v += 0.7;
     if(keys[SDL_SCANCODE_K])
-        joystick2_v += -1.0;
+        joystick2_v += -0.7;
     if(keys[SDL_SCANCODE_J])
-        joystick2_h += -1.0;
+        joystick2_h += -0.7;
     if(keys[SDL_SCANCODE_L])
-        joystick2_h += 1.0;
+        joystick2_h += 0.7;
     if(keys[SDL_SCANCODE_PERIOD])
         btn2_a = true;
     if(keys[SDL_SCANCODE_SLASH])
@@ -88,12 +89,12 @@ void controller_updateController() {
         btn2_start = true;
 }
 
-float getJoystick_h(uint8_t player) {
+double getJoystick_h(uint8_t player) {
     if(player == 2) return joystick2_h;
     else return joystick1_h;
 }
 
-float getJoystick_v(uint8_t player) {
+double getJoystick_v(uint8_t player) {
     if(player == 2) return joystick2_v;
     else return joystick1_v;
 }

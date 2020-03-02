@@ -16,4 +16,6 @@
 #define     millis()            (unsigned long) std::chrono::duration_cast<std::chrono::milliseconds> \
                                 (std::chrono::system_clock::now().time_since_epoch()).count()
 
+extern void sleep(uint32_t ms);
+
 #endif //EE319K_FINAL_PROJECT_INITIAL_TESTING_UTILS_H

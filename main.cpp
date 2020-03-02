@@ -1,19 +1,29 @@
 
 #include <iostream>
 #include <SDL.h>
+#include <windows.h>
+#include <fcntl.h>
 
-#include "animator.h"
 #include "LCD.h"
 #include "controller.h"
 #include "utils.h"
-
-#include <windows.h>
-#include <fcntl.h>
+#include "UART.h"
+#include "metadata.h"
+#include "SRAM.h"
+#include "entities.h"
+#include "stage.h"
 
 using namespace std;
 using namespace chrono;
 
 SDL_Event event;
+
+Player* p1;
+Player* p2;
+Stage stage;
+
+Kirby k1;
+Kirby k2;
 
 bool quit;
 
@@ -21,24 +31,73 @@ float x = 0;
 float y = 0;
 
 char strBuffer[100];
-long long lastLoopMillis = millis();
+long long lastLoopMillis;
 
 //  runs once at beginning
 void startup() {
-    animator_readCharacterSDCard(0);
+    animator_initialize();
+
+    stage.initialize(0);
+
+    p1 = &k1;
+    p1->setPlayer(1);
+    p1->setX(stage.getStartX(1));
+    p1->setY(stage.getStartY(1));
+
+    p2 = &k2;
+    k2.setPlayer(2);
+    p2->setX(stage.getStartX(2));
+    p2->setY(stage.getStartY(2));
+
+    UART_readCharacterSDCard(0);
 }
 
 //  continually loops
+uint32_t  t1 = 0;
+uint32_t tt1 = 0;
+uint8_t frame = 0;
 void loop() {
-    float dt = millis() - lastLoopMillis;
-    lastLoopMillis = millis();
+    if(millis() - tt1 > 1000) {
+        uint32_t sum = SRAM_SPICounter + ILI9341_SPICounter;
+        double max = 4000000;
+        printf("SPI Bus Usage: %0.2f%\n", sum/max*100);
+        SRAM_SPICounter = 0;
+        ILI9341_SPICounter = 0;
+        tt1 = millis();
+    }
+    if(millis() - t1 > 16) {
+        t1 = millis();
+        stage.update();
+        p1->controlLoop(
+                getJoystick_h(1), getJoystick_v(1),
+                getBtn_a(1), getBtn_b(1),
+                getBtn_l(1) || getBtn_r(1), &stage
+                );
 
-    float pps = 100.;
-    x += getJoystick_h(1) * pps * dt / 1000.;
-    y += getJoystick_v(1) * pps * dt / 1000.;
+//        p2->controlLoop(
+//                getJoystick_h(2), getJoystick_v(2),
+//                getBtn_a(2), getBtn_b(2),
+//                getBtn_l(2) || getBtn_r(2)
+//                );
 
-    LCD_drawPixel(x, y, 0x00FF00);
-    LCD_update();
+//        if(frame++ == 14) {
+//            frame = 0;
+//            SpriteSendable s;
+//            s.persistent = false;
+//            s.charIndex = 0;
+//            s.animationIndex = 1;
+//            s.x = 50;
+//            s.y = 50;
+//            s.frame = 0;
+//            s.framePeriod = 2;
+//            s.continuous = true;
+//            s.layer = LAYER_CHARACTER;
+//
+//            UART_sendAnimation(s);
+//        }
+
+        animator_update();
+    }
 }
 
 int main(int argc, char *argv[]) {
@@ -57,6 +116,7 @@ int main(int argc, char *argv[]) {
     setvbuf(hf_in, NULL, _IONBF, 128);
     *stdin = *hf_in;
 
+    SRAM_reset();
     startup();
 
     //  wait for window to close
@@ -73,6 +133,7 @@ int main(int argc, char *argv[]) {
 
         controller_updateController();
         loop();
+        LCD_update();
     }
 
     stopSDL2();

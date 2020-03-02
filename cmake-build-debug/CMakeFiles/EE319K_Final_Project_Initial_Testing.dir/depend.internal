@@ -47,21 +47,31 @@ CMakeFiles/EE319K_Final_Project_Initial_Testing.dir/LCD.cpp.obj
  C:/Program Files/mingw-w64/x86_64-8.1.0-posix-seh-rt_v6-rev0/mingw64/include/SDL2/SDL_video.h
  C:/Program Files/mingw-w64/x86_64-8.1.0-posix-seh-rt_v6-rev0/mingw64/include/SDL2/begin_code.h
  C:/Program Files/mingw-w64/x86_64-8.1.0-posix-seh-rt_v6-rev0/mingw64/include/SDL2/close_code.h
- C:/Users/Allen/Documents/GitHub/EE319H-Final-Project-Initial-Testing/LCD.cpp
- C:/Users/Allen/Documents/GitHub/EE319H-Final-Project-Initial-Testing/LCD.h
+ C:/Users/Allen/Documents/GitHub/EE319H-Final-Project-Simulation/LCD.cpp
+ C:/Users/Allen/Documents/GitHub/EE319H-Final-Project-Simulation/LCD.h
+ C:/Users/Allen/Documents/GitHub/EE319H-Final-Project-Simulation/colors.h
+ C:/Users/Allen/Documents/GitHub/EE319H-Final-Project-Simulation/metadata.h
+ C:/Users/Allen/Documents/GitHub/EE319H-Final-Project-Simulation/utils.h
 CMakeFiles/EE319K_Final_Project_Initial_Testing.dir/SDCard.cpp.obj
- C:/Users/Allen/Documents/GitHub/EE319H-Final-Project-Initial-Testing/SDCard.cpp
- C:/Users/Allen/Documents/GitHub/EE319H-Final-Project-Initial-Testing/SDCard.h
+ C:/Users/Allen/Documents/GitHub/EE319H-Final-Project-Simulation/SDCard.cpp
+ C:/Users/Allen/Documents/GitHub/EE319H-Final-Project-Simulation/SDCard.h
 CMakeFiles/EE319K_Final_Project_Initial_Testing.dir/SRAM.cpp.obj
- C:/Users/Allen/Documents/GitHub/EE319H-Final-Project-Initial-Testing/SRAM.cpp
- C:/Users/Allen/Documents/GitHub/EE319H-Final-Project-Initial-Testing/SRAM.h
+ C:/Users/Allen/Documents/GitHub/EE319H-Final-Project-Simulation/SRAM.cpp
+ C:/Users/Allen/Documents/GitHub/EE319H-Final-Project-Simulation/SRAM.h
+CMakeFiles/EE319K_Final_Project_Initial_Testing.dir/UART.cpp.obj
+ C:/Users/Allen/Documents/GitHub/EE319H-Final-Project-Simulation/UART.cpp
+ C:/Users/Allen/Documents/GitHub/EE319H-Final-Project-Simulation/UART.h
+ C:/Users/Allen/Documents/GitHub/EE319H-Final-Project-Simulation/animator.h
+ C:/Users/Allen/Documents/GitHub/EE319H-Final-Project-Simulation/metadata.h
 CMakeFiles/EE319K_Final_Project_Initial_Testing.dir/animator.cpp.obj
- C:/Users/Allen/Documents/GitHub/EE319H-Final-Project-Initial-Testing/SDCard.h
- C:/Users/Allen/Documents/GitHub/EE319H-Final-Project-Initial-Testing/SRAM.h
- C:/Users/Allen/Documents/GitHub/EE319H-Final-Project-Initial-Testing/animator.cpp
- C:/Users/Allen/Documents/GitHub/EE319H-Final-Project-Initial-Testing/animator.h
- C:/Users/Allen/Documents/GitHub/EE319H-Final-Project-Initial-Testing/metadata.h
- C:/Users/Allen/Documents/GitHub/EE319H-Final-Project-Initial-Testing/utils.h
+ C:/Users/Allen/Documents/GitHub/EE319H-Final-Project-Simulation/LCD.h
+ C:/Users/Allen/Documents/GitHub/EE319H-Final-Project-Simulation/SDCard.h
+ C:/Users/Allen/Documents/GitHub/EE319H-Final-Project-Simulation/SRAM.h
+ C:/Users/Allen/Documents/GitHub/EE319H-Final-Project-Simulation/animator.cpp
+ C:/Users/Allen/Documents/GitHub/EE319H-Final-Project-Simulation/animator.h
+ C:/Users/Allen/Documents/GitHub/EE319H-Final-Project-Simulation/colors.h
+ C:/Users/Allen/Documents/GitHub/EE319H-Final-Project-Simulation/metadata.h
+ C:/Users/Allen/Documents/GitHub/EE319H-Final-Project-Simulation/utils.h
 CMakeFiles/EE319K_Final_Project_Initial_Testing.dir/controller.cpp.obj
  C:/Program Files/mingw-w64/x86_64-8.1.0-posix-seh-rt_v6-rev0/mingw64/include/SDL2/SDL.h
  C:/Program Files/mingw-w64/x86_64-8.1.0-posix-seh-rt_v6-rev0/mingw64/include/SDL2/SDL_assert.h
@@ -108,8 +118,16 @@ CMakeFiles/EE319K_Final_Project_Initial_Testing.dir/controller.cpp.obj
  C:/Program Files/mingw-w64/x86_64-8.1.0-posix-seh-rt_v6-rev0/mingw64/include/SDL2/SDL_video.h
  C:/Program Files/mingw-w64/x86_64-8.1.0-posix-seh-rt_v6-rev0/mingw64/include/SDL2/begin_code.h
  C:/Program Files/mingw-w64/x86_64-8.1.0-posix-seh-rt_v6-rev0/mingw64/include/SDL2/close_code.h
- C:/Users/Allen/Documents/GitHub/EE319H-Final-Project-Initial-Testing/controller.cpp
- C:/Users/Allen/Documents/GitHub/EE319H-Final-Project-Initial-Testing/controller.h
+ C:/Users/Allen/Documents/GitHub/EE319H-Final-Project-Simulation/controller.cpp
+ C:/Users/Allen/Documents/GitHub/EE319H-Final-Project-Simulation/controller.h
+CMakeFiles/EE319K_Final_Project_Initial_Testing.dir/kirby.cpp.obj
+ C:/Users/Allen/Documents/GitHub/EE319H-Final-Project-Simulation/UART.h
+ C:/Users/Allen/Documents/GitHub/EE319H-Final-Project-Simulation/animator.h
+ C:/Users/Allen/Documents/GitHub/EE319H-Final-Project-Simulation/entities.h
+ C:/Users/Allen/Documents/GitHub/EE319H-Final-Project-Simulation/kirby.cpp
+ C:/Users/Allen/Documents/GitHub/EE319H-Final-Project-Simulation/metadata.h
+ C:/Users/Allen/Documents/GitHub/EE319H-Final-Project-Simulation/stage.h
+ C:/Users/Allen/Documents/GitHub/EE319H-Final-Project-Simulation/utils.h
 CMakeFiles/EE319K_Final_Project_Initial_Testing.dir/main.cpp.obj
  C:/Program Files/mingw-w64/x86_64-8.1.0-posix-seh-rt_v6-rev0/mingw64/include/SDL2/SDL.h
  C:/Program Files/mingw-w64/x86_64-8.1.0-posix-seh-rt_v6-rev0/mingw64/include/SDL2/SDL_assert.h
@@ -156,8 +174,23 @@ CMakeFiles/EE319K_Final_Project_Initial_Testing.dir/main.cpp.obj
  C:/Program Files/mingw-w64/x86_64-8.1.0-posix-seh-rt_v6-rev0/mingw64/include/SDL2/SDL_video.h
  C:/Program Files/mingw-w64/x86_64-8.1.0-posix-seh-rt_v6-rev0/mingw64/include/SDL2/begin_code.h
  C:/Program Files/mingw-w64/x86_64-8.1.0-posix-seh-rt_v6-rev0/mingw64/include/SDL2/close_code.h
- C:/Users/Allen/Documents/GitHub/EE319H-Final-Project-Initial-Testing/LCD.h
- C:/Users/Allen/Documents/GitHub/EE319H-Final-Project-Initial-Testing/animator.h
- C:/Users/Allen/Documents/GitHub/EE319H-Final-Project-Initial-Testing/controller.h
- C:/Users/Allen/Documents/GitHub/EE319H-Final-Project-Initial-Testing/main.cpp
- C:/Users/Allen/Documents/GitHub/EE319H-Final-Project-Initial-Testing/utils.h
+ C:/Users/Allen/Documents/GitHub/EE319H-Final-Project-Simulation/LCD.h
+ C:/Users/Allen/Documents/GitHub/EE319H-Final-Project-Simulation/SRAM.h
+ C:/Users/Allen/Documents/GitHub/EE319H-Final-Project-Simulation/UART.h
+ C:/Users/Allen/Documents/GitHub/EE319H-Final-Project-Simulation/animator.h
+ C:/Users/Allen/Documents/GitHub/EE319H-Final-Project-Simulation/controller.h
+ C:/Users/Allen/Documents/GitHub/EE319H-Final-Project-Simulation/entities.h
+ C:/Users/Allen/Documents/GitHub/EE319H-Final-Project-Simulation/main.cpp
+ C:/Users/Allen/Documents/GitHub/EE319H-Final-Project-Simulation/metadata.h
+ C:/Users/Allen/Documents/GitHub/EE319H-Final-Project-Simulation/stage.h
+ C:/Users/Allen/Documents/GitHub/EE319H-Final-Project-Simulation/utils.h
+CMakeFiles/EE319K_Final_Project_Initial_Testing.dir/stage.cpp.obj
+ C:/Users/Allen/Documents/GitHub/EE319H-Final-Project-Simulation/animator.h
+ C:/Users/Allen/Documents/GitHub/EE319H-Final-Project-Simulation/stage.cpp
+ C:/Users/Allen/Documents/GitHub/EE319H-Final-Project-Simulation/stage.h
+CMakeFiles/EE319K_Final_Project_Initial_Testing.dir/utils.cpp.obj
+ C:/Users/Allen/Documents/GitHub/EE319H-Final-Project-Simulation/UART.h
+ C:/Users/Allen/Documents/GitHub/EE319H-Final-Project-Simulation/animator.h
+ C:/Users/Allen/Documents/GitHub/EE319H-Final-Project-Simulation/metadata.h
+ C:/Users/Allen/Documents/GitHub/EE319H-Final-Project-Simulation/utils.cpp
+ C:/Users/Allen/Documents/GitHub/EE319H-Final-Project-Simulation/utils.h
