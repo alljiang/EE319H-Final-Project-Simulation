@@ -628,14 +628,6 @@ C:/Users/Allen/Documents/GitHub/EE319H-Final-Project-Simulation/animator.h
 cstdint
 -
 
-C:/Users/Allen/Documents/GitHub/EE319H-Final-Project-Simulation/collider.cpp
-cstdlib
--
-entities.h
-C:/Users/Allen/Documents/GitHub/EE319H-Final-Project-Simulation/entities.h
-LCD.h
-C:/Users/Allen/Documents/GitHub/EE319H-Final-Project-Simulation/LCD.h
-
 C:/Users/Allen/Documents/GitHub/EE319H-Final-Project-Simulation/controller.h
 
 C:/Users/Allen/Documents/GitHub/EE319H-Final-Project-Simulation/entities.h
@@ -643,20 +635,6 @@ cstdint
 -
 list
 -
-
-C:/Users/Allen/Documents/GitHub/EE319H-Final-Project-Simulation/kirby.cpp
-cstdio
--
-entities.h
-C:/Users/Allen/Documents/GitHub/EE319H-Final-Project-Simulation/entities.h
-utils.h
-C:/Users/Allen/Documents/GitHub/EE319H-Final-Project-Simulation/utils.h
-metadata.h
-C:/Users/Allen/Documents/GitHub/EE319H-Final-Project-Simulation/metadata.h
-UART.h
-C:/Users/Allen/Documents/GitHub/EE319H-Final-Project-Simulation/UART.h
-stage.h
-C:/Users/Allen/Documents/GitHub/EE319H-Final-Project-Simulation/stage.h
 
 C:/Users/Allen/Documents/GitHub/EE319H-Final-Project-Simulation/main.cpp
 iostream

@@ -38,11 +38,13 @@ const bool PLAYER2 = true;
 const bool HITBOXOVERLAY = true;
 const double UPDATERATE = 60;
 
+
 //  runs once at beginning
 void startup() {
     animator_initialize();
 
-    stage.initialize(0);
+//    stage.initialize(STAGE_FINALDESTINATION);
+    stage.initialize(STAGE_TOWER);
 
     p1 = &k1;
     p1->setPlayer(1);

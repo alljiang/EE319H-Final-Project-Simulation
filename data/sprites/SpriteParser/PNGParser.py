@@ -4,21 +4,9 @@ import os
 
 #   Format (all big endian):
 #
-#   number of sequences/animations (2 bytes)
-#       sequence name (ASCII) + '\n' (this is on the same line as above)
 #
-#       The following is all on one line, no spaces:
-#       number of frames in sequence (1 byte)
-#       width (w) of each frame (pixels) (2 bytes)
-#       height (h) of each frame (pixels) (1 byte)
 #
-#       f elements each of size 3 bytes each describing the indexes of each frame (3*f bytes)
-#
-#       for each frame:
-#           h+1 elements each of size 2 bytes each describing the indexes of each row (2*(h+1) bytes)
-#               last element is basically the size of all the data
-#           entire picture data:
-#           (color index, 2 bytes) (number of repeated color, 2 bytes) (very long)
+
 
 #   CONFIG
 backgroundColor = 0x00FF00
@@ -67,7 +55,7 @@ for filename in os.listdir(os.getcwd() + imageDirectory):
                     indexed_rgb.append(rgb_int)
                 index = indexed_rgb.index(rgb_int)
 
-                output.write((index & 0xFFFF).to_bytes(2, byteorder="big", signed=False))  # color
+                output.write((index & 0xFFFFFF).to_bytes(3, byteorder="big", signed=False))  # color
 
 # output.write("\n".encode())
 

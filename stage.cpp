@@ -35,7 +35,7 @@ double Stage::floor(double x, double y) {
             break;
 
         case STAGE_TOWER:
-            return FLOOR_MAX;
+            return 1;
             break;
 
         case STAGE_BATTLEFIELD:

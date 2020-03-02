@@ -200,13 +200,14 @@ void animator_update() {
             }
 
             //  read in from SRAM
-            uint32_t backgroundRowLocation = persistentBackgroundMemLocation + row * 321 * 2 + col * 2;
-            SRAM_readMemory(backgroundRowLocation, 2*consecutiveBackgroundRowSize, buffer);
+            uint32_t backgroundRowLocation = persistentBackgroundMemLocation + row * 321 * 3 + col * 3;
+            SRAM_readMemory(backgroundRowLocation, 3*consecutiveBackgroundRowSize, buffer);
 
             //  copy from buffer into colorIndexes array
             for(uint16_t i = 0; i < consecutiveBackgroundRowSize; i++) {
                 if(col+i > 320 || col + i < 0) continue;
-                colorIndexes[col + i] = (buffer[i*2 + 0] << 8u) + (buffer[i*2 + 1]);
+                colorIndexes[col + i] = (buffer[i*3 + 0] << 16u)
+                        + (buffer[i*3 + 1] << 8u) + (buffer[i*3 + 2]);
             }
 
             col += consecutiveBackgroundRowSize-1;
@@ -305,7 +306,7 @@ void animator_animate(uint8_t charIndex, uint8_t animationIndex,
 }
 
 void animator_initialize() {
-    persistentBackgroundMemLocation = SRAM_allocateMemory(241*321*2);
+    persistentBackgroundMemLocation = SRAM_allocateMemory(241*321*3);
 }
 
 void animator_readPersistentSprite(const char* spriteName, uint16_t x, uint8_t y) {
@@ -329,14 +330,14 @@ void animator_readPersistentSprite(const char* spriteName, uint16_t x, uint8_t y
 
     //  get the data and store it
     for(int16_t row = height-1; row >= 0; row--) {
-        SD_read(width*2, buffer);
+        SD_read(width*3, buffer);
 
-        uint32_t SRAMRowLocation = persistentBackgroundMemLocation + (row-y) * 321*2 + x;
-        SRAM_writeMemory_specifiedAddress(SRAMRowLocation, width*2, buffer);
+        uint32_t SRAMRowLocation = persistentBackgroundMemLocation + (row-y) * 321*3 + x;
+        SRAM_writeMemory_specifiedAddress(SRAMRowLocation, width*3, buffer);
 
-        //  change colors to 16 bit array to process in a sec
-        for (uint16_t i = 0; i < 321; i++) {
-            colorIndexes[i] = (buffer[2*i]<<8u) + buffer[2*i+1];
+        //  assemble indexes
+        for (uint32_t i = 0; i < 321; i++) {
+            colorIndexes[i] = (buffer[3*i] << 16u) + (buffer[3*i+1]<<8u) + buffer[3*i+2];
         }
 
         ILI9341_drawColors_indexed(x, row, colorIndexes, width);
