@@ -21,6 +21,7 @@ SDL_Event event;
 Player* p1;
 Player* p2;
 Stage stage;
+HitboxManager hitboxManager;
 
 Kirby k1;
 Kirby k2;
@@ -32,6 +33,10 @@ float y = 0;
 
 char strBuffer[100];
 long long lastLoopMillis;
+
+const bool PLAYER2 = false;
+const bool HITBOXOVERLAY = true;
+const double UPDATERATE = 60;
 
 //  runs once at beginning
 void startup() {
@@ -49,6 +54,9 @@ void startup() {
     p2->setX(stage.getStartX(2));
     p2->setY(stage.getStartY(2));
 
+    if(PLAYER2) hitboxManager.initialize(p1, p2);
+    else hitboxManager.initialize(p1);
+
     UART_readCharacterSDCard(0);
 }
 
@@ -65,7 +73,7 @@ void loop() {
         ILI9341_SPICounter = 0;
         tt1 = millis();
     }
-    if(millis() - t1 > 16) {
+    if(millis() - t1 > 1./UPDATERATE*1000) {
         t1 = millis();
         stage.update();
         p1->controlLoop(
@@ -74,11 +82,13 @@ void loop() {
                 getBtn_l(1) || getBtn_r(1), &stage
                 );
 
-//        p2->controlLoop(
-//                getJoystick_h(2), getJoystick_v(2),
-//                getBtn_a(2), getBtn_b(2),
-//                getBtn_l(2) || getBtn_r(2)
-//                );
+        if(PLAYER2) {
+            p2->controlLoop(
+                    getJoystick_h(2), getJoystick_v(2),
+                    getBtn_a(2), getBtn_b(2),
+                    getBtn_l(2) || getBtn_r(2), &stage
+            );
+        }
 
 //        if(frame++ == 14) {
 //            frame = 0;
@@ -96,7 +106,11 @@ void loop() {
 //            UART_sendAnimation(s);
 //        }
 
+        hitboxManager.checkCollisions();
+
+        if(HITBOXOVERLAY) hitboxManager.clearHitboxOverlay();
         animator_update();
+        if(HITBOXOVERLAY) hitboxManager.displayHitboxesOverlay();
     }
 }
 

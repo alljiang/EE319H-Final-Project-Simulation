@@ -72,6 +72,10 @@ CMakeFiles/EE319K_Final_Project_Initial_Testing.dir/animator.cpp.obj: ../colors.
 CMakeFiles/EE319K_Final_Project_Initial_Testing.dir/animator.cpp.obj: ../metadata.h
 CMakeFiles/EE319K_Final_Project_Initial_Testing.dir/animator.cpp.obj: ../utils.h
 
+CMakeFiles/EE319K_Final_Project_Initial_Testing.dir/collider.cpp.obj: ../LCD.h
+CMakeFiles/EE319K_Final_Project_Initial_Testing.dir/collider.cpp.obj: ../collider.cpp
+CMakeFiles/EE319K_Final_Project_Initial_Testing.dir/collider.cpp.obj: ../entities.h
+
 CMakeFiles/EE319K_Final_Project_Initial_Testing.dir/controller.cpp.obj: C:/Program\ Files/mingw-w64/x86_64-8.1.0-posix-seh-rt_v6-rev0/mingw64/include/SDL2/SDL.h
 CMakeFiles/EE319K_Final_Project_Initial_Testing.dir/controller.cpp.obj: C:/Program\ Files/mingw-w64/x86_64-8.1.0-posix-seh-rt_v6-rev0/mingw64/include/SDL2/SDL_assert.h
 CMakeFiles/EE319K_Final_Project_Initial_Testing.dir/controller.cpp.obj: C:/Program\ Files/mingw-w64/x86_64-8.1.0-posix-seh-rt_v6-rev0/mingw64/include/SDL2/SDL_atomic.h

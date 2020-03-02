@@ -2,4 +2,176 @@
 // Created by Allen on 3/2/2020.
 //
 
-#include "collider.h"
+#include <cstdlib>
+#include "entities.h"
+#include "LCD.h"
+
+using namespace std;
+
+void HitboxManager::checkCollisions() {
+    for (uint8_t slot = 0; slot < hurtboxSlots; slot++) {
+        if(hurtboxes[slot].source == 1 && p2->hitbox.isColliding(hurtboxes[slot])) {
+            //  hurtbox collision with player 2!
+            hurtboxes[slot].active = false;
+            p2->collide(hurtboxes[slot]);
+        }
+        else if(hurtboxes[slot].source == 2 && p1->hitbox.isColliding(hurtboxes[slot])) {
+            //  hurtbox collision with player 1!
+            hurtboxes[slot].active = false;
+            p1->collide(hurtboxes[slot]);
+        }
+        else {
+            //  update hurtbox frame
+            if(hurtboxes[slot].frameLengthCounter++ >= hurtboxes[slot].frameLength) {
+                hurtboxes[slot].frameLengthCounter = 0;
+                hurtboxes[slot].currentFrame++;
+                if(hurtboxes[slot].currentFrame >= hurtboxes[slot].frames) {
+                    hurtboxes[slot].active = false;
+                }
+            }
+        }
+    }
+}
+
+void HitboxManager::displayHitboxesOverlay() {
+    uint32_t hitboxColorsub = 0x555500;
+    uint32_t hurtboxColorsub = 0x005555;
+
+    if(p1->hitbox.shape == SHAPE_CIRCLE) {
+        LCD_drawOverlayCircle(p1->hitbox.x, p1->hitbox.y,
+                p1->hitbox.radius, hitboxColorsub);
+    }
+    else if(p1->hitbox.shape == SHAPE_RECTANGLE) {
+        LCD_drawOverlayRectangle(p1->hitbox.x, p1->hitbox.y,
+                              p1->hitbox.width, p1->hitbox.height, hitboxColorsub);
+    }
+
+    if(p2 != nullptr) {
+        if (p2->hitbox.shape == SHAPE_CIRCLE) {
+            LCD_drawOverlayCircle(p2->hitbox.x, p2->hitbox.y,
+                                  p2->hitbox.radius, hitboxColorsub);
+        } else if (p2->hitbox.shape == SHAPE_RECTANGLE) {
+            LCD_drawOverlayRectangle(p2->hitbox.x, p2->hitbox.y,
+                                     p2->hitbox.width, p2->hitbox.height, hitboxColorsub);
+        }
+    }
+
+    //  first display player hitboxes
+    for (uint8_t slot = 0; slot < hurtboxSlots; slot++) {
+        if(hurtboxes[slot].active) {
+            if(hurtboxes[slot].shape == SHAPE_CIRCLE) {
+                LCD_drawOverlayCircle(hurtboxes[slot].x, hurtboxes[slot].y,
+                                      hurtboxes[slot].radius, hurtboxColorsub);
+            }
+            else if(hurtboxes[slot].shape == SHAPE_RECTANGLE) {
+                LCD_drawOverlayRectangle(hurtboxes[slot].x, hurtboxes[slot].y,
+                                         hurtboxes[slot].width, hurtboxes[slot].height, hurtboxColorsub);
+            }
+        }
+    }
+}
+
+void HitboxManager::clearHitboxOverlay() {
+    LCD_clearOverlay();
+}
+
+void HitboxManager::addHurtbox(class Hurtbox hurtBox) {
+    hurtBox.active = true;
+    hurtBox.currentFrame = 0;
+    hurtBox.frameLengthCounter = 0;
+
+    //  add the hurtbox to the array, find a slot for it
+    uint8_t slot = 0;
+    for(slot = 0; slot < hurtboxSlots; slot++) {
+        if(!hurtboxes[slot].active) {
+            hurtboxes[slot] = hurtBox;
+            break;
+        }
+    }
+    if(slot == hurtboxSlots) return;    //  no slots remaining
+}
+
+bool Hitbox::isColliding(class Hurtbox hurtbox) {
+    double hbx = hurtbox.x;
+    double hby = hurtbox.y;
+    double hbh = hurtbox.height;
+    double hbw = hurtbox.width;
+    double hbr = hurtbox.radius;
+
+    switch (this->shape) {
+        case SHAPE_CIRCLE:
+            if(hurtbox.shape == SHAPE_CIRCLE) {
+                /*
+                 * Find the distance between the two circles.
+                 * If this distance is less than the sum of the radii
+                 * of the circles, they're colliding.
+                 */
+                return abs((this->x - hbx) * (this->x - hbx)
+                + (this->y - hby) * (this->y - hby))
+                < (this->radius + hbr) * (this->radius + hbr);
+            }
+            else if(hurtbox.shape == SHAPE_RECTANGLE) {
+                double distanceX = abs(x - hbx);
+                double distanceY = abs(y - hby);
+
+                /*
+                 * If the distance between the two objects are greater
+                 * than the radius and the distance from center to edge combined,
+                 * there is definitely no collision
+                 */
+                if (distanceX > (hbw/2 + this->radius)) { return false; }
+                if (distanceY > (hbh/2 + this->radius)) { return false; }
+
+                /*
+                 * If the center of the circle is inside the rectangle,
+                 * there's a collision.
+                 */
+                if (distanceX <= (hbw/2)) { return true; }
+                if (distanceY <= (hbh/2)) { return true; }
+
+                /*
+                 * Check if the circle intersects rectangle corner
+                 */
+                double cornerDistance_sq = (distanceX - hbw/2)*(distanceX - hbw/2) +
+                                            (distanceY - hbh/2)*(distanceY - hbh/2);
+
+                return (cornerDistance_sq <= (this->radius*this->radius));
+            }
+        case SHAPE_RECTANGLE:
+            if(hurtbox.shape == SHAPE_CIRCLE) {
+                double distanceX = abs(x - hbx);
+                double distanceY = abs(y - hby);
+
+                /*
+                 * If the distance between the two objects are greater
+                 * than the radius and the distance from center to edge combined,
+                 * there is definitely no collision
+                 */
+                if (distanceX > (this->width/2 + hbr)) { return false; }
+                if (distanceY > (this->height/2 + hbr)) { return false; }
+
+                /*
+                 * If the center of the circle is inside the rectangle,
+                 * there's a collision.
+                 */
+                if (distanceX <= (this->width/2)) { return true; }
+                if (distanceY <= (this->height/2)) { return true; }
+
+                /*
+                 * Check if the circle intersects rectangle corner
+                 */
+                double cornerDistance_sq =
+                        (distanceX - this->width/2)*(distanceX - this->width/2) +
+                        (distanceY - this->height/2)*(distanceY - this->height/2);
+
+                return (cornerDistance_sq <= (hbr*hbr));
+            }
+            else if(hurtbox.shape == SHAPE_RECTANGLE) {
+                return  this->x + this->width >= hbx &&     // r1 right edge past r2 left
+                        this->x <= hbx + hbw &&             // r1 left edge past r2 right
+                        this->y + this->height >= hby &&    // r1 top edge past r2 bottom
+                        this->y <= hby + hbh;               // r1 bottom edge past r2 top
+            }
+    }
+    return false;
+}

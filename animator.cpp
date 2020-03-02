@@ -218,7 +218,7 @@ void animator_update() {
         for(uint16_t col = 0; col <= 320; col++) {
             if(colorIndexes[col] == ANIMATOR_COLOR_DONOTCHANGE) continue;
 
-            //  find length of segment
+            //  find height of segment
             uint16_t consecutiveSize = 1;
             while((col + consecutiveSize) < 320) {
                 if(colorIndexes[col + consecutiveSize] != ANIMATOR_COLOR_DONOTCHANGE) {
