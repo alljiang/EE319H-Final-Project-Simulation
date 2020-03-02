@@ -41,7 +41,7 @@ public:
 class Hurtbox: public Collider {
 
 public:
-    double damage;
+    double damage, knockback;
     int8_t source;     //  player who created this hitbox, will not damage this player
     int8_t frames, frameLength, currentFrame, frameLengthCounter;
     bool active{false};
@@ -50,11 +50,14 @@ public:
 
     Hurtbox() : Collider(0,0,0,0) {}
 
-    Hurtbox(double cX, double cY, uint8_t boxShape, double damage, double radius, int8_t source,
-            int8_t frames = 1, int8_t frameLength = 1, double xVelocity = 0, double yVelocity = 0)
+    Hurtbox(bool circle, double cX, double cY, uint8_t boxShape, double radius,
+            int8_t frames=1, int8_t frameLength=1,
+            double damage=0, double knockback=0,
+            double xVelocity=0, double yVelocity=0)
             : Collider(cX, cY, boxShape, radius) {
         shape = boxShape;
         this->damage = damage;
+        this->knockback = knockback;
         this->source = source;
         this->frames = frames;
         this->frameLength = frameLength;
@@ -63,11 +66,13 @@ public:
     }
 
     Hurtbox(double cX, double cY, uint8_t boxShape, double length, double width,
-            double damage, int8_t source,int8_t frames = 1, int8_t frameLength = 1,
-            double xVelocity = 0, double yVelocity = 0)
+            int8_t frames=1, int8_t frameLength=1,
+            double damage=0, double knockback=0,
+            double xVelocity=0, double yVelocity=0)
             : Collider(cX, cY, boxShape, length, width) {
         shape = boxShape;
         this->damage = damage;
+        this->knockback = knockback;
         this->source = source;
         this->frames = frames;
         this->frameLength = frameLength;
@@ -75,6 +80,7 @@ public:
         this->yVel = yVelocity;
     }
 
+    void setSource(uint8_t playerSource) { this->source = playerSource; }
 };
 
 class Hitbox: public Collider {
@@ -118,7 +124,7 @@ public:
     }
 
     void checkCollisions();
-    void addHurtbox(class Hurtbox hurtBox);
+    void addHurtbox(double xOffset, double yOffset, class Hurtbox hurtBox, uint8_t playerSource);
     void displayHitboxesOverlay();
     void clearHitboxOverlay();
 };
@@ -179,7 +185,8 @@ public:
 
     void setPlayer(uint8_t p) { player = p; }
 
-    virtual void controlLoop(double joyH, double joyV, bool btnA, bool btnB, bool shield, class Stage* stage) = 0; //  called every update
+    virtual void controlLoop(double joyH, double joyV, bool btnA, bool btnB, bool shield, class Stage* stage,
+            class HitboxManager* hitboxManager) = 0; //  called every update
     virtual void updateLastValues(double joyH, double joyV, bool btnA, bool btnB, bool shield) = 0;
     virtual void collide(class Hurtbox hurtbox) = 0;
 };
@@ -224,10 +231,14 @@ protected:
     long long l_singleJabTime, l_doubleJabTime, l_repeatJabTime;
 
 public:
+    Hurtbox jabSingle = Hurtbox(true,27, 11, SHAPE_CIRCLE, 6., 3, 3);
+    Hurtbox jabDouble = Hurtbox(true,32, 16, SHAPE_CIRCLE, 4);
+
     Kirby() {}
 
     //  general control loop
-    void controlLoop(double joyH, double joyV, bool btnA, bool btnB, bool shield, class Stage* stage) override; //  called every update
+    void controlLoop(double joyH, double joyV, bool btnA, bool btnB, bool shield, class Stage* stage,
+                     class HitboxManager* hitboxManager) override; //  called every update
 
     void updateLastValues(double joyH, double joyV, bool btnA, bool btnB, bool shield) override ;
 

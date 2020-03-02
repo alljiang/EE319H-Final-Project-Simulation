@@ -10,6 +10,7 @@ using namespace std;
 
 void HitboxManager::checkCollisions() {
     for (uint8_t slot = 0; slot < hurtboxSlots; slot++) {
+        if(!hurtboxes[slot].active) continue;
         if(hurtboxes[slot].source == 1 && p2->hitbox.isColliding(hurtboxes[slot])) {
             //  hurtbox collision with player 2!
             hurtboxes[slot].active = false;
@@ -75,10 +76,14 @@ void HitboxManager::clearHitboxOverlay() {
     LCD_clearOverlay();
 }
 
-void HitboxManager::addHurtbox(class Hurtbox hurtBox) {
+void HitboxManager::addHurtbox(double xOffset, double yOffset, class Hurtbox hurtBox, uint8_t playerSource) {
     hurtBox.active = true;
     hurtBox.currentFrame = 0;
     hurtBox.frameLengthCounter = 0;
+
+    hurtBox.x += xOffset;
+    hurtBox.y += yOffset;
+    hurtBox.setSource(playerSource);
 
     //  add the hurtbox to the array, find a slot for it
     uint8_t slot = 0;

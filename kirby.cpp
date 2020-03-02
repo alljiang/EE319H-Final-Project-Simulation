@@ -10,7 +10,7 @@
 #include "stage.h"
 
 void Kirby::controlLoop(double joyH, double joyV, bool btnA, bool btnB, bool shield,
-        class Stage* stage) {
+        class Stage *stage, class HitboxManager *hitboxManager) {
     //  assume joystick deadzone filtering is already done
 
 
@@ -280,6 +280,8 @@ void Kirby::controlLoop(double joyH, double joyV, bool btnA, bool btnB, bool shi
         frameIndex = 0;
         frameLengthCounter = 0;
         l_singleJabTime = currentTime;
+
+        hitboxManager->addHurtbox(x, y, jabSingle, player);
     }
     //  double jab
     else if(disabledFrames == 0 && (currentTime - l_doubleJabTime > 300) &&
@@ -393,5 +395,5 @@ void Kirby::updateLastValues(double joyH, double joyV, bool btnA, bool btnB, boo
 }
 
 void Kirby::collide(class Hurtbox hurtbox) {
-
+    printf("Collision! This is player %d", player);
 }

@@ -34,7 +34,7 @@ float y = 0;
 char strBuffer[100];
 long long lastLoopMillis;
 
-const bool PLAYER2 = false;
+const bool PLAYER2 = true;
 const bool HITBOXOVERLAY = true;
 const double UPDATERATE = 60;
 
@@ -79,14 +79,16 @@ void loop() {
         p1->controlLoop(
                 getJoystick_h(1), getJoystick_v(1),
                 getBtn_a(1), getBtn_b(1),
-                getBtn_l(1) || getBtn_r(1), &stage
+                getBtn_l(1) || getBtn_r(1), &stage,
+                &hitboxManager
                 );
 
         if(PLAYER2) {
             p2->controlLoop(
                     getJoystick_h(2), getJoystick_v(2),
                     getBtn_a(2), getBtn_b(2),
-                    getBtn_l(2) || getBtn_r(2), &stage
+                    getBtn_l(2) || getBtn_r(2), &stage,
+                    &hitboxManager
             );
         }
 
