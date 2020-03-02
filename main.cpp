@@ -31,10 +31,7 @@ bool quit;
 float x = 0;
 float y = 0;
 
-char strBuffer[100];
-long long lastLoopMillis;
-
-const bool PLAYER2 = true;
+const bool PLAYER2 = false;
 const bool HITBOXOVERLAY = true;
 const double UPDATERATE = 60;
 

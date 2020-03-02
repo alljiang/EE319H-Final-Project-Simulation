@@ -63,7 +63,7 @@ void Kirby::controlLoop(double joyH, double joyV, bool btnA, bool btnB, bool shi
             if (joyH == 0) mirrored = l_mirrored;
             else mirrored = joyH < 0;
 
-            //  decide between walk and run animation
+            //  decide between slow, walk and run animation
             if (std::abs(joyH) > 0.6) {
                 framePeriod = (uint8_t) ((3 - std::abs(2 * joyH)));
                 if (frameLengthCounter++ > framePeriod) {
@@ -72,7 +72,7 @@ void Kirby::controlLoop(double joyH, double joyV, bool btnA, bool btnB, bool shi
                 }
                 if (frameIndex >= 8) frameIndex = 0;
                 animationIndex = 1;
-            } else {
+            } else if(std::abs(joyH) > 0.25){
                 framePeriod = (uint8_t) ((-8 * std::abs(joyH)) + 8);
                 if (frameLengthCounter++ > framePeriod) {
                     frameLengthCounter = 0;
@@ -80,6 +80,14 @@ void Kirby::controlLoop(double joyH, double joyV, bool btnA, bool btnB, bool shi
                 }
                 if (frameIndex >= 12) frameIndex = 0;
                 animationIndex = 9;
+            } else {
+                framePeriod = (uint8_t) ((-12 * std::abs(joyH)) + 12);
+                if (frameLengthCounter++ > framePeriod) {
+                    frameLengthCounter = 0;
+                    frameIndex++;
+                }
+                if (frameIndex >= 5) frameIndex = 0;
+                animationIndex = 7;
             }
             continuous = false;
         }

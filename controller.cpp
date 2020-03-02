@@ -43,13 +43,13 @@ void controller_updateController() {
     const uint8_t *keys = SDL_GetKeyboardState(NULL);
 
     if(keys[SDL_SCANCODE_LEFT])
-        joystick1_h += -0.3;
+        joystick1_h += -0.2;
     if(keys[SDL_SCANCODE_RIGHT])
-        joystick1_h += 0.3;
+        joystick1_h += 0.2;
     if(keys[SDL_SCANCODE_UP])
-        joystick1_v += 0.3;
+        joystick1_v += 0.2;
     if(keys[SDL_SCANCODE_DOWN])
-        joystick1_v -= 0.3;
+        joystick1_v -= 0.2;
     if(keys[SDL_SCANCODE_W])
         joystick1_v += 0.7;
     if(keys[SDL_SCANCODE_S])
