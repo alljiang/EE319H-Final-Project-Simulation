@@ -50,7 +50,8 @@ public:
 
     Hurtbox() : Collider(0,0,0,0) {}
 
-    Hurtbox(bool circle, double cX, double cY, uint8_t boxShape, double radius,
+    Hurtbox(bool circle, double cX, double cY,
+            uint8_t boxShape, double radius,
             int8_t frames=1, int8_t frameLength=1,
             double damage=0, double knockback=0,
             double xVelocity=0, double yVelocity=0)
@@ -124,7 +125,8 @@ public:
     }
 
     void checkCollisions();
-    void addHurtbox(double xOffset, double yOffset, class Hurtbox hurtBox, uint8_t playerSource);
+    void addHurtbox(double xOffset, double yOffset, bool mirrored,
+            class Hurtbox hurtBox, uint8_t playerSource);
     void displayHitboxesOverlay();
     void clearHitboxOverlay();
 };
@@ -231,8 +233,13 @@ protected:
     long long l_singleJabTime, l_doubleJabTime, l_repeatJabTime;
 
 public:
-    Hurtbox jabSingle = Hurtbox(true,27, 11, SHAPE_CIRCLE, 6., 3, 3);
-    Hurtbox jabDouble = Hurtbox(true,32, 16, SHAPE_CIRCLE, 4);
+    Hurtbox jabSingle = Hurtbox(true,14, 11, SHAPE_CIRCLE,
+            8, 3, 3);
+    Hurtbox jabDouble = Hurtbox(true,15, 12, SHAPE_CIRCLE,
+            9, 3, 4);
+    Hurtbox jabRepeating = Hurtbox(true,28, 14, SHAPE_CIRCLE,
+            15, 1, 3);
+
 
     Kirby() {}
 

@@ -217,6 +217,12 @@ void Kirby::controlLoop(double joyH, double joyV, bool btnA, bool btnB, bool shi
 
         disabledFrames = 2;
         framePeriod = 3;
+
+        //  add hurtbox at beginning of frame
+        if(frameLengthCounter == 0) {
+            hitboxManager->addHurtbox(x + 16, y, mirrored,
+                                      jabRepeating, player);
+        }
         if(frameLengthCounter++ > framePeriod) {
             frameLengthCounter = 0;
             frameIndex++;
@@ -281,7 +287,8 @@ void Kirby::controlLoop(double joyH, double joyV, bool btnA, bool btnB, bool shi
         frameLengthCounter = 0;
         l_singleJabTime = currentTime;
 
-        hitboxManager->addHurtbox(x, y, jabSingle, player);
+        hitboxManager->addHurtbox(x + 16, y, mirrored,
+                jabSingle, player);
     }
     //  double jab
     else if(disabledFrames == 0 && (currentTime - l_doubleJabTime > 300) &&
@@ -291,6 +298,8 @@ void Kirby::controlLoop(double joyH, double joyV, bool btnA, bool btnB, bool shi
         frameIndex = 3;
         frameLengthCounter = 0;
         l_doubleJabTime = currentTime;
+        hitboxManager->addHurtbox(x + 16, y, mirrored,
+                jabDouble, player);
     }
     //  repeating jab
     else if(disabledFrames == 0 && action != ACTION_JABREPEATING &&
@@ -339,7 +348,6 @@ void Kirby::controlLoop(double joyH, double joyV, bool btnA, bool btnB, bool shi
         if(y == floor) action = ACTION_RESTING;
         else action = ACTION_FALLING;
     }
-
 
     //  update velocity and positions
     if(yVel < maxFallingVelocity) yVel = maxFallingVelocity;
@@ -395,5 +403,5 @@ void Kirby::updateLastValues(double joyH, double joyV, bool btnA, bool btnB, boo
 }
 
 void Kirby::collide(class Hurtbox hurtbox) {
-    printf("Collision! This is player %d", player);
+    printf("Collision! This is player %d\n", player);
 }

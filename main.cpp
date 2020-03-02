@@ -108,11 +108,12 @@ void loop() {
 //            UART_sendAnimation(s);
 //        }
 
-        hitboxManager.checkCollisions();
-
         if(HITBOXOVERLAY) hitboxManager.clearHitboxOverlay();
         animator_update();
         if(HITBOXOVERLAY) hitboxManager.displayHitboxesOverlay();
+
+        hitboxManager.checkCollisions();
+
     }
 }
 

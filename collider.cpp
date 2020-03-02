@@ -36,7 +36,7 @@ void HitboxManager::checkCollisions() {
 
 void HitboxManager::displayHitboxesOverlay() {
     uint32_t hitboxColorsub = 0x555500;
-    uint32_t hurtboxColorsub = 0x005555;
+    uint32_t hurtboxColorsub = 0x007777;
 
     if(p1->hitbox.shape == SHAPE_CIRCLE) {
         LCD_drawOverlayCircle(p1->hitbox.x, p1->hitbox.y,
@@ -76,12 +76,14 @@ void HitboxManager::clearHitboxOverlay() {
     LCD_clearOverlay();
 }
 
-void HitboxManager::addHurtbox(double xOffset, double yOffset, class Hurtbox hurtBox, uint8_t playerSource) {
+void HitboxManager::addHurtbox(double xOffset, double yOffset, bool mirrored,
+        class Hurtbox hurtBox, uint8_t playerSource) {
     hurtBox.active = true;
     hurtBox.currentFrame = 0;
     hurtBox.frameLengthCounter = 0;
 
-    hurtBox.x += xOffset;
+    if(mirrored) hurtBox.x = xOffset-hurtBox.x;
+    else hurtBox.x += xOffset;
     hurtBox.y += yOffset;
     hurtBox.setSource(playerSource);
 
