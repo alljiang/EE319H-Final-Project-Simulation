@@ -32,17 +32,30 @@ const char characterNames[4][15] = {
 
 const char animations[4][64][10] = {
                                         {                // frames
-                 /* 0 */                    {"crouch"}, // 1
-                                            {"dash"},   // 8
-                                            {"fall"},   // 2
-                                            {"fallnojmp"},  // 2
-                                            {"firstjmp"},   // 8 (use 7 bc staggered)
-                                            {"multijmp"},   // 4 (use 3)
-                                            {"rest"},   // 7
-                                            {"slow"},   // 5
-                                            {"slowstop"},   // 2
-                                            {"walk"},    //  12
-                 /* 10 */                   {"jab"}     //  3(single)+2(doub)+(1+6)(repeat)
+                 /* 0 */                        {"crouch"}, // 1
+                                                {"dash"},   // 8
+                                                {"fall"},   // 2
+                                                {"fallnojmp"},  // 2
+                                                {"firstjmp"},   // 8 (use 7 bc staggered)
+                                                {"multijmp"},   // 4 (use 3)
+                                                {"rest"},   // 7
+                                                {"slow"},   // 5
+                                                {"slowstop"},   // 2
+                                                {"walk"},    //  12
+                 /* 10 */                       {"jab"},     //  3(single)+2(doub)+(1+6)(repeat)
+                                                {"fair"},   //  8
+                                                {"fsmash"},     //  10
+                                                {"fspecial"},   //  11
+                                                {"ftilt"},      //  8
+                                                {"upspecial"},    //  12
+                                                {"uptilt"},     //  7
+                                                {"upsmash"},     //  8
+                                                {""},
+                                                {""},
+                 /* 20 */                       {""},
+                                                {""},
+                                                {""},
+                                                {""},
                                         },
                                         {
 

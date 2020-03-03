@@ -196,17 +196,26 @@ public:
 
 class Kirby: public Player {
 
-#define ACTION_RESTING 0
-#define ACTION_RUNNING 1
-#define ACTION_FALLING 2
-#define ACTION_JUMPING 3
-#define ACTION_MULTIJUMPING 4
-#define ACTION_CROUCHING 5
-#define ACTION_JABSINGLE 6
-#define ACTION_JABDOUBLE 7
-#define ACTION_JABREPEATING 8
+#define KIRBY_ACTION_RESTING 0
+#define KIRBY_ACTION_RUNNING 1
+#define KIRBY_ACTION_FALLING 2
+#define KIRBY_ACTION_JUMPING 3
+#define KIRBY_ACTION_MULTIJUMPING 4
+#define KIRBY_ACTION_CROUCHING 5
+#define KIRBY_ACTION_JABSINGLE 6
+#define KIRBY_ACTION_JABDOUBLE 7
+#define KIRBY_ACTION_JABREPEATING 8
+#define KIRBY_ACTION_FORWARDTILT 9
+#define KIRBY_ACTION_FORWARDAIR 10
+#define KIRBY_ACTION_FORWARDSMASH 11
+#define KIRBY_ACTION_FORWARDSPECIAL 12
+#define KIRBY_ACTION_UPTILT 13
+#define KIRBY_ACTION_UPSPECIALINITIAL 14
+#define KIRBY_ACTION_UPSPECIALRISING 15
+#define KIRBY_ACTION_UPSPECIALTOP 16
+#define KIRBY_ACTION_UPSPECIALFALLING 17
 
-#define STAGE_X_OFFSET 18
+#define KIRBY_STAGE_OFFSET 18
 
 protected:
     //  animation config
@@ -237,7 +246,7 @@ public:
             8, 3, 3);
     Hurtbox jabDouble = Hurtbox(true,15, 12, SHAPE_CIRCLE,
             9, 3, 4);
-    Hurtbox jabRepeating = Hurtbox(true,28, 14, SHAPE_CIRCLE,
+    Hurtbox jabRepeating = Hurtbox(true,25, 16, SHAPE_CIRCLE,
             15, 1, 3);
 
 

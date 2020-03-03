@@ -383,6 +383,7 @@ void animator_readCharacterSDCard(uint8_t charIndex) {
         if(!found) {
             animationName[animationNameLength] = '\0'; //  prepare to print the string
             printf("ERROR Animation not found: %s\n", animationName);
+            while(1);
             continue;
         }
         else {

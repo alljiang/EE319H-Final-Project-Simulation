@@ -11,12 +11,12 @@ using namespace std;
 void HitboxManager::checkCollisions() {
     for (uint8_t slot = 0; slot < hurtboxSlots; slot++) {
         if(!hurtboxes[slot].active) continue;
-        if(hurtboxes[slot].source == 1 && p2->hitbox.isColliding(hurtboxes[slot])) {
+        if(p2 != nullptr && hurtboxes[slot].source == 1 && p2->hitbox.isColliding(hurtboxes[slot])) {
             //  hurtbox collision with player 2!
             hurtboxes[slot].active = false;
             p2->collide(hurtboxes[slot]);
         }
-        else if(hurtboxes[slot].source == 2 && p1->hitbox.isColliding(hurtboxes[slot])) {
+        else if(p2 != nullptr && hurtboxes[slot].source == 2 && p1->hitbox.isColliding(hurtboxes[slot])) {
             //  hurtbox collision with player 1!
             hurtboxes[slot].active = false;
             p1->collide(hurtboxes[slot]);
