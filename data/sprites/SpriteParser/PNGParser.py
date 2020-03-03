@@ -14,7 +14,7 @@ imageDirectory = "./png-misc/"
 
 # color index list
 indexed_rgb = list()
-colors = open("backgroundColors.h", 'r')
+colors = open("colors.h", 'r')
 colors.readline()
 colors.readline()
 colors.readline()
@@ -60,11 +60,11 @@ for filename in os.listdir(os.getcwd() + imageDirectory):
 # output.write("\n".encode())
 
 # output colors.txt file
-colors = open("backgroundColors.h", 'w')
+colors = open("colors.h", 'w')
 colors.write('#include <stdint.h>\n'
              '#ifndef EE319K_FINAL_PROJECT_INITIAL_TESTING_COLORS_H\n' +\
              '#define EE319K_FINAL_PROJECT_INITIAL_TESTING_COLORS_H\n\n' +\
-'const uint32_t backgroundColors[' + str(len(indexed_rgb)) + '] = {')
+'const uint32_t colors[' + str(len(indexed_rgb)) + '] = {')
 colors.write(str(indexed_rgb[0]))
 for i in range(1, len(indexed_rgb)):
     colors.write(',')

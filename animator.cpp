@@ -10,7 +10,6 @@
 #include "utils.h"
 #include "LCD.h"
 #include "colors.h"
-#include "backgroundColors.h"
 #include <cmath>
 using namespace std;
 
@@ -222,7 +221,7 @@ void animator_update() {
             }
 
             //  write this section into the LCD
-            ILI9341_drawColors_indexed(col, row, colorIndexes+col, consecutiveSize, colors);
+            ILI9341_drawColors_indexed(col, row, colorIndexes+col, consecutiveSize);
 
             col += consecutiveSize -1;
         }
@@ -341,7 +340,7 @@ void animator_readPersistentSprite(const char* spriteName, uint16_t x, uint8_t y
             colorIndexes[i] = (buffer[3*i] << 16u) + (buffer[3*i+1]<<8u) + buffer[3*i+2];
         }
 
-        ILI9341_drawColors_indexed(x, row, colorIndexes, width, backgroundColors);
+        ILI9341_drawColors_indexed(x, row, colorIndexes, width);
     }
 }
 

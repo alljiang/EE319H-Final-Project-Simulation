@@ -2,32 +2,36 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="2349ddb4-96f3-4450-a885-5dac0c7a4023" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/backgroundColors.h" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/gif-kirby/ledge.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/gif-kirby/upbproj.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../kirby/gif/ledge.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../kirby/gif/upbproj.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../kirby/gif/upsmash.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../kirby/piskel/ledge.piskel" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../kirby/piskel/upbproj.piskel" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../../../.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../../.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../../UART.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/../../../UART.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../LCD.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/../../../LCD.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../LCD.h" beforeDir="false" afterPath="$PROJECT_DIR$/../../../LCD.h" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../../../animator.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/../../../animator.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../backgroundColors.h" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/../../../cmake-build-debug/CMakeFiles/EE319K_Final_Project_Initial_Testing.dir/CXX.includecache" beforeDir="false" afterPath="$PROJECT_DIR$/../../../cmake-build-debug/CMakeFiles/EE319K_Final_Project_Initial_Testing.dir/CXX.includecache" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../../../cmake-build-debug/CMakeFiles/EE319K_Final_Project_Initial_Testing.dir/LCD.cpp.obj" beforeDir="false" afterPath="$PROJECT_DIR$/../../../cmake-build-debug/CMakeFiles/EE319K_Final_Project_Initial_Testing.dir/LCD.cpp.obj" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../../cmake-build-debug/CMakeFiles/EE319K_Final_Project_Initial_Testing.dir/UART.cpp.obj" beforeDir="false" afterPath="$PROJECT_DIR$/../../../cmake-build-debug/CMakeFiles/EE319K_Final_Project_Initial_Testing.dir/UART.cpp.obj" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../../../cmake-build-debug/CMakeFiles/EE319K_Final_Project_Initial_Testing.dir/animator.cpp.obj" beforeDir="false" afterPath="$PROJECT_DIR$/../../../cmake-build-debug/CMakeFiles/EE319K_Final_Project_Initial_Testing.dir/animator.cpp.obj" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../../cmake-build-debug/CMakeFiles/EE319K_Final_Project_Initial_Testing.dir/kirby.cpp.obj" beforeDir="false" afterPath="$PROJECT_DIR$/../../../cmake-build-debug/CMakeFiles/EE319K_Final_Project_Initial_Testing.dir/kirby.cpp.obj" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../../cmake-build-debug/CMakeFiles/EE319K_Final_Project_Initial_Testing.dir/main.cpp.obj" beforeDir="false" afterPath="$PROJECT_DIR$/../../../cmake-build-debug/CMakeFiles/EE319K_Final_Project_Initial_Testing.dir/main.cpp.obj" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../../../cmake-build-debug/CMakeFiles/EE319K_Final_Project_Initial_Testing.dir/objects.a" beforeDir="false" afterPath="$PROJECT_DIR$/../../../cmake-build-debug/CMakeFiles/EE319K_Final_Project_Initial_Testing.dir/objects.a" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../cmake-build-debug/CMakeFiles/Makefile.cmake" beforeDir="false" afterPath="$PROJECT_DIR$/../../../cmake-build-debug/CMakeFiles/Makefile.cmake" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../cmake-build-debug/CMakeFiles/clion-log.txt" beforeDir="false" afterPath="$PROJECT_DIR$/../../../cmake-build-debug/CMakeFiles/clion-log.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../../../cmake-build-debug/EE319K_Final_Project_Initial_Testing.exe" beforeDir="false" afterPath="$PROJECT_DIR$/../../../cmake-build-debug/EE319K_Final_Project_Initial_Testing.exe" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../../colors.h" beforeDir="false" afterPath="$PROJECT_DIR$/../../../colors.h" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/GIFParser.py" beforeDir="false" afterPath="$PROJECT_DIR$/GIFParser.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/PNGParser.py" beforeDir="false" afterPath="$PROJECT_DIR$/PNGParser.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backgroundColors.h" beforeDir="false" afterPath="$PROJECT_DIR$/backgroundColors.h" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/colors.h" beforeDir="false" afterPath="$PROJECT_DIR$/colors.h" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/finaldest.txt" beforeDir="false" afterPath="$PROJECT_DIR$/finaldest.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/gif-kirby/dash.gif" beforeDir="false" afterPath="$PROJECT_DIR$/gif-kirby/dash.gif" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/kirby.txt" beforeDir="false" afterPath="$PROJECT_DIR$/kirby.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/towerback.txt" beforeDir="false" afterPath="$PROJECT_DIR$/towerback.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../kirby/gif/dash.gif" beforeDir="false" afterPath="$PROJECT_DIR$/../kirby/gif/dash.gif" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../kirby/piskel/Dash.piskel" beforeDir="false" afterPath="$PROJECT_DIR$/../kirby/piskel/Dash.piskel" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../../entities.h" beforeDir="false" afterPath="$PROJECT_DIR$/../../../entities.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../../kirby.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/../../../kirby.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../../main.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/../../../main.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../../metadata.h" beforeDir="false" afterPath="$PROJECT_DIR$/../../../metadata.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../kirby/gif/usmash.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../towerback.txt" beforeDir="false" afterPath="$PROJECT_DIR$/../towerback.txt" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -39,16 +43,18 @@
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/../../.." />
   </component>
   <component name="ProjectId" id="1XJpMZIxn3JPcPyDdgjqDVPRchi" />
-  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
   <component name="PropertiesComponent">
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/gif-kirby" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
-      <recent name="C:\Users\Allen\Documents\GitHub\EE319H-Final-Project-Simulation\data\sprites\SpriteParser" />
       <recent name="C:\Users\Allen\Documents\GitHub\EE319H-Final-Project-Simulation\data\sprites\SpriteParser\gif-kirby" />
+      <recent name="C:\Users\Allen\Documents\GitHub\EE319H-Final-Project-Simulation\data\sprites\SpriteParser" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -146,8 +152,8 @@
     </option>
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
-    <SUITE FILE_PATH="coverage/SpriteParser$GIFParser.coverage" NAME="GIFParser Coverage Results" MODIFIED="1583216180005" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/SpriteParser$GIFParser.coverage" NAME="GIFParser Coverage Results" MODIFIED="1583217864329" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/SpriteParser$Python.coverage" NAME="Python Coverage Results" MODIFIED="1580763931265" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
-    <SUITE FILE_PATH="coverage/SpriteParser$PNGParser.coverage" NAME="PNGParser Coverage Results" MODIFIED="1583216185708" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/SpriteParser$PNGParser.coverage" NAME="PNGParser Coverage Results" MODIFIED="1583217867964" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
   </component>
 </project>

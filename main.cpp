@@ -57,6 +57,8 @@ void startup() {
     else hitboxManager.initialize(p1);
 
     UART_readCharacterSDCard(0);
+
+    printf("SRAM Used: %0.1f%\n", getCurrentMemoryLocation() / (1024.*1024) * 100);
 }
 
 //  continually loops
@@ -64,15 +66,22 @@ uint32_t  t1 = 0;
 uint32_t tt1 = 0;
 uint8_t frame = 0;
 void loop() {
-    if(millis() - tt1 > 1000) {
+//    if(millis() - tt1 > 1000) {
+//        uint32_t sum = SRAM_SPICounter + ILI9341_SPICounter;
+//        double max = 1000000;
+//        printf("SPI Bus Usage: %0.2f%\n", sum/max*100);
+//        SRAM_SPICounter = 0;
+//        ILI9341_SPICounter = 0;
+//        tt1 = millis();
+//    }
+    if(millis() - t1 > 1./UPDATERATE*1000) {
+
         uint32_t sum = SRAM_SPICounter + ILI9341_SPICounter;
-        double max = 4000000;
+        double max = 16666;
         printf("SPI Bus Usage: %0.2f%\n", sum/max*100);
         SRAM_SPICounter = 0;
         ILI9341_SPICounter = 0;
-        tt1 = millis();
-    }
-    if(millis() - t1 > 1./UPDATERATE*1000) {
+
         t1 = millis();
         stage.update();
         p1->controlLoop(

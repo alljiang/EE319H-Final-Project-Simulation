@@ -8,8 +8,7 @@
 extern uint32_t ILI9341_SPICounter;
 
 extern void LCD_startLCD();
-extern void ILI9341_drawColors_indexed(uint32_t x, uint32_t y, int32_t *rgbIndex,
-        uint16_t totalPixels, uint32_t *colors);
+extern void ILI9341_drawColors_indexed(uint32_t x, uint32_t y, int32_t *rgbIndex, uint16_t totalPixels);
 extern void ILI9341_fillScreen(uint32_t rgb);
 extern void LCD_drawOverlayCircle(double doublex, double doubley, uint8_t radius, uint32_t color);
 extern void LCD_drawOverlayRectangle(double doublex, double doubley, uint8_t width, uint8_t height, uint32_t colorSub);

@@ -50,8 +50,8 @@ const char animations[4][64][10] = {
                                                 {"upspecial"},    //  3(init)+1(rise)+7(top)+1(fall)+1(end)
                                                 {"uptilt"},     //  7
                                                 {"upsmash"},     //  8
-                                                {""},
-                                                {""},
+                                                {"ledge"},      //  1
+                                                {"upbproj"},    //  1   up special landing projectile
                  /* 20 */                       {""},
                                                 {""},
                                                 {""},
