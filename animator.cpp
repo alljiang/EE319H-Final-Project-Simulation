@@ -17,8 +17,9 @@ using namespace std;
 
 uint8_t buffer[1000];   // it's big because i can. if this is too big, lower it down to like 700
 uint8_t smallBuffer2[300];
-int32_t colorIndexes[321];  // a color index of -1 means 'do not change'
+int32_t finalColors[321];  // a color index of -1 means 'do not change'
 uint8_t layer[321];
+const uint32_t *backgroundColors;
 
 uint32_t backgroundColorIndex = 0;
 
@@ -62,7 +63,7 @@ void animator_update() {
         // set all color indexes to -2 initially for 'do not change'
         // set all layers to background
         for(uint16_t col = 0; col <= 320; col++) {
-            colorIndexes[col] = ANIMATOR_COLOR_DONOTCHANGE;
+            finalColors[col] = ANIMATOR_COLOR_DONOTCHANGE;
             layer[col] = LAYER_BACKGROUND;
         }
 
@@ -86,11 +87,11 @@ void animator_update() {
                     //  set the color indexes to the background color
                     if(ss->mirrored) {
                         if(ss->x+(anim->width) - col > 320 || ss->x+(anim->width) - col < 0) continue;
-                        colorIndexes[ss->x+(anim->width) - col] = ANIMATOR_COLOR_BACKGROUND;
+                        finalColors[ss->x + (anim->width) - col] = ANIMATOR_COLOR_BACKGROUND;
                     }
                     else {
                         if(ss->x + col > 320 || ss->x + col < 0) continue;
-                        colorIndexes[ss->x + col] = ANIMATOR_COLOR_BACKGROUND;
+                        finalColors[ss->x + col] = ANIMATOR_COLOR_BACKGROUND;
                     }
                 }
             }
@@ -132,20 +133,10 @@ void animator_update() {
 
                 //  copy the data over from the buffer into the color index buffer
                 uint16_t column = 0;
-                uint16_t numPairs = rowSize >> 2u;
+                uint16_t numPairs = rowSize >> 1u;
                 for(uint16_t pair = 0; pair < numPairs; pair++) {
-//                    if(ss->mirrored) {
-//                        if(ss->x + (anim->width) - column > 320 || ss->x + (anim->width) - column < 0) continue;
-//                        if (ss->layer <= layer[ss->x + (anim->width) - column])
-//                            continue;   //  this sprite has lower layer priority
-//                    }
-//                    else {
-//                        if(ss->x + column > 320 || ss->x + column < 0) continue;
-//                        if (ss->layer <= layer[ss->x + column]) continue;   //  this sprite has lower layer priority
-//                    }
-
-                    uint16_t colorIndex = (buffer[pair*4+0] << 8u) + (buffer[pair*4+1]);
-                    uint16_t quantity = (buffer[pair*4+2] << 8u) + (buffer[pair*4+3]);
+                    uint16_t colorIndex = (buffer[pair*2+0]);
+                    uint16_t quantity = (buffer[pair*2+1]);
 
                     if(colorIndex == backgroundColorIndex) {
                         //  this is the background color, ignore it
@@ -158,7 +149,7 @@ void animator_update() {
                         if(ss->mirrored) {
                             if(!(ss->x+(anim->width) - column > 320 || ss->x+(anim->width) - column < 0)) {
                                 if (layer[ss->x + (anim->width) - column] < ss->layer) {
-                                    colorIndexes[ss->x + (anim->width) - column] = colorIndex;
+                                    finalColors[ss->x + (anim->width) - column] = colors[colorIndex];
                                     layer[ss->x + (anim->width) - column] = ss->layer;
                                 }
                             }
@@ -166,7 +157,7 @@ void animator_update() {
                         else {
                             if(!(ss->x + column > 320 || ss->x + column < 0)) {
                                 if (layer[ss->x + column] < ss->layer) {
-                                    colorIndexes[ss->x + column] = colorIndex;
+                                    finalColors[ss->x + column] = colors[colorIndex];
                                     layer[ss->x + column] = ss->layer;
                                 }
                             }
@@ -179,27 +170,26 @@ void animator_update() {
 
         //  next, replace all the -1s with the background from SRAM background reserve
         for(uint16_t col = 0; col <= 320; col++) {
-            if(colorIndexes[col] != ANIMATOR_COLOR_BACKGROUND) continue;
+            if(finalColors[col] != ANIMATOR_COLOR_BACKGROUND) continue;
 
             //  if there are -1s in a row, read them together to save time
             uint16_t consecutiveBackgroundRowSize = 1;
             while((col + consecutiveBackgroundRowSize) < 320) {
                 if(col + consecutiveBackgroundRowSize > 320) continue;
-                if(colorIndexes[col + consecutiveBackgroundRowSize] == ANIMATOR_COLOR_BACKGROUND) {
+                if(finalColors[col + consecutiveBackgroundRowSize] == ANIMATOR_COLOR_BACKGROUND) {
                     consecutiveBackgroundRowSize++;
                 }
                 else break;
             }
 
             //  read in from SRAM
-            uint32_t backgroundRowLocation = persistentBackgroundMemLocation + row * 321 * 3 + col * 3;
-            SRAM_readMemory(backgroundRowLocation, 3*consecutiveBackgroundRowSize, buffer);
+            uint32_t backgroundRowLocation = persistentBackgroundMemLocation + row * 321 * 2 + col * 2;
+            SRAM_readMemory(backgroundRowLocation, 2*consecutiveBackgroundRowSize, buffer);
 
             //  copy from buffer into colorIndexes array
             for(uint16_t i = 0; i < consecutiveBackgroundRowSize; i++) {
                 if(col+i > 320 || col + i < 0) continue;
-                colorIndexes[col + i] = (buffer[i*3 + 0] << 16u)
-                        + (buffer[i*3 + 1] << 8u) + (buffer[i*3 + 2]);
+                finalColors[col + i] = backgroundColors[(buffer[i*2] << 8u) + (buffer[i*2 + 1])];
             }
 
             col += consecutiveBackgroundRowSize-1;
@@ -209,19 +199,19 @@ void animator_update() {
 
         //  send in segments divided by "Do not change" colors (-2s)
         for(uint16_t col = 0; col <= 320; col++) {
-            if(colorIndexes[col] == ANIMATOR_COLOR_DONOTCHANGE) continue;
+            if(finalColors[col] == ANIMATOR_COLOR_DONOTCHANGE) continue;
 
             //  find height of segment
             uint16_t consecutiveSize = 1;
             while((col + consecutiveSize) < 320) {
-                if(colorIndexes[col + consecutiveSize] != ANIMATOR_COLOR_DONOTCHANGE) {
+                if(finalColors[col + consecutiveSize] != ANIMATOR_COLOR_DONOTCHANGE) {
                     consecutiveSize++;
                 }
                 else break;
             }
 
             //  write this section into the LCD
-            ILI9341_drawColors_indexed(col, row, colorIndexes+col, consecutiveSize);
+            ILI9341_drawColors(col, row, finalColors + col, consecutiveSize);
 
             col += consecutiveSize -1;
         }
@@ -250,6 +240,10 @@ void animator_update() {
             }
         }
     }
+}
+
+void animator_setBackgroundColors(const uint32_t *backgroundArr) {
+    backgroundColors = backgroundArr;
 }
 
 //  receive from UART, adds an animation to be displayed
@@ -330,17 +324,17 @@ void animator_readPersistentSprite(const char* spriteName, uint16_t x, uint8_t y
 
     //  get the data and store it
     for(int16_t row = height-1; row >= 0; row--) {
-        SD_read(width*3, buffer);
+        SD_read(width*2, buffer);
 
-        uint32_t SRAMRowLocation = persistentBackgroundMemLocation + (row-y) * 321*3 + x;
-        SRAM_writeMemory_specifiedAddress(SRAMRowLocation, width*3, buffer);
+        uint32_t SRAMRowLocation = persistentBackgroundMemLocation + (row-y) * 321*2 + x;
+        SRAM_writeMemory_specifiedAddress(SRAMRowLocation, width*2, buffer);
 
         //  assemble indexes
         for (uint32_t i = 0; i < 321; i++) {
-            colorIndexes[i] = (buffer[3*i] << 16u) + (buffer[3*i+1]<<8u) + buffer[3*i+2];
+            finalColors[i] = backgroundColors[(buffer[2 * i] << 8u) + buffer[2 * i +1]];
         }
 
-        ILI9341_drawColors_indexed(x, row, colorIndexes, width);
+        ILI9341_drawColors(x, row, finalColors, width);
     }
 }
 
@@ -413,7 +407,7 @@ void animator_readCharacterSDCard(uint8_t charIndex) {
         //  get the data of each frame and store it
         for (uint8_t f = 0; f < anim->frames; f++) {
             SD_read(2*(anim->height+1), buffer);
-            uint32_t x = SRAM_writeMemory(2 * (anim->height + 1), buffer);
+            SRAM_writeMemory(2 * (anim->height + 1), buffer);
             uint32_t frameDataSize = (buffer[2 * anim->height] << 8u) + buffer[2 * anim->height + 1];
             uint32_t bytesToRead = frameDataSize;
 

@@ -11,28 +11,17 @@ import os
 #   CONFIG
 backgroundColor = 0x00FF00
 imageDirectory = "./png-misc/"
+imageFilename = "finaldest"
 
 # color index list
 indexed_rgb = list()
-colors = open("colors.h", 'r')
-colors.readline()
-colors.readline()
-colors.readline()
-colors.readline()
-colorsRawLine = colors.readline()
-colorsRawLine = colorsRawLine[colorsRawLine.index("{")+1:colorsRawLine.index("}")]  # trim out brackets
-if len(colorsRawLine) != 0:
-    colorsSplit = colorsRawLine.split(',')
-    for c in colorsSplit:
-        indexed_rgb.append(int(c))
-colors.close()
 
 # Output file
 
 numFiles = len(os.listdir(os.getcwd() + imageDirectory))
 
 for filename in os.listdir(os.getcwd() + imageDirectory):
-    if filename.endswith(".png"):
+    if filename.endswith(".png") and filename.split('.')[0] == imageFilename:
         output = open(filename.split('.')[0] + ".txt", "wb")
         img = Image.open(imageDirectory + filename)
 
@@ -55,21 +44,21 @@ for filename in os.listdir(os.getcwd() + imageDirectory):
                     indexed_rgb.append(rgb_int)
                 index = indexed_rgb.index(rgb_int)
 
-                output.write((index & 0xFFFFFF).to_bytes(3, byteorder="big", signed=False))  # color
+                output.write((index & 0xFFFFFF).to_bytes(2, byteorder="big", signed=False))  # color
 
 # output.write("\n".encode())
 
 # output colors.txt file
-colors = open("colors.h", 'w')
+colors = open("colors_"+imageFilename+".h", 'w')
 colors.write('#include <stdint.h>\n'
-             '#ifndef EE319K_FINAL_PROJECT_INITIAL_TESTING_COLORS_H\n' +\
-             '#define EE319K_FINAL_PROJECT_INITIAL_TESTING_COLORS_H\n\n' +\
-'const uint32_t colors[' + str(len(indexed_rgb)) + '] = {')
+             '#ifndef EE319K_FINAL_PROJECT_INITIAL_TESTING_COLORS'+imageFilename+'_H\n' +\
+             '#define EE319K_FINAL_PROJECT_INITIAL_TESTING_COLORS'+imageFilename+'_H\n\n' +\
+'const uint32_t colors_'+imageFilename+'[' + str(len(indexed_rgb)) + '] = {')
 colors.write(str(indexed_rgb[0]))
 for i in range(1, len(indexed_rgb)):
     colors.write(',')
     colors.write(str(indexed_rgb[i]))
 
 colors.write('};\n\n')
-colors.write('#endif //EE319K_FINAL_PROJECT_INITIAL_TESTING_COLORS_H\n')
+colors.write('#endif //EE319K_FINAL_PROJECT_INITIAL_TESTING_COLORS'+imageFilename+'_H\n')
 colors.close()

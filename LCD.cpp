@@ -39,6 +39,14 @@ void ILI9341_drawColors_indexed(uint32_t x, uint32_t y, int32_t *rgbIndex, uint1
     ILI9341_SPICounter += 11 + 3 * totalPixels;
 }
 
+void ILI9341_drawColors(uint32_t x, uint32_t y, int32_t *rgbArr, uint16_t totalPixels) {
+    for(uint32_t i = 0; i < totalPixels; i++) {
+        uint32_t rgb = rgbArr[i];
+        LCD_drawPixel(x+i, y, rgb, false);
+    }
+    ILI9341_SPICounter += 11 + 3 * totalPixels;
+}
+
 void ILI9341_fillScreen(uint32_t rgb) {
     for(int r = 0; r < 241; r++) {
         for(int c = 0; c < 321; c++) {

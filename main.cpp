@@ -12,6 +12,8 @@
 #include "SRAM.h"
 #include "entities.h"
 #include "stage.h"
+#include "colors_finaldest.h"
+#include "colors_towerback.h"
 
 using namespace std;
 using namespace chrono;
@@ -31,17 +33,20 @@ bool quit;
 float x = 0;
 float y = 0;
 
-const bool PLAYER2 = false;
+const bool PLAYER2 = true;
 const bool HITBOXOVERLAY = false;
-const double UPDATERATE = 60;
+const double UPDATERATE = 20;
 
+//const uint8_t stageToPlay = STAGE_FINALDESTINATION;
+const uint8_t stageToPlay = STAGE_TOWER;
 
 //  runs once at beginning
 void startup() {
     animator_initialize();
 
-    stage.initialize(STAGE_FINALDESTINATION);
-//    stage.initialize(STAGE_TOWER);
+    if(stageToPlay == STAGE_FINALDESTINATION) animator_setBackgroundColors(colors_finaldest);
+    else if(stageToPlay == STAGE_TOWER) animator_setBackgroundColors(colors_towerback);
+    stage.initialize(stageToPlay);
 
     p1 = &k1;
     p1->setPlayer(1);
@@ -77,7 +82,7 @@ void loop() {
     if(millis() - t1 > 1./UPDATERATE*1000) {
 
         uint32_t sum = SRAM_SPICounter + ILI9341_SPICounter;
-        double max = 16666;
+        double max = 1000000/20.;
         printf("SPI Bus Usage: %0.2f%\n", sum/max*100);
         SRAM_SPICounter = 0;
         ILI9341_SPICounter = 0;

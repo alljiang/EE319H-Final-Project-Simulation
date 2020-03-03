@@ -19,6 +19,8 @@ extern void animator_animate(uint8_t animation_charIndex, uint8_t animation_anim
                     int16_t x, int16_t y, uint8_t frame, uint8_t layer, uint8_t persistent,
                     uint8_t continuous, uint8_t framePeriod, bool mirrored);
 
+extern void animator_setBackgroundColors(const uint32_t *backgroundArr);
+
 extern void animator_readPersistentSprite(const char* spriteName, uint16_t x, uint8_t y);
 
 extern void animator_readCharacterSDCard(uint8_t charIndex);

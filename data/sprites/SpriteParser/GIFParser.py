@@ -15,10 +15,8 @@ import os
 #       f elements each of size 3 bytes each describing the indexes of each frame (3*f bytes)
 #
 #       for each frame:
-#           h+1 elements each of size 2 bytes each describing the indexes of each row (2*(h+1) bytes)
+#           h+1 elements each of size 1 bytes each describing the indexes of each row (h+1) bytes)
 #               last element is basically the size of all the data
-#           entire picture data:
-#           (color index, 2 bytes) (number of repeated color, 2 bytes) (very long)
 
 #   CONFIG
 backgroundColor = 0x00FF00
@@ -84,16 +82,16 @@ for filename in os.listdir(os.getcwd() + imageDirectory):
                         line_len += 1           # max line length = 255
                         if i == len(row)-1:
                             compressed_row.append([indexed_rgb.index(rgb_int), line_len])
-                            currentRowIndex += 2
+                            currentRowIndex += 1
                     else:
                         if not indexed_rgb.__contains__(rgb_int):
                             indexed_rgb.append(rgb_int)
                         if i != 0:
                             compressed_row.append([indexed_rgb.index(prev_color), line_len])
-                            currentRowIndex += 2
+                            currentRowIndex += 1
                         if i == len(row) - 1:
                             compressed_row.append([indexed_rgb.index(rgb_int), 1])
-                            currentRowIndex += 2
+                            currentRowIndex += 1
                         prev_color = rgb_int
                         line_len = 1
                 compressed_frame.append(compressed_row)
@@ -123,8 +121,8 @@ for filename in os.listdir(os.getcwd() + imageDirectory):
             for row in frame:
                 # print(row)
                 for line in row:
-                    output.write((int(line[0]) & 0xFFFF).to_bytes(2, byteorder="big", signed=False))    #   color
-                    output.write((int(line[1]) & 0xFFFF).to_bytes(2, byteorder="big", signed=False))    #   quantity
+                    output.write((int(line[0]) & 0xFFFF).to_bytes(1, byteorder="big", signed=False))    #   color
+                    output.write((int(line[1]) & 0xFFFF).to_bytes(1, byteorder="big", signed=False))    #   quantity
 
 # output.write("\n".encode())
 

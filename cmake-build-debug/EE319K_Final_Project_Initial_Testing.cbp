@@ -115,6 +115,12 @@
 		<Unit filename="C:/Users/Allen/Documents/GitHub/EE319H-Final-Project-Simulation/collider.cpp">
 			<Option target="EE319K_Final_Project_Initial_Testing"/>
 		</Unit>
+		<Unit filename="C:/Users/Allen/Documents/GitHub/EE319H-Final-Project-Simulation/colors_finaldest.h">
+			<Option target="EE319K_Final_Project_Initial_Testing"/>
+		</Unit>
+		<Unit filename="C:/Users/Allen/Documents/GitHub/EE319H-Final-Project-Simulation/colors_towerback.h">
+			<Option target="EE319K_Final_Project_Initial_Testing"/>
+		</Unit>
 		<Unit filename="C:/Users/Allen/Documents/GitHub/EE319H-Final-Project-Simulation/controller.cpp">
 			<Option target="EE319K_Final_Project_Initial_Testing"/>
 		</Unit>

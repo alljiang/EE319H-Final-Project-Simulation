@@ -181,6 +181,8 @@ CMakeFiles/EE319K_Final_Project_Initial_Testing.dir/main.cpp.obj: ../LCD.h
 CMakeFiles/EE319K_Final_Project_Initial_Testing.dir/main.cpp.obj: ../SRAM.h
 CMakeFiles/EE319K_Final_Project_Initial_Testing.dir/main.cpp.obj: ../UART.h
 CMakeFiles/EE319K_Final_Project_Initial_Testing.dir/main.cpp.obj: ../animator.h
+CMakeFiles/EE319K_Final_Project_Initial_Testing.dir/main.cpp.obj: ../colors_finaldest.h
+CMakeFiles/EE319K_Final_Project_Initial_Testing.dir/main.cpp.obj: ../colors_towerback.h
 CMakeFiles/EE319K_Final_Project_Initial_Testing.dir/main.cpp.obj: ../controller.h
 CMakeFiles/EE319K_Final_Project_Initial_Testing.dir/main.cpp.obj: ../entities.h
 CMakeFiles/EE319K_Final_Project_Initial_Testing.dir/main.cpp.obj: ../main.cpp

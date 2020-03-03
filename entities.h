@@ -140,6 +140,7 @@ protected:
     double xVel;
 
     long long l_time;   //  last loop time millis
+    long long currentTime = 0;
 
 public:
     void setX(double newX) { x = newX; }
@@ -224,17 +225,17 @@ protected:
     const uint16_t blinkPeriod = 2000;      //  how often kirby blinks when standing still
 
     //  physics config
-    const double groundSpeed = 30;  // pps
-    const double airSpeed = 1;
+    const double groundSpeed = 1.8*3;  // pps
+    const double airSpeed = 1*3;
 
-    const double initialJumpSpeed = 1.5;
-    const double repeatedJumpSpeed = 1.2;
-    const double gravityRising = 0.07;
-    const double gravityFalling = 0.1;
-    const double maxFallingVelocity = -2.3;
+    const double initialJumpSpeed = 1.5*3;
+    const double repeatedJumpSpeed = 1.2*3;
+    const double gravityRising = 0.07*7;
+    const double gravityFalling = 0.1*7;
+    const double maxFallingVelocity = -2.3*3;
 
-    const double airResistance = 0.02;
-    const double maxHorizontalSpeed = 20;
+    const double airResistance = 0.02*3;
+    const double maxHorizontalSpeed = 20*3;
 
     //  standing, resting
     long long lastBlink{0};

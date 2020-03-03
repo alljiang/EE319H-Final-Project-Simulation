@@ -13,9 +13,8 @@ void Kirby::controlLoop(double joyH, double joyV, bool btnA, bool btnB, bool shi
         class Stage *stage, class HitboxManager *hitboxManager) {
     //  assume joystick deadzone filtering is already done
 
-
-    long long currentTime = millis();
-    double dt = millis() - l_time;
+    double dt = 49;
+    currentTime += (uint8_t)dt;
     l_time = currentTime;
 
     if(!l_btnA && btnA) l_btnARise_t = currentTime;
@@ -60,7 +59,7 @@ void Kirby::controlLoop(double joyH, double joyV, bool btnA, bool btnB, bool shi
         }
         else {
             //  x position
-            x += joyH * groundSpeed / dt;
+            x += joyH * groundSpeed;
             if(x > rightBound) x = rightBound;
             else if(x < leftBound) x = leftBound;
 
@@ -70,7 +69,7 @@ void Kirby::controlLoop(double joyH, double joyV, bool btnA, bool btnB, bool shi
 
             //  decide between slow, walk and run animation
             if (std::abs(joyH) > 0.6) {
-                framePeriod = (uint8_t) ((3 - std::abs(2 * joyH)));
+                framePeriod = (uint8_t) ((1 - std::abs(0.7 * joyH)));
                 if (frameLengthCounter++ > framePeriod) {
                     frameLengthCounter = 0;
                     frameIndex++;
@@ -78,7 +77,7 @@ void Kirby::controlLoop(double joyH, double joyV, bool btnA, bool btnB, bool shi
                 if (frameIndex >= 8) frameIndex = 0;
                 animationIndex = 1;
             } else if(std::abs(joyH) > 0.25){
-                framePeriod = (uint8_t) ((-8 * std::abs(joyH)) + 8);
+                framePeriod = (uint8_t) ((-2 * std::abs(joyH)) + 2);
                 if (frameLengthCounter++ > framePeriod) {
                     frameLengthCounter = 0;
                     frameIndex++;
@@ -86,7 +85,7 @@ void Kirby::controlLoop(double joyH, double joyV, bool btnA, bool btnB, bool shi
                 if (frameIndex >= 12) frameIndex = 0;
                 animationIndex = 9;
             } else {
-                framePeriod = (uint8_t) ((-12 * std::abs(joyH)) + 12);
+                framePeriod = (uint8_t) ((-4 * std::abs(joyH)) + 4);
                 if (frameLengthCounter++ > framePeriod) {
                     frameLengthCounter = 0;
                     frameIndex++;
@@ -129,7 +128,7 @@ void Kirby::controlLoop(double joyH, double joyV, bool btnA, bool btnB, bool shi
                 animationIndex = 2;
             }
 
-            framePeriod = 3;
+            framePeriod = 1;
             if (frameLengthCounter++ > framePeriod) {
                 frameLengthCounter = 0;
                 frameIndex++;
@@ -148,7 +147,7 @@ void Kirby::controlLoop(double joyH, double joyV, bool btnA, bool btnB, bool shi
         mirrored = l_mirrored;
         animationIndex = 4;
 
-        framePeriod = 3;
+        framePeriod = 1;
         if(frameLengthCounter++ > framePeriod) {
             frameLengthCounter = 0;
             frameIndex++;
@@ -170,7 +169,7 @@ void Kirby::controlLoop(double joyH, double joyV, bool btnA, bool btnB, bool shi
         else mirrored = joyH < 0;
         animationIndex = 5;
 
-        framePeriod = 3;
+        framePeriod = 1;
         if(frameLengthCounter++ > framePeriod) {
             frameLengthCounter = 0;
             frameIndex++;
@@ -195,7 +194,7 @@ void Kirby::controlLoop(double joyH, double joyV, bool btnA, bool btnB, bool shi
         mirrored = l_mirrored;
         x_mirroredOffset = -22;
 
-        framePeriod = 3;
+        framePeriod = 1;
         if(frameLengthCounter++ > framePeriod) {
             frameLengthCounter = 0;
             frameIndex++;
@@ -211,7 +210,7 @@ void Kirby::controlLoop(double joyH, double joyV, bool btnA, bool btnB, bool shi
         mirrored = l_mirrored;
         x_mirroredOffset = -22;
 
-        framePeriod = 4;
+        framePeriod = 1;
         if(frameLengthCounter++ > framePeriod) {
             frameLengthCounter = 0;
             frameIndex++;
@@ -228,7 +227,7 @@ void Kirby::controlLoop(double joyH, double joyV, bool btnA, bool btnB, bool shi
         x_mirroredOffset = -22;
 
         disabledFrames = 2;
-        framePeriod = 3;
+        framePeriod = 1;
 
         //  add hurtbox at beginning of frame
         if(frameLengthCounter == 0) {
@@ -243,7 +242,7 @@ void Kirby::controlLoop(double joyH, double joyV, bool btnA, bool btnB, bool shi
             frameIndex = 6;
             frameLengthCounter = 0;
         }
-        if(currentTime-l_btnARise_t > 500) {
+        if(currentTime-l_btnARise_t > 300) {
             l_action = KIRBY_ACTION_JABREPEATING;
             x_mirroredOffset = 0;
             action = KIRBY_ACTION_RESTING;
@@ -257,7 +256,7 @@ void Kirby::controlLoop(double joyH, double joyV, bool btnA, bool btnB, bool shi
         mirrored = l_mirrored;
         x_mirroredOffset = 0;
 
-        framePeriod = 2;
+        framePeriod = 1;
         if(frameLengthCounter++ > framePeriod) {
             frameLengthCounter = 0;
             frameIndex++;
@@ -294,12 +293,12 @@ void Kirby::controlLoop(double joyH, double joyV, bool btnA, bool btnB, bool shi
         //  release attack
         if((!btnA && currentTime - f_smashStartTime > 300) || currentTime - f_smashStartTime > 3000) {
             action = KIRBY_ACTION_FORWARDSMASH;
-            frameIndex = 4;
+            frameIndex = 2;
         }
         //  charging attack
         else {
             disabledFrames = 2;
-            framePeriod = 3;
+            framePeriod = 1;
             if (frameLengthCounter++ > framePeriod) {
                 frameLengthCounter = 0;
                 frameIndex++;
@@ -315,7 +314,7 @@ void Kirby::controlLoop(double joyH, double joyV, bool btnA, bool btnB, bool shi
         x_mirroredOffset = -20;
 
         disabledFrames = 2;
-        framePeriod = 3;
+        framePeriod = 1;
         if (frameLengthCounter++ > framePeriod) {
             frameLengthCounter = 0;
             frameIndex++;
@@ -323,7 +322,7 @@ void Kirby::controlLoop(double joyH, double joyV, bool btnA, bool btnB, bool shi
         if(frameIndex >= 8) {
             l_action = KIRBY_ACTION_FORWARDSMASH;
             action = KIRBY_ACTION_RESTING;
-            disabledFrames = 6;
+            disabledFrames = 2;
 
             //  kirby shifted after animation, adjust x position to match it
             if(mirrored) x -= 16;
@@ -336,7 +335,8 @@ void Kirby::controlLoop(double joyH, double joyV, bool btnA, bool btnB, bool shi
         mirrored = l_mirrored;
         x_mirroredOffset = -23;
         xAnimationOffset = -18;
-        yAnimationOffset = -16;
+        yAnimationOffset = -18;
+        yVel = 0;
 
         startY = y;
 
@@ -345,7 +345,10 @@ void Kirby::controlLoop(double joyH, double joyV, bool btnA, bool btnB, bool shi
         framePeriod = 1;
         if(frameLengthCounter++ > framePeriod) {
             frameLengthCounter = 0;
-            frameIndex++;
+            frameIndex+=2;
+            if(frameIndex >= 3) {
+                action = KIRBY_ACTION_UPSPECIALRISING;
+            }
         }
         if(frameIndex >= 3) {
             action = KIRBY_ACTION_UPSPECIALRISING;
@@ -356,7 +359,7 @@ void Kirby::controlLoop(double joyH, double joyV, bool btnA, bool btnB, bool shi
         mirrored = l_mirrored;
         x_mirroredOffset = -23;
         xAnimationOffset = -18;
-        yAnimationOffset = -16;
+        yAnimationOffset = -18;
 
         yVel = 0;
         disabledFrames = 2;
@@ -366,7 +369,7 @@ void Kirby::controlLoop(double joyH, double joyV, bool btnA, bool btnB, bool shi
         }
         else {
             frameIndex = 4;
-            y += 3;
+            y += 9;
         }
     }
     else if(action == KIRBY_ACTION_UPSPECIALTOP) {
@@ -374,12 +377,12 @@ void Kirby::controlLoop(double joyH, double joyV, bool btnA, bool btnB, bool shi
         mirrored = l_mirrored;
         x_mirroredOffset = -23;
         xAnimationOffset = -18;
-        yAnimationOffset = -16;
+        yAnimationOffset = -18;
 
         yVel = 0;
         disabledFrames = 2;
 
-        framePeriod = 2;
+        framePeriod = 1;
 
         if(frameLengthCounter++ > framePeriod) {
             frameLengthCounter = 0;
@@ -394,7 +397,7 @@ void Kirby::controlLoop(double joyH, double joyV, bool btnA, bool btnB, bool shi
         mirrored = l_mirrored;
         x_mirroredOffset = -23;
         xAnimationOffset = -18;
-        yAnimationOffset = -16;
+        yAnimationOffset = -18;
 
         yVel = 0;
         disabledFrames = 2;
@@ -410,14 +413,14 @@ void Kirby::controlLoop(double joyH, double joyV, bool btnA, bool btnB, bool shi
                 xAnimationOffset = 0;
                 yAnimationOffset = 0;
 
-                disabledFrames = 5;
+                disabledFrames = 2;
             }
         }
         else {
             frameIndex = 10;
             yAnimationOffset = -16;
             frameLengthCounter = 0;
-            y -= 3;
+            y -= 9;
         }
     }
 
@@ -428,7 +431,6 @@ void Kirby::controlLoop(double joyH, double joyV, bool btnA, bool btnB, bool shi
         mirrored = l_mirrored;
 
         framePeriod = 1;
-        continuous = false;
         animationIndex = 6;
 
         if (l_action != KIRBY_ACTION_RESTING || lastBlink == 0) {
@@ -499,10 +501,10 @@ void Kirby::controlLoop(double joyH, double joyV, bool btnA, bool btnB, bool shi
 
     //  single jab
     if(disabledFrames == 0 && currentTime - l_singleJabTime > 300 && std::abs(joyH) < 0.15 && std::abs(joyV) < 0.15 &&
-       currentTime - l_doubleJabTime > 300 &&
+       currentTime - l_doubleJabTime > 800 &&
        (action == KIRBY_ACTION_RESTING) && currentTime - l_btnARise_t == 0) {
         action = KIRBY_ACTION_JABSINGLE;
-        disabledFrames = 9;
+        disabledFrames = 5;
         frameIndex = 0;
         frameLengthCounter = 0;
         l_singleJabTime = currentTime;
@@ -511,12 +513,13 @@ void Kirby::controlLoop(double joyH, double joyV, bool btnA, bool btnB, bool shi
                 jabSingle, player);
     }
     //  double jab
-    else if(disabledFrames == 0 && (currentTime - l_doubleJabTime > 300) &&
-            (currentTime - l_singleJabTime < 300) && currentTime - l_btnARise_t == 0) {
+    else if(disabledFrames == 0 && (currentTime - l_singleJabTime < 600)
+        && currentTime - l_btnARise_t == 0) {
         action = KIRBY_ACTION_JABDOUBLE;
-        disabledFrames = 8;
+        disabledFrames = 4;
         frameIndex = 3;
         frameLengthCounter = 0;
+        l_singleJabTime = 0;
         l_doubleJabTime = currentTime;
         hitboxManager->addHurtbox(x + 16, y, mirrored,
                 jabDouble, player);
@@ -525,7 +528,7 @@ void Kirby::controlLoop(double joyH, double joyV, bool btnA, bool btnB, bool shi
     else if(disabledFrames == 0 && action != KIRBY_ACTION_JABREPEATING &&
             (currentTime - l_doubleJabTime < 400) && currentTime - l_btnARise_t == 0) {
         action = KIRBY_ACTION_JABREPEATING;
-        disabledFrames = 18;
+        disabledFrames = 2;
         frameIndex = 5;
         frameLengthCounter = 0;
         l_repeatJabTime = currentTime;
@@ -569,7 +572,8 @@ void Kirby::controlLoop(double joyH, double joyV, bool btnA, bool btnB, bool shi
     (y == floor && (action == KIRBY_ACTION_RESTING || action == KIRBY_ACTION_RUNNING)) ) &&
     currentTime-l_btnBRise_t == 0 && joyV > 0.3) {
         action = KIRBY_ACTION_UPSPECIALINITIAL;
-        mirrored = l_mirrored;
+        if(joyH == 0) mirrored = l_mirrored;
+        else mirrored = joyH < 0;
         disabledFrames = 2;
         frameIndex = 0;
         frameLengthCounter = 0;
@@ -612,8 +616,6 @@ void Kirby::controlLoop(double joyH, double joyV, bool btnA, bool btnB, bool shi
         if(y == floor) action = KIRBY_ACTION_RESTING;
         else action = KIRBY_ACTION_FALLING;
     }
-
-
 
     updateLastValues(joyH, joyV, btnA, btnB, shield);
 }
