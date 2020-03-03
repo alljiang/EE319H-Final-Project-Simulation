@@ -10,6 +10,7 @@
 #include "utils.h"
 #include "LCD.h"
 #include "colors.h"
+#include "backgroundColors.h"
 #include <cmath>
 using namespace std;
 
@@ -19,6 +20,8 @@ uint8_t buffer[1000];   // it's big because i can. if this is too big, lower it 
 uint8_t smallBuffer2[300];
 int32_t colorIndexes[321];  // a color index of -1 means 'do not change'
 uint8_t layer[321];
+
+uint32_t backgroundColorIndex = 0;
 
 uint32_t persistentBackgroundMemLocation;
 Animation animation[4][numberOfAnimations];
@@ -62,16 +65,6 @@ void animator_update() {
         for(uint16_t col = 0; col <= 320; col++) {
             colorIndexes[col] = ANIMATOR_COLOR_DONOTCHANGE;
             layer[col] = LAYER_BACKGROUND;
-        }
-
-
-        // Find which color index is 0xFFFFFFFF (background)
-        uint16_t backgroundColorIndex = 0;
-        for(uint16_t i = 0; i < sizeof(colors); i++) {
-            if(colors[i] == 0xFFFFFFFF) {
-                backgroundColorIndex = i;
-                break;
-            }
         }
 
         //  first, loop through toRemoves and set as -1 background index (need to change)
@@ -229,7 +222,7 @@ void animator_update() {
             }
 
             //  write this section into the LCD
-            ILI9341_drawColors_indexed(col, row, colorIndexes+col, consecutiveSize);
+            ILI9341_drawColors_indexed(col, row, colorIndexes+col, consecutiveSize, colors);
 
             col += consecutiveSize -1;
         }
@@ -307,6 +300,14 @@ void animator_animate(uint8_t charIndex, uint8_t animationIndex,
 
 void animator_initialize() {
     persistentBackgroundMemLocation = SRAM_allocateMemory(241*321*3);
+
+    // Find which color index is 0xFFFFFFFF (background)
+    for(int32_t i = 0; i < sizeof(colors); i++) {
+        if(colors[i] == 0xFFFFFFFF) {
+            backgroundColorIndex = i;
+            break;
+        }
+    }
 }
 
 void animator_readPersistentSprite(const char* spriteName, uint16_t x, uint8_t y) {
@@ -340,7 +341,7 @@ void animator_readPersistentSprite(const char* spriteName, uint16_t x, uint8_t y
             colorIndexes[i] = (buffer[3*i] << 16u) + (buffer[3*i+1]<<8u) + buffer[3*i+2];
         }
 
-        ILI9341_drawColors_indexed(x, row, colorIndexes, width);
+        ILI9341_drawColors_indexed(x, row, colorIndexes, width, backgroundColors);
     }
 }
 

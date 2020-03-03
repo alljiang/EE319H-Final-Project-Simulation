@@ -6,7 +6,6 @@
 #include <iostream>
 #include "LCD.h"
 #include "metadata.h"
-#include "colors.h"
 #include "utils.h"
 
 using namespace std;
@@ -31,9 +30,10 @@ void LCD_startLCD() {
     SDL_RenderPresent(renderer);
 }
 
-void ILI9341_drawColors_indexed(uint32_t x, uint32_t y, int32_t *rgbIndex, uint16_t totalPixels) {
+void ILI9341_drawColors_indexed(uint32_t x, uint32_t y, int32_t *rgbIndex, uint16_t totalPixels,
+        const uint32_t *colorsArr) {
     for(uint32_t i = 0; i < totalPixels; i++) {
-        uint32_t rgb = colors[rgbIndex[i]];
+        uint32_t rgb = colorsArr[rgbIndex[i]];
         LCD_drawPixel(x+i, y, rgb, false);
     }
     ILI9341_SPICounter += 11 + 3 * totalPixels;

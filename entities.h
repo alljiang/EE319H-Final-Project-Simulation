@@ -207,13 +207,14 @@ class Kirby: public Player {
 #define KIRBY_ACTION_JABREPEATING 8
 #define KIRBY_ACTION_FORWARDTILT 9
 #define KIRBY_ACTION_FORWARDAIR 10
-#define KIRBY_ACTION_FORWARDSMASH 11
-#define KIRBY_ACTION_FORWARDSPECIAL 12
-#define KIRBY_ACTION_UPTILT 13
-#define KIRBY_ACTION_UPSPECIALINITIAL 14
-#define KIRBY_ACTION_UPSPECIALRISING 15
-#define KIRBY_ACTION_UPSPECIALTOP 16
-#define KIRBY_ACTION_UPSPECIALFALLING 17
+#define KIRBY_ACTION_FORWARDSMASHHOLD 11
+#define KIRBY_ACTION_FORWARDSMASH 12
+#define KIRBY_ACTION_FORWARDSPECIAL 13
+#define KIRBY_ACTION_UPTILT 20
+#define KIRBY_ACTION_UPSPECIALINITIAL 25
+#define KIRBY_ACTION_UPSPECIALRISING 26
+#define KIRBY_ACTION_UPSPECIALTOP 27
+#define KIRBY_ACTION_UPSPECIALFALLING 28
 
 #define KIRBY_STAGE_OFFSET 18
 
@@ -226,8 +227,8 @@ protected:
     const double groundSpeed = 30;  // pps
     const double airSpeed = 1;
 
-    const double initialJumpSpeed = 1.8;
-    const double repeatedJumpSpeed = 1.55;
+    const double initialJumpSpeed = 1.5;
+    const double repeatedJumpSpeed = 1.2;
     const double gravityRising = 0.07;
     const double gravityFalling = 0.1;
     const double maxFallingVelocity = -2.3;
@@ -240,6 +241,12 @@ protected:
 
     //  jabbing
     long long l_singleJabTime, l_doubleJabTime, l_repeatJabTime;
+
+    //  smash attacks
+    long long f_smashStartTime;
+
+    //  up special
+    double startY;
 
 public:
     Hurtbox jabSingle = Hurtbox(true,14, 11, SHAPE_CIRCLE,

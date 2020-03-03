@@ -32,7 +32,7 @@ float x = 0;
 float y = 0;
 
 const bool PLAYER2 = false;
-const bool HITBOXOVERLAY = true;
+const bool HITBOXOVERLAY = false;
 const double UPDATERATE = 60;
 
 
@@ -40,8 +40,8 @@ const double UPDATERATE = 60;
 void startup() {
     animator_initialize();
 
-//    stage.initialize(STAGE_FINALDESTINATION);
-    stage.initialize(STAGE_TOWER);
+    stage.initialize(STAGE_FINALDESTINATION);
+//    stage.initialize(STAGE_TOWER);
 
     p1 = &k1;
     p1->setPlayer(1);

@@ -47,7 +47,7 @@ const char animations[4][64][10] = {
                                                 {"fsmash"},     //  10
                                                 {"fspecial"},   //  11
                                                 {"ftilt"},      //  8
-                                                {"upspecial"},    //  12
+                                                {"upspecial"},    //  3(init)+1(rise)+7(top)+1(fall)+1(end)
                                                 {"uptilt"},     //  7
                                                 {"upsmash"},     //  8
                                                 {""},
