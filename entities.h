@@ -159,7 +159,7 @@ protected:
 
     uint8_t animationIndex;     //  index of animation
     uint8_t frameIndex{0};      //  current frame index of current animation
-    uint8_t framePeriod{1}, frameLengthCounter{0};  //  counts current frame height
+    uint8_t frameExtension{1}, frameLengthCounter{0};  //  counts current frame height
     bool continuous{false};
     bool mirrored, l_mirrored;
 
@@ -248,6 +248,9 @@ protected:
 
     //  up special
     double startY;
+    double upb_projectile_x, upb_projectile_startX, upb_projectile_startY;
+    bool upb_projectile_mirrored;
+    bool upb_projectile_active;
 
 public:
     Hurtbox jabSingle = Hurtbox(true,14, 11, SHAPE_CIRCLE,

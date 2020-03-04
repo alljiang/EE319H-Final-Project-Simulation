@@ -114,7 +114,7 @@ void loop() {
 //            s.x = 50;
 //            s.y = 50;
 //            s.frame = 0;
-//            s.framePeriod = 2;
+//            s.frameExtension = 2;
 //            s.continuous = true;
 //            s.layer = LAYER_CHARACTER;
 //
