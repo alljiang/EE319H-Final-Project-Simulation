@@ -80,10 +80,9 @@ void loop() {
 //        tt1 = millis();
 //    }
     if(millis() - t1 > 1./UPDATERATE*1000) {
-
         uint32_t sum = SRAM_SPICounter + ILI9341_SPICounter;
         double max = 1000000/20.;
-        printf("SPI Bus Usage: %0.2f%\n", sum/max*100);
+//        printf("SPI Bus Usage: %0.2f%\n", sum/max*100);
         SRAM_SPICounter = 0;
         ILI9341_SPICounter = 0;
 
@@ -105,28 +104,11 @@ void loop() {
             );
         }
 
-//        if(frame++ == 14) {
-//            frame = 0;
-//            SpriteSendable s;
-//            s.persistent = false;
-//            s.charIndex = 0;
-//            s.animationIndex = 1;
-//            s.x = 50;
-//            s.y = 50;
-//            s.frame = 0;
-//            s.frameExtension = 2;
-//            s.continuous = true;
-//            s.layer = LAYER_CHARACTER;
-//
-//            UART_sendAnimation(s);
-//        }
-
         if(HITBOXOVERLAY) hitboxManager.clearHitboxOverlay();
         animator_update();
         if(HITBOXOVERLAY) hitboxManager.displayHitboxesOverlay();
 
         hitboxManager.checkCollisions();
-
     }
 }
 

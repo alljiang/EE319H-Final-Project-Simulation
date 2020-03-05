@@ -19,6 +19,7 @@ uint8_t buffer[1000];   // it's big because i can. if this is too big, lower it 
 uint8_t smallBuffer2[300];
 int32_t finalColors[321];  // a color index of -1 means 'do not change'
 uint8_t layer[321];
+bool rowsToUpdate[241];
 const uint32_t *backgroundColors;
 
 uint32_t backgroundColorIndex = 0;
@@ -60,6 +61,8 @@ uint16_t readHalfInt(uint8_t* buf) {
 //  1.25 KB
 void animator_update() {
     for(uint8_t row = 0; row <= 240; row++) {
+        if(!rowsToUpdate[row]) continue;
+
         // set all color indexes to -2 initially for 'do not change'
         // set all layers to background
         for(uint16_t col = 0; col <= 320; col++) {
@@ -274,6 +277,9 @@ void animator_animate(uint8_t charIndex, uint8_t animationIndex,
     spriteSendables[slot].currentframeLength = 0;
     spriteSendables[slot].mirrored = mirrored;
 
+    for(uint8_t i = y; i < y+animation[charIndex][animationIndex].height; i++)
+        rowsToUpdate[i] = true;
+
 //    if(mirrored) spriteSendables[slot].x
 
     if(spriteSendables[slot].persistent) {
@@ -301,6 +307,8 @@ void animator_initialize() {
             break;
         }
     }
+
+    for(uint8_t i = 0; i < 241; i++) rowsToUpdate[i] = false;
 }
 
 void animator_readPersistentSprite(const char* spriteName, uint16_t x, uint8_t y) {
