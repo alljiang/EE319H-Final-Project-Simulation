@@ -292,7 +292,7 @@ void Kirby::controlLoop(double joyH, double joyV, bool btnA, bool btnB, bool shi
         x_mirroredOffset = -26;
 
         //  release attack
-        if((!btnA && currentTime - f_smashStartTime > 300) || currentTime - f_smashStartTime > 3000) {
+        if((!btnA && currentTime - f_smashStartTime > 150) || currentTime - f_smashStartTime > 3000) {
             action = KIRBY_ACTION_FORWARDSMASH;
             frameIndex = 2;
         }

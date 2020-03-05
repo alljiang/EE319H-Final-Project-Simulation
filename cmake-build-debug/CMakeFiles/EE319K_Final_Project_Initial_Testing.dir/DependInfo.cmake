@@ -4,17 +4,17 @@ set(CMAKE_DEPENDS_LANGUAGES
   )
 # The set of files for implicit dependencies of each language:
 set(CMAKE_DEPENDS_CHECK_CXX
-  "C:/Users/Allen/Documents/GitHub/EE319H-Final-Project-Initial-Testing/LCD.cpp" "C:/Users/Allen/Documents/GitHub/EE319H-Final-Project-Initial-Testing/cmake-build-debug/CMakeFiles/EE319K_Final_Project_Initial_Testing.dir/LCD.cpp.obj"
-  "C:/Users/Allen/Documents/GitHub/EE319H-Final-Project-Initial-Testing/SDCard.cpp" "C:/Users/Allen/Documents/GitHub/EE319H-Final-Project-Initial-Testing/cmake-build-debug/CMakeFiles/EE319K_Final_Project_Initial_Testing.dir/SDCard.cpp.obj"
-  "C:/Users/Allen/Documents/GitHub/EE319H-Final-Project-Initial-Testing/SRAM.cpp" "C:/Users/Allen/Documents/GitHub/EE319H-Final-Project-Initial-Testing/cmake-build-debug/CMakeFiles/EE319K_Final_Project_Initial_Testing.dir/SRAM.cpp.obj"
-  "C:/Users/Allen/Documents/GitHub/EE319H-Final-Project-Initial-Testing/UART.cpp" "C:/Users/Allen/Documents/GitHub/EE319H-Final-Project-Initial-Testing/cmake-build-debug/CMakeFiles/EE319K_Final_Project_Initial_Testing.dir/UART.cpp.obj"
-  "C:/Users/Allen/Documents/GitHub/EE319H-Final-Project-Initial-Testing/animator.cpp" "C:/Users/Allen/Documents/GitHub/EE319H-Final-Project-Initial-Testing/cmake-build-debug/CMakeFiles/EE319K_Final_Project_Initial_Testing.dir/animator.cpp.obj"
-  "C:/Users/Allen/Documents/GitHub/EE319H-Final-Project-Initial-Testing/collider.cpp" "C:/Users/Allen/Documents/GitHub/EE319H-Final-Project-Initial-Testing/cmake-build-debug/CMakeFiles/EE319K_Final_Project_Initial_Testing.dir/collider.cpp.obj"
-  "C:/Users/Allen/Documents/GitHub/EE319H-Final-Project-Initial-Testing/controller.cpp" "C:/Users/Allen/Documents/GitHub/EE319H-Final-Project-Initial-Testing/cmake-build-debug/CMakeFiles/EE319K_Final_Project_Initial_Testing.dir/controller.cpp.obj"
-  "C:/Users/Allen/Documents/GitHub/EE319H-Final-Project-Initial-Testing/kirby.cpp" "C:/Users/Allen/Documents/GitHub/EE319H-Final-Project-Initial-Testing/cmake-build-debug/CMakeFiles/EE319K_Final_Project_Initial_Testing.dir/kirby.cpp.obj"
-  "C:/Users/Allen/Documents/GitHub/EE319H-Final-Project-Initial-Testing/main.cpp" "C:/Users/Allen/Documents/GitHub/EE319H-Final-Project-Initial-Testing/cmake-build-debug/CMakeFiles/EE319K_Final_Project_Initial_Testing.dir/main.cpp.obj"
-  "C:/Users/Allen/Documents/GitHub/EE319H-Final-Project-Initial-Testing/stage.cpp" "C:/Users/Allen/Documents/GitHub/EE319H-Final-Project-Initial-Testing/cmake-build-debug/CMakeFiles/EE319K_Final_Project_Initial_Testing.dir/stage.cpp.obj"
-  "C:/Users/Allen/Documents/GitHub/EE319H-Final-Project-Initial-Testing/utils.cpp" "C:/Users/Allen/Documents/GitHub/EE319H-Final-Project-Initial-Testing/cmake-build-debug/CMakeFiles/EE319K_Final_Project_Initial_Testing.dir/utils.cpp.obj"
+  "C:/Users/Allen/Documents/GitHub/EE319H-Final-Project-Simulation/LCD.cpp" "C:/Users/Allen/Documents/GitHub/EE319H-Final-Project-Simulation/cmake-build-debug/CMakeFiles/EE319K_Final_Project_Initial_Testing.dir/LCD.cpp.obj"
+  "C:/Users/Allen/Documents/GitHub/EE319H-Final-Project-Simulation/SDCard.cpp" "C:/Users/Allen/Documents/GitHub/EE319H-Final-Project-Simulation/cmake-build-debug/CMakeFiles/EE319K_Final_Project_Initial_Testing.dir/SDCard.cpp.obj"
+  "C:/Users/Allen/Documents/GitHub/EE319H-Final-Project-Simulation/SRAM.cpp" "C:/Users/Allen/Documents/GitHub/EE319H-Final-Project-Simulation/cmake-build-debug/CMakeFiles/EE319K_Final_Project_Initial_Testing.dir/SRAM.cpp.obj"
+  "C:/Users/Allen/Documents/GitHub/EE319H-Final-Project-Simulation/UART.cpp" "C:/Users/Allen/Documents/GitHub/EE319H-Final-Project-Simulation/cmake-build-debug/CMakeFiles/EE319K_Final_Project_Initial_Testing.dir/UART.cpp.obj"
+  "C:/Users/Allen/Documents/GitHub/EE319H-Final-Project-Simulation/animator.cpp" "C:/Users/Allen/Documents/GitHub/EE319H-Final-Project-Simulation/cmake-build-debug/CMakeFiles/EE319K_Final_Project_Initial_Testing.dir/animator.cpp.obj"
+  "C:/Users/Allen/Documents/GitHub/EE319H-Final-Project-Simulation/collider.cpp" "C:/Users/Allen/Documents/GitHub/EE319H-Final-Project-Simulation/cmake-build-debug/CMakeFiles/EE319K_Final_Project_Initial_Testing.dir/collider.cpp.obj"
+  "C:/Users/Allen/Documents/GitHub/EE319H-Final-Project-Simulation/controller.cpp" "C:/Users/Allen/Documents/GitHub/EE319H-Final-Project-Simulation/cmake-build-debug/CMakeFiles/EE319K_Final_Project_Initial_Testing.dir/controller.cpp.obj"
+  "C:/Users/Allen/Documents/GitHub/EE319H-Final-Project-Simulation/kirby.cpp" "C:/Users/Allen/Documents/GitHub/EE319H-Final-Project-Simulation/cmake-build-debug/CMakeFiles/EE319K_Final_Project_Initial_Testing.dir/kirby.cpp.obj"
+  "C:/Users/Allen/Documents/GitHub/EE319H-Final-Project-Simulation/main.cpp" "C:/Users/Allen/Documents/GitHub/EE319H-Final-Project-Simulation/cmake-build-debug/CMakeFiles/EE319K_Final_Project_Initial_Testing.dir/main.cpp.obj"
+  "C:/Users/Allen/Documents/GitHub/EE319H-Final-Project-Simulation/stage.cpp" "C:/Users/Allen/Documents/GitHub/EE319H-Final-Project-Simulation/cmake-build-debug/CMakeFiles/EE319K_Final_Project_Initial_Testing.dir/stage.cpp.obj"
+  "C:/Users/Allen/Documents/GitHub/EE319H-Final-Project-Simulation/utils.cpp" "C:/Users/Allen/Documents/GitHub/EE319H-Final-Project-Simulation/cmake-build-debug/CMakeFiles/EE319K_Final_Project_Initial_Testing.dir/utils.cpp.obj"
   )
 set(CMAKE_CXX_COMPILER_ID "GNU")
 
