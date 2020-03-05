@@ -37,8 +37,8 @@ const bool PLAYER2 = true;
 const bool HITBOXOVERLAY = false;
 const double UPDATERATE = 20;
 
-//const uint8_t stageToPlay = STAGE_FINALDESTINATION;
-const uint8_t stageToPlay = STAGE_TOWER;
+const uint8_t stageToPlay = STAGE_FINALDESTINATION;
+//const uint8_t stageToPlay = STAGE_TOWER;
 
 //  runs once at beginning
 void startup() {
