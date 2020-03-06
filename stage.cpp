@@ -4,6 +4,17 @@
 
 #include "stage.h"
 #include "animator.h"
+#include "entities.h"
+
+//  if damage == 0, corner is left. else, it's right corner
+const Hurtbox FD_leftCorner = Hurtbox(true, 38, 103,
+                             SHAPE_CIRCLE, 8,
+                             1, 1,
+                             0, 0, 0, 0);
+const Hurtbox FD_rightCorner = Hurtbox(
+        true, 275, 103, SHAPE_CIRCLE,8,
+        1, 1,
+        1, 0, 0, 0);
 
 double Stage::ceil(double x, double y) {
 
@@ -149,7 +160,16 @@ void Stage::update() {
     }
 }
 
-void Stage::initialize(uint8_t index) {
+void Stage::initialize(uint8_t index, HitboxManager *hitboxManager) {
+    if(stageIndex == STAGE_FINALDESTINATION) {
+        hitboxManager->addHurtbox(0, 0, false,
+                                  FD_leftCorner, 0, true);
+        hitboxManager->addHurtbox(0, 0, false,
+                                  FD_rightCorner, 0, true);
+    }
+    else if(stageIndex == STAGE_TOWER) {}
+    else if(stageIndex == STAGE_BATTLEFIELD) {}
+
     stageIndex = index;
 
     animator_readPersistentSprite(stageNames[index], 0, 0);

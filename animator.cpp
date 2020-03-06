@@ -191,7 +191,7 @@ void animator_update() {
 
             //  copy from buffer into colorIndexes array
             for(uint16_t i = 0; i < consecutiveBackgroundRowSize; i++) {
-                if(col+i > 320 || col + i < 0) continue;
+                if(col+i > 321 || col + i < 0) continue;
                 finalColors[col + i] = backgroundColors[(buffer[i*2] << 8u) + (buffer[i*2 + 1])];
             }
 
@@ -277,8 +277,9 @@ void animator_animate(uint8_t charIndex, uint8_t animationIndex,
     spriteSendables[slot].currentframeLength = 0;
     spriteSendables[slot].mirrored = mirrored;
 
-    for(uint8_t i = y; i < y+animation[charIndex][animationIndex].height; i++)
-        rowsToUpdate[i] = true;
+    for(int16_t i = y; i < y+animation[charIndex][animationIndex].height; i++) {
+        if(i >= 0 && i < 241) rowsToUpdate[i] = true;
+    }
 
 //    if(mirrored) spriteSendables[slot].x
 

@@ -3,6 +3,7 @@
 //
 
 #include <cstdlib>
+#include <cstdio>
 #include "entities.h"
 #include "LCD.h"
 
@@ -14,16 +15,25 @@ void HitboxManager::checkCollisions() {
         if(p2 != nullptr && hurtboxes[slot].source == 1 && p2->hitbox.isColliding(hurtboxes[slot])) {
             //  hurtbox collision with player 2!
             hurtboxes[slot].active = false;
-            p2->collide(hurtboxes[slot]);
+            p2->collide(&hurtboxes[slot]);
         }
         else if(p2 != nullptr && hurtboxes[slot].source == 2 && p1->hitbox.isColliding(hurtboxes[slot])) {
             //  hurtbox collision with player 1!
             hurtboxes[slot].active = false;
-            p1->collide(hurtboxes[slot]);
+            p1->collide(&hurtboxes[slot]);
+        }
+        else if(hurtboxes[slot].source == 0) {
+            if(p1->hitbox.isColliding(hurtboxes[slot])) {
+                p1->collide(&hurtboxes[slot]);
+            }
+            if(p2 != nullptr && p2->hitbox.isColliding(hurtboxes[slot])) {
+                p2->collide(&hurtboxes[slot]);
+            }
         }
         else {
             //  update hurtbox frame
-            if(hurtboxes[slot].frameLengthCounter++ >= hurtboxes[slot].frameLength) {
+            if( hurtboxes[slot].frameLengthCounter++ >= hurtboxes[slot].frameLength
+                && !((persistentHurtbox >> slot) & 1)) {
                 hurtboxes[slot].frameLengthCounter = 0;
                 hurtboxes[slot].currentFrame++;
                 if(hurtboxes[slot].currentFrame >= hurtboxes[slot].frames) {
@@ -37,6 +47,7 @@ void HitboxManager::checkCollisions() {
 void HitboxManager::displayHitboxesOverlay() {
     uint32_t hitboxColorsub = 0x555500;
     uint32_t hurtboxColorsub = 0x007777;
+
 
     if(p1->hitbox.shape == SHAPE_CIRCLE) {
         LCD_drawOverlayCircle(p1->hitbox.x, p1->hitbox.y,
@@ -77,7 +88,7 @@ void HitboxManager::clearHitboxOverlay() {
 }
 
 void HitboxManager::addHurtbox(double xOffset, double yOffset, bool mirrored,
-        class Hurtbox hurtBox, uint8_t playerSource) {
+        class Hurtbox hurtBox, uint8_t playerSource, bool persistent) {
     hurtBox.active = true;
     hurtBox.currentFrame = 0;
     hurtBox.frameLengthCounter = 0;
@@ -91,11 +102,17 @@ void HitboxManager::addHurtbox(double xOffset, double yOffset, bool mirrored,
     uint8_t slot = 0;
     for(slot = 0; slot < hurtboxSlots; slot++) {
         if(!hurtboxes[slot].active) {
+            if(persistent) persistentHurtbox |= 1u << slot;
             hurtboxes[slot] = hurtBox;
             break;
         }
     }
     if(slot == hurtboxSlots) return;    //  no slots remaining
+}
+
+void HitboxManager::addHurtbox(double xOffset, double yOffset, bool mirrored,
+       class Hurtbox hurtBox, uint8_t playerSource) {
+    this->addHurtbox(xOffset, yOffset, mirrored, hurtBox, playerSource, false);
 }
 
 bool Hitbox::isColliding(class Hurtbox hurtbox) {

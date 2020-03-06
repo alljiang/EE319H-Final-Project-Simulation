@@ -31,14 +31,6 @@ void LCD_startLCD() {
     SDL_RenderPresent(renderer);
 }
 
-void ILI9341_drawColors_indexed(uint32_t x, uint32_t y, int32_t *rgbIndex, uint16_t totalPixels) {
-    for(uint32_t i = 0; i < totalPixels; i++) {
-        uint32_t rgb = colors[rgbIndex[i]];
-        LCD_drawPixel(x+i, y, rgb, false);
-    }
-    ILI9341_SPICounter += 11 + 3 * totalPixels;
-}
-
 void ILI9341_drawColors(uint32_t x, uint32_t y, int32_t *rgbArr, uint16_t totalPixels) {
     for(uint32_t i = 0; i < totalPixels; i++) {
         uint32_t rgb = rgbArr[i];
@@ -57,8 +49,8 @@ void ILI9341_fillScreen(uint32_t rgb) {
 
 // simulator only
 void LCD_drawOverlayCircle(double doublex, double doubley, uint8_t radius, uint32_t colorSub) {
-    uint16_t cx = (uint16_t) doublex;
-    uint16_t cy = (uint16_t) doubley;
+    double cx = (double) doublex;
+    double cy = (double) doubley;
 
     double radius_sq = radius * radius;
 

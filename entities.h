@@ -81,6 +81,7 @@ public:
         this->yVel = yVelocity;
     }
 
+    //  if source is 0, hurtbox is a grabbable stage ledge
     void setSource(uint8_t playerSource) { this->source = playerSource; }
 };
 
@@ -110,11 +111,12 @@ public:
 
 class HitboxManager {
 
-#define hurtboxSlots 10
+#define hurtboxSlots 16
 
 protected:
     Player *p1, *p2;
     Hurtbox hurtboxes[hurtboxSlots];
+    uint16_t persistentHurtbox = 0; // big endian
 
 public:
 
@@ -126,7 +128,9 @@ public:
 
     void checkCollisions();
     void addHurtbox(double xOffset, double yOffset, bool mirrored,
-            class Hurtbox hurtBox, uint8_t playerSource);
+                    class Hurtbox hurtBox, uint8_t playerSource, bool persistent);
+    void addHurtbox(double xOffset, double yOffset, bool mirrored,
+                    class Hurtbox hurtBox, uint8_t playerSource);
     void displayHitboxesOverlay();
     void clearHitboxOverlay();
 };
@@ -178,6 +182,9 @@ protected:
     long long l_shieldRise_t;   //  last shield pressed time in millis
     long long l_shieldFall_t;   //  last shield release time in millis
 
+    //  ledge grab
+    long long ledgeGrabTime{0};
+
     //  jumping
     uint8_t jumpsUsed;  // midair only
 
@@ -191,7 +198,7 @@ public:
     virtual void controlLoop(double joyH, double joyV, bool btnA, bool btnB, bool shield, class Stage* stage,
             class HitboxManager* hitboxManager) = 0; //  called every update
     virtual void updateLastValues(double joyH, double joyV, bool btnA, bool btnB, bool shield) = 0;
-    virtual void collide(class Hurtbox hurtbox) = 0;
+    virtual void collide(class Hurtbox *hurtbox) = 0;
 };
 
 
@@ -216,6 +223,7 @@ class Kirby: public Player {
 #define KIRBY_ACTION_UPSPECIALRISING 26
 #define KIRBY_ACTION_UPSPECIALTOP 27
 #define KIRBY_ACTION_UPSPECIALFALLING 28
+#define KIRBY_ACTION_LEDGEGRAB 30
 
 #define KIRBY_STAGE_OFFSET 18
 
@@ -229,7 +237,7 @@ protected:
     const double airSpeed = 1*3;
 
     const double initialJumpSpeed = 1.5*3;
-    const double repeatedJumpSpeed = 1.2*3;
+    const double repeatedJumpSpeed = 1.3*3;
     const double gravityRising = 0.07*7;
     const double gravityFalling = 0.1*7;
     const double maxFallingVelocity = -2.3*3;
@@ -269,7 +277,7 @@ public:
 
     void updateLastValues(double joyH, double joyV, bool btnA, bool btnB, bool shield) override ;
 
-    void collide(class Hurtbox hurtbox);
+    void collide(class Hurtbox *hurtbox);
 };
 
 #endif //EE319K_FINAL_PROJECT_INITIAL_TESTING_ENTITIES_H

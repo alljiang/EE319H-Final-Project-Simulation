@@ -35,7 +35,7 @@ float y = 0;
 
 const bool PLAYER2 = true;
 const bool HITBOXOVERLAY = false;
-const double UPDATERATE = 20;
+const double UPDATERATE = 20;   // 20
 
 const uint8_t stageToPlay = STAGE_FINALDESTINATION;
 //const uint8_t stageToPlay = STAGE_TOWER;
@@ -43,10 +43,6 @@ const uint8_t stageToPlay = STAGE_FINALDESTINATION;
 //  runs once at beginning
 void startup() {
     animator_initialize();
-
-    if(stageToPlay == STAGE_FINALDESTINATION) animator_setBackgroundColors(colors_finaldest);
-    else if(stageToPlay == STAGE_TOWER) animator_setBackgroundColors(colors_towerback);
-    stage.initialize(stageToPlay);
 
     p1 = &k1;
     p1->setPlayer(1);
@@ -58,8 +54,13 @@ void startup() {
     p2->setX(stage.getStartX(2));
     p2->setY(stage.getStartY(2));
 
+
     if(PLAYER2) hitboxManager.initialize(p1, p2);
     else hitboxManager.initialize(p1);
+
+    if(stageToPlay == STAGE_FINALDESTINATION) animator_setBackgroundColors(colors_finaldest);
+    else if(stageToPlay == STAGE_TOWER) animator_setBackgroundColors(colors_towerback);
+    stage.initialize(stageToPlay, &hitboxManager);
 
     UART_readCharacterSDCard(0);
 
