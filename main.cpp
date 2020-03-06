@@ -81,7 +81,7 @@ void loop() {
 //        tt1 = millis();
 //    }
     if(millis() - t1 >= 1./UPDATERATE*1000) {
-        if(millis() - t1 - 1./UPDATERATE*1000 > 2) {
+        if(millis() - t1 - 1./UPDATERATE*1000 > 0) {
             printf("Missed: %0.0f\n", millis() - t1 - 1./UPDATERATE*1000);
         }
 
