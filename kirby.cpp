@@ -95,46 +95,6 @@ void Kirby::controlLoop(double joyH, double joyV, bool btnA, bool btnB, bool shi
             }
         }
     }
-    else if(action == KIRBY_ACTION_FALLING) {
-
-        if(y <= floor) {
-            y = floor;
-            yVel = 0;
-            l_action = KIRBY_ACTION_FALLING;
-            if(joyH == 0) {
-                action = KIRBY_ACTION_RESTING;
-                lastBlink = currentTime;
-            } else {
-                action = KIRBY_ACTION_RUNNING;
-            }
-        }
-        else {
-            x += airSpeed * joyH;
-            if(x > rightBound) x = rightBound;
-            else if(x < leftBound) x = leftBound;
-
-            yVel -= gravityFalling;
-
-            mirrored = l_mirrored;
-            if (noJumpsDisabled) {
-                hitbox.offsetY(2);
-                if(mirrored) hitbox.offsetX(0, mirrored);
-                animationIndex = 3;
-            }
-            else {
-                hitbox.offsetY(2);
-                hitbox.offsetX(1, mirrored);
-                animationIndex = 2;
-            }
-
-            frameExtension = 1;
-            if (frameLengthCounter++ > frameExtension) {
-                frameLengthCounter = 0;
-                frameIndex++;
-            }
-            if (frameIndex >= 2) frameIndex = 0;
-        }
-    }
     else if(action == KIRBY_ACTION_JUMPING) {
         hitbox.offsetY(4);
         hitbox.offsetX(4);
@@ -590,7 +550,164 @@ void Kirby::controlLoop(double joyH, double joyV, bool btnA, bool btnB, bool shi
                 break;
         }
     }
+    else if(action == KIRBY_ACTION_NEUTRALAIR) {
+        if(y <= floor) {
+            action = KIRBY_ACTION_RESTING;
+            disabledFrames = 3;
+        }
+        else {
+            animationIndex = 28;
+            mirrored = l_mirrored;
+            yVel -= gravityFalling * 0.5;
+            x += airSpeed * joyH * 0.5;
+            x_mirroredOffset = 0;
+            xAnimationOffset = 0;
+            yAnimationOffset = 0;
 
+            disabledFrames = 2;
+            frameExtension = 0;
+            if (frameLengthCounter++ > frameExtension) {
+                frameLengthCounter = 0;
+                frameIndex++;
+            }
+            if (frameIndex >= 8) {
+                l_action = KIRBY_ACTION_NEUTRALAIR;
+                action = KIRBY_ACTION_FALLING;
+                disabledFrames = 2;
+            }
+        }
+    }
+    else if(action == KIRBY_ACTION_FORWARDAIR) {
+        if(y <= floor) {
+            action = KIRBY_ACTION_RESTING;
+            disabledFrames = 3;
+        }
+        else {
+            animationIndex = 26;
+            mirrored = l_mirrored;
+            yVel -= gravityFalling * 0.7;
+            x += airSpeed * joyH * 0.7;
+
+            x_mirroredOffset = -7;
+            xAnimationOffset = 4;
+            yAnimationOffset = 0;
+
+            disabledFrames = 2;
+            frameExtension = 0;
+            if (frameLengthCounter++ > frameExtension) {
+                frameLengthCounter = 0;
+                frameIndex++;
+            }
+            if (frameIndex >= 8) {
+                l_action = KIRBY_ACTION_FORWARDAIR;
+                action = KIRBY_ACTION_FALLING;
+                disabledFrames = 2;
+            }
+        }
+    }
+    else if(action == KIRBY_ACTION_UPAIR) {
+        if(y <= floor) {
+            action = KIRBY_ACTION_RESTING;
+            disabledFrames = 3;
+        }
+        else {
+            animationIndex = 27;
+            mirrored = l_mirrored;
+            yVel -= gravityFalling * 0.3;
+            x += airSpeed * joyH * 0.4;
+            if(yVel < -2) yVel = -2;
+            else if(yVel > 2) yVel = 2;
+
+            x_mirroredOffset = -4;
+            xAnimationOffset = 0;
+            yAnimationOffset = 0;
+
+            disabledFrames = 2;
+            frameExtension = 0;
+            if (frameLengthCounter++ > frameExtension) {
+                frameLengthCounter = 0;
+                frameIndex++;
+            }
+            if (frameIndex >= 6) {
+                l_action = KIRBY_ACTION_UPAIR;
+                action = KIRBY_ACTION_FALLING;
+                disabledFrames = 2;
+            }
+        }
+    }
+    else if(action == KIRBY_ACTION_DOWNAIR) {
+        if (y <= floor) {
+            action = KIRBY_ACTION_RESTING;
+            disabledFrames = 3;
+        } else {
+            animationIndex = 25;
+            mirrored = l_mirrored;
+            yVel -= gravityFalling * 0.3;
+            x += airSpeed * joyH * 0.4;
+            if (yVel < -1) yVel = -1;
+            else if (yVel > 1) yVel = 1;
+
+            x_mirroredOffset = 3;
+            xAnimationOffset = 6;
+            yAnimationOffset = -10;
+
+            disabledFrames = 2;
+            frameExtension = 0;
+            if (frameLengthCounter++ > frameExtension) {
+                frameLengthCounter = 0;
+                frameIndex++;
+                frameIndex++;
+            }
+            if (frameIndex >= 11) {
+                l_action = KIRBY_ACTION_DOWNAIR;
+                action = KIRBY_ACTION_FALLING;
+                disabledFrames = 2;
+            }
+        }
+    }
+
+    if(action == KIRBY_ACTION_FALLING) {
+        if(y <= floor) {
+            y = floor;
+            yVel = 0;
+            l_action = KIRBY_ACTION_FALLING;
+            if(joyH == 0) {
+                action = KIRBY_ACTION_RESTING;
+                lastBlink = currentTime;
+            } else {
+                action = KIRBY_ACTION_RUNNING;
+            }
+        }
+        else {
+            x_mirroredOffset = 0;
+            xAnimationOffset = 0;
+            yAnimationOffset = 0;
+            x += airSpeed * joyH;
+            if(x > rightBound) x = rightBound;
+            else if(x < leftBound) x = leftBound;
+
+            yVel -= gravityFalling;
+
+            mirrored = l_mirrored;
+            if (noJumpsDisabled) {
+                hitbox.offsetY(2);
+                if(mirrored) hitbox.offsetX(0, mirrored);
+                animationIndex = 3;
+            }
+            else {
+                hitbox.offsetY(2);
+                hitbox.offsetX(1, mirrored);
+                animationIndex = 2;
+            }
+
+            frameExtension = 1;
+            if (frameLengthCounter++ > frameExtension) {
+                frameLengthCounter = 0;
+                frameIndex++;
+            }
+            if (frameIndex >= 2) frameIndex = 0;
+        }
+    }
     if(action == KIRBY_ACTION_RESTING) {
         //  standing, resting
 
@@ -756,6 +873,53 @@ void Kirby::controlLoop(double joyH, double joyV, bool btnA, bool btnB, bool shi
         frameLengthCounter = 0;
         usmash_startTime = currentTime;
     }
+        //  neutral air
+    else if(disabledFrames == 0 && y > floor
+            && (action == KIRBY_ACTION_FALLING || action == KIRBY_ACTION_JUMPING
+                || action == KIRBY_ACTION_MULTIJUMPING)
+            && currentTime - l_btnARise_t == 0
+            && std::abs(joyH) < 0.3 && std::abs(joyV) < 0.3) {
+        action = KIRBY_ACTION_NEUTRALAIR;
+        mirrored = l_mirrored;
+        disabledFrames = 2;
+        frameIndex = 0;
+        frameLengthCounter = 0;
+    }
+        //  down air
+    else if(disabledFrames == 0 && y > floor
+            && (action == KIRBY_ACTION_FALLING || action == KIRBY_ACTION_JUMPING
+                || action == KIRBY_ACTION_MULTIJUMPING)
+            && currentTime - l_btnARise_t == 0 && joyV < -0.3) {
+        action = KIRBY_ACTION_DOWNAIR;
+        if(joyH == 0) mirrored = l_mirrored;
+        else mirrored = joyH < 0;
+        disabledFrames = 2;
+        frameIndex = 0;
+        frameLengthCounter = 0;
+    }
+        //  up air
+    else if(disabledFrames == 0 && y > floor
+            && (action == KIRBY_ACTION_FALLING || action == KIRBY_ACTION_JUMPING
+                || action == KIRBY_ACTION_MULTIJUMPING)
+            && currentTime - l_btnARise_t == 0 && joyV > 0.3) {
+        action = KIRBY_ACTION_UPAIR;
+        if(joyH == 0) mirrored = l_mirrored;
+        else mirrored = joyH < 0;
+        disabledFrames = 2;
+        frameIndex = 0;
+        frameLengthCounter = 0;
+    }
+        //  forward air
+    else if(disabledFrames == 0 && y > floor
+            && (action == KIRBY_ACTION_FALLING || action == KIRBY_ACTION_JUMPING
+                || action == KIRBY_ACTION_MULTIJUMPING)
+            && currentTime - l_btnARise_t == 0 && std::abs(joyH) > 0.3) {
+        action = KIRBY_ACTION_FORWARDAIR;
+        mirrored = joyH < 0;
+        disabledFrames = 2;
+        frameIndex = 0;
+        frameLengthCounter = 0;
+    }
         //  up tilt
     else if(disabledFrames == 0 && y == floor && (action == KIRBY_ACTION_RUNNING || action == KIRBY_ACTION_RESTING)
             && currentTime - l_btnARise_t == 0 && joyV > 0) {
@@ -800,15 +964,16 @@ void Kirby::controlLoop(double joyH, double joyV, bool btnA, bool btnB, bool shi
             || (action == KIRBY_ACTION_LEDGEGRAB && (joyV - l_joyV) > joystickJumpSpeed && l_joyV > -0.1
                     && disabledFrames == 0)) {
         jumpsUsed = 0;
-        disabledFrames = 6;
+        disabledFrames = 4;
         yVel = initialJumpSpeed;
         action = KIRBY_ACTION_JUMPING;
         frameIndex = 0;
         ledgeGrabTime = currentTime;
     }
         //  multijump
-    else if(disabledFrames == 0 &&
-            (action == KIRBY_ACTION_JUMPING || action == KIRBY_ACTION_FALLING || action == KIRBY_ACTION_MULTIJUMPING)
+    else if( ( (disabledFrames == 0
+        && (action == KIRBY_ACTION_JUMPING || action == KIRBY_ACTION_FALLING
+            || action == KIRBY_ACTION_MULTIJUMPING) ) || (action == KIRBY_ACTION_FORWARDAIR) )
             && jumpsUsed < 5 && (joyV - l_joyV) > joystickJumpSpeed && l_joyV > -0.1) {
         jumpsUsed++;
         yVel = repeatedJumpSpeed;
