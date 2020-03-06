@@ -47,7 +47,7 @@ const char animations[4][64][10] = {
                                                 {"fsmash"},     //  10
                                                 {"fspecial"},   //  11
                                                 {"ftilt"},      //  8
-                                                {""},    //
+                                                {"downtilt"},   //  4
                                                 {"uptilt"},     //  7
                                                 {"upsmash"},     //  8
                                                 {"ledge"},      //  1
@@ -56,12 +56,23 @@ const char animations[4][64][10] = {
                                                 {"upbrise"},    //  1
                                                 {"upbtop"},     //  6
                                                 {"upbfall"},    //  1(fall)+1(followthrough)
+                                                {"backair"},    //  9
+                                                {"downair"},    //  11
+                                                {"fwdair"},     //  8
+                                                {"upair"},      //  6
+                                                {"nair"},       //  8
+                                                {""},
+                 /* 30 */                       {""},
+                                                {""},
+                                                {"neutralb"},    //  11
+                                                {"fwdspec"},   //  10
+                                                {"downspec"},   //  3
+                                                {"downsmash"},  //  12
                                                 {""},
                                                 {""},
                                                 {""},
                                                 {""},
-                                                {""},
-                                                {""},
+                 /* 40 */                       {""},
                                                 {""},
                                                 {""},
                                                 {""},

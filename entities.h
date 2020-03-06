@@ -182,6 +182,9 @@ protected:
     long long l_shieldRise_t;   //  last shield pressed time in millis
     long long l_shieldFall_t;   //  last shield release time in millis
 
+    //  smash attacks
+    long long fsmash_startTime, dsmash_startTime, usmash_startTime;
+
     //  ledge grab
     long long ledgeGrabTime{0};
 
@@ -214,16 +217,27 @@ class Kirby: public Player {
 #define KIRBY_ACTION_JABDOUBLE 7
 #define KIRBY_ACTION_JABREPEATING 8
 #define KIRBY_ACTION_FORWARDTILT 9
-#define KIRBY_ACTION_FORWARDAIR 10
+#define KIRBY_ACTION_DOWNTILT 10
 #define KIRBY_ACTION_FORWARDSMASHHOLD 11
 #define KIRBY_ACTION_FORWARDSMASH 12
-#define KIRBY_ACTION_FORWARDSPECIAL 13
+#define KIRBY_ACTION_DOWNSMASHHOLD 13
+#define KIRBY_ACTION_DOWNSMASH 14
+#define KIRBY_ACTION_UPSMASHHOLD 15
+#define KIRBY_ACTION_UPSMASH 16
 #define KIRBY_ACTION_UPTILT 20
 #define KIRBY_ACTION_UPSPECIALINITIAL 25
 #define KIRBY_ACTION_UPSPECIALRISING 26
 #define KIRBY_ACTION_UPSPECIALTOP 27
 #define KIRBY_ACTION_UPSPECIALFALLING 28
 #define KIRBY_ACTION_LEDGEGRAB 30
+#define KIRBY_ACTION_BACKAIR 40
+#define KIRBY_ACTION_DOWNAIR 41
+#define KIRBY_ACTION_FORWARDAIR 42
+#define KIRBY_ACTION_UPAIR 43
+#define KIRBY_ACTION_NEUTRALAIR 44
+#define KIRBY_ACTION_NEUTRALB 50
+#define KRIBY_ACTION_FWDSPEC 53
+#define KIRBY_ACTION_DOWNSPEC 56
 
 #define KIRBY_STAGE_OFFSET 18
 
@@ -249,10 +263,7 @@ protected:
     long long lastBlink{0};
 
     //  jabbing
-    long long l_singleJabTime, l_doubleJabTime, l_repeatJabTime;
-
-    //  smash attacks
-    long long f_smashStartTime;
+    long long l_singleJabTime, l_doubleJabTime;
 
     //  up special
     double startY;

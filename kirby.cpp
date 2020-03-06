@@ -254,7 +254,6 @@ void Kirby::controlLoop(double joyH, double joyV, bool btnA, bool btnB, bool shi
             l_action = KIRBY_ACTION_JABREPEATING;
             x_mirroredOffset = 0;
             action = KIRBY_ACTION_RESTING;
-            l_repeatJabTime = currentTime;
 
             disabledFrames = 0;
         }
@@ -299,7 +298,7 @@ void Kirby::controlLoop(double joyH, double joyV, bool btnA, bool btnB, bool shi
         x_mirroredOffset = -26;
 
         //  release attack
-        if((!btnA && currentTime - f_smashStartTime > 150) || currentTime - f_smashStartTime > 3000) {
+        if((!btnA && currentTime - fsmash_startTime > 150) || currentTime - fsmash_startTime > 3000) {
             action = KIRBY_ACTION_FORWARDSMASH;
             frameIndex = 2;
         }
@@ -322,7 +321,7 @@ void Kirby::controlLoop(double joyH, double joyV, bool btnA, bool btnB, bool shi
         x_mirroredOffset = -20;
 
         disabledFrames = 2;
-        frameExtension = 1;
+        frameExtension = 0;
         if (frameLengthCounter++ > frameExtension) {
             frameLengthCounter = 0;
             frameIndex++;
@@ -338,6 +337,88 @@ void Kirby::controlLoop(double joyH, double joyV, bool btnA, bool btnB, bool shi
             x_mirroredOffset = 0;
         }
     }
+    else if(action == KIRBY_ACTION_UPSMASHHOLD) {
+        animationIndex = 17;
+        mirrored = l_mirrored;
+        x_mirroredOffset = -6;
+
+        //  release attack
+        if((!btnA && currentTime - usmash_startTime > 150) || currentTime - usmash_startTime > 3000) {
+            action = KIRBY_ACTION_UPSMASH;
+            frameIndex = 2;
+        }
+            //  charging attack
+        else {
+            disabledFrames = 2;
+            frameExtension = 1;
+            if (frameLengthCounter++ > frameExtension) {
+                frameLengthCounter = 0;
+                frameIndex++;
+            }
+            if(frameIndex >= 3) {
+                frameIndex = 0;
+            }
+        }
+    }
+    else if(action == KIRBY_ACTION_UPSMASH) {
+        animationIndex = 17;
+        mirrored = l_mirrored;
+        x_mirroredOffset = -6;
+
+        disabledFrames = 2;
+        frameExtension = 0;
+        if (frameLengthCounter++ > frameExtension) {
+            frameLengthCounter = 0;
+            frameIndex++;
+        }
+        if(frameIndex >= 8) {
+            l_action = KIRBY_ACTION_UPSMASH;
+            action = KIRBY_ACTION_RESTING;
+            disabledFrames = 2;
+        }
+    }
+    else if(action == KIRBY_ACTION_DOWNSMASHHOLD) {
+        animationIndex = 35;
+        mirrored = l_mirrored;
+        x_mirroredOffset = -8;
+        xAnimationOffset = -7;
+
+        //  release attack
+        if((!btnA && currentTime - dsmash_startTime > 150) || currentTime - dsmash_startTime > 3000) {
+            action = KIRBY_ACTION_DOWNSMASH;
+            frameIndex = 2;
+        }
+            //  charging attack
+        else {
+            disabledFrames = 2;
+            frameExtension = 1;
+            if (frameLengthCounter++ > frameExtension) {
+                frameLengthCounter = 0;
+                frameIndex++;
+            }
+            if(frameIndex >= 3) {
+                frameIndex = 0;
+            }
+        }
+    }
+    else if(action == KIRBY_ACTION_DOWNSMASH) {
+        animationIndex = 35;
+        mirrored = l_mirrored;
+        x_mirroredOffset = -8;
+        xAnimationOffset = -7;
+
+        disabledFrames = 2;
+        frameExtension = 0;
+        if (frameLengthCounter++ > frameExtension) {
+            frameLengthCounter = 0;
+            frameIndex++;
+        }
+        if(frameIndex >= 12) {
+            l_action = KIRBY_ACTION_DOWNSMASH;
+            action = KIRBY_ACTION_RESTING;
+            disabledFrames = 2;
+        }
+    }
     else if(action == KIRBY_ACTION_UPSPECIALINITIAL) {
         animationIndex = 20;
         mirrored = l_mirrored;
@@ -345,7 +426,7 @@ void Kirby::controlLoop(double joyH, double joyV, bool btnA, bool btnB, bool shi
         xAnimationOffset = 0;
         yAnimationOffset = 0;
         yVel = 0;
-        x += airSpeed * 0.3 * joyH;
+        x += airSpeed * 0.5 * joyH;
 
         startY = y;
 
@@ -383,7 +464,7 @@ void Kirby::controlLoop(double joyH, double joyV, bool btnA, bool btnB, bool shi
         mirrored = l_mirrored;
         frameIndex = 0;
         x_mirroredOffset = -23;
-        x += airSpeed * 0.3 * joyH;
+        x += airSpeed * 0.5 * joyH;
 
         yVel = 0;
         disabledFrames = 2;
@@ -404,7 +485,7 @@ void Kirby::controlLoop(double joyH, double joyV, bool btnA, bool btnB, bool shi
 
         yVel = 0;
         disabledFrames = 2;
-        x += airSpeed * 0.3 * joyH;
+        x += airSpeed * 0.5 * joyH;
 
         frameExtension = 0;
 
@@ -492,7 +573,7 @@ void Kirby::controlLoop(double joyH, double joyV, bool btnA, bool btnB, bool shi
         else {
             frameIndex = 0;
             frameLengthCounter = 0;
-            x += airSpeed * 0.3 * joyH;
+            x += airSpeed * 0.5 * joyH;
             y -= 16;
         }
         switch(frameIndex) {
@@ -644,7 +725,47 @@ void Kirby::controlLoop(double joyH, double joyV, bool btnA, bool btnB, bool shi
         disabledFrames = 2;
         frameIndex = 5;
         frameLengthCounter = 0;
-        l_repeatJabTime = currentTime;
+    }
+        //  forward smash
+    else if(disabledFrames == 0 && y == floor && (action == KIRBY_ACTION_RUNNING || action == KIRBY_ACTION_RESTING)
+            && currentTime-l_btnARise_t == 0 && std::abs(joyH - l_joyH) > 0.5) {
+        action = KIRBY_ACTION_FORWARDSMASHHOLD;
+        mirrored = joyH < 0;
+        disabledFrames = 2;
+        frameIndex = 0;
+        frameLengthCounter = 0;
+        fsmash_startTime = currentTime;
+    }
+        //  down smash
+    else if(disabledFrames == 0 && y == floor && (action == KIRBY_ACTION_RUNNING || action == KIRBY_ACTION_RESTING)
+            && currentTime-l_btnARise_t == 0 && joyV - l_joyV < -0.5) {
+        action = KIRBY_ACTION_DOWNSMASHHOLD;
+        mirrored = l_mirrored;
+        disabledFrames = 2;
+        frameIndex = 0;
+        frameLengthCounter = 0;
+        dsmash_startTime = currentTime;
+    }
+        //  up smash
+    else if(disabledFrames == 0 && y == floor && (action == KIRBY_ACTION_RUNNING || action == KIRBY_ACTION_RESTING)
+            && currentTime-l_btnARise_t == 0 && joyV - l_joyV > 0.5) {
+        action = KIRBY_ACTION_UPSMASHHOLD;
+        mirrored = l_mirrored;
+        disabledFrames = 2;
+        frameIndex = 0;
+        frameLengthCounter = 0;
+        usmash_startTime = currentTime;
+    }
+        //  up tilt
+    else if(disabledFrames == 0 && y == floor && (action == KIRBY_ACTION_RUNNING || action == KIRBY_ACTION_RESTING)
+            && currentTime - l_btnARise_t == 0 && joyV > 0) {
+        action = KIRBY_ACTION_UPTILT;
+        disabledFrames = 10;
+        frameIndex = 0;
+        frameLengthCounter = 0;
+
+//        hitboxManager->addHurtbox(x + 16, y, mirrored,
+//                                  jabSingle, player);
     }
         //  forward tilt
     else if(disabledFrames == 0 && y == floor && (action == KIRBY_ACTION_RUNNING || action == KIRBY_ACTION_RESTING)
@@ -656,27 +777,6 @@ void Kirby::controlLoop(double joyH, double joyV, bool btnA, bool btnB, bool shi
 
 //        hitboxManager->addHurtbox(x + 16, y, mirrored,
 //                                  jabSingle, player);
-    }
-        //  up tilt
-    else if(disabledFrames == 0 && y == floor && (action == KIRBY_ACTION_RUNNING || action == KIRBY_ACTION_RESTING)
-            && currentTime - l_btnARise_t == 0 && std::abs(joyV) > 0) {
-        action = KIRBY_ACTION_UPTILT;
-        disabledFrames = 10;
-        frameIndex = 0;
-        frameLengthCounter = 0;
-
-//        hitboxManager->addHurtbox(x + 16, y, mirrored,
-//                                  jabSingle, player);
-    }
-        //  forward smash
-    else if(disabledFrames == 0 && y == floor && (action == KIRBY_ACTION_RUNNING || action == KIRBY_ACTION_RESTING)
-            && currentTime-l_btnARise_t == 0 && std::abs(joyH - l_joyH) > 0.5) {
-        action = KIRBY_ACTION_FORWARDSMASHHOLD;
-        mirrored = joyH < 0;
-        disabledFrames = 2;
-        frameIndex = 0;
-        frameLengthCounter = 0;
-        f_smashStartTime = currentTime;
     }
         //  up special
     else if(
