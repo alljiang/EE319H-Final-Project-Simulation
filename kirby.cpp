@@ -512,7 +512,7 @@ void Kirby::controlLoop(double joyH, double joyV, bool btnA, bool btnB, bool shi
         //  mirrored facing left/right
         mirrored = l_mirrored;
 
-        frameExtension = 1;
+        frameExtension = 0;
         animationIndex = 6;
         x_mirroredOffset = 0;
         xAnimationOffset = 0;
@@ -752,9 +752,7 @@ void Kirby::updateLastValues(double joyH, double joyV, bool btnA, bool btnB, boo
 
 void Kirby::collide(Hurtbox *hurtbox) {
     if(hurtbox->source == 0) {
-        printf("%d\n", currentTime - ledgeGrabTime);
         if(this->hitbox.y < hurtbox->y && currentTime - ledgeGrabTime > 1000) {
-            printf("GRAB");
             action = KIRBY_ACTION_LEDGEGRAB;
             mirrored = hurtbox->damage != 0;
             yVel = 0;
