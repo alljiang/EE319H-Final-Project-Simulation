@@ -80,7 +80,11 @@ void loop() {
 //        ILI9341_SPICounter = 0;
 //        tt1 = millis();
 //    }
-    if(millis() - t1 > 1./UPDATERATE*1000) {
+    if(millis() - t1 >= 1./UPDATERATE*1000) {
+        if(millis() - t1 - 1./UPDATERATE*1000 > 2) {
+            printf("Missed: %0.0f\n", millis() - t1 - 1./UPDATERATE*1000);
+        }
+
         uint32_t sum = SRAM_SPICounter + ILI9341_SPICounter;
         double max = 1000000/20.;
 //        printf("SPI Bus Usage: %0.2f%\n", sum/max*100);
@@ -110,6 +114,14 @@ void loop() {
         if(HITBOXOVERLAY) hitboxManager.displayHitboxesOverlay();
 
         hitboxManager.checkCollisions();
+    }
+    else {
+        double timeUsed = millis() - t1;
+        double updatePeriod = 1./UPDATERATE*1000;
+
+//        printf("Used Percentage: %0.1f%\n",
+//                (timeUsed)/updatePeriod * 100);
+//        sleep(updatePeriod - timeUsed);
     }
 }
 

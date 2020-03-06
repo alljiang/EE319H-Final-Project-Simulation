@@ -345,6 +345,7 @@ void Kirby::controlLoop(double joyH, double joyV, bool btnA, bool btnB, bool shi
         xAnimationOffset = 0;
         yAnimationOffset = 0;
         yVel = 0;
+        x += airSpeed * 0.3 * joyH;
 
         startY = y;
 
@@ -382,6 +383,7 @@ void Kirby::controlLoop(double joyH, double joyV, bool btnA, bool btnB, bool shi
         mirrored = l_mirrored;
         frameIndex = 0;
         x_mirroredOffset = -23;
+        x += airSpeed * 0.3 * joyH;
 
         yVel = 0;
         disabledFrames = 2;
@@ -390,7 +392,7 @@ void Kirby::controlLoop(double joyH, double joyV, bool btnA, bool btnB, bool shi
             action = KIRBY_ACTION_UPSPECIALTOP;
         }
         else {
-            y += 9;
+            y += 16;
         }
     }
     else if(action == KIRBY_ACTION_UPSPECIALTOP) {
@@ -402,8 +404,9 @@ void Kirby::controlLoop(double joyH, double joyV, bool btnA, bool btnB, bool shi
 
         yVel = 0;
         disabledFrames = 2;
+        x += airSpeed * 0.3 * joyH;
 
-        frameExtension = 1;
+        frameExtension = 0;
 
         if(frameLengthCounter++ > frameExtension) {
             frameLengthCounter = 0;
@@ -489,7 +492,8 @@ void Kirby::controlLoop(double joyH, double joyV, bool btnA, bool btnB, bool shi
         else {
             frameIndex = 0;
             frameLengthCounter = 0;
-            y -= 9;
+            x += airSpeed * 0.3 * joyH;
+            y -= 16;
         }
         switch(frameIndex) {
             case 0:
@@ -539,31 +543,10 @@ void Kirby::controlLoop(double joyH, double joyV, bool btnA, bool btnB, bool shi
     //  disabled means can interrupt current action and start new action
     if(disabledFrames > 0) disabledFrames--;
 
-
-    //  update velocity and positions
-    if(yVel < maxFallingVelocity) yVel = maxFallingVelocity;
-    y += yVel;
-    if(y > ceiling && action != KIRBY_ACTION_LEDGEGRAB) y = ceiling;
-    if(y <= floor) {
-        y = floor;
-        jumpsUsed = 0;
-    }
-
-
-    if(maxHorizontalSpeed < std::abs(xVel)) {
-        if(xVel < 0) xVel = -maxHorizontalSpeed;
-        else xVel = maxHorizontalSpeed;
-    }
-    x += xVel;
     if(x > rightBound) x = rightBound;
     else if(x < leftBound) x = leftBound;
 
-    if(xVel != 0) {
-        if(std::abs(xVel) < airResistance) xVel = 0;
 
-        else if(xVel > 0) xVel -= airResistance;
-        else if(xVel < 0) xVel += airResistance;
-    }
 
     if(!mirrored) x_mirroredOffset = 0;
     else x_mirroredOffset -= xAnimationOffset;
@@ -601,11 +584,31 @@ void Kirby::controlLoop(double joyH, double joyV, bool btnA, bool btnB, bool shi
 
             UART_sendAnimation(s);
 
-            uint8_t speed = 5;
-            if(upb_projectile_mirrored) upb_projectile_x -= speed;
-            else upb_projectile_x += speed;
+            if(upb_projectile_mirrored) upb_projectile_x -= 5;
+            else upb_projectile_x += 5;
         }
     }
+
+    //  update velocity and positions
+    if(yVel < maxFallingVelocity) yVel = maxFallingVelocity;
+    y += yVel;
+    if(y > ceiling && action != KIRBY_ACTION_LEDGEGRAB) y = ceiling;
+    if(y <= floor) {
+        y = floor;
+        jumpsUsed = 0;
+    }
+
+    if(maxHorizontalSpeed < std::abs(xVel)) {
+        if(xVel < 0) xVel = -maxHorizontalSpeed;
+        else xVel = maxHorizontalSpeed;
+    }
+    if(xVel != 0) {
+        if(std::abs(xVel) < airResistance) xVel = 0;
+
+        else if(xVel > 0) xVel -= airResistance;
+        else if(xVel < 0) xVel += airResistance;
+    }
+    x += xVel;
 
     //  start any new sequences
 
@@ -676,7 +679,7 @@ void Kirby::controlLoop(double joyH, double joyV, bool btnA, bool btnB, bool shi
         f_smashStartTime = currentTime;
     }
         //  up special
-    else if(disabledFrames == 0 &&
+    else if(
             ( (action == KIRBY_ACTION_FALLING || action == KIRBY_ACTION_JUMPING  ||
                action == KIRBY_ACTION_MULTIJUMPING) ||
               (y == floor && (action == KIRBY_ACTION_RESTING || action == KIRBY_ACTION_RUNNING)) ) &&
@@ -752,7 +755,9 @@ void Kirby::updateLastValues(double joyH, double joyV, bool btnA, bool btnB, boo
 
 void Kirby::collide(Hurtbox *hurtbox) {
     if(hurtbox->source == 0) {
-        if(this->hitbox.y < hurtbox->y && currentTime - ledgeGrabTime > 1000) {
+        if(this->hitbox.y < hurtbox->y
+            && currentTime - ledgeGrabTime > 1000
+            && yVel <= 0) {
             action = KIRBY_ACTION_LEDGEGRAB;
             mirrored = hurtbox->damage != 0;
             yVel = 0;
