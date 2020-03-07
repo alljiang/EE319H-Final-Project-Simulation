@@ -306,7 +306,16 @@ public:
                                    20, 40, 1, 1);
     Hurtbox upSpecialProjectile = Hurtbox(4., 16, SHAPE_RECTANGLE,
                                    32, 20, 1, 1);
-
+    Hurtbox neutralAir = Hurtbox(true,0, 15, SHAPE_CIRCLE,
+                                 14, 1, 1);
+    Hurtbox forwardAir = Hurtbox(true,18, 13, SHAPE_CIRCLE,
+                                 8, 1, 1);
+    Hurtbox backAir = Hurtbox(true,-14, 11, SHAPE_CIRCLE,
+                              8, 1, 1);
+    Hurtbox upAir = Hurtbox(true,0, 28, SHAPE_CIRCLE,
+                              16, 1, 1);
+    Hurtbox downAir = Hurtbox(5., -2, SHAPE_RECTANGLE,
+                                17, 10, 1, 1);
 
     Kirby() {}
 

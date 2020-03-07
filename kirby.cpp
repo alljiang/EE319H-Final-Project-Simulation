@@ -784,6 +784,10 @@ void Kirby::controlLoop(double joyH, double joyV, bool btnA, bool btnB, bool shi
                 action = KIRBY_ACTION_FALLING;
                 disabledFrames = 2;
             }
+            else {
+                hitboxManager->addHurtbox(x + 16, y, mirrored,
+                                          neutralAir, player);
+            }
         }
     }
     else if(action == KIRBY_ACTION_FORWARDAIR) {
@@ -817,6 +821,12 @@ void Kirby::controlLoop(double joyH, double joyV, bool btnA, bool btnB, bool shi
                 l_action = KIRBY_ACTION_FORWARDAIR;
                 action = KIRBY_ACTION_FALLING;
                 disabledFrames = 0;
+            }
+            else {
+                if(frameIndex > 1) {
+                    hitboxManager->addHurtbox(x + 16, y, mirrored,
+                                              forwardAir, player);
+                }
             }
         }
     }
@@ -852,6 +862,12 @@ void Kirby::controlLoop(double joyH, double joyV, bool btnA, bool btnB, bool shi
                 action = KIRBY_ACTION_FALLING;
                 disabledFrames = 0;
             }
+            else {
+                if(frameIndex > 1 && frameIndex < 5) {
+                    hitboxManager->addHurtbox(x + 16, y, mirrored,
+                                              backAir, player);
+                }
+            }
         }
     }
     else if(action == KIRBY_ACTION_UPAIR) {
@@ -885,6 +901,12 @@ void Kirby::controlLoop(double joyH, double joyV, bool btnA, bool btnB, bool shi
                 l_action = KIRBY_ACTION_UPAIR;
                 action = KIRBY_ACTION_FALLING;
             }
+            else {
+                if(frameIndex > 1 && frameIndex < 5) {
+                    hitboxManager->addHurtbox(x + 16, y, mirrored,
+                                              upAir, player);
+                }
+            }
         }
     }
     else if(action == KIRBY_ACTION_DOWNAIR) {
@@ -895,9 +917,9 @@ void Kirby::controlLoop(double joyH, double joyV, bool btnA, bool btnB, bool shi
             animationIndex = 25;
             mirrored = l_mirrored;
             yVel -= gravityFalling * 0.3;
-            x += airSpeed * joyH * 0.4;
-            if (yVel < -1) yVel = -1;
-            else if (yVel > 1) yVel = 1;
+            x += airSpeed * joyH * 0.5;
+            if (yVel < -2) yVel = -2;
+            else if (yVel > 2) yVel = 2;
 
             x_mirroredOffset = 3;
             xAnimationOffset = 6;
@@ -918,6 +940,12 @@ void Kirby::controlLoop(double joyH, double joyV, bool btnA, bool btnB, bool shi
                 l_action = KIRBY_ACTION_DOWNAIR;
                 action = KIRBY_ACTION_FALLING;
                 disabledFrames = 2;
+            }
+            else {
+                if(frameIndex > 0 && frameIndex < 10) {
+                    hitboxManager->addHurtbox(x + 16, y, mirrored,
+                                              downAir, player);
+                }
             }
         }
     }
