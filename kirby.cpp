@@ -827,7 +827,7 @@ void Kirby::controlLoop(double joyH, double joyV, bool btnA, bool btnB, bool shi
         yVel = 0;
         xVel = 0;
 
-        xAnimationOffset = 5    ;
+        xAnimationOffset = 5;
         yAnimationOffset = 0;
 
         disabledFrames = 2;
@@ -841,7 +841,7 @@ void Kirby::controlLoop(double joyH, double joyV, bool btnA, bool btnB, bool shi
         if (morphEndTime == -1 && frameIndex == 2) {
             morphEndTime = currentTime;
         }
-        else if(morphEndTime != -1 && currentTime - morphEndTime > 100) {
+        else if(morphEndTime != -1 && currentTime - morphEndTime > 0) {
             l_action = KIRBY_ACTION_DOWNSPECIALMORPH;
             action = KIRBY_ACTION_DOWNSPECIALFALL;
             morphLandTime = -1;
@@ -860,7 +860,11 @@ void Kirby::controlLoop(double joyH, double joyV, bool btnA, bool btnB, bool shi
             yVel = 0;
             if(morphLandTime == -1) morphLandTime = currentTime;
         }
-        else yVel -= gravityFalling*2;
+        else {
+            yVel -= gravityFalling*2;
+            hitboxManager->addHurtbox(x + 16, y, mirrored,
+                                      downSpecial, player);
+        }
 
         //  leave morph if btn b pressed or morphed for too long
         if(currentTime - l_btnBRise_t == 0 ||
@@ -1183,7 +1187,8 @@ void Kirby::controlLoop(double joyH, double joyV, bool btnA, bool btnB, bool shi
     }
 
     //  update velocity and positions
-    if(yVel < maxFallingVelocity) yVel = maxFallingVelocity;
+    if(yVel < maxFallingVelocity
+        && action != KIRBY_ACTION_DOWNSPECIALFALL) yVel = maxFallingVelocity;
     y += yVel;
     if(y > ceiling && action != KIRBY_ACTION_LEDGEGRAB) y = ceiling;
     if(y <= floor) {

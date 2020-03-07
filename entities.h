@@ -52,12 +52,11 @@ public:
 
     Hurtbox(bool circle, double cX, double cY,
             uint8_t boxShape, double radius,
-            int8_t frames=1, int8_t frameLength=1, uint8_t source=0,
+            int8_t frames=1, int8_t frameLength=1,
             double damage=0, double xknockback=0, double yknockback=0)
             : Collider(cX, cY, boxShape, radius) {
         shape = boxShape;
         this->damage = damage;
-        this->source = source;
         this->frames = frames;
         this->frameLength = frameLength;
         this->xKnockback = xknockback;
@@ -65,12 +64,11 @@ public:
     }
 
     Hurtbox(double cX, double cY, uint8_t boxShape, double height, double width,
-            int8_t frames=1, int8_t frameLength=1, uint8_t source=0,
+            int8_t frames=1, int8_t frameLength=1,
             double damage=0, double xknockback=0, double yknockback=0)
             : Collider(cX, cY, boxShape, height, width) {
         shape = boxShape;
         this->damage = damage;
-        this->source = source;
         this->frames = frames;
         this->frameLength = frameLength;
         this->xKnockback = xknockback;
@@ -307,6 +305,8 @@ public:
                                    20, 40, 1, 1);
     Hurtbox upSpecialProjectile = Hurtbox(4., 16, SHAPE_RECTANGLE,
                                    32, 20, 1, 1);
+    Hurtbox downSpecial = Hurtbox(true,0, 5, SHAPE_CIRCLE,
+                                 12, 1, 1);
     Hurtbox neutralAir = Hurtbox(true,0, 15, SHAPE_CIRCLE,
                                  14, 1, 1);
     Hurtbox forwardAir = Hurtbox(true,18, 13, SHAPE_CIRCLE,
