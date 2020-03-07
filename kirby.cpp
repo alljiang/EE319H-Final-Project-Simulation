@@ -359,6 +359,9 @@ void Kirby::controlLoop(double joyH, double joyV, bool btnA, bool btnB, bool shi
         if(mirrored) x -= 4;
         else x += 4;
 
+        hitbox.offsetY(0);
+        hitbox.offsetX(0);
+
         frameExtension = 0;
         if(frameLengthCounter++ > frameExtension) {
             frameLengthCounter = 0;
@@ -816,6 +819,79 @@ void Kirby::controlLoop(double joyH, double joyV, bool btnA, bool btnB, bool shi
                 hitboxManager->addHurtbox(x + 16, y, mirrored,
                                           neutralAir, player);
             }
+        }
+    }
+    else if(action == KIRBY_ACTION_DOWNSPECIALMORPH) {
+        animationIndex = 34;
+        mirrored = false;
+        yVel = 0;
+        xVel = 0;
+
+        xAnimationOffset = 5    ;
+        yAnimationOffset = 0;
+
+        disabledFrames = 2;
+        frameExtension = 1;
+        if (frameLengthCounter++ > frameExtension) {
+            frameLengthCounter = 0;
+            frameIndex++;
+            if(frameIndex > 2) frameIndex = 2;
+        }
+
+        if (morphEndTime == -1 && frameIndex == 2) {
+            morphEndTime = currentTime;
+        }
+        else if(morphEndTime != -1 && currentTime - morphEndTime > 100) {
+            l_action = KIRBY_ACTION_DOWNSPECIALMORPH;
+            action = KIRBY_ACTION_DOWNSPECIALFALL;
+            morphLandTime = -1;
+        }
+    }
+    else if(action == KIRBY_ACTION_DOWNSPECIALFALL) {
+        animationIndex = 34;
+        frameIndex = 2;
+        mirrored = false;
+        disabledFrames = 2;
+
+        xAnimationOffset = 5;
+        yAnimationOffset = 0;
+
+        if(y <= floor) {
+            yVel = 0;
+            if(morphLandTime == -1) morphLandTime = currentTime;
+        }
+        else yVel -= gravityFalling*2;
+
+        //  leave morph if btn b pressed or morphed for too long
+        if(currentTime - l_btnBRise_t == 0 ||
+                (currentTime - morphLandTime > 3000 && morphLandTime != -1) ) {
+            l_action = KIRBY_ACTION_DOWNSPECIALFALL;
+            action = KIRBY_ACTION_DOWNSPECIALUNMORPH;
+            frameIndex = 1;
+            frameLengthCounter = 0;
+        }
+    }
+    else if(action == KIRBY_ACTION_DOWNSPECIALUNMORPH) {
+        animationIndex = 34;
+        mirrored = false;
+        yVel = 0;
+        xVel = 0;
+
+        xAnimationOffset = 5;
+        yAnimationOffset = 0;
+
+        disabledFrames = 2;
+        frameExtension = 1;
+        if (frameLengthCounter++ > frameExtension) {
+            frameLengthCounter = 0;
+            frameIndex--;
+        }
+        //  overflow
+        if(frameIndex > 99) {
+            if(y > floor) action = KIRBY_ACTION_FALLING;
+            else action = KIRBY_ACTION_RESTING;
+            frameIndex = 0;
+            disabledFrames = 6;
         }
     }
     else if(action == KIRBY_ACTION_FORWARDAIR) {
@@ -1292,6 +1368,20 @@ void Kirby::controlLoop(double joyH, double joyV, bool btnA, bool btnB, bool shi
         disabledFrames = 2;
         frameIndex = 0;
         frameLengthCounter = 0;
+    }
+        //  down special
+    else if(
+            ( (action == KIRBY_ACTION_FALLING || action == KIRBY_ACTION_JUMPING  ||
+               action == KIRBY_ACTION_MULTIJUMPING) ||
+              (y == floor && (action == KIRBY_ACTION_RESTING || action == KIRBY_ACTION_RUNNING)) ) &&
+            currentTime-l_btnBRise_t == 0 && joyV < -0.2) {
+        action = KIRBY_ACTION_DOWNSPECIALMORPH;
+        mirrored = false;
+        disabledFrames = 2;
+        frameIndex = 0;
+        frameLengthCounter = 0;
+
+        morphEndTime = -1;
     }
 
         //  movement

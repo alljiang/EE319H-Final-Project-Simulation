@@ -46,40 +46,35 @@ public:
     int8_t source;     //  player who created this hitbox, will not damage this player
     int8_t frames, frameLength, currentFrame, frameLengthCounter;
     bool active{false};
-
-    double xVel, yVel;
+    double xKnockback, yKnockback;
 
     Hurtbox() : Collider(0,0,0,0) {}
 
     Hurtbox(bool circle, double cX, double cY,
             uint8_t boxShape, double radius,
-            int8_t frames=1, int8_t frameLength=1,
-            double damage=0, double knockback=0,
-            double xVelocity=0, double yVelocity=0)
+            int8_t frames=1, int8_t frameLength=1, uint8_t source=0,
+            double damage=0, double xknockback=0, double yknockback=0)
             : Collider(cX, cY, boxShape, radius) {
         shape = boxShape;
         this->damage = damage;
-        this->knockback = knockback;
         this->source = source;
         this->frames = frames;
         this->frameLength = frameLength;
-        this->xVel = xVelocity;
-        this->yVel = yVelocity;
+        this->xKnockback = xknockback;
+        this->yKnockback = yknockback;
     }
 
     Hurtbox(double cX, double cY, uint8_t boxShape, double height, double width,
-            int8_t frames=1, int8_t frameLength=1,
-            double damage=0, double knockback=0,
-            double xVelocity=0, double yVelocity=0)
+            int8_t frames=1, int8_t frameLength=1, uint8_t source=0,
+            double damage=0, double xknockback=0, double yknockback=0)
             : Collider(cX, cY, boxShape, height, width) {
         shape = boxShape;
         this->damage = damage;
-        this->knockback = knockback;
         this->source = source;
         this->frames = frames;
         this->frameLength = frameLength;
-        this->xVel = xVelocity;
-        this->yVel = yVelocity;
+        this->xKnockback = xknockback;
+        this->yKnockback = yknockback;
     }
 
     //  if source is 0, hurtbox is a grabbable stage ledge
@@ -242,7 +237,9 @@ class Kirby: public Player {
 #define KIRBY_ACTION_NEUTRALAIR 44
 #define KIRBY_ACTION_NEUTRALB 50
 #define KRIBY_ACTION_FWDSPEC 53
-#define KIRBY_ACTION_DOWNSPEC 56
+#define KIRBY_ACTION_DOWNSPECIALMORPH 56
+#define KIRBY_ACTION_DOWNSPECIALFALL 57
+#define KIRBY_ACTION_DOWNSPECIALUNMORPH 58
 
 #define KIRBY_STAGE_OFFSET 18
 
@@ -275,6 +272,9 @@ protected:
     double upb_projectile_x, upb_projectile_startX, upb_projectile_startY;
     bool upb_projectile_mirrored;
     bool upb_projectile_active;
+
+    //  down special
+    long long morphEndTime, morphLandTime;
 
 public:
     Hurtbox jabSingle = Hurtbox(true,14, 11, SHAPE_CIRCLE,
