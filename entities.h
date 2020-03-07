@@ -228,6 +228,7 @@ class Kirby: public Player {
 #define KIRBY_ACTION_DOWNSMASH 14
 #define KIRBY_ACTION_UPSMASHHOLD 15
 #define KIRBY_ACTION_UPSMASH 16
+#define KIRBY_ACTION_DASHATTACK 18
 #define KIRBY_ACTION_UPTILT 20
 #define KIRBY_ACTION_UPSPECIALINITIAL 25
 #define KIRBY_ACTION_UPSPECIALRISING 26
@@ -315,7 +316,9 @@ public:
     Hurtbox upAir = Hurtbox(true,0, 28, SHAPE_CIRCLE,
                               16, 1, 1);
     Hurtbox downAir = Hurtbox(5., -2, SHAPE_RECTANGLE,
-                                17, 10, 1, 1);
+                              17, 10, 1, 1);
+    Hurtbox dashAttack = Hurtbox(true,2, 13, SHAPE_CIRCLE,
+                                 14, 1, 1);
 
     Kirby() {}
 

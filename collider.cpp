@@ -46,7 +46,8 @@ void HitboxManager::checkCollisions() {
 
 void HitboxManager::displayHitboxesOverlay() {
     uint32_t hitboxColorsub = 0x555500;
-    uint32_t hurtboxColorsub = 0x007777;
+//    uint32_t hurtboxColorsub = 0x007777;
+    uint32_t hurtboxColorsub = 0xAA00AA;
 
     //  first display player hitboxes
     if(p1->hitbox.shape == SHAPE_CIRCLE) {

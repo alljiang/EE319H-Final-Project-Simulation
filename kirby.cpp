@@ -349,6 +349,34 @@ void Kirby::controlLoop(double joyH, double joyV, bool btnA, bool btnB, bool shi
                                       downTilt, player);
         }
     }
+    else if(action == KIRBY_ACTION_DASHATTACK) {
+        animationIndex = 29;
+        mirrored = l_mirrored;
+        x_mirroredOffset = 0;
+        xAnimationOffset = 0;
+        yAnimationOffset = -9;
+        disabledFrames = 2;
+        if(mirrored) x -= 4;
+        else x += 4;
+
+        frameExtension = 0;
+        if(frameLengthCounter++ > frameExtension) {
+            frameLengthCounter = 0;
+            frameIndex++;
+        }
+        if(frameIndex >= 6) {
+            l_action = KIRBY_ACTION_DASHATTACK;
+            if(std::abs(joyH) > 0.1) action = KIRBY_ACTION_RUNNING;
+            else action = KIRBY_ACTION_RESTING;
+            disabledFrames = 10;
+        }
+        else {
+            if(frameIndex > 1) {
+                hitboxManager->addHurtbox(x + 16, y, mirrored,
+                                          dashAttack, player);
+            }
+        }
+    }
     else if(action == KIRBY_ACTION_FORWARDSMASHHOLD) {
         animationIndex = 12;
         mirrored = l_mirrored;
@@ -1051,7 +1079,6 @@ void Kirby::controlLoop(double joyH, double joyV, bool btnA, bool btnB, bool shi
     s.mirrored = mirrored;
 
     UART_sendAnimation(s);
-
     // Up special projectile animation
     if(upb_projectile_active) {
         if(std::abs(upb_projectile_x-upb_projectile_startX) >= 70) {
@@ -1241,6 +1268,15 @@ void Kirby::controlLoop(double joyH, double joyV, bool btnA, bool btnB, bool shi
         action = KIRBY_ACTION_FORWARDTILT;
         mirrored = joyH < 0;
         disabledFrames = 10;
+        frameIndex = 0;
+        frameLengthCounter = 0;
+    }
+        //  dash attack
+    else if(disabledFrames == 0 && y == floor && action == KIRBY_ACTION_RUNNING
+            && currentTime - l_btnARise_t == 0 && std::abs(joyH) > 0.4) {
+        action = KIRBY_ACTION_DASHATTACK;
+        mirrored = joyH < 0;
+        disabledFrames = 2;
         frameIndex = 0;
         frameLengthCounter = 0;
     }
