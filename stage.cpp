@@ -97,7 +97,7 @@ double Stage::getStartX(uint8_t player) {
     switch(stageIndex) {
         case STAGE_FINALDESTINATION:
             if(player == 1) return 60;
-            else return 240;
+            else return 232;
             break;
 
         case STAGE_TOWER:

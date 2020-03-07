@@ -67,11 +67,11 @@ public:
         this->yVel = yVelocity;
     }
 
-    Hurtbox(double cX, double cY, uint8_t boxShape, double length, double width,
+    Hurtbox(double cX, double cY, uint8_t boxShape, double height, double width,
             int8_t frames=1, int8_t frameLength=1,
             double damage=0, double knockback=0,
             double xVelocity=0, double yVelocity=0)
-            : Collider(cX, cY, boxShape, length, width) {
+            : Collider(cX, cY, boxShape, height, width) {
         shape = boxShape;
         this->damage = damage;
         this->knockback = knockback;
@@ -277,11 +277,35 @@ protected:
 
 public:
     Hurtbox jabSingle = Hurtbox(true,14, 11, SHAPE_CIRCLE,
-            8, 3, 3);
-    Hurtbox jabDouble = Hurtbox(true,15, 12, SHAPE_CIRCLE,
-            9, 3, 4);
-    Hurtbox jabRepeating = Hurtbox(true,25, 16, SHAPE_CIRCLE,
-            15, 1, 3);
+                                8, 1, 1);
+    Hurtbox jabDouble = Hurtbox(true,14, 12, SHAPE_CIRCLE,
+                                7, 1, 1);
+    Hurtbox jabRepeating0 = Hurtbox(true,23, 12, SHAPE_CIRCLE,
+                                    11, 1, 1);
+    Hurtbox jabRepeating1 = Hurtbox(true,25, 25, SHAPE_CIRCLE,
+                                    11, 1, 1);
+    Hurtbox jabRepeating2 = Hurtbox(true,23, 5, SHAPE_CIRCLE,
+                                    9, 1, 1);
+    Hurtbox forwardTilt = Hurtbox(true,10, 11, SHAPE_CIRCLE,
+                                  8, 1, 1);
+    Hurtbox upTilt = Hurtbox(-6., 21, SHAPE_RECTANGLE,
+                             25, 18, 1, 1);
+    Hurtbox downTilt = Hurtbox(4., 2, SHAPE_RECTANGLE,
+                               6, 28, 1, 1);
+    Hurtbox forwardSmash0 = Hurtbox(1., 5, SHAPE_RECTANGLE,
+                                    20, 22, 1, 1);
+    Hurtbox forwardSmash1 = Hurtbox(25., 5, SHAPE_RECTANGLE,
+                                    20, 20, 1, 1);
+    Hurtbox upSmash = Hurtbox(true, 0., 26, SHAPE_CIRCLE,
+                                    14, 1, 1);
+    Hurtbox downSmash = Hurtbox(0., 2, SHAPE_RECTANGLE,
+                                10, 44, 1, 1);
+    Hurtbox upSpecial = Hurtbox(25., 18, SHAPE_RECTANGLE,
+                                20, 30, 1, 1);
+    Hurtbox upSpecialTop = Hurtbox(0., 40, SHAPE_RECTANGLE,
+                                   20, 40, 1, 1);
+    Hurtbox upSpecialProjectile = Hurtbox(4., 16, SHAPE_RECTANGLE,
+                                   32, 20, 1, 1);
 
 
     Kirby() {}
