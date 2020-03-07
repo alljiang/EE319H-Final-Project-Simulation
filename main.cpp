@@ -53,6 +53,7 @@ void startup() {
     k2.setPlayer(2);
     p2->setX(stage.getStartX(2));
     p2->setY(stage.getStartY(2));
+    p2->setMirrored(true);
 
 
     if(PLAYER2) hitboxManager.initialize(p1, p2);

@@ -200,6 +200,7 @@ public:
     Hitbox hitbox = Hitbox(0, 0, 0, 0);
 
     void setPlayer(uint8_t p) { player = p; }
+    void setMirrored(bool mirror) { l_mirrored = mirrored = mirror;}
 
     virtual void controlLoop(double joyH, double joyV, bool btnA, bool btnB, bool shield, class Stage* stage,
             class HitboxManager* hitboxManager) = 0; //  called every update
