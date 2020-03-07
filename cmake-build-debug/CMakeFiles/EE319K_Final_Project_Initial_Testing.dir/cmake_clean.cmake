@@ -4,6 +4,7 @@ file(REMOVE_RECURSE
   "CMakeFiles/EE319K_Final_Project_Initial_Testing.dir/SRAM.cpp.obj"
   "CMakeFiles/EE319K_Final_Project_Initial_Testing.dir/UART.cpp.obj"
   "CMakeFiles/EE319K_Final_Project_Initial_Testing.dir/animator.cpp.obj"
+  "CMakeFiles/EE319K_Final_Project_Initial_Testing.dir/collider.cpp.obj"
   "CMakeFiles/EE319K_Final_Project_Initial_Testing.dir/controller.cpp.obj"
   "CMakeFiles/EE319K_Final_Project_Initial_Testing.dir/kirby.cpp.obj"
   "CMakeFiles/EE319K_Final_Project_Initial_Testing.dir/main.cpp.obj"

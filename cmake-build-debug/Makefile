@@ -257,6 +257,33 @@ animator.cpp.s:
 	$(MAKE) -f CMakeFiles\EE319K_Final_Project_Initial_Testing.dir\build.make CMakeFiles/EE319K_Final_Project_Initial_Testing.dir/animator.cpp.s
 .PHONY : animator.cpp.s
 
+collider.obj: collider.cpp.obj
+
+.PHONY : collider.obj
+
+# target to build an object file
+collider.cpp.obj:
+	$(MAKE) -f CMakeFiles\EE319K_Final_Project_Initial_Testing.dir\build.make CMakeFiles/EE319K_Final_Project_Initial_Testing.dir/collider.cpp.obj
+.PHONY : collider.cpp.obj
+
+collider.i: collider.cpp.i
+
+.PHONY : collider.i
+
+# target to preprocess a source file
+collider.cpp.i:
+	$(MAKE) -f CMakeFiles\EE319K_Final_Project_Initial_Testing.dir\build.make CMakeFiles/EE319K_Final_Project_Initial_Testing.dir/collider.cpp.i
+.PHONY : collider.cpp.i
+
+collider.s: collider.cpp.s
+
+.PHONY : collider.s
+
+# target to generate assembly for a file
+collider.cpp.s:
+	$(MAKE) -f CMakeFiles\EE319K_Final_Project_Initial_Testing.dir\build.make CMakeFiles/EE319K_Final_Project_Initial_Testing.dir/collider.cpp.s
+.PHONY : collider.cpp.s
+
 controller.obj: controller.cpp.obj
 
 .PHONY : controller.obj
@@ -416,6 +443,9 @@ help:
 	@echo ... animator.obj
 	@echo ... animator.i
 	@echo ... animator.s
+	@echo ... collider.obj
+	@echo ... collider.i
+	@echo ... collider.s
 	@echo ... controller.obj
 	@echo ... controller.i
 	@echo ... controller.s

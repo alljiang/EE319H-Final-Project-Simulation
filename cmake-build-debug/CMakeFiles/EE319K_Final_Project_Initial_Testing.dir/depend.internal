@@ -72,6 +72,10 @@ CMakeFiles/EE319K_Final_Project_Initial_Testing.dir/animator.cpp.obj
  C:/Users/Allen/Documents/GitHub/EE319H-Final-Project-Simulation/colors.h
  C:/Users/Allen/Documents/GitHub/EE319H-Final-Project-Simulation/metadata.h
  C:/Users/Allen/Documents/GitHub/EE319H-Final-Project-Simulation/utils.h
+CMakeFiles/EE319K_Final_Project_Initial_Testing.dir/collider.cpp.obj
+ C:/Users/Allen/Documents/GitHub/EE319H-Final-Project-Simulation/LCD.h
+ C:/Users/Allen/Documents/GitHub/EE319H-Final-Project-Simulation/collider.cpp
+ C:/Users/Allen/Documents/GitHub/EE319H-Final-Project-Simulation/entities.h
 CMakeFiles/EE319K_Final_Project_Initial_Testing.dir/controller.cpp.obj
  C:/Program Files/mingw-w64/x86_64-8.1.0-posix-seh-rt_v6-rev0/mingw64/include/SDL2/SDL.h
  C:/Program Files/mingw-w64/x86_64-8.1.0-posix-seh-rt_v6-rev0/mingw64/include/SDL2/SDL_assert.h
@@ -178,6 +182,8 @@ CMakeFiles/EE319K_Final_Project_Initial_Testing.dir/main.cpp.obj
  C:/Users/Allen/Documents/GitHub/EE319H-Final-Project-Simulation/SRAM.h
  C:/Users/Allen/Documents/GitHub/EE319H-Final-Project-Simulation/UART.h
  C:/Users/Allen/Documents/GitHub/EE319H-Final-Project-Simulation/animator.h
+ C:/Users/Allen/Documents/GitHub/EE319H-Final-Project-Simulation/colors_finaldest.h
+ C:/Users/Allen/Documents/GitHub/EE319H-Final-Project-Simulation/colors_towerback.h
  C:/Users/Allen/Documents/GitHub/EE319H-Final-Project-Simulation/controller.h
  C:/Users/Allen/Documents/GitHub/EE319H-Final-Project-Simulation/entities.h
  C:/Users/Allen/Documents/GitHub/EE319H-Final-Project-Simulation/main.cpp
@@ -186,6 +192,7 @@ CMakeFiles/EE319K_Final_Project_Initial_Testing.dir/main.cpp.obj
  C:/Users/Allen/Documents/GitHub/EE319H-Final-Project-Simulation/utils.h
 CMakeFiles/EE319K_Final_Project_Initial_Testing.dir/stage.cpp.obj
  C:/Users/Allen/Documents/GitHub/EE319H-Final-Project-Simulation/animator.h
+ C:/Users/Allen/Documents/GitHub/EE319H-Final-Project-Simulation/entities.h
  C:/Users/Allen/Documents/GitHub/EE319H-Final-Project-Simulation/stage.cpp
  C:/Users/Allen/Documents/GitHub/EE319H-Final-Project-Simulation/stage.h
 CMakeFiles/EE319K_Final_Project_Initial_Testing.dir/utils.cpp.obj

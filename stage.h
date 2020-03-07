@@ -3,6 +3,7 @@
 #define EE319K_FINAL_PROJECT_INITIAL_TESTING_STAGES_H
 
 #include <cstdint>
+#include "entities.h"
 
 class Stage {
 
@@ -26,7 +27,7 @@ protected:
     uint8_t stageIndex;
 
 public:
-    void initialize(uint8_t index);
+    void initialize(uint8_t index, HitboxManager *hitboxManager);
     void update();
 
     double ceil(double x, double y);

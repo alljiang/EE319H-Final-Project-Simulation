@@ -23,8 +23,5 @@ void UART_sendAnimation(struct SpriteSendable sendable) {
 }
 
 void UART_readCharacterSDCard(uint8_t charIndex) {
-    /*
-     *  TODO: Simulate this as an actual UART transfer
-     */
     animator_readCharacterSDCard(charIndex);
 }

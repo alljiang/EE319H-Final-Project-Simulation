@@ -72,6 +72,10 @@ CMakeFiles/EE319K_Final_Project_Initial_Testing.dir/animator.cpp.obj: ../colors.
 CMakeFiles/EE319K_Final_Project_Initial_Testing.dir/animator.cpp.obj: ../metadata.h
 CMakeFiles/EE319K_Final_Project_Initial_Testing.dir/animator.cpp.obj: ../utils.h
 
+CMakeFiles/EE319K_Final_Project_Initial_Testing.dir/collider.cpp.obj: ../LCD.h
+CMakeFiles/EE319K_Final_Project_Initial_Testing.dir/collider.cpp.obj: ../collider.cpp
+CMakeFiles/EE319K_Final_Project_Initial_Testing.dir/collider.cpp.obj: ../entities.h
+
 CMakeFiles/EE319K_Final_Project_Initial_Testing.dir/controller.cpp.obj: C:/Program\ Files/mingw-w64/x86_64-8.1.0-posix-seh-rt_v6-rev0/mingw64/include/SDL2/SDL.h
 CMakeFiles/EE319K_Final_Project_Initial_Testing.dir/controller.cpp.obj: C:/Program\ Files/mingw-w64/x86_64-8.1.0-posix-seh-rt_v6-rev0/mingw64/include/SDL2/SDL_assert.h
 CMakeFiles/EE319K_Final_Project_Initial_Testing.dir/controller.cpp.obj: C:/Program\ Files/mingw-w64/x86_64-8.1.0-posix-seh-rt_v6-rev0/mingw64/include/SDL2/SDL_atomic.h
@@ -177,6 +181,8 @@ CMakeFiles/EE319K_Final_Project_Initial_Testing.dir/main.cpp.obj: ../LCD.h
 CMakeFiles/EE319K_Final_Project_Initial_Testing.dir/main.cpp.obj: ../SRAM.h
 CMakeFiles/EE319K_Final_Project_Initial_Testing.dir/main.cpp.obj: ../UART.h
 CMakeFiles/EE319K_Final_Project_Initial_Testing.dir/main.cpp.obj: ../animator.h
+CMakeFiles/EE319K_Final_Project_Initial_Testing.dir/main.cpp.obj: ../colors_finaldest.h
+CMakeFiles/EE319K_Final_Project_Initial_Testing.dir/main.cpp.obj: ../colors_towerback.h
 CMakeFiles/EE319K_Final_Project_Initial_Testing.dir/main.cpp.obj: ../controller.h
 CMakeFiles/EE319K_Final_Project_Initial_Testing.dir/main.cpp.obj: ../entities.h
 CMakeFiles/EE319K_Final_Project_Initial_Testing.dir/main.cpp.obj: ../main.cpp
@@ -185,6 +191,7 @@ CMakeFiles/EE319K_Final_Project_Initial_Testing.dir/main.cpp.obj: ../stage.h
 CMakeFiles/EE319K_Final_Project_Initial_Testing.dir/main.cpp.obj: ../utils.h
 
 CMakeFiles/EE319K_Final_Project_Initial_Testing.dir/stage.cpp.obj: ../animator.h
+CMakeFiles/EE319K_Final_Project_Initial_Testing.dir/stage.cpp.obj: ../entities.h
 CMakeFiles/EE319K_Final_Project_Initial_Testing.dir/stage.cpp.obj: ../stage.cpp
 CMakeFiles/EE319K_Final_Project_Initial_Testing.dir/stage.cpp.obj: ../stage.h
 
