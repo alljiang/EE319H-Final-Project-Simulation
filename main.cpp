@@ -107,7 +107,6 @@ void loop() {
         }
 
         if(HITBOXOVERLAY) hitboxManager.clearHitboxOverlay();
-        double updateTime = millis();
         animator_update();
         if(HITBOXOVERLAY) hitboxManager.displayHitboxesOverlay();
 

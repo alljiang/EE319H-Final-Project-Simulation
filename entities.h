@@ -325,7 +325,7 @@ public:
 
     void updateLastValues(double joyH, double joyV, bool btnA, bool btnB, bool shield) override ;
 
-    void collide(class Hurtbox *hurtbox);
+    void collide(class Hurtbox *hurtbox) override;
 };
 
 #endif //EE319K_FINAL_PROJECT_INITIAL_TESTING_ENTITIES_H
