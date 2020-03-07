@@ -18,6 +18,7 @@ class Collider {
 
 public:
     double x, y;
+    double xOffset, yOffset;
     uint8_t shape;
     double height=0, width=0, radius=0;
 
@@ -88,16 +89,18 @@ public:
 class Hitbox: public Collider {
 
 public:
+    double radiusOffset{0};
+
     Hitbox(double cX, double cY, uint8_t boxShape, double radius)
         : Collider(cX, cY, boxShape, radius) {}
     Hitbox(double cX, double cY, uint8_t boxShape, double length, double width)
         : Collider(cX, cY, boxShape, length, width) {}
 
-    void offsetY(double yOffset) { y += yOffset; }
-    void offsetX(double xOffset) { x += xOffset; }
+    void offsetY(double yOffset) { this->yOffset = yOffset; }
+    void offsetX(double xOffset) { this->xOffset = xOffset; }
     void offsetX(double xOffset, bool mirrored) { if(mirrored) offsetX(-xOffset); else offsetX(xOffset); }
 
-    void offsetRadius(double radius) { this->radius += radius; };
+    void offsetRadius(double radius) { this->radiusOffset = radius; };
 
     void initialize(double cX, double cY, uint8_t boxShape, double radius) {
         x = cX;

@@ -48,36 +48,42 @@ void HitboxManager::displayHitboxesOverlay() {
     uint32_t hitboxColorsub = 0x555500;
     uint32_t hurtboxColorsub = 0x007777;
 
-
+    //  first display player hitboxes
     if(p1->hitbox.shape == SHAPE_CIRCLE) {
-        LCD_drawOverlayCircle(p1->hitbox.x, p1->hitbox.y,
-                p1->hitbox.radius, hitboxColorsub);
+        LCD_drawOverlayCircle(p1->hitbox.x + p1->hitbox.xOffset,
+                p1->hitbox.y + p1->hitbox.yOffset,
+                p1->hitbox.radius + p1->hitbox.radiusOffset, hitboxColorsub);
     }
     else if(p1->hitbox.shape == SHAPE_RECTANGLE) {
-        LCD_drawOverlayRectangle(p1->hitbox.x, p1->hitbox.y,
+        LCD_drawOverlayRectangle(p1->hitbox.x + p1->hitbox.xOffset,
+                p1->hitbox.y + p1->hitbox.yOffset,
                               p1->hitbox.width, p1->hitbox.height, hitboxColorsub);
     }
 
     if(p2 != nullptr) {
         if (p2->hitbox.shape == SHAPE_CIRCLE) {
-            LCD_drawOverlayCircle(p2->hitbox.x, p2->hitbox.y,
-                                  p2->hitbox.radius, hitboxColorsub);
+            LCD_drawOverlayCircle(p2->hitbox.x + p2->hitbox.xOffset,
+                    p2->hitbox.y + p2->hitbox.yOffset,
+                    p2->hitbox.radius + p2->hitbox.radiusOffset, hitboxColorsub);
         } else if (p2->hitbox.shape == SHAPE_RECTANGLE) {
-            LCD_drawOverlayRectangle(p2->hitbox.x, p2->hitbox.y,
+            LCD_drawOverlayRectangle(p2->hitbox.x +  + p2->hitbox.xOffset,
+                    p2->hitbox.y + p2->hitbox.yOffset,
                                      p2->hitbox.width, p2->hitbox.height, hitboxColorsub);
         }
     }
 
-    //  first display player hitboxes
+    //  next, draw hurtboxes
     for (uint8_t slot = 0; slot < hurtboxSlots; slot++) {
         if(hurtboxes[slot].active) {
             if(hurtboxes[slot].shape == SHAPE_CIRCLE) {
-                LCD_drawOverlayCircle(hurtboxes[slot].x, hurtboxes[slot].y,
-                                      hurtboxes[slot].radius, hurtboxColorsub);
+                LCD_drawOverlayCircle(hurtboxes[slot].x + hurtboxes[slot].xOffset,
+                        hurtboxes[slot].y + hurtboxes[slot].yOffset,
+                        hurtboxes[slot].radius, hurtboxColorsub);
             }
             else if(hurtboxes[slot].shape == SHAPE_RECTANGLE) {
-                LCD_drawOverlayRectangle(hurtboxes[slot].x, hurtboxes[slot].y,
-                                         hurtboxes[slot].width, hurtboxes[slot].height, hurtboxColorsub);
+                LCD_drawOverlayRectangle(hurtboxes[slot].x + hurtboxes[slot].xOffset,
+                        hurtboxes[slot].y + hurtboxes[slot].yOffset,
+                        hurtboxes[slot].width, hurtboxes[slot].height, hurtboxColorsub);
             }
         }
     }
@@ -116,8 +122,12 @@ void HitboxManager::addHurtbox(double xOffset, double yOffset, bool mirrored,
 }
 
 bool Hitbox::isColliding(class Hurtbox hurtbox) {
-    double hbx = hurtbox.x;
-    double hby = hurtbox.y;
+    double thisx = x + xOffset;
+    double thisy = y + yOffset;
+    double thisradius = radius + radiusOffset;
+
+    double hbx = hurtbox.x + hurtbox.xOffset;
+    double hby = hurtbox.y + hurtbox.yOffset;
     double hbh = hurtbox.height;
     double hbw = hurtbox.width;
     double hbr = hurtbox.radius;
@@ -130,21 +140,21 @@ bool Hitbox::isColliding(class Hurtbox hurtbox) {
                  * If this distance is less than the sum of the radii
                  * of the circles, they're colliding.
                  */
-                return abs((this->x - hbx) * (this->x - hbx)
-                + (this->y - hby) * (this->y - hby))
-                < (this->radius + hbr) * (this->radius + hbr);
+                return abs((thisx - hbx) * (thisx - hbx)
+                + (thisy - hby) * (thisy - hby))
+                < (thisradius + hbr) * (thisradius + hbr);
             }
             else if(hurtbox.shape == SHAPE_RECTANGLE) {
-                double distanceX = abs(x - hbx);
-                double distanceY = abs(y - hby);
+                double distanceX = abs(thisx - hbx);
+                double distanceY = abs(thisy - hby);
 
                 /*
                  * If the distance between the two objects are greater
                  * than the radius and the distance from center to edge combined,
                  * there is definitely no collision
                  */
-                if (distanceX > (hbw/2 + this->radius)) { return false; }
-                if (distanceY > (hbh/2 + this->radius)) { return false; }
+                if (distanceX > (hbw/2 + thisradius)) { return false; }
+                if (distanceY > (hbh/2 + thisradius)) { return false; }
 
                 /*
                  * If the center of the circle is inside the rectangle,
@@ -159,12 +169,12 @@ bool Hitbox::isColliding(class Hurtbox hurtbox) {
                 double cornerDistance_sq = (distanceX - hbw/2)*(distanceX - hbw/2) +
                                             (distanceY - hbh/2)*(distanceY - hbh/2);
 
-                return (cornerDistance_sq <= (this->radius*this->radius));
+                return (cornerDistance_sq <= (this->radius*thisradius));
             }
         case SHAPE_RECTANGLE:
             if(hurtbox.shape == SHAPE_CIRCLE) {
-                double distanceX = abs(x - hbx);
-                double distanceY = abs(y - hby);
+                double distanceX = abs(thisx - hbx);
+                double distanceY = abs(thisy - hby);
 
                 /*
                  * If the distance between the two objects are greater
@@ -191,10 +201,10 @@ bool Hitbox::isColliding(class Hurtbox hurtbox) {
                 return (cornerDistance_sq <= (hbr*hbr));
             }
             else if(hurtbox.shape == SHAPE_RECTANGLE) {
-                return  this->x + this->width >= hbx &&     // r1 right edge past r2 left
-                        this->x <= hbx + hbw &&             // r1 left edge past r2 right
-                        this->y + this->height >= hby &&    // r1 top edge past r2 bottom
-                        this->y <= hby + hbh;               // r1 bottom edge past r2 top
+                return  thisx + this->width >= hbx &&     // r1 right edge past r2 left
+                        thisx <= hbx + hbw &&             // r1 left edge past r2 right
+                        thisy + this->height >= hby &&    // r1 top edge past r2 bottom
+                        thisy <= hby + hbh;               // r1 bottom edge past r2 top
             }
     }
     return false;

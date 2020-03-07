@@ -34,7 +34,7 @@ float x = 0;
 float y = 0;
 
 const bool PLAYER2 = true;
-const bool HITBOXOVERLAY = false;
+const bool HITBOXOVERLAY = true;
 const double UPDATERATE = 20;   // 20
 
 const uint8_t stageToPlay = STAGE_FINALDESTINATION;
@@ -108,8 +108,6 @@ void loop() {
         if(HITBOXOVERLAY) hitboxManager.clearHitboxOverlay();
         double updateTime = millis();
         animator_update();
-//        if(millis() - updateTime > 5)
-//        printf("%f\n", )
         if(HITBOXOVERLAY) hitboxManager.displayHitboxesOverlay();
 
         hitboxManager.checkCollisions();
