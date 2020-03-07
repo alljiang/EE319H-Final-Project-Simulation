@@ -124,8 +124,6 @@ void Kirby::controlLoop(double joyH, double joyV, bool btnA, bool btnB, bool shi
         if(x > rightBound) x = rightBound;
         else if(x < leftBound) x = leftBound;
 
-        if(joyH == 0) mirrored = l_mirrored;
-        else mirrored = joyH < 0;
         animationIndex = 5;
 
         frameExtension = 1;
@@ -602,7 +600,7 @@ void Kirby::controlLoop(double joyH, double joyV, bool btnA, bool btnB, bool shi
         else {
             animationIndex = 26;
             mirrored = l_mirrored;
-            yVel -= gravityFalling * 0.7;
+            yVel -= gravityFalling * 0.5;
             x += airSpeed * joyH * 0.7;
 
             x_mirroredOffset = -7;
@@ -619,6 +617,36 @@ void Kirby::controlLoop(double joyH, double joyV, bool btnA, bool btnB, bool shi
                 l_action = KIRBY_ACTION_FORWARDAIR;
                 action = KIRBY_ACTION_FALLING;
                 disabledFrames = 2;
+            }
+        }
+    }
+    else if(action == KIRBY_ACTION_BACKAIR) {
+        if(y <= floor) {
+            action = KIRBY_ACTION_RESTING;
+            disabledFrames = 3;
+        }
+        else {
+            animationIndex = 24;
+            mirrored = l_mirrored;
+            yVel -= gravityFalling * 0.5;
+            x += airSpeed * joyH * 0.7;
+            if(yVel < -3) yVel = -3;
+            else if(yVel > 3) yVel = 3;
+
+            x_mirroredOffset = -7;
+            xAnimationOffset = -4;
+            yAnimationOffset = 0;
+
+            disabledFrames = 2;
+            frameExtension = 0;
+            if (frameLengthCounter++ > frameExtension) {
+                frameLengthCounter = 0;
+                frameIndex++;
+            }
+            if (frameIndex >= 8) {
+                l_action = KIRBY_ACTION_BACKAIR;
+                action = KIRBY_ACTION_FALLING;
+                disabledFrames = 0;
             }
         }
     }
@@ -930,9 +958,20 @@ void Kirby::controlLoop(double joyH, double joyV, bool btnA, bool btnB, bool shi
     else if(disabledFrames == 0 && y > floor
             && (action == KIRBY_ACTION_FALLING || action == KIRBY_ACTION_JUMPING
                 || action == KIRBY_ACTION_MULTIJUMPING)
-            && currentTime - l_btnARise_t == 0 && std::abs(joyH) > 0.3) {
+            && currentTime - l_btnARise_t == 0
+            && ( (joyH > 0.3 && !mirrored) || (joyH < -0.3 && mirrored) ) ) {
         action = KIRBY_ACTION_FORWARDAIR;
-        mirrored = joyH < 0;
+        disabledFrames = 2;
+        frameIndex = 0;
+        frameLengthCounter = 0;
+    }
+        //  back air
+    else if(disabledFrames == 0 && y > floor
+            && (action == KIRBY_ACTION_FALLING || action == KIRBY_ACTION_JUMPING
+                || action == KIRBY_ACTION_MULTIJUMPING)
+            && currentTime - l_btnARise_t == 0
+            && ( (joyH < -0.3 && !mirrored) || (joyH > 0.3 && mirrored) ) ) {
+        action = KIRBY_ACTION_BACKAIR;
         disabledFrames = 2;
         frameIndex = 0;
         frameLengthCounter = 0;
@@ -1007,6 +1046,9 @@ void Kirby::controlLoop(double joyH, double joyV, bool btnA, bool btnB, bool shi
         yVel = repeatedJumpSpeed;
         action = KIRBY_ACTION_MULTIJUMPING;
         frameIndex = 0;
+
+        if(joyH == 0) mirrored = l_mirrored;
+        else mirrored = joyH < 0;
     }
         //  running/walking
     else if(disabledFrames == 0 && (action == KIRBY_ACTION_RESTING)

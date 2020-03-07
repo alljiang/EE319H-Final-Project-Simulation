@@ -81,10 +81,6 @@ void loop() {
 //        tt1 = millis();
 //    }
     if(millis() - t1 >= 1./UPDATERATE*1000) {
-        if(millis() - t1 - 1./UPDATERATE*1000 > 0) {
-            printf("Missed: %0.0f\n", millis() - t1 - 1./UPDATERATE*1000);
-        }
-
         uint32_t sum = SRAM_SPICounter + ILI9341_SPICounter;
         double max = 1000000/20.;
 //        printf("SPI Bus Usage: %0.2f%\n", sum/max*100);
@@ -110,7 +106,10 @@ void loop() {
         }
 
         if(HITBOXOVERLAY) hitboxManager.clearHitboxOverlay();
+        double updateTime = millis();
         animator_update();
+//        if(millis() - updateTime > 5)
+//        printf("%f\n", )
         if(HITBOXOVERLAY) hitboxManager.displayHitboxesOverlay();
 
         hitboxManager.checkCollisions();
