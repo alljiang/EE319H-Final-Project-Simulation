@@ -902,8 +902,6 @@ void Kirby::controlLoop(double joyH, double joyV, bool btnA, bool btnB, bool shi
         animationIndex = 33;
         mirrored = l_mirrored;
 
-        x += joyH * groundSpeed * 0.5;
-
         disabledFrames = 2;
         frameExtension = 1;
         if(frameLengthCounter++ > frameExtension) {
@@ -913,12 +911,34 @@ void Kirby::controlLoop(double joyH, double joyV, bool btnA, bool btnB, bool shi
                 frameIndex = 2;
             }
         }
+
+        if(frameIndex == 2) {
+//            x += joyH * groundSpeed * 0.2;
+        }
+
         if(frameIndex == 2
-        && ( (currentTime - hammerChargeStartTime > 500 && currentTime-l_btnBRise_t==0)
+        && ( (currentTime - hammerChargeStartTime > 500 && !btnB)
             ||  currentTime - hammerChargeTime > 3000) ) {
             hammerChargeTime = currentTime - hammerChargeStartTime;
             action = KIRBY_ACTION_SIDESPECIALRELEASE;
             frameIndex = 3;
+        }
+        switch (frameIndex) {
+            case 0:
+                x_mirroredOffset = -2;
+                xAnimationOffset = -17;
+                yAnimationOffset = 0;
+                break;
+            case 1:
+                x_mirroredOffset = -1;
+                xAnimationOffset = -18;
+                yAnimationOffset = 0;
+                break;
+            case 2:
+                x_mirroredOffset = -3;
+                xAnimationOffset = -16;
+                yAnimationOffset = -1;
+                break;
         }
     }
     else if(action == KIRBY_ACTION_SIDESPECIALRELEASE){
@@ -933,6 +953,43 @@ void Kirby::controlLoop(double joyH, double joyV, bool btnA, bool btnB, bool shi
         }
         if(frameIndex >= 10) {
             action = KIRBY_ACTION_RESTING;
+        }
+        switch (frameIndex) {
+            case 3:
+                x_mirroredOffset = 0;
+                xAnimationOffset = 0;
+                yAnimationOffset = 0;
+                break;
+            case 4:
+                x_mirroredOffset = 0;
+                xAnimationOffset = 0;
+                yAnimationOffset = 0;
+                break;
+            case 5:
+                x_mirroredOffset = 0;
+                xAnimationOffset = 0;
+                yAnimationOffset = 0;
+                break;
+            case 6:
+                x_mirroredOffset = 0;
+                xAnimationOffset = 0;
+                yAnimationOffset = 0;
+                break;
+            case 7:
+                x_mirroredOffset = 0;
+                xAnimationOffset = 0;
+                yAnimationOffset = 0;
+                break;
+            case 8:
+                x_mirroredOffset = 0;
+                xAnimationOffset = 0;
+                yAnimationOffset = 0;
+                break;
+            case 9:
+                x_mirroredOffset = 0;
+                xAnimationOffset = 0;
+                yAnimationOffset = 0;
+                break;
         }
     }
     else if(action == KIRBY_ACTION_FORWARDAIR) {
