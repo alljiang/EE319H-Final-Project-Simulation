@@ -165,6 +165,7 @@ protected:
 
     long long disabledFrames {0};   //  frames before making a new move
     bool noJumpsDisabled;           //  disabled until landing because of running out of jumps
+    bool pauseFall;                 //  pauses changes in y from y velocity
 
     double l_joyH;              //  last joystick horizontal value
     double l_joyV;              //  last joystick vertical value
