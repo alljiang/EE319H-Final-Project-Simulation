@@ -234,7 +234,8 @@ class Kirby: public Player {
 #define KIRBY_ACTION_UPAIR 43
 #define KIRBY_ACTION_NEUTRALAIR 44
 #define KIRBY_ACTION_NEUTRALB 50
-#define KRIBY_ACTION_FWDSPEC 53
+#define KIRBY_ACTION_SIDESPECIALCHARGE 53
+#define KIRBY_ACTION_SIDESPECIALRELEASE 54
 #define KIRBY_ACTION_DOWNSPECIALMORPH 56
 #define KIRBY_ACTION_DOWNSPECIALFALL 57
 #define KIRBY_ACTION_DOWNSPECIALUNMORPH 58
@@ -273,6 +274,10 @@ protected:
 
     //  down special
     long long morphEndTime, morphLandTime;
+
+    //  side special
+    long long hammerChargeStartTime;
+    uint32_t hammerChargeTime;
 
 public:
     Hurtbox jabSingle = Hurtbox(true,14, 11, SHAPE_CIRCLE,
