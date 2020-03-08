@@ -56,9 +56,9 @@ public:
             double damage=0, double xknockback=0, double yknockback=0)
             : Collider(cX, cY, boxShape, radius) {
         shape = boxShape;
-        this->damage = damage;
         this->frames = frames;
         this->frameLength = frameLength;
+        this->damage = damage;
         this->xKnockback = xknockback;
         this->yKnockback = yknockback;
     }
@@ -68,9 +68,9 @@ public:
             double damage=0, double xknockback=0, double yknockback=0)
             : Collider(cX, cY, boxShape, height, width) {
         shape = boxShape;
-        this->damage = damage;
         this->frames = frames;
         this->frameLength = frameLength;
+        this->damage = damage;
         this->xKnockback = xknockback;
         this->yKnockback = yknockback;
     }
@@ -325,6 +325,18 @@ public:
                               17, 10, 1, 1);
     Hurtbox dashAttack = Hurtbox(true,2, 13, SHAPE_CIRCLE,
                                  14, 1, 1);
+    Hurtbox sideSpecial0 = Hurtbox(true,-28, 7, SHAPE_CIRCLE,
+                                   11, 1, 1);
+    Hurtbox sideSpecial1 = Hurtbox(true,-17, 3, SHAPE_CIRCLE,
+                                   11, 1, 1);
+    Hurtbox sideSpecial2 = Hurtbox(true,0, 2, SHAPE_CIRCLE,
+                                   11, 1, 1);
+    Hurtbox sideSpecial3 = Hurtbox(true,15, 5, SHAPE_CIRCLE,
+                                   11, 1, 1);
+    Hurtbox sideSpecial4 = Hurtbox(true,30, 6, SHAPE_CIRCLE,
+                                   11, 1, 1);
+    Hurtbox sideSpecial5 = Hurtbox(true,17, 10, SHAPE_CIRCLE,
+                                   11, 1, 1);
 
     Kirby() {}
 

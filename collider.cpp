@@ -32,11 +32,10 @@ void HitboxManager::checkCollisions() {
         }
         else {
             //  update hurtbox frame
-            if( hurtboxes[slot].frameLengthCounter++ >= hurtboxes[slot].frameLength
+            if( ++hurtboxes[slot].frameLengthCounter >= hurtboxes[slot].frameLength
                 && !((persistentHurtbox >> slot) & 1)) {
                 hurtboxes[slot].frameLengthCounter = 0;
-                hurtboxes[slot].currentFrame++;
-                if(hurtboxes[slot].currentFrame >= hurtboxes[slot].frames) {
+                if(++hurtboxes[slot].currentFrame >= hurtboxes[slot].frames) {
                     hurtboxes[slot].active = false;
                 }
             }
@@ -46,8 +45,8 @@ void HitboxManager::checkCollisions() {
 
 void HitboxManager::displayHitboxesOverlay() {
     uint32_t hitboxColorsub = 0x555500;
-    uint32_t hurtboxColorsub = 0x007777;
-//    uint32_t hurtboxColorsub = 0xAA00AA;
+//    uint32_t hurtboxColorsub = 0x007777;
+    uint32_t hurtboxColorsub = 0xAA00AA;
 
     //  first display player hitboxes
     if(p1->hitbox.shape == SHAPE_CIRCLE) {
