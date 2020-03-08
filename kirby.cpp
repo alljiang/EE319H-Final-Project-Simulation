@@ -62,7 +62,7 @@ void Kirby::controlLoop(double joyH, double joyV, bool btnA, bool btnB, bool shi
         mirrored = l_mirrored;
         animationIndex = 4;
 
-        frameExtension = 2;
+        frameExtension = 1;
         if(frameLengthCounter++ >= frameExtension) {
             frameLengthCounter = 0;
             frameIndex++;
@@ -484,7 +484,7 @@ void Kirby::controlLoop(double joyH, double joyV, bool btnA, bool btnB, bool shi
         hitbox.offsetX(0);
 
         disabledFrames = 2;
-        frameExtension = 1;
+        frameExtension = 0;
         if (frameLengthCounter++ >= frameExtension) {
             frameLengthCounter = 0;
             frameIndex++;
@@ -748,7 +748,7 @@ void Kirby::controlLoop(double joyH, double joyV, bool btnA, bool btnB, bool shi
             else hitbox.offsetX(1);
 
             disabledFrames = 2;
-            frameExtension = 1;
+            frameExtension = 0;
             if (frameLengthCounter++ >= frameExtension) {
                 frameLengthCounter = 0;
                 frameIndex++;
@@ -921,7 +921,6 @@ void Kirby::controlLoop(double joyH, double joyV, bool btnA, bool btnB, bool shi
                 xAnimationOffset = -23;
                 yAnimationOffset = -20;
 
-                printint(0);
                 hitboxManager->addHurtbox(x + 16, y, mirrored,
                                           sideSpecial0, player);
                 break;
@@ -994,7 +993,7 @@ void Kirby::controlLoop(double joyH, double joyV, bool btnA, bool btnB, bool shi
             else hitbox.offsetX(2);
 
             disabledFrames = 2;
-            frameExtension = 1;
+            frameExtension = 0;
             if (frameLengthCounter++ >= frameExtension) {
                 frameLengthCounter = 0;
                 frameIndex++;
