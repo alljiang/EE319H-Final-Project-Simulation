@@ -12,8 +12,8 @@ import java.util.ArrayList;
 public class Main
 {
 
-    static String filename = "kirby.png";
-    static Pixel background = new Pixel(0xffaeaeff);
+    static String filename = "marth.png";
+    static Pixel background = new Pixel(0xff408000);    // kirby: 0xffaeaeff    marth: 0xff408000
     static int cropTolerance = 1;  // pixels
     static int minimumDiagonalLength = 1;
 
