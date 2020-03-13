@@ -55,7 +55,10 @@ void LCD_drawOverlayCircle(double doublex, double doubley, uint8_t radius, uint3
     double radius_sq = radius * radius;
 
     for(int16_t y = cy + radius; y >= cy - radius; y--) {
+        if(y < 0 || y >= WINDOW_HEIGHT) continue;
         for(int16_t x = cx - radius; x <= cx + radius; x++) {
+            if(x < 0 || x >= WINDOW_WIDTH) continue;
+
             double distance_sq = (x-cx)*(x-cx) + (y-cy)*(y-cy);
 
             if(radius_sq >= distance_sq) {
@@ -92,11 +95,14 @@ void LCD_drawOverlayCircle(double doublex, double doubley, uint8_t radius, uint3
 // simulator only
 void LCD_drawOverlayRectangle(double doublex, double doubley,
         uint8_t width, uint8_t height, uint32_t colorSub) {
-    uint16_t cx = (uint16_t) doublex;
-    uint16_t cy = (uint16_t) doubley;
+    int16_t cx = (uint16_t) doublex;
+    int16_t cy = (uint16_t) doubley;
 
     for(int16_t y = cy + height/2; y >= cy - height/2; y--) {
+        if(y < 0 || y >= WINDOW_HEIGHT) continue;
         for(int16_t x = cx - width/2; x <= cx + width/2; x++) {
+            if(x < 0 || x >= WINDOW_WIDTH) continue;
+
             uint32_t oldColor = screen[y][x];
             uint16_t oldRed = (oldColor >> 16u) & 0xFF;
             uint16_t oldGreen = (oldColor >> 8u) & 0xFF;
@@ -114,9 +120,9 @@ void LCD_drawOverlayRectangle(double doublex, double doubley,
             if(newGreen < 0) newGreen = 0;
             if(newBlue < 0) newBlue = 0;
 
-//                if(newRed > 255) newRed = 255;
-//                if(newGreen > 255) newGreen = 255;
-//                if(newBlue > 255) newBlue = 255;
+            if(newRed > 255) newRed = 255;
+            if(newGreen > 255) newGreen = 255;
+            if(newBlue > 255) newBlue = 255;
 
             uint32_t newRGB = ((newRed & 0xFF) << 16) + ((newGreen & 0xFF) << 8) + (newBlue & 0xFF);
 
@@ -127,8 +133,8 @@ void LCD_drawOverlayRectangle(double doublex, double doubley,
 }
 
 void LCD_clearOverlay() {
-    for(int r = 0; r < 241; r++) {
-        for(int c = 0; c < 321; c++) {
+    for(int r = 0; r < WINDOW_HEIGHT; r++) {
+        for(int c = 0; c < WINDOW_WIDTH; c++) {
             if(changed[r][c]) {
                 changed[r][c] = false;
                 LCD_drawPixel(c, r, screen[r][c], false);

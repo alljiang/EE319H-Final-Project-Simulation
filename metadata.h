@@ -61,7 +61,7 @@ const char animations[4][64][10] = {
                                                 {"fwdair"},     //  8
                                                 {"upair"},      //  6
                                                 {"nair"},       //  8
-                                                {""},
+                                                {"dashatk"},    //  7
                  /* 30 */                       {""},
                                                 {""},
                                                 {"neutralb"},    //  11

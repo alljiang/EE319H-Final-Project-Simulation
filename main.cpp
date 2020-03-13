@@ -53,6 +53,7 @@ void startup() {
     k2.setPlayer(2);
     p2->setX(stage.getStartX(2));
     p2->setY(stage.getStartY(2));
+    p2->setMirrored(true);
 
 
     if(PLAYER2) hitboxManager.initialize(p1, p2);
@@ -72,17 +73,9 @@ uint32_t  t1 = 0;
 uint32_t tt1 = 0;
 uint8_t frame = 0;
 void loop() {
-//    if(millis() - tt1 > 1000) {
-//        uint32_t sum = SRAM_SPICounter + ILI9341_SPICounter;
-//        double max = 1000000;
-//        printf("SPI Bus Usage: %0.2f%\n", sum/max*100);
-//        SRAM_SPICounter = 0;
-//        ILI9341_SPICounter = 0;
-//        tt1 = millis();
-//    }
     if(millis() - t1 >= 1./UPDATERATE*1000) {
         uint32_t sum = SRAM_SPICounter + ILI9341_SPICounter;
-        double max = 1000000/20.;
+        double max = 1000000./UPDATERATE;
 //        printf("SPI Bus Usage: %0.2f%\n", sum/max*100);
         SRAM_SPICounter = 0;
         ILI9341_SPICounter = 0;
@@ -106,7 +99,6 @@ void loop() {
         }
 
         if(HITBOXOVERLAY) hitboxManager.clearHitboxOverlay();
-        double updateTime = millis();
         animator_update();
         if(HITBOXOVERLAY) hitboxManager.displayHitboxesOverlay();
 

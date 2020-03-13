@@ -9,12 +9,10 @@
 //  if damage == 0, corner is left. else, it's right corner
 const Hurtbox FD_leftCorner = Hurtbox(true, 38, 103,
                              SHAPE_CIRCLE, 8,
-                             1, 1,
-                             0, 0, 0, 0);
+                             1, 1,0, 0, 0);
 const Hurtbox FD_rightCorner = Hurtbox(
         true, 275, 103, SHAPE_CIRCLE,8,
-        1, 1,
-        1, 0, 0, 0);
+        1, 1,1, 0, 0);
 
 double Stage::ceil(double x, double y) {
 
@@ -97,7 +95,7 @@ double Stage::getStartX(uint8_t player) {
     switch(stageIndex) {
         case STAGE_FINALDESTINATION:
             if(player == 1) return 60;
-            else return 250;
+            else return 232;
             break;
 
         case STAGE_TOWER:

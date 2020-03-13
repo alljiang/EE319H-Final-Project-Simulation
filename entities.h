@@ -46,40 +46,33 @@ public:
     int8_t source;     //  player who created this hitbox, will not damage this player
     int8_t frames, frameLength, currentFrame, frameLengthCounter;
     bool active{false};
-
-    double xVel, yVel;
+    double xKnockback, yKnockback;
 
     Hurtbox() : Collider(0,0,0,0) {}
 
     Hurtbox(bool circle, double cX, double cY,
             uint8_t boxShape, double radius,
             int8_t frames=1, int8_t frameLength=1,
-            double damage=0, double knockback=0,
-            double xVelocity=0, double yVelocity=0)
+            double damage=0, double xknockback=0, double yknockback=0)
             : Collider(cX, cY, boxShape, radius) {
         shape = boxShape;
-        this->damage = damage;
-        this->knockback = knockback;
-        this->source = source;
         this->frames = frames;
         this->frameLength = frameLength;
-        this->xVel = xVelocity;
-        this->yVel = yVelocity;
+        this->damage = damage;
+        this->xKnockback = xknockback;
+        this->yKnockback = yknockback;
     }
 
-    Hurtbox(double cX, double cY, uint8_t boxShape, double length, double width,
+    Hurtbox(double cX, double cY, uint8_t boxShape, double height, double width,
             int8_t frames=1, int8_t frameLength=1,
-            double damage=0, double knockback=0,
-            double xVelocity=0, double yVelocity=0)
-            : Collider(cX, cY, boxShape, length, width) {
+            double damage=0, double xknockback=0, double yknockback=0)
+            : Collider(cX, cY, boxShape, height, width) {
         shape = boxShape;
-        this->damage = damage;
-        this->knockback = knockback;
-        this->source = source;
         this->frames = frames;
         this->frameLength = frameLength;
-        this->xVel = xVelocity;
-        this->yVel = yVelocity;
+        this->damage = damage;
+        this->xKnockback = xknockback;
+        this->yKnockback = yknockback;
     }
 
     //  if source is 0, hurtbox is a grabbable stage ledge
@@ -172,6 +165,7 @@ protected:
 
     long long disabledFrames {0};   //  frames before making a new move
     bool noJumpsDisabled;           //  disabled until landing because of running out of jumps
+    bool pauseFall;                 //  pauses changes in y from y velocity
 
     double l_joyH;              //  last joystick horizontal value
     double l_joyV;              //  last joystick vertical value
@@ -200,6 +194,7 @@ public:
     Hitbox hitbox = Hitbox(0, 0, 0, 0);
 
     void setPlayer(uint8_t p) { player = p; }
+    void setMirrored(bool mirror) { l_mirrored = mirrored = mirror;}
 
     virtual void controlLoop(double joyH, double joyV, bool btnA, bool btnB, bool shield, class Stage* stage,
             class HitboxManager* hitboxManager) = 0; //  called every update
@@ -227,6 +222,7 @@ class Kirby: public Player {
 #define KIRBY_ACTION_DOWNSMASH 14
 #define KIRBY_ACTION_UPSMASHHOLD 15
 #define KIRBY_ACTION_UPSMASH 16
+#define KIRBY_ACTION_DASHATTACK 18
 #define KIRBY_ACTION_UPTILT 20
 #define KIRBY_ACTION_UPSPECIALINITIAL 25
 #define KIRBY_ACTION_UPSPECIALRISING 26
@@ -239,8 +235,11 @@ class Kirby: public Player {
 #define KIRBY_ACTION_UPAIR 43
 #define KIRBY_ACTION_NEUTRALAIR 44
 #define KIRBY_ACTION_NEUTRALB 50
-#define KRIBY_ACTION_FWDSPEC 53
-#define KIRBY_ACTION_DOWNSPEC 56
+#define KIRBY_ACTION_SIDESPECIALCHARGE 53
+#define KIRBY_ACTION_SIDESPECIALRELEASE 54
+#define KIRBY_ACTION_DOWNSPECIALMORPH 56
+#define KIRBY_ACTION_DOWNSPECIALFALL 57
+#define KIRBY_ACTION_DOWNSPECIALUNMORPH 58
 
 #define KIRBY_STAGE_OFFSET 18
 
@@ -274,14 +273,70 @@ protected:
     bool upb_projectile_mirrored;
     bool upb_projectile_active;
 
+    //  down special
+    long long morphEndTime, morphLandTime;
+
+    //  side special
+    long long hammerChargeStartTime;
+    uint32_t hammerChargeTime;
+
 public:
     Hurtbox jabSingle = Hurtbox(true,14, 11, SHAPE_CIRCLE,
-            8, 3, 3);
-    Hurtbox jabDouble = Hurtbox(true,15, 12, SHAPE_CIRCLE,
-            9, 3, 4);
-    Hurtbox jabRepeating = Hurtbox(true,25, 16, SHAPE_CIRCLE,
-            15, 1, 3);
-
+                                8, 1, 1);
+    Hurtbox jabDouble = Hurtbox(true,14, 12, SHAPE_CIRCLE,
+                                7, 1, 1);
+    Hurtbox jabRepeating0 = Hurtbox(true,23, 12, SHAPE_CIRCLE,
+                                    11, 1, 1);
+    Hurtbox jabRepeating1 = Hurtbox(true,25, 25, SHAPE_CIRCLE,
+                                    11, 1, 1);
+    Hurtbox jabRepeating2 = Hurtbox(true,23, 5, SHAPE_CIRCLE,
+                                    9, 1, 1);
+    Hurtbox forwardTilt = Hurtbox(true,10, 11, SHAPE_CIRCLE,
+                                  8, 1, 1);
+    Hurtbox upTilt = Hurtbox(-6., 21, SHAPE_RECTANGLE,
+                             25, 18, 1, 1);
+    Hurtbox downTilt = Hurtbox(4., 2, SHAPE_RECTANGLE,
+                               6, 28, 1, 1);
+    Hurtbox forwardSmash0 = Hurtbox(1., 5, SHAPE_RECTANGLE,
+                                    20, 22, 1, 1);
+    Hurtbox forwardSmash1 = Hurtbox(25., 5, SHAPE_RECTANGLE,
+                                    20, 20, 1, 1);
+    Hurtbox upSmash = Hurtbox(true, 0., 26, SHAPE_CIRCLE,
+                                    14, 1, 1);
+    Hurtbox downSmash = Hurtbox(0., 2, SHAPE_RECTANGLE,
+                                10, 44, 1, 1);
+    Hurtbox upSpecial = Hurtbox(25., 18, SHAPE_RECTANGLE,
+                                20, 30, 1, 1);
+    Hurtbox upSpecialTop = Hurtbox(0., 40, SHAPE_RECTANGLE,
+                                   20, 40, 1, 1);
+    Hurtbox upSpecialProjectile = Hurtbox(4., 16, SHAPE_RECTANGLE,
+                                   32, 20, 1, 1);
+    Hurtbox downSpecial = Hurtbox(true,0, 5, SHAPE_CIRCLE,
+                                 12, 1, 1);
+    Hurtbox neutralAir = Hurtbox(true,0, 15, SHAPE_CIRCLE,
+                                 14, 1, 1);
+    Hurtbox forwardAir = Hurtbox(true,18, 13, SHAPE_CIRCLE,
+                                 8, 1, 1);
+    Hurtbox backAir = Hurtbox(true,-14, 11, SHAPE_CIRCLE,
+                              8, 1, 1);
+    Hurtbox upAir = Hurtbox(true,0, 28, SHAPE_CIRCLE,
+                              16, 1, 1);
+    Hurtbox downAir = Hurtbox(5., -2, SHAPE_RECTANGLE,
+                              17, 10, 1, 1);
+    Hurtbox dashAttack = Hurtbox(true,2, 13, SHAPE_CIRCLE,
+                                 14, 1, 1);
+    Hurtbox sideSpecial0 = Hurtbox(true,-28, 7, SHAPE_CIRCLE,
+                                   11, 1, 1);
+    Hurtbox sideSpecial1 = Hurtbox(true,-17, 3, SHAPE_CIRCLE,
+                                   11, 1, 1);
+    Hurtbox sideSpecial2 = Hurtbox(true,0, 2, SHAPE_CIRCLE,
+                                   11, 1, 1);
+    Hurtbox sideSpecial3 = Hurtbox(true,15, 5, SHAPE_CIRCLE,
+                                   11, 1, 1);
+    Hurtbox sideSpecial4 = Hurtbox(true,30, 6, SHAPE_CIRCLE,
+                                   11, 1, 1);
+    Hurtbox sideSpecial5 = Hurtbox(true,17, 10, SHAPE_CIRCLE,
+                                   11, 1, 1);
 
     Kirby() {}
 
@@ -291,7 +346,7 @@ public:
 
     void updateLastValues(double joyH, double joyV, bool btnA, bool btnB, bool shield) override ;
 
-    void collide(class Hurtbox *hurtbox);
+    void collide(class Hurtbox *hurtbox) override;
 };
 
 #endif //EE319K_FINAL_PROJECT_INITIAL_TESTING_ENTITIES_H
