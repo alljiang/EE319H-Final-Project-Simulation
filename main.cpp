@@ -12,8 +12,8 @@
 #include "SRAM.h"
 #include "entities.h"
 #include "stage.h"
-#include "colors_finaldest.h"
-#include "colors_towerback.h"
+#include "colors_fdst.h"
+#include "colors_tower.h"
 
 using namespace std;
 using namespace chrono;
@@ -43,6 +43,18 @@ const uint8_t stageToPlay = STAGE_FINALDESTINATION;
 //  runs once at beginning
 void startup() {
     animator_initialize();
+    animator_readCharacterSDCard(0);
+
+    animator_setBackgroundColors(colors_fdst);
+    animator_readPersistentSprite(stageNames[0], 0, 0);
+    LCD_update();
+
+    animator_animate(0, 1, 50, 120, 0, 30, false, false, 1, false);
+    animator_update();
+    LCD_update();
+
+    /*
+    animator_initialize();
 
     p1 = &k1;
     p1->setPlayer(1);
@@ -55,17 +67,17 @@ void startup() {
     p2->setY(stage.getStartY(2));
     p2->setMirrored(true);
 
-
     if(PLAYER2) hitboxManager.initialize(p1, p2);
     else hitboxManager.initialize(p1);
 
-    if(stageToPlay == STAGE_FINALDESTINATION) animator_setBackgroundColors(colors_finaldest);
-    else if(stageToPlay == STAGE_TOWER) animator_setBackgroundColors(colors_towerback);
+    if(stageToPlay == STAGE_FINALDESTINATION) animator_setBackgroundColors(colors_fdst);
+    else if(stageToPlay == STAGE_TOWER) animator_setBackgroundColors(colors_tower);
     stage.initialize(stageToPlay, &hitboxManager);
 
     UART_readCharacterSDCard(0);
 
     printf("SRAM Used: %0.1f%\n", getCurrentMemoryLocation() / (1024.*1024) * 100);
+    */
 }
 
 //  continually loops
@@ -73,6 +85,7 @@ uint32_t  t1 = 0;
 uint32_t tt1 = 0;
 uint8_t frame = 0;
 void loop() {
+    return;
     if(millis() - t1 >= 1./UPDATERATE*1000) {
         uint32_t sum = SRAM_SPICounter + ILI9341_SPICounter;
         double max = 1000000./UPDATERATE;

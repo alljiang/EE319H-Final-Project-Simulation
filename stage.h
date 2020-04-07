@@ -18,8 +18,8 @@ class Stage {
 
 protected:
     const char stageNames[4][10] = {
-                                        {"finaldest"},
-                                        {"towerback"},
+                                        {"fdst"},
+                                        {"tower"},
                                         {"battle"},
                                         {}
                                     };

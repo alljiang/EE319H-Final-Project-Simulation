@@ -3,8 +3,10 @@
 // Created by Allen on 2/5/2020.
 //
 
-#ifndef EE319K_FINAL_PROJECT_INITIAL_TESTING_METADATA_H
-#define EE319K_FINAL_PROJECT_INITIAL_TESTING_METADATA_H
+#ifndef METADATA
+#define METADATA
+
+#include <stdbool.h>
 
 /*
  *  Note: if the sprite is persistent, then the layer will be ignored when painting the background, so send them in the right order!
@@ -22,6 +24,12 @@ const uint8_t LAYER_OVERLAY = 100;
 const uint8_t LAYER_PERCENTAGE = 110;
 const uint8_t LAYER_TOP = 255;
 
+const char stageNames[4][10] = {
+        {"fdst"},
+        {"tower"},
+        {"battle"},
+        {}
+};
 
 const char characterNames[4][15] = {
                                         {"kirby"},
@@ -119,4 +127,4 @@ struct SpriteSendable {
         bool mirrored;
 };
 
-#endif //EE319K_FINAL_PROJECT_INITIAL_TESTING_METADATA_H
+#endif //METADATA
