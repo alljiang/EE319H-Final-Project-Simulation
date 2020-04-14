@@ -12,47 +12,51 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="fe664a67-824c-4cd3-aff1-f4bbf75b53a6" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/colors_fdst.h" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/colors_tower.h" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/data/sprites/SpriteParser/colors_fdst.h" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/data/sprites/SpriteParser/colors_tower.h" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/data/sprites/SpriteParser/fdst.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/data/sprites/SpriteParser/png-misc/fdst.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/data/sprites/SpriteParser/png-misc/tower.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/data/sprites/SpriteParser/tower.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/data/sprites/fdst.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/data/sprites/misc/finaldest.pngOLD" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/data/sprites/misc/finaldestination.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/data/sprites/tower.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CMakeLists.txt" beforeDir="false" afterPath="$PROJECT_DIR$/CMakeLists.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/LCD.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/ILI9341.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/LCD.h" beforeDir="false" afterPath="$PROJECT_DIR$/ILI9341.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/SDCard.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/SD.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/SDCard.h" beforeDir="false" afterPath="$PROJECT_DIR$/SD.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/SRAM.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Flash.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/SRAM.h" beforeDir="false" afterPath="$PROJECT_DIR$/Flash.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/animator.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/animator.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/3.15.3/CMakeDetermineCompilerABI_C.bin" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/3.15.3/CMakeDetermineCompilerABI_C.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/3.15.3/CMakeDetermineCompilerABI_CXX.bin" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/3.15.3/CMakeDetermineCompilerABI_CXX.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/3.15.3/CompilerIdC/a.exe" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/3.15.3/CompilerIdC/a.exe" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/3.15.3/CompilerIdCXX/a.exe" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/3.15.3/CompilerIdCXX/a.exe" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/CMakeOutput.log" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/CMakeOutput.log" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/EE319K_Final_Project_Initial_Testing.dir/CXX.includecache" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/EE319K_Final_Project_Initial_Testing.dir/CXX.includecache" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/EE319K_Final_Project_Initial_Testing.dir/LCD.cpp.obj" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/EE319K_Final_Project_Initial_Testing.dir/LCD.cpp.obj" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/EE319K_Final_Project_Initial_Testing.dir/UART.cpp.obj" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/EE319K_Final_Project_Initial_Testing.dir/UART.cpp.obj" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/EE319K_Final_Project_Initial_Testing.dir/animator.cpp.obj" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/EE319K_Final_Project_Initial_Testing.dir/animator.cpp.obj" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/EE319K_Final_Project_Initial_Testing.dir/DependInfo.cmake" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/EE319K_Final_Project_Initial_Testing.dir/DependInfo.cmake" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/EE319K_Final_Project_Initial_Testing.dir/LCD.cpp.obj" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/EE319K_Final_Project_Initial_Testing.dir/SDCard.cpp.obj" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/EE319K_Final_Project_Initial_Testing.dir/SRAM.cpp.obj" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/EE319K_Final_Project_Initial_Testing.dir/UART.cpp.obj" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/EE319K_Final_Project_Initial_Testing.dir/animator.cpp.obj" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/EE319K_Final_Project_Initial_Testing.dir/build.make" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/EE319K_Final_Project_Initial_Testing.dir/build.make" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/EE319K_Final_Project_Initial_Testing.dir/cmake_clean.cmake" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/EE319K_Final_Project_Initial_Testing.dir/cmake_clean.cmake" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/EE319K_Final_Project_Initial_Testing.dir/collider.cpp.obj" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/EE319K_Final_Project_Initial_Testing.dir/controller.cpp.obj" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/EE319K_Final_Project_Initial_Testing.dir/depend.internal" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/EE319K_Final_Project_Initial_Testing.dir/depend.internal" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/EE319K_Final_Project_Initial_Testing.dir/depend.make" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/EE319K_Final_Project_Initial_Testing.dir/depend.make" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/EE319K_Final_Project_Initial_Testing.dir/kirby.cpp.obj" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/EE319K_Final_Project_Initial_Testing.dir/kirby.cpp.obj" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/EE319K_Final_Project_Initial_Testing.dir/main.cpp.obj" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/EE319K_Final_Project_Initial_Testing.dir/main.cpp.obj" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/EE319K_Final_Project_Initial_Testing.dir/objects.a" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/EE319K_Final_Project_Initial_Testing.dir/objects.a" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/EE319K_Final_Project_Initial_Testing.dir/utils.cpp.obj" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/EE319K_Final_Project_Initial_Testing.dir/utils.cpp.obj" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/EE319K_Final_Project_Initial_Testing.exe" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/EE319K_Final_Project_Initial_Testing.exe" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/colors_finaldest.h" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/colors_towerback.h" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/sprites/SpriteParser/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/data/sprites/SpriteParser/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/EE319K_Final_Project_Initial_Testing.dir/kirby.cpp.obj" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/EE319K_Final_Project_Initial_Testing.dir/main.cpp.obj" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/EE319K_Final_Project_Initial_Testing.dir/objects.a" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/EE319K_Final_Project_Initial_Testing.dir/objects1.rsp" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/EE319K_Final_Project_Initial_Testing.dir/objects1.rsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/EE319K_Final_Project_Initial_Testing.dir/stage.cpp.obj" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/EE319K_Final_Project_Initial_Testing.dir/utils.cpp.obj" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Makefile.cmake" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Makefile.cmake" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/clion-environment.txt" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/clion-environment.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/clion-log.txt" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/clion-log.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/EE319K_Final_Project_Initial_Testing.cbp" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/EE319K_Final_Project_Initial_Testing.cbp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/EE319K_Final_Project_Initial_Testing.exe" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/Makefile" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/Makefile" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/collider.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/collider.cpp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/data/sprites/SpriteParser/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/data/sprites/SpriteParser/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/sprites/SpriteParser/SpriteParser.iml" beforeDir="false" afterPath="$PROJECT_DIR$/data/sprites/SpriteParser/SpriteParser.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/sprites/SpriteParser/colors_finaldest.h" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/sprites/SpriteParser/colors_towerback.h" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/sprites/SpriteParser/finaldest.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/sprites/SpriteParser/png-misc/finaldest.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/sprites/SpriteParser/png-misc/towerback.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/sprites/SpriteParser/towerback.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/sprites/finaldest.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/sprites/misc/finaldest.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/sprites/misc/psd/finaldestination.psd" beforeDir="false" afterPath="$PROJECT_DIR$/data/sprites/misc/psd/finaldestination.psd" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/sprites/towerback.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/kirby.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/kirby.cpp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/main.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/main.cpp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/metadata.h" beforeDir="false" afterPath="$PROJECT_DIR$/metadata.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/stage.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/stage.cpp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/stage.h" beforeDir="false" afterPath="$PROJECT_DIR$/stage.h" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -135,7 +139,11 @@
       <workItem from="1584828092238" duration="764000" />
       <workItem from="1585902684949" duration="4549000" />
       <workItem from="1586029919410" duration="2839000" />
-      <workItem from="1586204512191" duration="5128000" />
+      <workItem from="1586204512191" duration="11047000" />
+      <workItem from="1586487666070" duration="4558000" />
+      <workItem from="1586569830762" duration="2518000" />
+      <workItem from="1586811642806" duration="2411000" />
+      <workItem from="1586842170575" duration="9325000" />
     </task>
     <servers />
   </component>
@@ -189,7 +197,7 @@
       <breakpoints>
         <line-breakpoint enabled="true" type="com.jetbrains.cidr.execution.debugger.OCBreakpointType">
           <url>file://$PROJECT_DIR$/main.cpp</url>
-          <line>52</line>
+          <line>66</line>
           <option name="timeStamp" value="4" />
         </line-breakpoint>
       </breakpoints>

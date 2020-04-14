@@ -3,7 +3,7 @@
 #include <cstdint>
 #include <cstdlib>
 #include <cstdio>
-#include "SDCard.h"
+#include "SD.h"
 
 using namespace std;
 
@@ -12,7 +12,7 @@ FILE *fp;
 
 void SD_read(uint32_t bytesToRead, uint8_t* buffer) {
     if (fp == NULL) {
-        printf("FILE ERROR");
+        printf("FILE ERROR\n");
         return;
     }
     for(int i = 0; i < bytesToRead; i++) {

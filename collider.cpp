@@ -5,7 +5,7 @@
 #include <cstdlib>
 #include <cstdio>
 #include "entities.h"
-#include "LCD.h"
+#include "ILI9341.h"
 
 using namespace std;
 

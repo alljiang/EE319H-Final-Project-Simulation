@@ -70,33 +70,33 @@ CMakeFiles/EE319K_Final_Project_Initial_Testing.dir/main.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/EE319K_Final_Project_Initial_Testing.dir/main.cpp.s"
 	C:\PROGRA~1\MINGW-~1\X86_64~1.0-P\mingw64\bin\G__~1.EXE $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S C:\Users\Allen\Documents\GitHub\EE319H-Final-Project-Simulation\main.cpp -o CMakeFiles\EE319K_Final_Project_Initial_Testing.dir\main.cpp.s
 
-CMakeFiles/EE319K_Final_Project_Initial_Testing.dir/SRAM.cpp.obj: CMakeFiles/EE319K_Final_Project_Initial_Testing.dir/flags.make
-CMakeFiles/EE319K_Final_Project_Initial_Testing.dir/SRAM.cpp.obj: CMakeFiles/EE319K_Final_Project_Initial_Testing.dir/includes_CXX.rsp
-CMakeFiles/EE319K_Final_Project_Initial_Testing.dir/SRAM.cpp.obj: ../SRAM.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=C:\Users\Allen\Documents\GitHub\EE319H-Final-Project-Simulation\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object CMakeFiles/EE319K_Final_Project_Initial_Testing.dir/SRAM.cpp.obj"
-	C:\PROGRA~1\MINGW-~1\X86_64~1.0-P\mingw64\bin\G__~1.EXE  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles\EE319K_Final_Project_Initial_Testing.dir\SRAM.cpp.obj -c C:\Users\Allen\Documents\GitHub\EE319H-Final-Project-Simulation\SRAM.cpp
+CMakeFiles/EE319K_Final_Project_Initial_Testing.dir/Flash.cpp.obj: CMakeFiles/EE319K_Final_Project_Initial_Testing.dir/flags.make
+CMakeFiles/EE319K_Final_Project_Initial_Testing.dir/Flash.cpp.obj: CMakeFiles/EE319K_Final_Project_Initial_Testing.dir/includes_CXX.rsp
+CMakeFiles/EE319K_Final_Project_Initial_Testing.dir/Flash.cpp.obj: ../Flash.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=C:\Users\Allen\Documents\GitHub\EE319H-Final-Project-Simulation\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object CMakeFiles/EE319K_Final_Project_Initial_Testing.dir/Flash.cpp.obj"
+	C:\PROGRA~1\MINGW-~1\X86_64~1.0-P\mingw64\bin\G__~1.EXE  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles\EE319K_Final_Project_Initial_Testing.dir\Flash.cpp.obj -c C:\Users\Allen\Documents\GitHub\EE319H-Final-Project-Simulation\Flash.cpp
 
-CMakeFiles/EE319K_Final_Project_Initial_Testing.dir/SRAM.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/EE319K_Final_Project_Initial_Testing.dir/SRAM.cpp.i"
-	C:\PROGRA~1\MINGW-~1\X86_64~1.0-P\mingw64\bin\G__~1.EXE $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E C:\Users\Allen\Documents\GitHub\EE319H-Final-Project-Simulation\SRAM.cpp > CMakeFiles\EE319K_Final_Project_Initial_Testing.dir\SRAM.cpp.i
+CMakeFiles/EE319K_Final_Project_Initial_Testing.dir/Flash.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/EE319K_Final_Project_Initial_Testing.dir/Flash.cpp.i"
+	C:\PROGRA~1\MINGW-~1\X86_64~1.0-P\mingw64\bin\G__~1.EXE $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E C:\Users\Allen\Documents\GitHub\EE319H-Final-Project-Simulation\Flash.cpp > CMakeFiles\EE319K_Final_Project_Initial_Testing.dir\Flash.cpp.i
 
-CMakeFiles/EE319K_Final_Project_Initial_Testing.dir/SRAM.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/EE319K_Final_Project_Initial_Testing.dir/SRAM.cpp.s"
-	C:\PROGRA~1\MINGW-~1\X86_64~1.0-P\mingw64\bin\G__~1.EXE $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S C:\Users\Allen\Documents\GitHub\EE319H-Final-Project-Simulation\SRAM.cpp -o CMakeFiles\EE319K_Final_Project_Initial_Testing.dir\SRAM.cpp.s
+CMakeFiles/EE319K_Final_Project_Initial_Testing.dir/Flash.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/EE319K_Final_Project_Initial_Testing.dir/Flash.cpp.s"
+	C:\PROGRA~1\MINGW-~1\X86_64~1.0-P\mingw64\bin\G__~1.EXE $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S C:\Users\Allen\Documents\GitHub\EE319H-Final-Project-Simulation\Flash.cpp -o CMakeFiles\EE319K_Final_Project_Initial_Testing.dir\Flash.cpp.s
 
-CMakeFiles/EE319K_Final_Project_Initial_Testing.dir/SDCard.cpp.obj: CMakeFiles/EE319K_Final_Project_Initial_Testing.dir/flags.make
-CMakeFiles/EE319K_Final_Project_Initial_Testing.dir/SDCard.cpp.obj: CMakeFiles/EE319K_Final_Project_Initial_Testing.dir/includes_CXX.rsp
-CMakeFiles/EE319K_Final_Project_Initial_Testing.dir/SDCard.cpp.obj: ../SDCard.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=C:\Users\Allen\Documents\GitHub\EE319H-Final-Project-Simulation\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object CMakeFiles/EE319K_Final_Project_Initial_Testing.dir/SDCard.cpp.obj"
-	C:\PROGRA~1\MINGW-~1\X86_64~1.0-P\mingw64\bin\G__~1.EXE  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles\EE319K_Final_Project_Initial_Testing.dir\SDCard.cpp.obj -c C:\Users\Allen\Documents\GitHub\EE319H-Final-Project-Simulation\SDCard.cpp
+CMakeFiles/EE319K_Final_Project_Initial_Testing.dir/SD.cpp.obj: CMakeFiles/EE319K_Final_Project_Initial_Testing.dir/flags.make
+CMakeFiles/EE319K_Final_Project_Initial_Testing.dir/SD.cpp.obj: CMakeFiles/EE319K_Final_Project_Initial_Testing.dir/includes_CXX.rsp
+CMakeFiles/EE319K_Final_Project_Initial_Testing.dir/SD.cpp.obj: ../SD.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=C:\Users\Allen\Documents\GitHub\EE319H-Final-Project-Simulation\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object CMakeFiles/EE319K_Final_Project_Initial_Testing.dir/SD.cpp.obj"
+	C:\PROGRA~1\MINGW-~1\X86_64~1.0-P\mingw64\bin\G__~1.EXE  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles\EE319K_Final_Project_Initial_Testing.dir\SD.cpp.obj -c C:\Users\Allen\Documents\GitHub\EE319H-Final-Project-Simulation\SD.cpp
 
-CMakeFiles/EE319K_Final_Project_Initial_Testing.dir/SDCard.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/EE319K_Final_Project_Initial_Testing.dir/SDCard.cpp.i"
-	C:\PROGRA~1\MINGW-~1\X86_64~1.0-P\mingw64\bin\G__~1.EXE $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E C:\Users\Allen\Documents\GitHub\EE319H-Final-Project-Simulation\SDCard.cpp > CMakeFiles\EE319K_Final_Project_Initial_Testing.dir\SDCard.cpp.i
+CMakeFiles/EE319K_Final_Project_Initial_Testing.dir/SD.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/EE319K_Final_Project_Initial_Testing.dir/SD.cpp.i"
+	C:\PROGRA~1\MINGW-~1\X86_64~1.0-P\mingw64\bin\G__~1.EXE $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E C:\Users\Allen\Documents\GitHub\EE319H-Final-Project-Simulation\SD.cpp > CMakeFiles\EE319K_Final_Project_Initial_Testing.dir\SD.cpp.i
 
-CMakeFiles/EE319K_Final_Project_Initial_Testing.dir/SDCard.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/EE319K_Final_Project_Initial_Testing.dir/SDCard.cpp.s"
-	C:\PROGRA~1\MINGW-~1\X86_64~1.0-P\mingw64\bin\G__~1.EXE $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S C:\Users\Allen\Documents\GitHub\EE319H-Final-Project-Simulation\SDCard.cpp -o CMakeFiles\EE319K_Final_Project_Initial_Testing.dir\SDCard.cpp.s
+CMakeFiles/EE319K_Final_Project_Initial_Testing.dir/SD.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/EE319K_Final_Project_Initial_Testing.dir/SD.cpp.s"
+	C:\PROGRA~1\MINGW-~1\X86_64~1.0-P\mingw64\bin\G__~1.EXE $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S C:\Users\Allen\Documents\GitHub\EE319H-Final-Project-Simulation\SD.cpp -o CMakeFiles\EE319K_Final_Project_Initial_Testing.dir\SD.cpp.s
 
 CMakeFiles/EE319K_Final_Project_Initial_Testing.dir/animator.cpp.obj: CMakeFiles/EE319K_Final_Project_Initial_Testing.dir/flags.make
 CMakeFiles/EE319K_Final_Project_Initial_Testing.dir/animator.cpp.obj: CMakeFiles/EE319K_Final_Project_Initial_Testing.dir/includes_CXX.rsp
@@ -112,19 +112,19 @@ CMakeFiles/EE319K_Final_Project_Initial_Testing.dir/animator.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/EE319K_Final_Project_Initial_Testing.dir/animator.cpp.s"
 	C:\PROGRA~1\MINGW-~1\X86_64~1.0-P\mingw64\bin\G__~1.EXE $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S C:\Users\Allen\Documents\GitHub\EE319H-Final-Project-Simulation\animator.cpp -o CMakeFiles\EE319K_Final_Project_Initial_Testing.dir\animator.cpp.s
 
-CMakeFiles/EE319K_Final_Project_Initial_Testing.dir/LCD.cpp.obj: CMakeFiles/EE319K_Final_Project_Initial_Testing.dir/flags.make
-CMakeFiles/EE319K_Final_Project_Initial_Testing.dir/LCD.cpp.obj: CMakeFiles/EE319K_Final_Project_Initial_Testing.dir/includes_CXX.rsp
-CMakeFiles/EE319K_Final_Project_Initial_Testing.dir/LCD.cpp.obj: ../LCD.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=C:\Users\Allen\Documents\GitHub\EE319H-Final-Project-Simulation\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Building CXX object CMakeFiles/EE319K_Final_Project_Initial_Testing.dir/LCD.cpp.obj"
-	C:\PROGRA~1\MINGW-~1\X86_64~1.0-P\mingw64\bin\G__~1.EXE  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles\EE319K_Final_Project_Initial_Testing.dir\LCD.cpp.obj -c C:\Users\Allen\Documents\GitHub\EE319H-Final-Project-Simulation\LCD.cpp
+CMakeFiles/EE319K_Final_Project_Initial_Testing.dir/ILI9341.cpp.obj: CMakeFiles/EE319K_Final_Project_Initial_Testing.dir/flags.make
+CMakeFiles/EE319K_Final_Project_Initial_Testing.dir/ILI9341.cpp.obj: CMakeFiles/EE319K_Final_Project_Initial_Testing.dir/includes_CXX.rsp
+CMakeFiles/EE319K_Final_Project_Initial_Testing.dir/ILI9341.cpp.obj: ../ILI9341.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=C:\Users\Allen\Documents\GitHub\EE319H-Final-Project-Simulation\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Building CXX object CMakeFiles/EE319K_Final_Project_Initial_Testing.dir/ILI9341.cpp.obj"
+	C:\PROGRA~1\MINGW-~1\X86_64~1.0-P\mingw64\bin\G__~1.EXE  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles\EE319K_Final_Project_Initial_Testing.dir\ILI9341.cpp.obj -c C:\Users\Allen\Documents\GitHub\EE319H-Final-Project-Simulation\ILI9341.cpp
 
-CMakeFiles/EE319K_Final_Project_Initial_Testing.dir/LCD.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/EE319K_Final_Project_Initial_Testing.dir/LCD.cpp.i"
-	C:\PROGRA~1\MINGW-~1\X86_64~1.0-P\mingw64\bin\G__~1.EXE $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E C:\Users\Allen\Documents\GitHub\EE319H-Final-Project-Simulation\LCD.cpp > CMakeFiles\EE319K_Final_Project_Initial_Testing.dir\LCD.cpp.i
+CMakeFiles/EE319K_Final_Project_Initial_Testing.dir/ILI9341.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/EE319K_Final_Project_Initial_Testing.dir/ILI9341.cpp.i"
+	C:\PROGRA~1\MINGW-~1\X86_64~1.0-P\mingw64\bin\G__~1.EXE $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E C:\Users\Allen\Documents\GitHub\EE319H-Final-Project-Simulation\ILI9341.cpp > CMakeFiles\EE319K_Final_Project_Initial_Testing.dir\ILI9341.cpp.i
 
-CMakeFiles/EE319K_Final_Project_Initial_Testing.dir/LCD.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/EE319K_Final_Project_Initial_Testing.dir/LCD.cpp.s"
-	C:\PROGRA~1\MINGW-~1\X86_64~1.0-P\mingw64\bin\G__~1.EXE $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S C:\Users\Allen\Documents\GitHub\EE319H-Final-Project-Simulation\LCD.cpp -o CMakeFiles\EE319K_Final_Project_Initial_Testing.dir\LCD.cpp.s
+CMakeFiles/EE319K_Final_Project_Initial_Testing.dir/ILI9341.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/EE319K_Final_Project_Initial_Testing.dir/ILI9341.cpp.s"
+	C:\PROGRA~1\MINGW-~1\X86_64~1.0-P\mingw64\bin\G__~1.EXE $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S C:\Users\Allen\Documents\GitHub\EE319H-Final-Project-Simulation\ILI9341.cpp -o CMakeFiles\EE319K_Final_Project_Initial_Testing.dir\ILI9341.cpp.s
 
 CMakeFiles/EE319K_Final_Project_Initial_Testing.dir/controller.cpp.obj: CMakeFiles/EE319K_Final_Project_Initial_Testing.dir/flags.make
 CMakeFiles/EE319K_Final_Project_Initial_Testing.dir/controller.cpp.obj: CMakeFiles/EE319K_Final_Project_Initial_Testing.dir/includes_CXX.rsp
@@ -213,10 +213,10 @@ CMakeFiles/EE319K_Final_Project_Initial_Testing.dir/collider.cpp.s: cmake_force
 # Object files for target EE319K_Final_Project_Initial_Testing
 EE319K_Final_Project_Initial_Testing_OBJECTS = \
 "CMakeFiles/EE319K_Final_Project_Initial_Testing.dir/main.cpp.obj" \
-"CMakeFiles/EE319K_Final_Project_Initial_Testing.dir/SRAM.cpp.obj" \
-"CMakeFiles/EE319K_Final_Project_Initial_Testing.dir/SDCard.cpp.obj" \
+"CMakeFiles/EE319K_Final_Project_Initial_Testing.dir/Flash.cpp.obj" \
+"CMakeFiles/EE319K_Final_Project_Initial_Testing.dir/SD.cpp.obj" \
 "CMakeFiles/EE319K_Final_Project_Initial_Testing.dir/animator.cpp.obj" \
-"CMakeFiles/EE319K_Final_Project_Initial_Testing.dir/LCD.cpp.obj" \
+"CMakeFiles/EE319K_Final_Project_Initial_Testing.dir/ILI9341.cpp.obj" \
 "CMakeFiles/EE319K_Final_Project_Initial_Testing.dir/controller.cpp.obj" \
 "CMakeFiles/EE319K_Final_Project_Initial_Testing.dir/UART.cpp.obj" \
 "CMakeFiles/EE319K_Final_Project_Initial_Testing.dir/utils.cpp.obj" \
@@ -228,10 +228,10 @@ EE319K_Final_Project_Initial_Testing_OBJECTS = \
 EE319K_Final_Project_Initial_Testing_EXTERNAL_OBJECTS =
 
 EE319K_Final_Project_Initial_Testing.exe: CMakeFiles/EE319K_Final_Project_Initial_Testing.dir/main.cpp.obj
-EE319K_Final_Project_Initial_Testing.exe: CMakeFiles/EE319K_Final_Project_Initial_Testing.dir/SRAM.cpp.obj
-EE319K_Final_Project_Initial_Testing.exe: CMakeFiles/EE319K_Final_Project_Initial_Testing.dir/SDCard.cpp.obj
+EE319K_Final_Project_Initial_Testing.exe: CMakeFiles/EE319K_Final_Project_Initial_Testing.dir/Flash.cpp.obj
+EE319K_Final_Project_Initial_Testing.exe: CMakeFiles/EE319K_Final_Project_Initial_Testing.dir/SD.cpp.obj
 EE319K_Final_Project_Initial_Testing.exe: CMakeFiles/EE319K_Final_Project_Initial_Testing.dir/animator.cpp.obj
-EE319K_Final_Project_Initial_Testing.exe: CMakeFiles/EE319K_Final_Project_Initial_Testing.dir/LCD.cpp.obj
+EE319K_Final_Project_Initial_Testing.exe: CMakeFiles/EE319K_Final_Project_Initial_Testing.dir/ILI9341.cpp.obj
 EE319K_Final_Project_Initial_Testing.exe: CMakeFiles/EE319K_Final_Project_Initial_Testing.dir/controller.cpp.obj
 EE319K_Final_Project_Initial_Testing.exe: CMakeFiles/EE319K_Final_Project_Initial_Testing.dir/UART.cpp.obj
 EE319K_Final_Project_Initial_Testing.exe: CMakeFiles/EE319K_Final_Project_Initial_Testing.dir/utils.cpp.obj

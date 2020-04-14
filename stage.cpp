@@ -3,6 +3,7 @@
 //
 
 #include "stage.h"
+#include "metadata.h"
 #include "animator.h"
 #include "entities.h"
 
@@ -169,6 +170,4 @@ void Stage::initialize(uint8_t index, HitboxManager *hitboxManager) {
     else if(stageIndex == STAGE_BATTLEFIELD) {}
 
     stageIndex = index;
-
-    animator_readPersistentSprite(stageNames[index], 0, 0);
 }

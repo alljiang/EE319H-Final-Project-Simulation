@@ -122,86 +122,86 @@ EE319K_Final_Project_Initial_Testing/fast:
 	$(MAKE) -f CMakeFiles\EE319K_Final_Project_Initial_Testing.dir\build.make CMakeFiles/EE319K_Final_Project_Initial_Testing.dir/build
 .PHONY : EE319K_Final_Project_Initial_Testing/fast
 
-LCD.obj: LCD.cpp.obj
+Flash.obj: Flash.cpp.obj
 
-.PHONY : LCD.obj
-
-# target to build an object file
-LCD.cpp.obj:
-	$(MAKE) -f CMakeFiles\EE319K_Final_Project_Initial_Testing.dir\build.make CMakeFiles/EE319K_Final_Project_Initial_Testing.dir/LCD.cpp.obj
-.PHONY : LCD.cpp.obj
-
-LCD.i: LCD.cpp.i
-
-.PHONY : LCD.i
-
-# target to preprocess a source file
-LCD.cpp.i:
-	$(MAKE) -f CMakeFiles\EE319K_Final_Project_Initial_Testing.dir\build.make CMakeFiles/EE319K_Final_Project_Initial_Testing.dir/LCD.cpp.i
-.PHONY : LCD.cpp.i
-
-LCD.s: LCD.cpp.s
-
-.PHONY : LCD.s
-
-# target to generate assembly for a file
-LCD.cpp.s:
-	$(MAKE) -f CMakeFiles\EE319K_Final_Project_Initial_Testing.dir\build.make CMakeFiles/EE319K_Final_Project_Initial_Testing.dir/LCD.cpp.s
-.PHONY : LCD.cpp.s
-
-SDCard.obj: SDCard.cpp.obj
-
-.PHONY : SDCard.obj
+.PHONY : Flash.obj
 
 # target to build an object file
-SDCard.cpp.obj:
-	$(MAKE) -f CMakeFiles\EE319K_Final_Project_Initial_Testing.dir\build.make CMakeFiles/EE319K_Final_Project_Initial_Testing.dir/SDCard.cpp.obj
-.PHONY : SDCard.cpp.obj
+Flash.cpp.obj:
+	$(MAKE) -f CMakeFiles\EE319K_Final_Project_Initial_Testing.dir\build.make CMakeFiles/EE319K_Final_Project_Initial_Testing.dir/Flash.cpp.obj
+.PHONY : Flash.cpp.obj
 
-SDCard.i: SDCard.cpp.i
+Flash.i: Flash.cpp.i
 
-.PHONY : SDCard.i
+.PHONY : Flash.i
 
 # target to preprocess a source file
-SDCard.cpp.i:
-	$(MAKE) -f CMakeFiles\EE319K_Final_Project_Initial_Testing.dir\build.make CMakeFiles/EE319K_Final_Project_Initial_Testing.dir/SDCard.cpp.i
-.PHONY : SDCard.cpp.i
+Flash.cpp.i:
+	$(MAKE) -f CMakeFiles\EE319K_Final_Project_Initial_Testing.dir\build.make CMakeFiles/EE319K_Final_Project_Initial_Testing.dir/Flash.cpp.i
+.PHONY : Flash.cpp.i
 
-SDCard.s: SDCard.cpp.s
+Flash.s: Flash.cpp.s
 
-.PHONY : SDCard.s
+.PHONY : Flash.s
 
 # target to generate assembly for a file
-SDCard.cpp.s:
-	$(MAKE) -f CMakeFiles\EE319K_Final_Project_Initial_Testing.dir\build.make CMakeFiles/EE319K_Final_Project_Initial_Testing.dir/SDCard.cpp.s
-.PHONY : SDCard.cpp.s
+Flash.cpp.s:
+	$(MAKE) -f CMakeFiles\EE319K_Final_Project_Initial_Testing.dir\build.make CMakeFiles/EE319K_Final_Project_Initial_Testing.dir/Flash.cpp.s
+.PHONY : Flash.cpp.s
 
-SRAM.obj: SRAM.cpp.obj
+ILI9341.obj: ILI9341.cpp.obj
 
-.PHONY : SRAM.obj
+.PHONY : ILI9341.obj
 
 # target to build an object file
-SRAM.cpp.obj:
-	$(MAKE) -f CMakeFiles\EE319K_Final_Project_Initial_Testing.dir\build.make CMakeFiles/EE319K_Final_Project_Initial_Testing.dir/SRAM.cpp.obj
-.PHONY : SRAM.cpp.obj
+ILI9341.cpp.obj:
+	$(MAKE) -f CMakeFiles\EE319K_Final_Project_Initial_Testing.dir\build.make CMakeFiles/EE319K_Final_Project_Initial_Testing.dir/ILI9341.cpp.obj
+.PHONY : ILI9341.cpp.obj
 
-SRAM.i: SRAM.cpp.i
+ILI9341.i: ILI9341.cpp.i
 
-.PHONY : SRAM.i
+.PHONY : ILI9341.i
 
 # target to preprocess a source file
-SRAM.cpp.i:
-	$(MAKE) -f CMakeFiles\EE319K_Final_Project_Initial_Testing.dir\build.make CMakeFiles/EE319K_Final_Project_Initial_Testing.dir/SRAM.cpp.i
-.PHONY : SRAM.cpp.i
+ILI9341.cpp.i:
+	$(MAKE) -f CMakeFiles\EE319K_Final_Project_Initial_Testing.dir\build.make CMakeFiles/EE319K_Final_Project_Initial_Testing.dir/ILI9341.cpp.i
+.PHONY : ILI9341.cpp.i
 
-SRAM.s: SRAM.cpp.s
+ILI9341.s: ILI9341.cpp.s
 
-.PHONY : SRAM.s
+.PHONY : ILI9341.s
 
 # target to generate assembly for a file
-SRAM.cpp.s:
-	$(MAKE) -f CMakeFiles\EE319K_Final_Project_Initial_Testing.dir\build.make CMakeFiles/EE319K_Final_Project_Initial_Testing.dir/SRAM.cpp.s
-.PHONY : SRAM.cpp.s
+ILI9341.cpp.s:
+	$(MAKE) -f CMakeFiles\EE319K_Final_Project_Initial_Testing.dir\build.make CMakeFiles/EE319K_Final_Project_Initial_Testing.dir/ILI9341.cpp.s
+.PHONY : ILI9341.cpp.s
+
+SD.obj: SD.cpp.obj
+
+.PHONY : SD.obj
+
+# target to build an object file
+SD.cpp.obj:
+	$(MAKE) -f CMakeFiles\EE319K_Final_Project_Initial_Testing.dir\build.make CMakeFiles/EE319K_Final_Project_Initial_Testing.dir/SD.cpp.obj
+.PHONY : SD.cpp.obj
+
+SD.i: SD.cpp.i
+
+.PHONY : SD.i
+
+# target to preprocess a source file
+SD.cpp.i:
+	$(MAKE) -f CMakeFiles\EE319K_Final_Project_Initial_Testing.dir\build.make CMakeFiles/EE319K_Final_Project_Initial_Testing.dir/SD.cpp.i
+.PHONY : SD.cpp.i
+
+SD.s: SD.cpp.s
+
+.PHONY : SD.s
+
+# target to generate assembly for a file
+SD.cpp.s:
+	$(MAKE) -f CMakeFiles\EE319K_Final_Project_Initial_Testing.dir\build.make CMakeFiles/EE319K_Final_Project_Initial_Testing.dir/SD.cpp.s
+.PHONY : SD.cpp.s
 
 UART.obj: UART.cpp.obj
 
@@ -428,15 +428,15 @@ help:
 	@echo ... EE319K_Final_Project_Initial_Testing
 	@echo ... edit_cache
 	@echo ... rebuild_cache
-	@echo ... LCD.obj
-	@echo ... LCD.i
-	@echo ... LCD.s
-	@echo ... SDCard.obj
-	@echo ... SDCard.i
-	@echo ... SDCard.s
-	@echo ... SRAM.obj
-	@echo ... SRAM.i
-	@echo ... SRAM.s
+	@echo ... Flash.obj
+	@echo ... Flash.i
+	@echo ... Flash.s
+	@echo ... ILI9341.obj
+	@echo ... ILI9341.i
+	@echo ... ILI9341.s
+	@echo ... SD.obj
+	@echo ... SD.i
+	@echo ... SD.s
 	@echo ... UART.obj
 	@echo ... UART.i
 	@echo ... UART.s

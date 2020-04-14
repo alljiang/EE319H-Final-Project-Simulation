@@ -4,12 +4,12 @@
 #include <windows.h>
 #include <fcntl.h>
 
-#include "LCD.h"
+#include "ILI9341.h"
 #include "controller.h"
 #include "utils.h"
 #include "UART.h"
 #include "metadata.h"
-#include "SRAM.h"
+#include "Flash.h"
 #include "entities.h"
 #include "stage.h"
 #include "colors_fdst.h"
@@ -34,7 +34,7 @@ float x = 0;
 float y = 0;
 
 const bool PLAYER2 = true;
-const bool HITBOXOVERLAY = true;
+const bool HITBOXOVERLAY = false;
 const double UPDATERATE = 20;   // 20
 
 const uint8_t stageToPlay = STAGE_FINALDESTINATION;
@@ -42,18 +42,7 @@ const uint8_t stageToPlay = STAGE_FINALDESTINATION;
 
 //  runs once at beginning
 void startup() {
-    animator_initialize();
-    animator_readCharacterSDCard(0);
-
-    animator_setBackgroundColors(colors_fdst);
-    animator_readPersistentSprite(stageNames[0], 0, 0);
-    LCD_update();
-
-    animator_animate(0, 1, 50, 120, 0, 30, false, false, 1, false);
-    animator_update();
-    LCD_update();
-
-    /*
+//    /*
     animator_initialize();
 
     p1 = &k1;
@@ -73,11 +62,12 @@ void startup() {
     if(stageToPlay == STAGE_FINALDESTINATION) animator_setBackgroundColors(colors_fdst);
     else if(stageToPlay == STAGE_TOWER) animator_setBackgroundColors(colors_tower);
     stage.initialize(stageToPlay, &hitboxManager);
+    animator_readPersistentSprite(persistentSprites[stageToPlay], 0, 0);
 
     UART_readCharacterSDCard(0);
 
-    printf("SRAM Used: %0.1f%\n", getCurrentMemoryLocation() / (1024.*1024) * 100);
-    */
+    printf("Flash Used: %0.1f%\n", getCurrentMemoryLocation() / (1024.*1024) * 100);
+//    */
 }
 
 //  continually loops
@@ -85,12 +75,12 @@ uint32_t  t1 = 0;
 uint32_t tt1 = 0;
 uint8_t frame = 0;
 void loop() {
-    return;
+//    return;
     if(millis() - t1 >= 1./UPDATERATE*1000) {
-        uint32_t sum = SRAM_SPICounter + ILI9341_SPICounter;
+        uint32_t sum = Flash_SPICounter + ILI9341_SPICounter;
         double max = 1000000./UPDATERATE;
 //        printf("SPI Bus Usage: %0.2f%\n", sum/max*100);
-        SRAM_SPICounter = 0;
+        Flash_SPICounter = 0;
         ILI9341_SPICounter = 0;
 
         t1 = millis();
@@ -143,7 +133,7 @@ int main(int argc, char *argv[]) {
     setvbuf(hf_in, NULL, _IONBF, 128);
     *stdin = *hf_in;
 
-    SRAM_reset();
+    Flash_init();
     startup();
 
     //  wait for window to close
