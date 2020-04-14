@@ -42,37 +42,40 @@ public:
 class Hurtbox: public Collider {
 
 public:
-    double damage, knockback;
+    double damage;
     int8_t source;     //  player who created this hitbox, will not damage this player
-    int8_t frames, frameLength, currentFrame, frameLengthCounter;
+    int8_t frames, currentFrame;
     bool active{false};
     double xKnockback, yKnockback;
+    int16_t stunFrames;
 
     Hurtbox() : Collider(0,0,0,0) {}
 
     Hurtbox(bool circle, double cX, double cY,
             uint8_t boxShape, double radius,
-            int8_t frames=1, int8_t frameLength=1,
-            double damage=0, double xknockback=0, double yknockback=0)
+            int8_t frames=1, double damage=0,
+            double xknockback=0, double yknockback=0,
+            int16_t stunFrames=0)
             : Collider(cX, cY, boxShape, radius) {
         shape = boxShape;
         this->frames = frames;
-        this->frameLength = frameLength;
         this->damage = damage;
         this->xKnockback = xknockback;
         this->yKnockback = yknockback;
+        this->stunFrames = stunFrames;
     }
 
     Hurtbox(double cX, double cY, uint8_t boxShape, double height, double width,
-            int8_t frames=1, int8_t frameLength=1,
-            double damage=0, double xknockback=0, double yknockback=0)
+            int8_t frames=1, double damage=0,
+            double xknockback=0, double yknockback=0,
+            int16_t stunFrames=0)
             : Collider(cX, cY, boxShape, height, width) {
         shape = boxShape;
         this->frames = frames;
-        this->frameLength = frameLength;
         this->damage = damage;
         this->xKnockback = xknockback;
         this->yKnockback = yknockback;
+        this->stunFrames = stunFrames;
     }
 
     //  if source is 0, hurtbox is a grabbable stage ledge
@@ -258,7 +261,7 @@ protected:
     const double gravityFalling = 0.1*7;
     const double maxFallingVelocity = -2.3*3;
 
-    const double airResistance = 0.02*3;
+    const double airResistance = .5;
     const double maxHorizontalSpeed = 20*3;
 
     //  standing, resting
@@ -282,61 +285,65 @@ protected:
 
 public:
     Hurtbox jabSingle = Hurtbox(true,14, 11, SHAPE_CIRCLE,
-                                8, 1, 1);
+                                8, 1);
     Hurtbox jabDouble = Hurtbox(true,14, 12, SHAPE_CIRCLE,
-                                7, 1, 1);
+                                7, 1);
     Hurtbox jabRepeating0 = Hurtbox(true,23, 12, SHAPE_CIRCLE,
-                                    11, 1, 1);
+                                    11, 1);
     Hurtbox jabRepeating1 = Hurtbox(true,25, 25, SHAPE_CIRCLE,
-                                    11, 1, 1);
+                                    11, 1);
     Hurtbox jabRepeating2 = Hurtbox(true,23, 5, SHAPE_CIRCLE,
-                                    9, 1, 1);
+                                    9, 1);
     Hurtbox forwardTilt = Hurtbox(true,10, 11, SHAPE_CIRCLE,
-                                  8, 1, 1);
+                                  8, 1);
     Hurtbox upTilt = Hurtbox(-6., 21, SHAPE_RECTANGLE,
-                             25, 18, 1, 1);
+                             25, 18, 1);
     Hurtbox downTilt = Hurtbox(4., 2, SHAPE_RECTANGLE,
-                               6, 28, 1, 1);
+                               6, 28, 1);
     Hurtbox forwardSmash0 = Hurtbox(1., 5, SHAPE_RECTANGLE,
-                                    20, 22, 1, 1);
+                                    20, 22, 1,
+                                    12, 5.5, 2.5,
+                                    -1);
     Hurtbox forwardSmash1 = Hurtbox(25., 5, SHAPE_RECTANGLE,
-                                    20, 20, 1, 1);
+                                    20, 20, 1,
+                                    12, 5.5, 2.5,
+                                    -1);
     Hurtbox upSmash = Hurtbox(true, 0., 26, SHAPE_CIRCLE,
-                                    14, 1, 1);
+                                    14, 1);
     Hurtbox downSmash = Hurtbox(0., 2, SHAPE_RECTANGLE,
-                                10, 44, 1, 1);
+                                10, 44, 1);
     Hurtbox upSpecial = Hurtbox(25., 18, SHAPE_RECTANGLE,
-                                20, 30, 1, 1);
+                                20, 30, 1);
     Hurtbox upSpecialTop = Hurtbox(0., 40, SHAPE_RECTANGLE,
-                                   20, 40, 1, 1);
+                                   20, 40, 1);
     Hurtbox upSpecialProjectile = Hurtbox(4., 16, SHAPE_RECTANGLE,
-                                   32, 20, 1, 1);
+                                   32, 20, 1);
     Hurtbox downSpecial = Hurtbox(true,0, 5, SHAPE_CIRCLE,
-                                 12, 1, 1);
+                                 12, 1);
     Hurtbox neutralAir = Hurtbox(true,0, 15, SHAPE_CIRCLE,
-                                 14, 1, 1);
+                                 14, 1);
     Hurtbox forwardAir = Hurtbox(true,18, 13, SHAPE_CIRCLE,
-                                 8, 1, 1);
+                                 8, 1);
     Hurtbox backAir = Hurtbox(true,-14, 11, SHAPE_CIRCLE,
-                              8, 1, 1);
+                              8, 1);
     Hurtbox upAir = Hurtbox(true,0, 28, SHAPE_CIRCLE,
-                              16, 1, 1);
+                              16, 1);
     Hurtbox downAir = Hurtbox(5., -2, SHAPE_RECTANGLE,
-                              17, 10, 1, 1);
+                              17, 10, 1);
     Hurtbox dashAttack = Hurtbox(true,2, 13, SHAPE_CIRCLE,
-                                 14, 1, 1);
+                                 14, 1);
     Hurtbox sideSpecial0 = Hurtbox(true,-28, 7, SHAPE_CIRCLE,
-                                   11, 1, 1);
+                                   11, 1);
     Hurtbox sideSpecial1 = Hurtbox(true,-17, 3, SHAPE_CIRCLE,
-                                   11, 1, 1);
+                                   11, 1);
     Hurtbox sideSpecial2 = Hurtbox(true,0, 2, SHAPE_CIRCLE,
-                                   11, 1, 1);
+                                   11, 1);
     Hurtbox sideSpecial3 = Hurtbox(true,15, 5, SHAPE_CIRCLE,
-                                   11, 1, 1);
+                                   11, 1);
     Hurtbox sideSpecial4 = Hurtbox(true,30, 6, SHAPE_CIRCLE,
-                                   11, 1, 1);
+                                   11, 1);
     Hurtbox sideSpecial5 = Hurtbox(true,17, 10, SHAPE_CIRCLE,
-                                   11, 1, 1);
+                                   11, 1);
 
     Kirby() {}
 

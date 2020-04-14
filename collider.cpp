@@ -32,9 +32,7 @@ void HitboxManager::checkCollisions() {
         }
         else {
             //  update hurtbox frame
-            if( ++hurtboxes[slot].frameLengthCounter >= hurtboxes[slot].frameLength
-                && !((persistentHurtbox >> slot) & 1)) {
-                hurtboxes[slot].frameLengthCounter = 0;
+            if(!((persistentHurtbox >> slot) & 1)) {
                 if(++hurtboxes[slot].currentFrame >= hurtboxes[slot].frames) {
                     hurtboxes[slot].active = false;
                 }
@@ -97,7 +95,6 @@ void HitboxManager::addHurtbox(double xOffset, double yOffset, bool mirrored,
         class Hurtbox hurtBox, uint8_t playerSource, bool persistent) {
     hurtBox.active = true;
     hurtBox.currentFrame = 0;
-    hurtBox.frameLengthCounter = 0;
 
     if(mirrored) hurtBox.x = xOffset-hurtBox.x;
     else hurtBox.x += xOffset;

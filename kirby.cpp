@@ -45,6 +45,7 @@ void Kirby::controlLoop(double joyH, double joyV, bool btnA, bool btnB, bool shi
     double leftBound = stage->leftBound(x + KIRBY_STAGE_OFFSET, y) - KIRBY_STAGE_OFFSET / 2;
     double rightBound = stage->rightBound(x - KIRBY_STAGE_OFFSET, y) - KIRBY_STAGE_OFFSET;
     double stageVelocity = stage->xVelocity(x, y);
+    double gravityScale = 1;
 
     //  first, follow up on any currently performing actions
     noJumpsDisabled = jumpsUsed >= 5;
@@ -53,7 +54,7 @@ void Kirby::controlLoop(double joyH, double joyV, bool btnA, bool btnB, bool shi
     if(action == KIRBY_ACTION_JUMPING) {
         hitbox.offsetY(4);
         hitbox.offsetX(4);
-        yVel -= gravityRising;
+        gravityScale = 1;
         x += airSpeed * joyH;
         if(x > rightBound) x = rightBound;
         else if(x < leftBound) x = leftBound;
@@ -72,7 +73,7 @@ void Kirby::controlLoop(double joyH, double joyV, bool btnA, bool btnB, bool shi
         }
     }
     else if(action == KIRBY_ACTION_MULTIJUMPING) {
-        yVel -= gravityRising;
+        gravityScale = 1;
         x += airSpeed * joyH;
         if(x > rightBound) x = rightBound;
         else if(x < leftBound) x = leftBound;
@@ -736,7 +737,7 @@ void Kirby::controlLoop(double joyH, double joyV, bool btnA, bool btnB, bool shi
         else {
             animationIndex = 28;
             mirrored = l_mirrored;
-            yVel -= gravityFalling * 0.5;
+            gravityScale = 0.5;
             x += airSpeed * joyH * 0.5;
             x_mirroredOffset = 0;
             xAnimationOffset = 0;
@@ -803,7 +804,7 @@ void Kirby::controlLoop(double joyH, double joyV, bool btnA, bool btnB, bool shi
             if(morphLandTime == -1) morphLandTime = currentTime;
         }
         else {
-            yVel -= gravityFalling*2;
+            gravityScale = 2;
             hitboxManager->addHurtbox(x + 16, y, mirrored,
                                       downSpecial, player);
         }
@@ -865,7 +866,7 @@ void Kirby::controlLoop(double joyH, double joyV, bool btnA, bool btnB, bool shi
                 yVel = initialJumpSpeed;
             }
 
-            yVel -= gravityRising;
+            gravityScale = 1;
             x += airSpeed * joyH * 0.5;
         }
 
@@ -978,7 +979,7 @@ void Kirby::controlLoop(double joyH, double joyV, bool btnA, bool btnB, bool shi
         else {
             animationIndex = 26;
             mirrored = l_mirrored;
-            yVel -= gravityFalling * 0.5;
+            gravityScale = 0.5;
             x += airSpeed * joyH * 0.7;
             if(yVel < -3) yVel = -3;
             else if(yVel > 3) yVel = 3;
@@ -1018,7 +1019,7 @@ void Kirby::controlLoop(double joyH, double joyV, bool btnA, bool btnB, bool shi
         else {
             animationIndex = 24;
             mirrored = l_mirrored;
-            yVel -= gravityFalling * 0.5;
+            gravityScale = 0.5;
             x += airSpeed * joyH * 0.7;
             if(yVel < -3) yVel = -3;
             else if(yVel > 3) yVel = 3;
@@ -1058,7 +1059,7 @@ void Kirby::controlLoop(double joyH, double joyV, bool btnA, bool btnB, bool shi
         else {
             animationIndex = 27;
             mirrored = l_mirrored;
-            yVel -= gravityFalling * 0.3;
+            gravityScale = 0.3;
             x += airSpeed * joyH * 0.4;
             if(yVel < -2) yVel = -2;
             else if(yVel > 2) yVel = 2;
@@ -1096,7 +1097,7 @@ void Kirby::controlLoop(double joyH, double joyV, bool btnA, bool btnB, bool shi
         } else {
             animationIndex = 25;
             mirrored = l_mirrored;
-            yVel -= gravityFalling * 0.3;
+            gravityScale = 0.3;
             x += airSpeed * joyH * 0.5;
             if (yVel < -2) yVel = -2;
             else if (yVel > 2) yVel = 2;
@@ -1150,7 +1151,7 @@ void Kirby::controlLoop(double joyH, double joyV, bool btnA, bool btnB, bool shi
             if(x > rightBound) x = rightBound;
             else if(x < leftBound) x = leftBound;
 
-            yVel -= gravityFalling;
+            gravityScale = 1;
 
             mirrored = l_mirrored;
             if (noJumpsDisabled) {
@@ -1335,6 +1336,9 @@ void Kirby::controlLoop(double joyH, double joyV, bool btnA, bool btnB, bool shi
         y = floor;
         jumpsUsed = 0;
     }
+
+    if(yVel > 0) yVel -= gravityRising * gravityScale;
+    else yVel -= gravityFalling * gravityScale;
 
     if(maxHorizontalSpeed < std::abs(xVel)) {
         if(xVel < 0) xVel = -maxHorizontalSpeed;
@@ -1626,4 +1630,8 @@ void Kirby::collide(Hurtbox *hurtbox) {
         }
         return;
     }
+
+    xVel = hurtbox->xKnockback;
+    yVel = hurtbox->yKnockback;
+    disabledFrames = hurtbox->stunFrames;
 }
