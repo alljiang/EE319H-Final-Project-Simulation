@@ -15,7 +15,6 @@ void Kirby::controlLoop(double joyH, double joyV, bool btnA, bool btnB, bool shi
 
     double dt = 49;
     currentTime += (uint8_t)dt;
-    l_time = currentTime;
 
     if(!l_btnA && btnA) l_btnARise_t = currentTime;
     else if(l_btnA && !btnA) l_btnAFall_t = currentTime;
@@ -1278,6 +1277,10 @@ void Kirby::controlLoop(double joyH, double joyV, bool btnA, bool btnB, bool shi
 
     //  disabled means can interrupt current action and start new action
     if(disabledFrames > 0) disabledFrames--;
+    if(disabledFrames == -1) {
+        //  knockback stun, remove stun when falling or on floor
+        if(y == floor || yVel < 0) disabledFrames = 5;
+    }
 
     if(x > rightBound) x = rightBound;
     else if(x < leftBound) x = leftBound;
@@ -1613,7 +1616,7 @@ void Kirby::updateLastValues(double joyH, double joyV, bool btnA, bool btnB, boo
     l_mirrored = mirrored;
 }
 
-void Kirby::collide(Hurtbox *hurtbox) {
+void Kirby::collide(Hurtbox *hurtbox, Player *otherPlayer) {
     //  ledge grab
     if(hurtbox->source == 0) {
         if(this->hitbox.y < hurtbox->y
@@ -1631,7 +1634,11 @@ void Kirby::collide(Hurtbox *hurtbox) {
         return;
     }
 
-    xVel = hurtbox->xKnockback;
+    if(otherPlayer->x < x) {
+        xVel = hurtbox->xKnockback;
+    }
+    else xVel = -hurtbox->xKnockback;
     yVel = hurtbox->yKnockback;
     disabledFrames = hurtbox->stunFrames;
+    damage += hurtbox->damage;
 }

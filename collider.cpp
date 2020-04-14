@@ -15,19 +15,19 @@ void HitboxManager::checkCollisions() {
         if(p2 != nullptr && hurtboxes[slot].source == 1 && p2->hitbox.isColliding(hurtboxes[slot])) {
             //  hurtbox collision with player 2!
             hurtboxes[slot].active = false;
-            p2->collide(&hurtboxes[slot]);
+            p2->collide(&hurtboxes[slot], p1);
         }
         else if(p2 != nullptr && hurtboxes[slot].source == 2 && p1->hitbox.isColliding(hurtboxes[slot])) {
             //  hurtbox collision with player 1!
             hurtboxes[slot].active = false;
-            p1->collide(&hurtboxes[slot]);
+            p1->collide(&hurtboxes[slot], p2);
         }
         else if(hurtboxes[slot].source == 0) {
             if(p1->hitbox.isColliding(hurtboxes[slot])) {
-                p1->collide(&hurtboxes[slot]);
+                p1->collide(&hurtboxes[slot], p2);
             }
             if(p2 != nullptr && p2->hitbox.isColliding(hurtboxes[slot])) {
-                p2->collide(&hurtboxes[slot]);
+                p2->collide(&hurtboxes[slot], p1);
             }
         }
         else {

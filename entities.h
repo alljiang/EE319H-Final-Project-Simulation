@@ -136,16 +136,14 @@ public:
 
 class Entity {
 
-protected:
+public:
     double x; //  [0, 320]
     double y;  //  [0, 240]
     double yVel;    //  pps
     double xVel;
 
-    long long l_time;   //  last loop time millis
     long long currentTime = 0;
 
-public:
     void setX(double newX) { x = newX; }
     void setY(double newY) { y = newY; }
 
@@ -202,7 +200,7 @@ public:
     virtual void controlLoop(double joyH, double joyV, bool btnA, bool btnB, bool shield, class Stage* stage,
             class HitboxManager* hitboxManager) = 0; //  called every update
     virtual void updateLastValues(double joyH, double joyV, bool btnA, bool btnB, bool shield) = 0;
-    virtual void collide(class Hurtbox *hurtbox) = 0;
+    virtual void collide(class Hurtbox *hurtbox, class Player *otherPlayer) = 0;
 };
 
 
@@ -285,15 +283,25 @@ protected:
 
 public:
     Hurtbox jabSingle = Hurtbox(true,14, 11, SHAPE_CIRCLE,
-                                8, 1);
+                                8, 1,
+                                3, 0, 0,
+                                3);
     Hurtbox jabDouble = Hurtbox(true,14, 12, SHAPE_CIRCLE,
-                                7, 1);
+                                7, 1,
+                                3, 0, 0,
+                                3);
     Hurtbox jabRepeating0 = Hurtbox(true,23, 12, SHAPE_CIRCLE,
-                                    11, 1);
+                                    11, 1,
+                                    3, 0, 0,
+                                    3);
     Hurtbox jabRepeating1 = Hurtbox(true,25, 25, SHAPE_CIRCLE,
-                                    11, 1);
+                                    11, 1,
+                                    3, 0, 0,
+                                    3);
     Hurtbox jabRepeating2 = Hurtbox(true,23, 5, SHAPE_CIRCLE,
-                                    9, 1);
+                                    9, 1,
+                                    3, 0, 0,
+                                    3);
     Hurtbox forwardTilt = Hurtbox(true,10, 11, SHAPE_CIRCLE,
                                   8, 1);
     Hurtbox upTilt = Hurtbox(-6., 21, SHAPE_RECTANGLE,
@@ -353,7 +361,7 @@ public:
 
     void updateLastValues(double joyH, double joyV, bool btnA, bool btnB, bool shield) override ;
 
-    void collide(class Hurtbox *hurtbox) override;
+    void collide(class Hurtbox *hurtbox, class Player *otherPlayer) override;
 };
 
 #endif //EE319K_FINAL_PROJECT_INITIAL_TESTING_ENTITIES_H
