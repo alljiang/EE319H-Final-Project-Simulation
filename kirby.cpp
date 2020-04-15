@@ -1131,6 +1131,20 @@ void Kirby::controlLoop(double joyH, double joyV, bool btnA, bool btnB, bool shi
             }
         }
     }
+    else if(action == KIRBY_ACTION_HURT) {
+        animationIndex = 40;
+
+        xAnimationOffset = 7;
+        yAnimationOffset = -2;
+        x_mirroredOffset = 5;
+
+        frameExtension = 2;
+        if (frameLengthCounter++ >= frameExtension) {
+            frameLengthCounter = 0;
+            frameIndex++;
+        }
+        frameIndex %= 3;
+    }
 
     if(action == KIRBY_ACTION_FALLING) {
         if(y <= floor) {
@@ -1598,7 +1612,7 @@ void Kirby::controlLoop(double joyH, double joyV, bool btnA, bool btnB, bool shi
     }
         //  resting
     else if(disabledFrames == 0 &&
-            joyH == 0 && joyV == 0 && action == KIRBY_ACTION_FALLING) {
+            joyH == 0 && joyV == 0 && (action == KIRBY_ACTION_FALLING || action == KIRBY_ACTION_HURT)) {
         if(y == floor) action = KIRBY_ACTION_RESTING;
         else action = KIRBY_ACTION_FALLING;
     }
@@ -1649,5 +1663,7 @@ void Kirby::collide(Hurtbox *hurtbox, Player *otherPlayer) {
         yVel = hurtbox->yKnockback;
         disabledFrames = hurtbox->stunFrames;
         damage += hurtbox->damage;
+
+        action = KIRBY_ACTION_HURT;
     }
 }
