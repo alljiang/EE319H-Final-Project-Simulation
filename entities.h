@@ -264,6 +264,11 @@ protected:
     const double maxHorizontalSpeed = 20*3;
     const double groundFriction = 0.5;
 
+    const double DIVerticalSpeed = 0.2 * 3;
+    const double DIHorizontalSpeed = 0.2 * 3;
+    const double DIKnockbackVerticalSpeed = 0.3 * 3;
+    const double DIKnockbackHorizontalSpeed = 0.4 * 3;
+
     //  standing, resting
     long long lastBlink{0};
 

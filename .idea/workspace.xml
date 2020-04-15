@@ -57,6 +57,8 @@
       <change beforePath="$PROJECT_DIR$/data/sprites/SpriteParser/colors_fdst.h" beforeDir="false" afterPath="$PROJECT_DIR$/data/sprites/SpriteParser/colors_fdst.h" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/data/sprites/SpriteParser/kirby.txt" beforeDir="false" afterPath="$PROJECT_DIR$/data/sprites/SpriteParser/kirby.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/data/sprites/kirby.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/entities.h" beforeDir="false" afterPath="$PROJECT_DIR$/entities.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/kirby.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/kirby.cpp" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -142,7 +144,7 @@
       <workItem from="1586487666070" duration="4558000" />
       <workItem from="1586569830762" duration="2518000" />
       <workItem from="1586811642806" duration="2411000" />
-      <workItem from="1586842170575" duration="32909000" />
+      <workItem from="1586842170575" duration="34366000" />
     </task>
     <servers />
   </component>

@@ -1,12 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="2349ddb4-96f3-4450-a885-5dac0c7a4023" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/gif-kirby/hit.gif" beforeDir="false" afterPath="$PROJECT_DIR$/gif-kirby/hit.gif" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/kirby.txt" beforeDir="false" afterPath="$PROJECT_DIR$/kirby.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../kirby/gif/hit.gif" beforeDir="false" afterPath="$PROJECT_DIR$/../kirby/gif/hit.gif" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../kirby/piskel/hit.piskel" beforeDir="false" afterPath="$PROJECT_DIR$/../kirby/piskel/hit.piskel" afterDir="false" />
-    </list>
+    <list default="true" id="2349ddb4-96f3-4450-a885-5dac0c7a4023" name="Default Changelist" comment="" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -131,7 +126,7 @@
       <workItem from="1583729041312" duration="186000" />
       <workItem from="1586031558894" duration="1089000" />
       <workItem from="1586481309550" duration="22000" />
-      <workItem from="1586923822807" duration="1113000" />
+      <workItem from="1586923822807" duration="1729000" />
     </task>
     <servers />
   </component>

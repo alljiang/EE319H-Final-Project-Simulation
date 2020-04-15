@@ -1138,6 +1138,16 @@ void Kirby::controlLoop(double joyH, double joyV, bool btnA, bool btnB, bool shi
         yAnimationOffset = -2;
         x_mirroredOffset = 5;
 
+        if(disabledFrames == -1) {
+            //  knockback
+            x += DIKnockbackHorizontalSpeed * joyH;
+            y += DIKnockbackVerticalSpeed * joyV;
+        }
+        else {
+            x += DIHorizontalSpeed * joyH;
+            y += DIVerticalSpeed * joyV;
+        }
+
         frameExtension = 2;
         if (frameLengthCounter++ >= frameExtension) {
             frameLengthCounter = 0;
@@ -1573,7 +1583,8 @@ void Kirby::controlLoop(double joyH, double joyV, bool btnA, bool btnB, bool shi
         //  movement
         //  jumping
     else if((disabledFrames == 0 &&
-             (action == KIRBY_ACTION_RESTING || action == KIRBY_ACTION_CROUCHING || action == KIRBY_ACTION_RUNNING)
+             (action == KIRBY_ACTION_RESTING || action == KIRBY_ACTION_CROUCHING || action == KIRBY_ACTION_RUNNING
+              || action == KIRBY_ACTION_HURT)
              && (joyV - l_joyV) > joystickJumpSpeed && l_joyV > -0.1 && y == floor)
             || (action == KIRBY_ACTION_LEDGEGRAB && (joyV - l_joyV) > joystickJumpSpeed && l_joyV > -0.1
                 && disabledFrames == 0)) {
@@ -1600,13 +1611,13 @@ void Kirby::controlLoop(double joyH, double joyV, bool btnA, bool btnB, bool shi
         else mirrored = joyH < 0;
     }
         //  running/walking
-    else if(disabledFrames == 0 && (action == KIRBY_ACTION_RESTING)
+    else if(disabledFrames == 0 && (action == KIRBY_ACTION_RESTING || action == KIRBY_ACTION_HURT)
             && absVal(joyH) > 0) {
         action = KIRBY_ACTION_RUNNING;
     }
         //  crouching
     else if(disabledFrames == 0 &&
-            (action == KIRBY_ACTION_RESTING || action == KIRBY_ACTION_RUNNING) &&
+            (action == KIRBY_ACTION_RESTING || action == KIRBY_ACTION_RUNNING || action == KIRBY_ACTION_HURT) &&
             joyV <= -0.3 && y == floor) {
         action = KIRBY_ACTION_CROUCHING;
     }
