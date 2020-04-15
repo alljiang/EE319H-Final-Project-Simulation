@@ -5,6 +5,7 @@
 #include <cstdlib>
 #include <cstdio>
 #include "entities.h"
+#include "utils.h"
 #include "ILI9341.h"
 
 using namespace std;
@@ -137,13 +138,13 @@ bool Hitbox::isColliding(class Hurtbox hurtbox) {
                  * If this distance is less than the sum of the radii
                  * of the circles, they're colliding.
                  */
-                return abs((thisx - hbx) * (thisx - hbx)
+                return absVal((thisx - hbx) * (thisx - hbx)
                 + (thisy - hby) * (thisy - hby))
                 < (thisradius + hbr) * (thisradius + hbr);
             }
             else if(hurtbox.shape == SHAPE_RECTANGLE) {
-                double distanceX = abs(thisx - hbx);
-                double distanceY = abs(thisy - hby);
+                double distanceX = absVal(thisx - hbx);
+                double distanceY = absVal(thisy - hby);
 
                 /*
                  * If the distance between the two objects are greater
@@ -170,8 +171,8 @@ bool Hitbox::isColliding(class Hurtbox hurtbox) {
             }
         case SHAPE_RECTANGLE:
             if(hurtbox.shape == SHAPE_CIRCLE) {
-                double distanceX = abs(thisx - hbx);
-                double distanceY = abs(thisy - hby);
+                double distanceX = absVal(thisx - hbx);
+                double distanceY = absVal(thisy - hby);
 
                 /*
                  * If the distance between the two objects are greater

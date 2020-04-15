@@ -59,6 +59,8 @@
       <change beforePath="$PROJECT_DIR$/metadata.h" beforeDir="false" afterPath="$PROJECT_DIR$/metadata.h" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/stage.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/stage.cpp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/stage.h" beforeDir="false" afterPath="$PROJECT_DIR$/stage.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/utils.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/utils.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/utils.h" beforeDir="false" afterPath="$PROJECT_DIR$/utils.h" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -87,7 +89,7 @@
     <property name="ASKED_ADD_EXTERNAL_FILES" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$USER_HOME$/Google Drive/.Year 1 - Spring/EE 312H - Software Design and Implementation 1/Projects" />
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="settings.editor.selected.configurable" value="CompDBSettings" />
   </component>
@@ -144,7 +146,7 @@
       <workItem from="1586487666070" duration="4558000" />
       <workItem from="1586569830762" duration="2518000" />
       <workItem from="1586811642806" duration="2411000" />
-      <workItem from="1586842170575" duration="13185000" />
+      <workItem from="1586842170575" duration="25050000" />
     </task>
     <servers />
   </component>
@@ -194,15 +196,6 @@
     <state x="623" y="235" width="672" height="678" key="search.everywhere.popup/0.0.1920.1080@0.0.1920.1080" timestamp="1583619892082" />
   </component>
   <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" type="com.jetbrains.cidr.execution.debugger.OCBreakpointType">
-          <url>file://$PROJECT_DIR$/main.cpp</url>
-          <line>66</line>
-          <option name="timeStamp" value="4" />
-        </line-breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
     <watches-manager>
       <configuration name="CMakeRunConfiguration">
         <watch expression="y" language="ObjectiveC" />
