@@ -82,22 +82,22 @@
 				</MakeCommands>
 			</Target>
 		</Build>
-		<Unit filename="C:/Users/Allen/Documents/GitHub/EE319H-Final-Project-Simulation/LCD.cpp">
+		<Unit filename="C:/Users/Allen/Documents/GitHub/EE319H-Final-Project-Simulation/Flash.cpp">
 			<Option target="EE319K_Final_Project_Initial_Testing"/>
 		</Unit>
-		<Unit filename="C:/Users/Allen/Documents/GitHub/EE319H-Final-Project-Simulation/LCD.h">
+		<Unit filename="C:/Users/Allen/Documents/GitHub/EE319H-Final-Project-Simulation/Flash.h">
 			<Option target="EE319K_Final_Project_Initial_Testing"/>
 		</Unit>
-		<Unit filename="C:/Users/Allen/Documents/GitHub/EE319H-Final-Project-Simulation/SDCard.cpp">
+		<Unit filename="C:/Users/Allen/Documents/GitHub/EE319H-Final-Project-Simulation/ILI9341.cpp">
 			<Option target="EE319K_Final_Project_Initial_Testing"/>
 		</Unit>
-		<Unit filename="C:/Users/Allen/Documents/GitHub/EE319H-Final-Project-Simulation/SDCard.h">
+		<Unit filename="C:/Users/Allen/Documents/GitHub/EE319H-Final-Project-Simulation/ILI9341.h">
 			<Option target="EE319K_Final_Project_Initial_Testing"/>
 		</Unit>
-		<Unit filename="C:/Users/Allen/Documents/GitHub/EE319H-Final-Project-Simulation/SRAM.cpp">
+		<Unit filename="C:/Users/Allen/Documents/GitHub/EE319H-Final-Project-Simulation/SD.cpp">
 			<Option target="EE319K_Final_Project_Initial_Testing"/>
 		</Unit>
-		<Unit filename="C:/Users/Allen/Documents/GitHub/EE319H-Final-Project-Simulation/SRAM.h">
+		<Unit filename="C:/Users/Allen/Documents/GitHub/EE319H-Final-Project-Simulation/SD.h">
 			<Option target="EE319K_Final_Project_Initial_Testing"/>
 		</Unit>
 		<Unit filename="C:/Users/Allen/Documents/GitHub/EE319H-Final-Project-Simulation/UART.cpp">
@@ -115,10 +115,10 @@
 		<Unit filename="C:/Users/Allen/Documents/GitHub/EE319H-Final-Project-Simulation/collider.cpp">
 			<Option target="EE319K_Final_Project_Initial_Testing"/>
 		</Unit>
-		<Unit filename="C:/Users/Allen/Documents/GitHub/EE319H-Final-Project-Simulation/colors_finaldest.h">
+		<Unit filename="C:/Users/Allen/Documents/GitHub/EE319H-Final-Project-Simulation/colors_fdst.h">
 			<Option target="EE319K_Final_Project_Initial_Testing"/>
 		</Unit>
-		<Unit filename="C:/Users/Allen/Documents/GitHub/EE319H-Final-Project-Simulation/colors_towerback.h">
+		<Unit filename="C:/Users/Allen/Documents/GitHub/EE319H-Final-Project-Simulation/colors_tower.h">
 			<Option target="EE319K_Final_Project_Initial_Testing"/>
 		</Unit>
 		<Unit filename="C:/Users/Allen/Documents/GitHub/EE319H-Final-Project-Simulation/controller.cpp">

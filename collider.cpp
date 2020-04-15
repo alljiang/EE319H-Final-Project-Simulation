@@ -5,7 +5,8 @@
 #include <cstdlib>
 #include <cstdio>
 #include "entities.h"
-#include "LCD.h"
+#include "utils.h"
+#include "ILI9341.h"
 
 using namespace std;
 
@@ -15,26 +16,24 @@ void HitboxManager::checkCollisions() {
         if(p2 != nullptr && hurtboxes[slot].source == 1 && p2->hitbox.isColliding(hurtboxes[slot])) {
             //  hurtbox collision with player 2!
             hurtboxes[slot].active = false;
-            p2->collide(&hurtboxes[slot]);
+            p2->collide(&hurtboxes[slot], p1);
         }
         else if(p2 != nullptr && hurtboxes[slot].source == 2 && p1->hitbox.isColliding(hurtboxes[slot])) {
             //  hurtbox collision with player 1!
             hurtboxes[slot].active = false;
-            p1->collide(&hurtboxes[slot]);
+            p1->collide(&hurtboxes[slot], p2);
         }
         else if(hurtboxes[slot].source == 0) {
             if(p1->hitbox.isColliding(hurtboxes[slot])) {
-                p1->collide(&hurtboxes[slot]);
+                p1->collide(&hurtboxes[slot], p2);
             }
             if(p2 != nullptr && p2->hitbox.isColliding(hurtboxes[slot])) {
-                p2->collide(&hurtboxes[slot]);
+                p2->collide(&hurtboxes[slot], p1);
             }
         }
         else {
             //  update hurtbox frame
-            if( ++hurtboxes[slot].frameLengthCounter >= hurtboxes[slot].frameLength
-                && !((persistentHurtbox >> slot) & 1)) {
-                hurtboxes[slot].frameLengthCounter = 0;
+            if(!((persistentHurtbox >> slot) & 1)) {
                 if(++hurtboxes[slot].currentFrame >= hurtboxes[slot].frames) {
                     hurtboxes[slot].active = false;
                 }
@@ -97,7 +96,6 @@ void HitboxManager::addHurtbox(double xOffset, double yOffset, bool mirrored,
         class Hurtbox hurtBox, uint8_t playerSource, bool persistent) {
     hurtBox.active = true;
     hurtBox.currentFrame = 0;
-    hurtBox.frameLengthCounter = 0;
 
     if(mirrored) hurtBox.x = xOffset-hurtBox.x;
     else hurtBox.x += xOffset;
@@ -140,13 +138,13 @@ bool Hitbox::isColliding(class Hurtbox hurtbox) {
                  * If this distance is less than the sum of the radii
                  * of the circles, they're colliding.
                  */
-                return abs((thisx - hbx) * (thisx - hbx)
+                return absVal((thisx - hbx) * (thisx - hbx)
                 + (thisy - hby) * (thisy - hby))
                 < (thisradius + hbr) * (thisradius + hbr);
             }
             else if(hurtbox.shape == SHAPE_RECTANGLE) {
-                double distanceX = abs(thisx - hbx);
-                double distanceY = abs(thisy - hby);
+                double distanceX = absVal(thisx - hbx);
+                double distanceY = absVal(thisy - hby);
 
                 /*
                  * If the distance between the two objects are greater
@@ -173,8 +171,8 @@ bool Hitbox::isColliding(class Hurtbox hurtbox) {
             }
         case SHAPE_RECTANGLE:
             if(hurtbox.shape == SHAPE_CIRCLE) {
-                double distanceX = abs(thisx - hbx);
-                double distanceY = abs(thisy - hby);
+                double distanceX = absVal(thisx - hbx);
+                double distanceY = absVal(thisy - hby);
 
                 /*
                  * If the distance between the two objects are greater

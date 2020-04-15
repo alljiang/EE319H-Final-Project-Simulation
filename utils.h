@@ -18,4 +18,6 @@
 
 extern void sleep(uint32_t ms);
 
+extern double absVal(double d);
+
 #endif //EE319K_FINAL_PROJECT_INITIAL_TESTING_UTILS_H

@@ -4,7 +4,7 @@
 #include "SDL.h"
 #include <fstream>
 #include <iostream>
-#include "LCD.h"
+#include "ILI9341.h"
 #include "metadata.h"
 #include "utils.h"
 #include "colors.h"

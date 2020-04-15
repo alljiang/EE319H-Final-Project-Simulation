@@ -5,17 +5,20 @@
 #include <cstdlib>
 #include "animator.h"
 #include "metadata.h"
-#include "SRAM.h"
-#include "SDCard.h"
+#include "Flash.h"
+#include "SD.h"
 #include "utils.h"
-#include "LCD.h"
+#include "ILI9341.h"
 #include "colors.h"
+#include "ILI9341.h"
 #include <cmath>
 using namespace std;
 
 #define maxSprites 16
 
 uint8_t buffer[1000];   // it's big because i can. if this is too big, lower it down to like 700
+uint8_t* bufferptr;
+
 uint8_t smallBuffer2[300];
 int32_t finalColors[321];  // a color index of -1 means 'do not change'
 uint8_t layer[321];
@@ -62,6 +65,7 @@ uint16_t readHalfInt(uint8_t* buf) {
 void animator_update() {
     for(uint8_t row = 0; row <= 240; row++) {
         if(!rowsToUpdate[row]) continue;
+        rowsToUpdate[row] = false;
 
         // set all color indexes to -2 initially for 'do not change'
         // set all layers to background
@@ -117,29 +121,31 @@ void animator_update() {
 
                 //  This row intersects! Now, paint this row of this animation into the color index buffer
 
+                //  Make sure to update this row next loop to remove sprite
+                rowsToUpdate[row] = true;
                 //  get frame location with frame index array
-                SRAM_readMemory(anim->memLocation + 3*ss->frame, 3, buffer);
+                bufferptr = Flash_readMemory(anim->memLocation + 3*ss->frame, 3, buffer);
                 uint32_t frameLocation = anim->memLocation  //  start location
-                        + anim->frames*3    //  frame index array
-                        + (anim->height+1)*2 * ss->frame    //  row index array
-                        + ((buffer[0] << 16u) + (buffer[1] << 8u) + buffer[2])*2;    //  frame location offset
+                                         + anim->frames*3    //  frame index array
+                                         + (anim->height+1)*2 * ss->frame    //  row index array
+                                         + ((bufferptr[0] << 16u) + (bufferptr[1] << 8u) + bufferptr[2])*2;    //  frame location offset
 
                 //  get row location with row index array
-                SRAM_readMemory(frameLocation + (anim->height - heightDifference - 1)*2, 4, buffer);
-                uint32_t rowStartOffset = (buffer[0] << 8u) + buffer[1];
-                uint32_t rowSize = ((buffer[2] << 8u) + buffer[3] - rowStartOffset);
+                bufferptr = Flash_readMemory(frameLocation + (anim->height - heightDifference - 1)*2, 4, buffer);
+                uint32_t rowStartOffset = (bufferptr[0] << 8u) + bufferptr[1];
+                uint32_t rowSize = ((bufferptr[2] << 8u) + bufferptr[3] - rowStartOffset);
 
                 uint32_t rowStartLocation = frameLocation + (anim->height+1)*2 + rowStartOffset;
 
                 //  read the row of data into the buffer
-                SRAM_readMemory(rowStartLocation, rowSize, buffer);
+                bufferptr = Flash_readMemory(rowStartLocation, rowSize, buffer);
 
                 //  copy the data over from the buffer into the color index buffer
                 uint16_t column = 0;
                 uint16_t numPairs = rowSize >> 1u;
                 for(uint16_t pair = 0; pair < numPairs; pair++) {
-                    uint16_t colorIndex = (buffer[pair*2+0]);
-                    uint16_t quantity = (buffer[pair*2+1]);
+                    uint16_t colorIndex = (bufferptr[pair*2+0]);
+                    uint16_t quantity = (bufferptr[pair*2+1]);
 
                     if(colorIndex == backgroundColorIndex) {
                         //  this is the background color, ignore it
@@ -171,7 +177,7 @@ void animator_update() {
             }
         }
 
-        //  next, replace all the -1s with the background from SRAM background reserve
+        //  next, replace all the -1s with the background from Flash background reserve
         for(uint16_t col = 0; col <= 320; col++) {
             if(finalColors[col] != ANIMATOR_COLOR_BACKGROUND) continue;
 
@@ -185,14 +191,14 @@ void animator_update() {
                 else break;
             }
 
-            //  read in from SRAM
+            //  read in from Flash
             uint32_t backgroundRowLocation = persistentBackgroundMemLocation + row * 321 * 2 + col * 2;
-            SRAM_readMemory(backgroundRowLocation, 2*consecutiveBackgroundRowSize, buffer);
+            bufferptr = Flash_readMemory(backgroundRowLocation, 2*consecutiveBackgroundRowSize, buffer);
 
             //  copy from buffer into colorIndexes array
             for(uint16_t i = 0; i < consecutiveBackgroundRowSize; i++) {
                 if(col+i > 321 || col + i < 0) continue;
-                finalColors[col + i] = backgroundColors[(buffer[i*2] << 8u) + (buffer[i*2 + 1])];
+                finalColors[col + i] = backgroundColors[(bufferptr[i*2] << 8u) + (bufferptr[i*2 + 1])];
             }
 
             col += consecutiveBackgroundRowSize-1;
@@ -243,6 +249,7 @@ void animator_update() {
             }
         }
     }
+    millis();
 }
 
 void animator_setBackgroundColors(const uint32_t *backgroundArr) {
@@ -251,8 +258,8 @@ void animator_setBackgroundColors(const uint32_t *backgroundArr) {
 
 //  receive from UART, adds an animation to be displayed
 void animator_animate(uint8_t charIndex, uint8_t animationIndex,
-        int16_t x, int16_t y, uint8_t frame, uint8_t animationlayer, uint8_t persistent,
-        uint8_t continuous, uint8_t framePeriod, bool mirrored) {
+                      int16_t x, int16_t y, uint8_t frame, uint8_t animationlayer, uint8_t persistent,
+                      uint8_t continuous, uint8_t framePeriod, bool mirrored) {
 
     //  find first unused animation slot
     uint8_t slot;
@@ -281,25 +288,23 @@ void animator_animate(uint8_t charIndex, uint8_t animationIndex,
         if(i >= 0 && i < 241) rowsToUpdate[i] = true;
     }
 
-//    if(mirrored) spriteSendables[slot].x
-
-    if(spriteSendables[slot].persistent) {
-        //  add to persistent array in SRAM
-
-        //  paint row by row
-        for(uint8_t row = y; row < y + animation[charIndex][animationIndex].height; row++) {
-            SRAM_readMemory(animation[charIndex][animationIndex].memLocation,
-                            animation[charIndex][animationIndex].width, buffer);
-
-            uint32_t memInsertLocation = persistentBackgroundMemLocation + row * 321 + x;
-
-            SRAM_writeMemory_specifiedAddress(memInsertLocation, animation[charIndex][animationIndex].width, buffer);
-        }
-    }
+//    if(spriteSendables[slot].persistent) {
+//        //  add to persistent array in Flash
+//
+//        //  paint row by row
+//        for(uint8_t row = y; row < y + animation[charIndex][animationIndex].height; row++) {
+//            Flash_readMemory(animation[charIndex][animationIndex].memLocation,
+//                            animation[charIndex][animationIndex].width, buffer);
+//
+//            uint32_t memInsertLocation = persistentBackgroundMemLocation + row * 321 + x;
+//
+//            Flash_writeMemory_specifiedAddress(memInsertLocation, animation[charIndex][animationIndex].width, buffer);
+//        }
+//    }
 }
 
 void animator_initialize() {
-    persistentBackgroundMemLocation = SRAM_allocateMemory(241*321*3);
+    persistentBackgroundMemLocation = Flash_allocateMemory(241*321*3);
 
     // Find which color index is 0xFFFFFFFF (background)
     for(int32_t i = 0; i < sizeof(colors); i++) {
@@ -310,16 +315,17 @@ void animator_initialize() {
     }
 
     for(uint8_t i = 0; i < 241; i++) rowsToUpdate[i] = false;
+
+    Flash_init();
 }
 
 void animator_readPersistentSprite(const char* spriteName, uint16_t x, uint8_t y) {
-    char filename[] = "../data/sprites/";
+    char filename[40] = "../data/sprites/";
     char fileType[] = ".txt";
 
     strcat(filename, spriteName);
     strcat(filename, fileType);
 
-    SD_closeFile();
     SD_openFile(filename);
 
     printf("Reading in sprite: %s\n", spriteName);
@@ -335,31 +341,34 @@ void animator_readPersistentSprite(const char* spriteName, uint16_t x, uint8_t y
     for(int16_t row = height-1; row >= 0; row--) {
         SD_read(width*2, buffer);
 
-        uint32_t SRAMRowLocation = persistentBackgroundMemLocation + (row-y) * 321*2 + x;
-        SRAM_writeMemory_specifiedAddress(SRAMRowLocation, width*2, buffer);
+        /*  This code is cheese. It may be buggy  */
+        uint32_t FlashRowLocation = persistentBackgroundMemLocation + (row-y) * width*2 + x;
+        Flash_writeMemory_specifiedAddress(FlashRowLocation, width*2, buffer);
 
         //  assemble indexes
-        for (uint32_t i = 0; i < 321; i++) {
-            finalColors[i] = backgroundColors[(buffer[2 * i] << 8u) + buffer[2 * i +1]];
+        for (uint32_t i = 0; i < width; i++) {
+            finalColors[x+i] = backgroundColors[(buffer[2 * i] << 8u) + buffer[2 * i +1]];
         }
 
         ILI9341_drawColors(x, row, finalColors, width);
     }
+    SD_closeFile();
 }
 
 void animator_readCharacterSDCard(uint8_t charIndex) {
-    char filename[] = "../data/sprites/";
+    char filename[40] = "../data/sprites/";
     char fileType[] = ".txt";
 
     strcat(filename, characterNames[charIndex]);
     strcat(filename, fileType);
 
-    SD_closeFile();
     SD_openFile(filename);
 
     //  get number of animations
     SD_read(2, buffer);
     uint16_t numAnimations = readHalfInt(buffer);
+
+    printf("Reading in character %s: %d animations\n", characterNames[charIndex], numAnimations);
 
     uint8_t animationName[15];
     while(numAnimations--) {
@@ -391,7 +400,6 @@ void animator_readCharacterSDCard(uint8_t charIndex) {
         }
         else {
             animationName[animationNameLength] = '\0'; //  prepare to print the string
-            printf("Reading in animation: %s\n", animationName);
         }
 
         Animation *anim = &animation[charIndex][animationIndex];
@@ -409,14 +417,14 @@ void animator_readCharacterSDCard(uint8_t charIndex) {
         SD_read(1, buffer);
         anim->height = buffer[0];
 
-        //  get the frame indexes, store into SRAM and smallBuffer2
+        //  get the frame indexes, store into Flash and smallBuffer2
         SD_read(anim->frames*3, smallBuffer2);
-        anim->memLocation = SRAM_writeMemory(anim->frames*3, smallBuffer2);
+        anim->memLocation = Flash_writeMemory(anim->frames*3, smallBuffer2);
 
         //  get the data of each frame and store it
         for (uint8_t f = 0; f < anim->frames; f++) {
             SD_read(2*(anim->height+1), buffer);
-            SRAM_writeMemory(2 * (anim->height + 1), buffer);
+            Flash_writeMemory(2 * (anim->height + 1), buffer);
             uint32_t frameDataSize = (buffer[2 * anim->height] << 8u) + buffer[2 * anim->height + 1];
             uint32_t bytesToRead = frameDataSize;
 
@@ -427,10 +435,11 @@ void animator_readCharacterSDCard(uint8_t charIndex) {
                 if (chunkSize > maxChunkSize) chunkSize = maxChunkSize;
 
                 SD_read(chunkSize, buffer);
-                SRAM_writeMemory(chunkSize, buffer);
+                Flash_writeMemory(chunkSize, buffer);
 
                 bytesToRead -= chunkSize;
             }
         }
     }
+    SD_closeFile();
 }
