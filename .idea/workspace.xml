@@ -52,6 +52,7 @@
       <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/cmake.check_cache" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/progress.marks" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/cmake-build-debug/EE319K_Final_Project_Initial_Testing.exe" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/EE319K_Final_Project_Initial_Testing.exe" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/collider.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/collider.cpp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/data/sprites/SpriteParser/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/data/sprites/SpriteParser/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/data/sprites/SpriteParser/PNGParser.py" beforeDir="false" afterPath="$PROJECT_DIR$/data/sprites/SpriteParser/PNGParser.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/data/sprites/SpriteParser/colors_fdst.h" beforeDir="false" afterPath="$PROJECT_DIR$/data/sprites/SpriteParser/colors_fdst.h" afterDir="false" />
@@ -59,6 +60,8 @@
       <change beforePath="$PROJECT_DIR$/data/sprites/kirby.txt" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/entities.h" beforeDir="false" afterPath="$PROJECT_DIR$/entities.h" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/kirby.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/kirby.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/main.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/main.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/stage.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/stage.cpp" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -144,7 +147,7 @@
       <workItem from="1586487666070" duration="4558000" />
       <workItem from="1586569830762" duration="2518000" />
       <workItem from="1586811642806" duration="2411000" />
-      <workItem from="1586842170575" duration="34366000" />
+      <workItem from="1586842170575" duration="50098000" />
     </task>
     <servers />
   </component>

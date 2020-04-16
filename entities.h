@@ -126,10 +126,10 @@ public:
     }
 
     void checkCollisions();
+    void addHurtboxFullConfig(double xOffset, double yOffset, bool mirrored,
+                              class Hurtbox hurtBox, uint8_t playerSource, bool persistent);
     void addHurtbox(double xOffset, double yOffset, bool mirrored,
-                    class Hurtbox hurtBox, uint8_t playerSource, bool persistent);
-    void addHurtbox(double xOffset, double yOffset, bool mirrored,
-                    class Hurtbox hurtBox, uint8_t playerSource);
+                    class Hurtbox hurtBox, uint8_t playerSource, double multiplier=1);
     void displayHitboxesOverlay();
     void clearHitboxOverlay();
 };
@@ -305,20 +305,23 @@ public:
                                     9, 1,
                                     3, 0, 0,3);
     Hurtbox forwardTilt = Hurtbox(true,10, 11, SHAPE_CIRCLE,
-                                  8, 1);
+                                  8, 1,
+                                  6, 3.2, 2.5, -1);
     Hurtbox upTilt = Hurtbox(-6., 21, SHAPE_RECTANGLE,
-                             25, 18, 1);
+                             25, 18, 1,
+                             6, 1.5, 3.3, -1);
     Hurtbox downTilt = Hurtbox(4., 2, SHAPE_RECTANGLE,
-                               6, 28, 1);
-    Hurtbox forwardSmash0 = Hurtbox(1., 5, SHAPE_RECTANGLE,
-                                    20, 22, 1);
-    Hurtbox forwardSmash1 = Hurtbox(25., 5, SHAPE_RECTANGLE,
-                                    20, 20, 1,
-                                    12, 5.5, 6,-1);
+                               6, 28, 1,
+                               6, 1, 2.2, -1);
+    Hurtbox forwardSmash = Hurtbox(25., 5, SHAPE_RECTANGLE,
+                                   20, 20, 1,
+                                   12, 3.7, 3.1, -1);
     Hurtbox upSmash = Hurtbox(true, 0., 26, SHAPE_CIRCLE,
-                              14, 1);
+                              14, 1,
+                              14,3.1, 4.1,-1);
     Hurtbox downSmash = Hurtbox(0., 2, SHAPE_RECTANGLE,
-                                10, 44, 1);
+                                10, 44, 1,
+                                14,4.2, 1.5, -1);
     Hurtbox upSpecial = Hurtbox(25., 18, SHAPE_RECTANGLE,
                                 20, 30, 1);
     Hurtbox upSpecialTop = Hurtbox(0., 40, SHAPE_RECTANGLE,

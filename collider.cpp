@@ -92,8 +92,8 @@ void HitboxManager::clearHitboxOverlay() {
     LCD_clearOverlay();
 }
 
-void HitboxManager::addHurtbox(double xOffset, double yOffset, bool mirrored,
-        class Hurtbox hurtBox, uint8_t playerSource, bool persistent) {
+void HitboxManager::addHurtboxFullConfig(double xOffset, double yOffset, bool mirrored,
+                                         class Hurtbox hurtBox, uint8_t playerSource, bool persistent) {
     hurtBox.active = true;
     hurtBox.currentFrame = 0;
 
@@ -115,8 +115,12 @@ void HitboxManager::addHurtbox(double xOffset, double yOffset, bool mirrored,
 }
 
 void HitboxManager::addHurtbox(double xOffset, double yOffset, bool mirrored,
-       class Hurtbox hurtBox, uint8_t playerSource) {
-    this->addHurtbox(xOffset, yOffset, mirrored, hurtBox, playerSource, false);
+       class Hurtbox hurtBox, uint8_t playerSource, double multiplier) {
+    hurtBox.damage *= multiplier;
+    hurtBox.yKnockback *= multiplier;
+    hurtBox.xKnockback *= multiplier;
+
+    this->addHurtboxFullConfig(xOffset, yOffset, mirrored, hurtBox, playerSource, false);
 }
 
 bool Hitbox::isColliding(class Hurtbox hurtbox) {
