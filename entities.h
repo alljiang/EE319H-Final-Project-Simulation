@@ -155,7 +155,7 @@ protected:
     const double joystickJumpSpeed = 0.4;   //  joystick must change by this much to activate a jump
 
     uint8_t player;             //  1 or 2
-    uint16_t damage;            //  percentage between 0% and 999%
+    double damage;            //  percentage between 0% and 999%
     int16_t action, l_action;
 
     uint8_t animationIndex;     //  index of animation
@@ -291,28 +291,28 @@ protected:
 public:
     Hurtbox jabSingle = Hurtbox(true,14, 11, SHAPE_CIRCLE,
                                 8, 1,
-                                3, 0, 0,3);
+                                0.8, 0, 0,3);
     Hurtbox jabDouble = Hurtbox(true,14, 12, SHAPE_CIRCLE,
                                 7, 1,
-                                3, 0, 0,3);
+                                0.8, 0, 0,3);
     Hurtbox jabRepeating0 = Hurtbox(true,23, 12, SHAPE_CIRCLE,
                                     11, 1,
-                                    3, 0, 0,3);
+                                    0.2, 0, 0,3);
     Hurtbox jabRepeating1 = Hurtbox(true,25, 25, SHAPE_CIRCLE,
                                     11, 1,
-                                    3, 0, 0,3);
+                                    0.2, 0, 0,3);
     Hurtbox jabRepeating2 = Hurtbox(true,23, 5, SHAPE_CIRCLE,
                                     9, 1,
-                                    3, 0, 0,3);
+                                    0.2, 0, 0,3);
     Hurtbox forwardTilt = Hurtbox(true,10, 11, SHAPE_CIRCLE,
                                   8, 1,
-                                  6, 3.2, 2.5, -1);
+                                  6, 3.0, 2.5, -1);
     Hurtbox upTilt = Hurtbox(-6., 21, SHAPE_RECTANGLE,
                              25, 18, 1,
                              6, 1.5, 3.3, -1);
     Hurtbox downTilt = Hurtbox(4., 2, SHAPE_RECTANGLE,
                                6, 28, 1,
-                               6, 1, 2.2, -1);
+                               3, 1, 2.6, -1);
     Hurtbox forwardSmash = Hurtbox(25., 5, SHAPE_RECTANGLE,
                                    20, 20, 1,
                                    12, 3.7, 3.1, -1);
@@ -331,18 +331,23 @@ public:
     Hurtbox downSpecial = Hurtbox(true,0, 5, SHAPE_CIRCLE,
                                   12, 1);
     Hurtbox neutralAir = Hurtbox(true,0, 15, SHAPE_CIRCLE,
-                                 14, 1);
+                                 14, 1,
+                                 6, 1.9, 3.0, -1);
     Hurtbox forwardAir = Hurtbox(true,18, 13, SHAPE_CIRCLE,
-                                 8, 1);
+                                 8, 1,
+                                 6, 2.8, 2.0, -1);
     Hurtbox backAir = Hurtbox(true,-14, 11, SHAPE_CIRCLE,
-                              8, 1);
+                              8, 1,
+                              6, 3.4, 2.3, -1);
     Hurtbox upAir = Hurtbox(true,0, 28, SHAPE_CIRCLE,
-                            16, 1);
+                            16, 1,
+                            6, 1.6, 2.7, -1);
     Hurtbox downAir = Hurtbox(5., -2, SHAPE_RECTANGLE,
-                              17, 10, 1);
+                              17, 10, 1,
+                              3, 0.6, 0.1, 2);
     Hurtbox dashAttack = Hurtbox(true,2, 13, SHAPE_CIRCLE,
                                  14, 1,
-                                 7, 4, 5.4, -1);
+                                 7, 4, 4.7, -1);
     Hurtbox sideSpecial0 = Hurtbox(true,-28, 7, SHAPE_CIRCLE,
                                    11, 1);
     Hurtbox sideSpecial1 = Hurtbox(true,-17, 3, SHAPE_CIRCLE,

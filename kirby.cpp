@@ -1672,11 +1672,15 @@ void Kirby::collide(Hurtbox *hurtbox, Player *otherPlayer) {
 
         // only knockback if not currently knocked back
     else if(disabledFrames != -1) {
-        if (otherPlayer->x < x) xVel = hurtbox->xKnockback;
-        else xVel = -hurtbox->xKnockback;
-        yVel = hurtbox->yKnockback;
         disabledFrames = hurtbox->stunFrames;
         damage += hurtbox->damage;
+
+        double knockbackMultiplier = damage / 200. + 1.0;
+        printf("%0.1f\n", damage);
+
+        if (otherPlayer->x < x) xVel = hurtbox->xKnockback * knockbackMultiplier;
+        else xVel = -hurtbox->xKnockback * knockbackMultiplier;
+        yVel = hurtbox->yKnockback * knockbackMultiplier;
 
         action = KIRBY_ACTION_HURT;
     }
