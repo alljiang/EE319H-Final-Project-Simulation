@@ -74,6 +74,8 @@ void Kirby::controlLoop(double joyH, double joyV, bool btnA, bool btnB, bool shi
     else if(action == KIRBY_ACTION_MULTIJUMPING) {
         gravityScale = 1;
         x += airSpeed * joyH;
+        //  give bonus speed for fighting knockback
+        if((xVel < 0 && joyH > 0) ||  (xVel > 0 && joyH < 0)) { x+= airSpeed * joyH; }
         if(x > rightBound) x = rightBound;
         else if(x < leftBound) x = leftBound;
         animationIndex = 5;
@@ -1338,10 +1340,12 @@ void Kirby::controlLoop(double joyH, double joyV, bool btnA, bool btnB, bool shi
     UART_sendAnimation(s);
     // Up special projectile animation
     if(upb_projectile_active) {
-        if(absVal(upb_projectile_x-upb_projectile_startX) >= 70) {
+        if(absVal(upb_projectile_x-upb_projectile_startX) >= 70 ||
+            ((upb_projectile_activationFlag != nullptr && *upb_projectile_activationFlag))) {
             upb_projectile_active = false;
         }
         else {
+
             s.charIndex = charIndex;
             s.animationIndex = 19;
             s.framePeriod = 1;
@@ -1355,7 +1359,7 @@ void Kirby::controlLoop(double joyH, double joyV, bool btnA, bool btnB, bool shi
 
             UART_sendAnimation(s);
 
-            hitboxManager->addHurtbox(upb_projectile_x + 20, upb_projectile_startY, mirrored,
+            upb_projectile_activationFlag = hitboxManager->addHurtbox(upb_projectile_x + 20, upb_projectile_startY, mirrored,
                                       upSpecialProjectile, player);
 
             if(upb_projectile_mirrored) upb_projectile_x -= 5;

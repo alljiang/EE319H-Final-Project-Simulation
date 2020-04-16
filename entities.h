@@ -115,6 +115,7 @@ class HitboxManager {
 protected:
     Player *p1, *p2;
     Hurtbox hurtboxes[hurtboxSlots];
+    bool activationFlags[hurtboxSlots];
     uint16_t persistentHurtbox = 0; // big endian
 
 public:
@@ -126,9 +127,9 @@ public:
     }
 
     void checkCollisions();
-    void addHurtboxFullConfig(double xOffset, double yOffset, bool mirrored,
+    bool* addHurtboxFullConfig(double xOffset, double yOffset, bool mirrored,
                               class Hurtbox hurtBox, uint8_t playerSource, bool persistent);
-    void addHurtbox(double xOffset, double yOffset, bool mirrored,
+    bool* addHurtbox(double xOffset, double yOffset, bool mirrored,
                     class Hurtbox hurtBox, uint8_t playerSource, double multiplier=1);
     void displayHitboxesOverlay();
     void clearHitboxOverlay();
@@ -280,6 +281,7 @@ protected:
     double upb_projectile_x, upb_projectile_startX, upb_projectile_startY;
     bool upb_projectile_mirrored;
     bool upb_projectile_active;
+    bool* upb_projectile_activationFlag = nullptr;
 
     //  down special
     long long morphEndTime, morphLandTime;
@@ -306,30 +308,34 @@ public:
                                     0.2, 0, 0,3);
     Hurtbox forwardTilt = Hurtbox(true,10, 11, SHAPE_CIRCLE,
                                   8, 1,
-                                  6, 3.0, 2.5, -1);
+                                  3, 3.0, 2.5, -1);
     Hurtbox upTilt = Hurtbox(-6., 21, SHAPE_RECTANGLE,
                              25, 18, 1,
-                             6, 1.5, 3.3, -1);
+                             3, 1.5, 3.3, -1);
     Hurtbox downTilt = Hurtbox(4., 2, SHAPE_RECTANGLE,
                                6, 28, 1,
                                3, 1, 2.6, -1);
     Hurtbox forwardSmash = Hurtbox(25., 5, SHAPE_RECTANGLE,
                                    20, 20, 1,
-                                   12, 3.7, 3.1, -1);
+                                   7, 3.7, 3.1, -1);
     Hurtbox upSmash = Hurtbox(true, 0., 26, SHAPE_CIRCLE,
                               14, 1,
-                              14,3.1, 4.1,-1);
+                              6,3.1, 4.1,-1);
     Hurtbox downSmash = Hurtbox(0., 2, SHAPE_RECTANGLE,
                                 10, 44, 1,
-                                14,4.2, 1.5, -1);
+                                6,4.2, 1.5, -1);
     Hurtbox upSpecial = Hurtbox(25., 18, SHAPE_RECTANGLE,
-                                20, 30, 1);
+                                20, 30, 1,
+                                3, 1.5, 1.5, -1);
     Hurtbox upSpecialTop = Hurtbox(0., 40, SHAPE_RECTANGLE,
-                                   20, 40, 1);
+                                   20, 40, 1,
+                                   3, 1.5, 3.3, -1);
     Hurtbox upSpecialProjectile = Hurtbox(4., 16, SHAPE_RECTANGLE,
-                                          32, 20, 1);
+                                          32, 20, 1,
+                                          3, 1.5, 1.5, -1);
     Hurtbox downSpecial = Hurtbox(true,0, 5, SHAPE_CIRCLE,
-                                  12, 1);
+                                  12, 1,
+                                  3, 2.2, 2.2, -1);
     Hurtbox neutralAir = Hurtbox(true,0, 15, SHAPE_CIRCLE,
                                  14, 1,
                                  6, 1.9, 3.0, -1);
