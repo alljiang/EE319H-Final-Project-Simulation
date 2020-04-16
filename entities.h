@@ -166,6 +166,7 @@ protected:
     bool mirrored, l_mirrored;
 
     long long disabledFrames {0};   //  frames before making a new move
+    long long invulnerableFrames {0};   //  frames of hurtbox invulnerability
     bool noJumpsDisabled;           //  disabled until landing because of running out of jumps
     bool pauseFall;                 //  pauses changes in y from y velocity
 
@@ -317,43 +318,46 @@ public:
                                3, 1, 2.6, -1);
     Hurtbox forwardSmash = Hurtbox(25., 5, SHAPE_RECTANGLE,
                                    20, 20, 1,
-                                   7, 3.7, 3.1, -1);
+                                   3.9, 3.7, 3.1, -1);
     Hurtbox upSmash = Hurtbox(true, 0., 26, SHAPE_CIRCLE,
                               14, 1,
-                              6,3.1, 4.1,-1);
+                              3.9,3.1, 4.1,-1);
     Hurtbox downSmash = Hurtbox(0., 2, SHAPE_RECTANGLE,
                                 10, 44, 1,
-                                6,4.2, 1.5, -1);
-    Hurtbox upSpecial = Hurtbox(25., 18, SHAPE_RECTANGLE,
-                                20, 30, 1,
-                                3, 1.5, 1.5, -1);
+                                3.9,4.2, 1.5, -1);
+    Hurtbox upSpecialRising = Hurtbox(25., 18, SHAPE_RECTANGLE,
+                                      20, 30, 1,
+                                      3, 2.1, 3.2, -1);
     Hurtbox upSpecialTop = Hurtbox(0., 40, SHAPE_RECTANGLE,
                                    20, 40, 1,
-                                   3, 1.5, 3.3, -1);
+                                   2.2, 2.8, 3.3, -1);
+    Hurtbox upSpecialFalling = Hurtbox(25., 18, SHAPE_RECTANGLE,
+                                      20, 30, 1,
+                                      1.2, 2.8, -0.8, -1);
     Hurtbox upSpecialProjectile = Hurtbox(4., 16, SHAPE_RECTANGLE,
                                           32, 20, 1,
-                                          3, 1.5, 1.5, -1);
+                                          4, 3.2, 2.9, 7);
     Hurtbox downSpecial = Hurtbox(true,0, 5, SHAPE_CIRCLE,
                                   12, 1,
-                                  3, 2.2, 2.2, -1);
+                                  6, 3.8, 4.9, -1);
     Hurtbox neutralAir = Hurtbox(true,0, 15, SHAPE_CIRCLE,
                                  14, 1,
                                  6, 1.9, 3.0, -1);
     Hurtbox forwardAir = Hurtbox(true,18, 13, SHAPE_CIRCLE,
                                  8, 1,
-                                 6, 2.8, 2.0, -1);
+                                 4.5, 3.3, 2.0, -1);
     Hurtbox backAir = Hurtbox(true,-14, 11, SHAPE_CIRCLE,
-                              8, 1,
-                              6, 3.4, 2.3, -1);
+                              4.5, 1,
+                              6, 3.7, 2.3, -1);
     Hurtbox upAir = Hurtbox(true,0, 28, SHAPE_CIRCLE,
                             16, 1,
                             6, 1.6, 2.7, -1);
     Hurtbox downAir = Hurtbox(5., -2, SHAPE_RECTANGLE,
                               17, 10, 1,
-                              3, 0.6, 0.1, 2);
+                              0.8, 0.6, 0.1, 2);
     Hurtbox dashAttack = Hurtbox(true,2, 13, SHAPE_CIRCLE,
                                  14, 1,
-                                 7, 4, 4.7, -1);
+                                 4, 4, 4.7, -1);
     Hurtbox sideSpecial0 = Hurtbox(true,-28, 7, SHAPE_CIRCLE,
                                    11, 1);
     Hurtbox sideSpecial1 = Hurtbox(true,-17, 3, SHAPE_CIRCLE,

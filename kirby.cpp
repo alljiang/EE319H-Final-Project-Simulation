@@ -556,7 +556,7 @@ void Kirby::controlLoop(double joyH, double joyV, bool btnA, bool btnB, bool shi
                 else hitbox.offsetX(-1);
 
                 hitboxManager->addHurtbox(x + 16, y, mirrored,
-                                          upSpecial, player);
+                                          upSpecialRising, player);
                 break;
         }
     }
@@ -582,7 +582,7 @@ void Kirby::controlLoop(double joyH, double joyV, bool btnA, bool btnB, bool shi
         else {
             y += 16;
             hitboxManager->addHurtbox(x + 16, y, mirrored,
-                                      upSpecial, player);
+                                      upSpecialRising, player);
         }
     }
     else if(action == KIRBY_ACTION_UPSPECIALTOP) {
@@ -712,7 +712,7 @@ void Kirby::controlLoop(double joyH, double joyV, bool btnA, bool btnB, bool shi
             y -= 16;
 
             hitboxManager->addHurtbox(x + 16, y, mirrored,
-                                      upSpecial, player);
+                                      upSpecialFalling, player);
         }
         switch(frameIndex) {
             case 0:
@@ -1309,6 +1309,7 @@ void Kirby::controlLoop(double joyH, double joyV, bool btnA, bool btnB, bool shi
 
     //  disabled means can interrupt current action and start new action
     if(disabledFrames > 0) disabledFrames--;
+    if(invulnerableFrames > 0) invulnerableFrames--;
     if(disabledFrames == -1) {
         //  knockback stun, remove stun when falling or on floor
         if(y == floor || yVel < 0) {
@@ -1675,7 +1676,7 @@ void Kirby::collide(Hurtbox *hurtbox, Player *otherPlayer) {
     }
 
         // only knockback if not currently knocked back
-    else if(disabledFrames != -1) {
+    else if(disabledFrames != -1 && invulnerableFrames == 0) {
         disabledFrames = hurtbox->stunFrames;
         damage += hurtbox->damage;
 
