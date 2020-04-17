@@ -322,7 +322,9 @@ void animator_initialize() {
 
     for(uint8_t i = 0; i < 241; i++) rowsToUpdate[i] = false;
 
+//    SD_startSDCard();     //  CHANGING STUFF
     Flash_init();
+//    ILI9341_init();
 }
 
 void animator_readPersistentSprite(const char* spriteName, uint16_t x, uint8_t y) {

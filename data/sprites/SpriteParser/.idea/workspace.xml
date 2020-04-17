@@ -3,7 +3,6 @@
   <component name="ChangeListManager">
     <list default="true" id="2349ddb4-96f3-4450-a885-5dac0c7a4023" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/../../../.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../../.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/GIFParser.py" beforeDir="false" afterPath="$PROJECT_DIR$/GIFParser.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -34,6 +33,7 @@
       <recent name="C:\Users\Allen\Documents\GitHub\EE319H-Final-Project-Simulation\data\sprites\SpriteParser\gif-kirby" />
     </key>
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\Allen\Documents\GitHub\EE319H-Final-Project-Simulation\data\sprites\SpriteParser\gif-misc" />
       <recent name="C:\Users\Allen\Documents\GitHub\EE319H-Final-Project-Simulation\data\sprites\SpriteParser" />
     </key>
   </component>
@@ -130,7 +130,7 @@
       <workItem from="1586031558894" duration="1089000" />
       <workItem from="1586481309550" duration="22000" />
       <workItem from="1586923822807" duration="2927000" />
-      <workItem from="1587090060801" duration="6789000" />
+      <workItem from="1587090060801" duration="7462000" />
     </task>
     <servers />
   </component>
