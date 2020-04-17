@@ -20,12 +20,12 @@ import os
 
 #   CONFIG
 backgroundColor = 0x00FF00
-characterName = "misc"
-imageDirectory = "./gif-" + characterName + "/"
+characterName = "kirby"
+imageDirectory = "./gif-" + characterName.lower() + "/"
 
 # color index list
 indexed_rgb = list()
-colors = open("colors.h", 'r')
+colors = open("colors_" + characterName.lower() + ".h", 'r')
 colors.readline()
 colors.readline()
 colors.readline()
@@ -127,16 +127,16 @@ for filename in os.listdir(os.getcwd() + imageDirectory):
 # output.write("\n".encode())
 
 # output colors.txt file
-colors = open("colors.h", 'w')
+colors = open("colors_" + characterName.lower() + ".h", 'w')
 colors.write('#include <stdint.h>\n'
-             '#ifndef EE319K_FINAL_PROJECT_INITIAL_TESTING_COLORS_H\n' +\
-             '#define EE319K_FINAL_PROJECT_INITIAL_TESTING_COLORS_H\n\n' +\
-'const uint32_t colors[' + str(len(indexed_rgb)) + '] = {')
+             '#ifndef COLORS_H_' + characterName.upper() + '\n' +\
+             '#define COLORS_H_' + characterName.upper() + '\n\n' +\
+'const uint32_t colors_' + characterName.lower() + '[' + str(len(indexed_rgb)) + '] = {')
 colors.write(str(indexed_rgb[0]))
 for i in range(1, len(indexed_rgb)):
     colors.write(',')
     colors.write(str(indexed_rgb[i]))
 
 colors.write('};\n\n')
-colors.write('#endif //EE319K_FINAL_PROJECT_INITIAL_TESTING_COLORS_H\n')
+colors.write('#endif //COLORS_H_' + characterName.upper() + '\n')
 colors.close()

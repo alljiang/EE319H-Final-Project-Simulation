@@ -52,7 +52,6 @@ CMakeFiles/EE319K_Final_Project_Initial_Testing.dir/ILI9341.cpp.obj
  C:/Program Files/mingw-w64/x86_64-8.1.0-posix-seh-rt_v6-rev0/mingw64/include/SDL2/close_code.h
  C:/Users/Allen/Documents/GitHub/EE319H-Final-Project-Simulation/ILI9341.cpp
  C:/Users/Allen/Documents/GitHub/EE319H-Final-Project-Simulation/ILI9341.h
- C:/Users/Allen/Documents/GitHub/EE319H-Final-Project-Simulation/colors.h
  C:/Users/Allen/Documents/GitHub/EE319H-Final-Project-Simulation/metadata.h
  C:/Users/Allen/Documents/GitHub/EE319H-Final-Project-Simulation/utils.h
 CMakeFiles/EE319K_Final_Project_Initial_Testing.dir/SD.cpp.obj
@@ -69,7 +68,8 @@ CMakeFiles/EE319K_Final_Project_Initial_Testing.dir/animator.cpp.obj
  C:/Users/Allen/Documents/GitHub/EE319H-Final-Project-Simulation/SD.h
  C:/Users/Allen/Documents/GitHub/EE319H-Final-Project-Simulation/animator.cpp
  C:/Users/Allen/Documents/GitHub/EE319H-Final-Project-Simulation/animator.h
- C:/Users/Allen/Documents/GitHub/EE319H-Final-Project-Simulation/colors.h
+ C:/Users/Allen/Documents/GitHub/EE319H-Final-Project-Simulation/colors_kirby.h
+ C:/Users/Allen/Documents/GitHub/EE319H-Final-Project-Simulation/colors_misc.h
  C:/Users/Allen/Documents/GitHub/EE319H-Final-Project-Simulation/metadata.h
  C:/Users/Allen/Documents/GitHub/EE319H-Final-Project-Simulation/utils.h
 CMakeFiles/EE319K_Final_Project_Initial_Testing.dir/collider.cpp.obj

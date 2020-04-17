@@ -7,7 +7,6 @@
 #include "ILI9341.h"
 #include "metadata.h"
 #include "utils.h"
-#include "colors.h"
 
 using namespace std;
 

@@ -28,7 +28,9 @@
 #define STAGE_TOWER 1
 #define STAGE_BATTLEFIELD 2
 
-const char characterNames[4][15] = {
+#define CHARACTERS  4
+
+const char characterNames[CHARACTERS][15] = {
         {"kirby"},
         {"marth"},
         {"jigglypuff"},
@@ -42,7 +44,7 @@ const char persistentSprites[4][10] = {
         {}
 };
 
-const char animations[4][64][12] = {
+const char animations[CHARACTERS][64][12] = {
         {                // frames
                 /* 0 */                         {"crouch"}, // 1
                                                 {"dash"},   // 8
