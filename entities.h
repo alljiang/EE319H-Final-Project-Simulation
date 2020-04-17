@@ -158,6 +158,7 @@ protected:
     uint8_t player;             //  1 or 2
     double damage;            //  percentage between 0% and 999%
     int16_t action, l_action;
+    uint8_t stocksRemaining;
 
     uint8_t animationIndex;     //  index of animation
     uint8_t frameIndex{0};      //  current frame index of current animation
@@ -171,7 +172,6 @@ protected:
     long long disabledFrames {0};   //  frames before making a new move
     long long invulnerableFrames {0};   //  frames of hurtbox invulnerability
     bool noJumpsDisabled;           //  disabled until landing because of running out of jumps
-    bool pauseFall;                 //  pauses changes in y from y velocity
 
     double l_joyH;              //  last joystick horizontal value
     double l_joyV;              //  last joystick vertical value
@@ -200,7 +200,8 @@ public:
     Hitbox hitbox = Hitbox(0, 0, 0, 0);
 
     void setPlayer(uint8_t p) { player = p; }
-    void setMirrored(bool mirror) { l_mirrored = mirrored = mirror;}
+    void setMirrored(bool mirror) { l_mirrored = mirrored = mirror; }
+    void setStocks(uint8_t lives) { stocksRemaining = lives; }
 
     virtual void controlLoop(double joyH, double joyV, bool btnA, bool btnB, bool shield, class Stage* stage,
                              class HitboxManager* hitboxManager) = 0; //  called every update

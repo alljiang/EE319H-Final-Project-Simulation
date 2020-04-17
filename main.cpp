@@ -34,7 +34,7 @@ float x = 0;
 float y = 0;
 
 const bool PLAYER2 = true;
-const bool HITBOXOVERLAY = true;
+const bool HITBOXOVERLAY = false;
 const double UPDATERATE = 20;   // 20
 
 const uint8_t stageToPlay = STAGE_FINALDESTINATION;
@@ -49,12 +49,14 @@ void startup() {
     p1->setPlayer(1);
     p1->setX(stage.getStartX(1));
     p1->setY(stage.getStartY(1));
+    p1->setStocks(3);
 
     p2 = &k2;
     k2.setPlayer(2);
     p2->setX(stage.getStartX(2));
     p2->setY(stage.getStartY(2));
     p2->setMirrored(true);
+    p1->setStocks(3);
 
     if(PLAYER2) hitboxManager.initialize(p1, p2);
     else hitboxManager.initialize(p1);
@@ -102,8 +104,24 @@ void loop() {
             );
         }
 
+        SpriteSendable s;
+        s.charIndex = 3;
+        s.framePeriod = 40;
+        s.persistent = false;
+        s.continuous = false;
+        s.layer = LAYER_PERCENTAGE;
+        s.mirrored = false;
+
+        s.x = 150;
+        s.y = 100;
+        s.frame = 0;
+        s.animationIndex = 0;
+
+        UART_sendAnimation(s);
+
         if(HITBOXOVERLAY) hitboxManager.clearHitboxOverlay();
         animator_update();
+
         if(HITBOXOVERLAY) hitboxManager.displayHitboxesOverlay();
 
         hitboxManager.checkCollisions();

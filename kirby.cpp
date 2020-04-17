@@ -24,7 +24,10 @@ void Kirby::controlLoop(double joyH, double joyV, bool btnA, bool btnB, bool shi
             dead = true;
             deathTime = currentTime;
             frameIndex = 0;
+            frameLengthCounter = 0;
+            if(stocksRemaining > 0) stocksRemaining--;
         }
+        printf("%d\n", frameIndex);
         if(frameIndex < 17) {
             s.charIndex = 3;
             s.framePeriod = 1;
@@ -33,6 +36,7 @@ void Kirby::controlLoop(double joyH, double joyV, bool btnA, bool btnB, bool shi
             s.layer = LAYER_PERCENTAGE;
             s.mirrored = false;
 
+            /*
             frameExtension = 1;
             if(frameLengthCounter++ >= frameExtension) {
                 frameLengthCounter = 0;
@@ -45,7 +49,7 @@ void Kirby::controlLoop(double joyH, double joyV, bool btnA, bool btnB, bool shi
                 //  top
                 s.animationIndex = 3;
                 s.x = (int16_t) x;
-                s.y = (int16_t) 261;
+                s.y = (int16_t) 182;
 
                 if(x < 10) s.x = 10;
                 if(x > 310) s.x = 310;
@@ -71,15 +75,14 @@ void Kirby::controlLoop(double joyH, double joyV, bool btnA, bool btnB, bool shi
             else {
                 //  right
                 s.animationIndex = 2;
-                s.x = 182;
+                s.x = 261;
                 s.y = (int16_t) y;
 
                 if(y < 10) s.y = 10;
                 if(y > 230) s.x = 230;
             }
             UART_sendAnimation(s);
-
-            return;
+             */
         }
         else if(currentTime - deathTime > 2000) {
             //  respawn
@@ -97,8 +100,9 @@ void Kirby::controlLoop(double joyH, double joyV, bool btnA, bool btnB, bool shi
             invulnerableFrames = 20 * 3;
 
             dead = false;
+            action = KIRBY_ACTION_FALLING;
         }
-        else return;
+        return;
     }
 
     if(!l_btnA && btnA) l_btnARise_t = currentTime;

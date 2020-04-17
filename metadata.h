@@ -45,7 +45,7 @@ const char persistentSprites[4][10] = {
 };
 
 const char animations[CHARACTERS][64][12] = {
-        {                // frames
+        {                                                   // frames
                 /* 0 */                         {"crouch"}, // 1
                                                 {"dash"},   // 8
                                                 {"fall"},   // 2
@@ -101,15 +101,15 @@ const char animations[CHARACTERS][64][12] = {
 
         },
         {
-                /*  0   */                      {"blastdown"},  //  17
-                                                {"blastleft"},  //  17
-                                                {"blastright"}, //  17
-                                                {"blastup"},    //  17
-                                                {"num0"},       //  1
+                /*  0   */                      {"num0"},       //  1
                                                 {"num1"},       //  1
                                                 {"num2"},       //  1
                                                 {"num3"},       //  1
                                                 {"numdot"},     //  1
+                                                {"blastdown"},  //  17
+                                                {"blastleft"},  //  17
+                                                {"blastright"}, //  17
+                                                {"blastup"},    //  17
 
         }
 };
