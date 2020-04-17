@@ -9,8 +9,8 @@
 #include "SD.h"
 #include "utils.h"
 #include "ILI9341.h"
-#include "colors.h"
-#include "ILI9341.h"
+#include "colors_kirby.h"
+#include "colors_misc.h"
 #include <cmath>
 using namespace std;
 
@@ -24,8 +24,8 @@ int32_t finalColors[321];  // a color index of -1 means 'do not change'
 uint8_t layer[321];
 bool rowsToUpdate[241];
 const uint32_t *backgroundColors;
-
-uint32_t backgroundColorIndex = 0;
+const uint32_t* colors[CHARACTERS];
+uint32_t backgroundColorIndex[CHARACTERS];
 
 uint32_t persistentBackgroundMemLocation;
 Animation animation[4][numberOfAnimations];
@@ -147,7 +147,7 @@ void animator_update() {
                     uint16_t colorIndex = (bufferptr[pair*2+0]);
                     uint16_t quantity = (bufferptr[pair*2+1]);
 
-                    if(colorIndex == backgroundColorIndex) {
+                    if(colorIndex == backgroundColorIndex[anim->characterIndex]) {
                         //  this is the background color, ignore it
                         column += quantity;
                         continue;
@@ -158,7 +158,7 @@ void animator_update() {
                         if(ss->mirrored) {
                             if(!(ss->x+(anim->width) - column > 320 || ss->x+(anim->width) - column < 0)) {
                                 if (layer[ss->x + (anim->width) - column] < ss->layer) {
-                                    finalColors[ss->x + (anim->width) - column] = colors[colorIndex];
+                                    finalColors[ss->x + (anim->width) - column] = colors[anim->characterIndex][colorIndex];
                                     layer[ss->x + (anim->width) - column] = ss->layer;
                                 }
                             }
@@ -166,7 +166,7 @@ void animator_update() {
                         else {
                             if(!(ss->x + column > 320 || ss->x + column < 0)) {
                                 if (layer[ss->x + column] < ss->layer) {
-                                    finalColors[ss->x + column] = colors[colorIndex];
+                                    finalColors[ss->x + column] = colors[anim->characterIndex][colorIndex];
                                     layer[ss->x + column] = ss->layer;
                                 }
                             }
@@ -306,17 +306,25 @@ void animator_animate(uint8_t charIndex, uint8_t animationIndex,
 void animator_initialize() {
     persistentBackgroundMemLocation = Flash_allocateMemory(241*321*3);
 
+    colors[0] = colors_kirby;
+    colors[3] = colors_misc;
+
     // Find which color index is 0xFFFFFFFF (background)
-    for(int32_t i = 0; i < sizeof(colors); i++) {
-        if(colors[i] == 0xFFFFFFFF) {
-            backgroundColorIndex = i;
-            break;
+    for(int c = 0; c < CHARACTERS; c++) {
+        if(c != 0 && c != 3) continue;
+        for(int32_t i = 0; i < sizeof(colors); i++) {
+            if(colors[c][i] == 0xFFFFFFFF) {
+                backgroundColorIndex[c] = i;
+                break;
+            }
         }
     }
 
     for(uint8_t i = 0; i < 241; i++) rowsToUpdate[i] = false;
 
+//    SD_startSDCard();     //  CHANGING STUFF
     Flash_init();
+//    ILI9341_init();
 }
 
 void animator_readPersistentSprite(const char* spriteName, uint16_t x, uint8_t y) {

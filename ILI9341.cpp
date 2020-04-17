@@ -7,21 +7,20 @@
 #include "ILI9341.h"
 #include "metadata.h"
 #include "utils.h"
-#include "colors.h"
 
 using namespace std;
 
 #define WINDOW_SCALE 3
 #define WINDOW_HEIGHT 241  // y
-#define WINDOW_WIDTH 321  // x
+#define WINDOW_WIDTH 320  // x
 
 SDL_Renderer *renderer;
 SDL_Window *window;
 
 uint32_t ILI9341_SPICounter = 0;
 
-uint32_t screen[241][321];   // simulator only, for hitbox display
-bool changed[241][321]; // simulator only, is true if hitbox is displayed
+uint32_t screen[WINDOW_HEIGHT][WINDOW_WIDTH];   // simulator only, for hitbox display
+bool changed[WINDOW_HEIGHT][WINDOW_WIDTH]; // simulator only, is true if hitbox is displayed
 
 void LCD_startLCD() {
     SDL_CreateWindowAndRenderer(WINDOW_WIDTH*WINDOW_SCALE, WINDOW_HEIGHT*WINDOW_SCALE,

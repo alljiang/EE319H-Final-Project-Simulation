@@ -49,12 +49,14 @@ void startup() {
     p1->setPlayer(1);
     p1->setX(stage.getStartX(1));
     p1->setY(stage.getStartY(1));
+    p1->setStocks(3);
 
     p2 = &k2;
     k2.setPlayer(2);
     p2->setX(stage.getStartX(2));
     p2->setY(stage.getStartY(2));
     p2->setMirrored(true);
+    p2->setStocks(3);
 
     if(PLAYER2) hitboxManager.initialize(p1, p2);
     else hitboxManager.initialize(p1);
@@ -65,6 +67,7 @@ void startup() {
     animator_readPersistentSprite(persistentSprites[stageToPlay], 0, 0);
 
     UART_readCharacterSDCard(0);
+    UART_readCharacterSDCard(3);
 
     printf("Flash Used: %0.1f%\n", getCurrentMemoryLocation() / (1024.*1024) * 100);
 //    */
@@ -74,6 +77,7 @@ void startup() {
 uint32_t  t1 = 0;
 uint32_t tt1 = 0;
 uint8_t frame = 0;
+
 void loop() {
 //    return;
     if(millis() - t1 >= 1./UPDATERATE*1000) {
@@ -101,8 +105,55 @@ void loop() {
             );
         }
 
+        bool updateScore = false;
+        if(!p1->dead && (p1->x < -40 || p1->x > 360 || p1->y < -40 || p1->y > 280)) {
+            p1->dead = true;
+            updateScore = true;
+
+            if(p1->stocksRemaining > 0) p1->stocksRemaining--;
+        }
+        if(!p2->dead && (p2->x < -40 || p2->x > 360 || p2->y < -40 || p2->y > 280)) {
+            p2->dead = true;
+            updateScore = true;
+
+            if(p2->stocksRemaining > 0) p2->stocksRemaining--;
+        }
+
+        if(updateScore) {
+            SpriteSendable s;
+            s.charIndex = 3;
+            s.framePeriod = 20;
+            s.frame = 0;
+            s.persistent = false;
+            s.continuous = false;
+            s.layer = LAYER_PERCENTAGE;
+            s.mirrored = false;
+
+            s.x = 90;
+            s.y = 100;
+            if(p1->stocksRemaining == 3) s.animationIndex = 3;
+            else if(p1->stocksRemaining == 2) s.animationIndex = 2;
+            else if(p1->stocksRemaining == 1) s.animationIndex = 1;
+            else s.animationIndex = 0;
+            UART_sendAnimation(s);
+
+            s.x = 170;
+            s.y = 100;
+            if(p2->stocksRemaining == 3) s.animationIndex = 3;
+            else if(p2->stocksRemaining == 2) s.animationIndex = 2;
+            else if(p2->stocksRemaining == 1) s.animationIndex = 1;
+            else s.animationIndex = 0;
+            UART_sendAnimation(s);
+
+            s.x = 140;
+            s.y = 115;
+            s.animationIndex = 4;
+            UART_sendAnimation(s);
+        }
+
         if(HITBOXOVERLAY) hitboxManager.clearHitboxOverlay();
         animator_update();
+
         if(HITBOXOVERLAY) hitboxManager.displayHitboxesOverlay();
 
         hitboxManager.checkCollisions();

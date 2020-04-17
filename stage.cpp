@@ -161,10 +161,10 @@ void Stage::update() {
 
 void Stage::initialize(uint8_t index, HitboxManager *hitboxManager) {
     if(stageIndex == STAGE_FINALDESTINATION) {
-        hitboxManager->addHurtbox(0, 0, false,
-                                  FD_leftCorner, 0, true);
-        hitboxManager->addHurtbox(0, 0, false,
-                                  FD_rightCorner, 0, true);
+        hitboxManager->addHurtboxFullConfig(0, 0, false,
+                                            FD_leftCorner, 0, true);
+        hitboxManager->addHurtboxFullConfig(0, 0, false,
+                                            FD_rightCorner, 0, true);
     }
     else if(stageIndex == STAGE_TOWER) {}
     else if(stageIndex == STAGE_BATTLEFIELD) {}

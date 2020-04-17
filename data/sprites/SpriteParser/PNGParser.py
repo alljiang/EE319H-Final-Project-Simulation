@@ -11,7 +11,7 @@ import os
 #   CONFIG
 backgroundColor = 0x00FF00
 imageDirectory = "./png-misc/"
-imageFilename = "finaldest"
+imageFilename = "fdst"
 
 # color index list
 indexed_rgb = list()
