@@ -65,6 +65,7 @@ void startup() {
     animator_readPersistentSprite(persistentSprites[stageToPlay], 0, 0);
 
     UART_readCharacterSDCard(0);
+    UART_readCharacterSDCard(3);
 
     printf("Flash Used: %0.1f%\n", getCurrentMemoryLocation() / (1024.*1024) * 100);
 //    */

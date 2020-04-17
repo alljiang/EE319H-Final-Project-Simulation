@@ -32,7 +32,7 @@ const char characterNames[4][15] = {
         {"kirby"},
         {"marth"},
         {"jigglypuff"},
-        {"gameandwatch"}
+        {"misc"}
 };
 
 const char persistentSprites[4][10] = {
@@ -42,7 +42,7 @@ const char persistentSprites[4][10] = {
         {}
 };
 
-const char animations[4][64][10] = {
+const char animations[4][64][12] = {
         {                // frames
                 /* 0 */                         {"crouch"}, // 1
                                                 {"dash"},   // 8
@@ -99,6 +99,15 @@ const char animations[4][64][10] = {
 
         },
         {
+                /*  0   */                      {"blastdown"},  //  17
+                                                {"blastleft"},  //  17
+                                                {"blastright"}, //  17
+                                                {"blastup"},    //  17
+                                                {"num0"},       //  1
+                                                {"num1"},       //  1
+                                                {"num2"},       //  1
+                                                {"num3"},       //  1
+                                                {"numdot"},     //  1
 
         }
 };

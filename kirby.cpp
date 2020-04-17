@@ -16,6 +16,92 @@ void Kirby::controlLoop(double joyH, double joyV, bool btnA, bool btnB, bool shi
     double dt = 49;
     currentTime += (uint8_t)dt;
 
+    SpriteSendable s;
+
+    //  check if dead
+    if(dead || x < -40 || x > 360 || y < -40 || y > 280) {
+        if(!dead) {
+            dead = true;
+            deathTime = currentTime;
+            frameIndex = 0;
+        }
+        if(frameIndex < 17) {
+            s.charIndex = 3;
+            s.framePeriod = 1;
+            s.persistent = false;
+            s.continuous = false;
+            s.layer = LAYER_PERCENTAGE;
+            s.mirrored = false;
+
+            frameExtension = 1;
+            if(frameLengthCounter++ >= frameExtension) {
+                frameLengthCounter = 0;
+                s.frame = 0;
+                frameIndex++;
+            }
+
+            //  choose which blast side to use
+            if(y > 280) {
+                //  top
+                s.animationIndex = 3;
+                s.x = (int16_t) x;
+                s.y = (int16_t) 261;
+
+                if(x < 10) s.x = 10;
+                if(x > 310) s.x = 310;
+            }
+            else if(y < -40) {
+                //  bottom
+                s.animationIndex = 0;
+                s.x = (int16_t) x;
+                s.y = (int16_t) 0;
+
+                if(x < 10) s.x = 10;
+                if(x > 310) s.x = 310;
+            }
+            else if(x < -40) {
+                //  left
+                s.animationIndex = 1;
+                s.x = 0;
+                s.y = (int16_t) y;
+
+                if(y < 10) s.y = 10;
+                if(y > 230) s.x = 230;
+            }
+            else {
+                //  right
+                s.animationIndex = 2;
+                s.x = 182;
+                s.y = (int16_t) y;
+
+                if(y < 10) s.y = 10;
+                if(y > 230) s.x = 230;
+            }
+            UART_sendAnimation(s);
+
+            return;
+        }
+        else if(currentTime - deathTime > 2000) {
+            //  respawn
+
+            //  reset
+            l_joyH = 0;
+            l_joyV = 0;
+            l_btnA = 0;
+            l_btnB = 0;
+            l_shield = 0;
+            l_mirrored = 0;
+
+            y = 240;
+            x = 159;
+            invulnerableFrames = 20 * 3;
+
+            dead = false;
+        }
+        else return;
+    }
+    printf("alive\n");
+
     if(!l_btnA && btnA) l_btnARise_t = currentTime;
     else if(l_btnA && !btnA) l_btnAFall_t = currentTime;
     if(!l_btnB && btnB) l_btnBRise_t = currentTime;
@@ -24,11 +110,6 @@ void Kirby::controlLoop(double joyH, double joyV, bool btnA, bool btnB, bool shi
     else if(l_shield && !shield) l_shieldFall_t = currentTime;
 
     int16_t x_mirroredOffset = 0;
-
-    if(y < 0) {
-        y = 120;
-        x = 150;
-    }
 
     double yAnimationOffset = 0;
     double xAnimationOffset = 0;
@@ -1326,7 +1407,6 @@ void Kirby::controlLoop(double joyH, double joyV, bool btnA, bool btnB, bool shi
     if(!mirrored) x_mirroredOffset = 0;
     else x_mirroredOffset -= xAnimationOffset;
 
-    SpriteSendable s;
     s.charIndex = charIndex;
     s.animationIndex = animationIndex;
     s.framePeriod = 1;

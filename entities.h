@@ -165,6 +165,9 @@ protected:
     bool continuous{false};
     bool mirrored, l_mirrored;
 
+    bool dead;
+    long long deathTime;
+
     long long disabledFrames {0};   //  frames before making a new move
     long long invulnerableFrames {0};   //  frames of hurtbox invulnerability
     bool noJumpsDisabled;           //  disabled until landing because of running out of jumps
