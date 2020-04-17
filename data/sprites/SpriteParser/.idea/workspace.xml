@@ -2,16 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="2349ddb4-96f3-4450-a885-5dac0c7a4023" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/../../../.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../../.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../../cmake-build-debug/CMakeFiles/EE319K_Final_Project_Initial_Testing.dir/CXX.includecache" beforeDir="false" afterPath="$PROJECT_DIR$/../../../cmake-build-debug/CMakeFiles/EE319K_Final_Project_Initial_Testing.dir/CXX.includecache" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../../cmake-build-debug/CMakeFiles/EE319K_Final_Project_Initial_Testing.dir/kirby.cpp.obj" beforeDir="false" afterPath="$PROJECT_DIR$/../../../cmake-build-debug/CMakeFiles/EE319K_Final_Project_Initial_Testing.dir/kirby.cpp.obj" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../../cmake-build-debug/CMakeFiles/EE319K_Final_Project_Initial_Testing.dir/main.cpp.obj" beforeDir="false" afterPath="$PROJECT_DIR$/../../../cmake-build-debug/CMakeFiles/EE319K_Final_Project_Initial_Testing.dir/main.cpp.obj" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../../cmake-build-debug/CMakeFiles/EE319K_Final_Project_Initial_Testing.dir/objects.a" beforeDir="false" afterPath="$PROJECT_DIR$/../../../cmake-build-debug/CMakeFiles/EE319K_Final_Project_Initial_Testing.dir/objects.a" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../../cmake-build-debug/EE319K_Final_Project_Initial_Testing.exe" beforeDir="false" afterPath="$PROJECT_DIR$/../../../cmake-build-debug/EE319K_Final_Project_Initial_Testing.exe" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../../entities.h" beforeDir="false" afterPath="$PROJECT_DIR$/../../../entities.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../../kirby.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/../../../kirby.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../../main.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/../../../main.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/colors.h" beforeDir="false" afterPath="$PROJECT_DIR$/colors.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/misc.txt" beforeDir="false" afterPath="$PROJECT_DIR$/misc.txt" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -138,6 +130,7 @@
       <workItem from="1586031558894" duration="1089000" />
       <workItem from="1586481309550" duration="22000" />
       <workItem from="1586923822807" duration="2927000" />
+      <workItem from="1587090060801" duration="391000" />
     </task>
     <servers />
   </component>
@@ -158,7 +151,7 @@
     </option>
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
-    <SUITE FILE_PATH="coverage/SpriteParser$GIFParser.coverage" NAME="GIFParser Coverage Results" MODIFIED="1587090067908" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/SpriteParser$GIFParser.coverage" NAME="GIFParser Coverage Results" MODIFIED="1587090447573" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/SpriteParser$PNGParser.coverage" NAME="PNGParser Coverage Results" MODIFIED="1586923899521" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
   </component>
 </project>
