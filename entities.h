@@ -158,7 +158,6 @@ protected:
     uint8_t player;             //  1 or 2
     double damage;            //  percentage between 0% and 999%
     int16_t action, l_action;
-    uint8_t stocksRemaining;
 
     uint8_t animationIndex;     //  index of animation
     uint8_t frameIndex{0};      //  current frame index of current animation
@@ -166,8 +165,7 @@ protected:
     bool continuous{false};
     bool mirrored, l_mirrored;
 
-    bool dead;
-    long long deathTime;
+    long long deathTime{0};
 
     long long disabledFrames {0};   //  frames before making a new move
     long long invulnerableFrames {0};   //  frames of hurtbox invulnerability
@@ -196,6 +194,9 @@ protected:
 
 public:
     Player() {}
+
+    bool dead;
+    uint8_t stocksRemaining;
 
     Hitbox hitbox = Hitbox(0, 0, 0, 0);
 
@@ -346,7 +347,7 @@ public:
                                   6, 3.8, 4.9, -1);
     Hurtbox neutralAir = Hurtbox(true,0, 15, SHAPE_CIRCLE,
                                  14, 1,
-                                 6, 1.9, 3.0, -1);
+                                 4, 1.9, 3.0, -1);
     Hurtbox forwardAir = Hurtbox(true,18, 13, SHAPE_CIRCLE,
                                  8, 1,
                                  4.5, 3.3, 2.0, -1);

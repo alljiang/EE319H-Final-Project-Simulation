@@ -19,72 +19,9 @@ void Kirby::controlLoop(double joyH, double joyV, bool btnA, bool btnB, bool shi
     SpriteSendable s;
 
     //  check if dead
-    if(dead || x < -40 || x > 360 || y < -40 || y > 280) {
-        if(!dead) {
-            dead = true;
-            deathTime = currentTime;
-            frameIndex = 0;
-            frameLengthCounter = 0;
-            if(stocksRemaining > 0) stocksRemaining--;
-        }
-        printf("%d\n", frameIndex);
-        if(frameIndex < 17) {
-            s.charIndex = 3;
-            s.framePeriod = 1;
-            s.persistent = false;
-            s.continuous = false;
-            s.layer = LAYER_PERCENTAGE;
-            s.mirrored = false;
-
-            /*
-            frameExtension = 1;
-            if(frameLengthCounter++ >= frameExtension) {
-                frameLengthCounter = 0;
-                s.frame = 0;
-                frameIndex++;
-            }
-
-            //  choose which blast side to use
-            if(y > 280) {
-                //  top
-                s.animationIndex = 3;
-                s.x = (int16_t) x;
-                s.y = (int16_t) 182;
-
-                if(x < 10) s.x = 10;
-                if(x > 310) s.x = 310;
-            }
-            else if(y < -40) {
-                //  bottom
-                s.animationIndex = 0;
-                s.x = (int16_t) x;
-                s.y = (int16_t) 0;
-
-                if(x < 10) s.x = 10;
-                if(x > 310) s.x = 310;
-            }
-            else if(x < -40) {
-                //  left
-                s.animationIndex = 1;
-                s.x = 0;
-                s.y = (int16_t) y;
-
-                if(y < 10) s.y = 10;
-                if(y > 230) s.x = 230;
-            }
-            else {
-                //  right
-                s.animationIndex = 2;
-                s.x = 261;
-                s.y = (int16_t) y;
-
-                if(y < 10) s.y = 10;
-                if(y > 230) s.x = 230;
-            }
-            UART_sendAnimation(s);
-             */
-        }
-        else if(currentTime - deathTime > 2000) {
+    if(dead) {
+        if(deathTime == 0) deathTime = currentTime;
+        else if(currentTime - deathTime > 1000) {
             //  respawn
 
             //  reset
@@ -94,6 +31,10 @@ void Kirby::controlLoop(double joyH, double joyV, bool btnA, bool btnB, bool shi
             l_btnB = 0;
             l_shield = 0;
             l_mirrored = 0;
+            frameIndex = 0;
+            frameLengthCounter = 0;
+            deathTime = 0;
+            jumpsUsed = 0;
 
             y = 240;
             x = 159;
@@ -1764,7 +1705,7 @@ void Kirby::collide(Hurtbox *hurtbox, Player *otherPlayer) {
         damage += hurtbox->damage;
 
         double knockbackMultiplier = damage / 200. + 1.0;
-        printf("%0.1f\n", damage);
+//        printf("%0.1f\n", damage);
 
         if (otherPlayer->x < x) xVel = hurtbox->xKnockback * knockbackMultiplier;
         else xVel = -hurtbox->xKnockback * knockbackMultiplier;
