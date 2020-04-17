@@ -20,7 +20,7 @@ import os
 
 #   CONFIG
 backgroundColor = 0x00FF00
-characterName = "kirby"
+characterName = "misc"
 imageDirectory = "./gif-" + characterName + "/"
 
 # color index list
