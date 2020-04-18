@@ -14,6 +14,7 @@
 #include "stage.h"
 #include "colors_fdst.h"
 #include "colors_tower.h"
+#include "Audio.h"
 
 using namespace std;
 using namespace chrono;
@@ -28,7 +29,9 @@ HitboxManager hitboxManager;
 Kirby k1;
 Kirby k2;
 
-bool quit;
+bool quit, countdown, gameOver;
+uint8_t frameIndex, frameLength;
+long long loopsCompleted;
 
 float x = 0;
 float y = 0;
@@ -40,16 +43,14 @@ const double UPDATERATE = 20;   // 20
 const uint8_t stageToPlay = STAGE_FINALDESTINATION;
 //const uint8_t stageToPlay = STAGE_TOWER;
 
-//  runs once at beginning
-void startup() {
-//    /*
-    animator_initialize();
-
+void resetPlayers() {
     p1 = &k1;
     p1->setPlayer(1);
     p1->setX(stage.getStartX(1));
     p1->setY(stage.getStartY(1));
+    p1->setMirrored(false);
     p1->setStocks(3);
+    p1->reset();
 
     p2 = &k2;
     k2.setPlayer(2);
@@ -57,12 +58,32 @@ void startup() {
     p2->setY(stage.getStartY(2));
     p2->setMirrored(true);
     p2->setStocks(3);
+    p2->reset();
+
+    countdown = true;
+    loopsCompleted = 0;
+
+    frameIndex = 0;
+    frameLength = 0;
+
+    p1->controlLoop(0,0,0,0,0, &stage, &hitboxManager);
+    if(PLAYER2) p2->controlLoop(0,0,0,0,0, &stage, &hitboxManager);
+    UART_commandUpdate();
+}
+
+//  runs once at beginning
+void startup() {
+//    /*
+    animator_initialize();
+
+    resetPlayers();
 
     if(PLAYER2) hitboxManager.initialize(p1, p2);
     else hitboxManager.initialize(p1);
 
     if(stageToPlay == STAGE_FINALDESTINATION) animator_setBackgroundColors(colors_fdst);
     else if(stageToPlay == STAGE_TOWER) animator_setBackgroundColors(colors_tower);
+
     stage.initialize(stageToPlay, &hitboxManager);
     animator_readPersistentSprite(persistentSprites[stageToPlay], 0, 0);
 
@@ -75,12 +96,9 @@ void startup() {
 
 //  continually loops
 uint32_t  t1 = 0;
-uint32_t tt1 = 0;
-uint8_t frame = 0;
-
 void loop() {
-//    return;
     if(millis() - t1 >= 1./UPDATERATE*1000) {
+        SpriteSendable s;
         uint32_t sum = Flash_SPICounter + ILI9341_SPICounter;
         double max = 1000000./UPDATERATE;
 //        printf("SPI Bus Usage: %0.2f%\n", sum/max*100);
@@ -88,39 +106,112 @@ void loop() {
         ILI9341_SPICounter = 0;
 
         t1 = millis();
-        stage.update();
-        p1->controlLoop(
-                getJoystick_h(1), getJoystick_v(1),
-                getBtn_a(1), getBtn_b(1),
-                getBtn_l(1) || getBtn_r(1), &stage,
-                &hitboxManager
-                );
 
-        if(PLAYER2) {
-            p2->controlLoop(
-                    getJoystick_h(2), getJoystick_v(2),
-                    getBtn_a(2), getBtn_b(2),
-                    getBtn_l(2) || getBtn_r(2), &stage,
+        if(countdown) {
+            if(frameLength++ == 1) {
+                frameIndex++;
+                frameLength = 0;
+            }
+            if(frameIndex == 0) {
+                Audio_play(1, 1.0);     // play countdown
+            }
+            if(frameIndex == 36) {
+                countdown = false;
+            }
+            else {
+                s.x = 100;
+                s.y = 100;
+                s.charIndex = 3;
+                s.framePeriod = 1;
+                s.animationIndex = 9;
+                s.frame = frameIndex;
+                s.persistent = false;
+                s.continuous = false;
+                s.layer = LAYER_OVERLAY;
+                s.mirrored = false;
+                UART_sendAnimation(s);
+            }
+        }
+
+        stage.update();
+
+        if(gameOver) {
+            if(p2->dead) p1->controlLoop(0,0,0,0,0, &stage, &hitboxManager);
+            else if(PLAYER2 && p1->dead) p2->controlLoop(0,0,0,0,0, &stage, &hitboxManager);
+        }
+        else if(countdown || gameOver) {
+            //  freeze players
+            p1->controlLoop(0,0,0,0,0, &stage, &hitboxManager);
+            if(PLAYER2) p2->controlLoop(0,0,0,0,0, &stage, &hitboxManager);
+        } else {
+
+            p1->controlLoop(
+                    getJoystick_h(1), getJoystick_v(1),
+                    getBtn_a(1), getBtn_b(1),
+                    getBtn_l(1) || getBtn_r(1), &stage,
                     &hitboxManager
             );
+
+            if (PLAYER2) {
+                p2->controlLoop(
+                        getJoystick_h(2), getJoystick_v(2),
+                        getBtn_a(2), getBtn_b(2),
+                        getBtn_l(2) || getBtn_r(2), &stage,
+                        &hitboxManager
+                );
+            }
         }
 
-        bool updateScore = false;
-        if(!p1->dead && (p1->x < -40 || p1->x > 360 || p1->y < -40 || p1->y > 280)) {
+        bool updateScore;
+        if(!p1->dead && !gameOver && (p1->x < -40 || p1->x > 360 || p1->y < -40 || p1->y > 280)) {
             p1->dead = true;
-            updateScore = true;
-
-            if(p1->stocksRemaining > 0) p1->stocksRemaining--;
+            if(p1->stocksRemaining > 0) {
+                p1->stocksRemaining--;
+                updateScore = true;
+            }
+            else {
+                gameOver = true;
+                frameIndex = 0;
+                frameLength = 0;
+            }
         }
-        if(!p2->dead && (p2->x < -40 || p2->x > 360 || p2->y < -40 || p2->y > 280)) {
+        if(!p2->dead && !gameOver && (p2->x < -40 || p2->x > 360 || p2->y < -40 || p2->y > 280)) {
             p2->dead = true;
-            updateScore = true;
-
-            if(p2->stocksRemaining > 0) p2->stocksRemaining--;
+            if(p2->stocksRemaining > 0) {
+                p2->stocksRemaining--;
+                updateScore = true;
+            }
+            else {
+                gameOver = true;
+                frameIndex = 0;
+                frameLength = 0;
+            }
         }
 
-        if(updateScore) {
-            SpriteSendable s;
+        if(gameOver) {
+            if(frameLength++ == 1) {
+                frameIndex++;
+                frameLength = 0;
+            }
+            if(frameIndex == 25) {
+                gameOver = false;
+                resetPlayers();
+            }
+            else {
+                s.x = 80;
+                s.y = 120;
+                s.charIndex = 3;
+                s.framePeriod = 1;
+                s.animationIndex = 10;
+                s.frame = frameIndex;
+                s.persistent = false;
+                s.continuous = false;
+                s.layer = LAYER_OVERLAY;
+                s.mirrored = false;
+                UART_sendAnimation(s);
+            }
+        }
+        else if(updateScore) {
             s.charIndex = 3;
             s.framePeriod = 20;
             s.frame = 0;
@@ -152,11 +243,13 @@ void loop() {
         }
 
         if(HITBOXOVERLAY) hitboxManager.clearHitboxOverlay();
-        animator_update();
+        UART_commandUpdate();
 
         if(HITBOXOVERLAY) hitboxManager.displayHitboxesOverlay();
 
         hitboxManager.checkCollisions();
+
+        loopsCompleted++;
     }
     else {
         double timeUsed = millis() - t1;

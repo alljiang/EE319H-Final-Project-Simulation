@@ -109,8 +109,7 @@ for filename in os.listdir(os.getcwd() + imageDirectory):
         for i in range(0, len(frameIndexes)):
             output.write((int(frameIndexes[i]) & 0xFFFFFF).to_bytes(3, byteorder="big", signed=False))
 
-        print(filename)
-        print(frameIndexes)
+        print(filename + "\t" + str(len(frameIndexes)))
         for i in range(0, len(frames)):
             frame = compressed_rgb[i]
 

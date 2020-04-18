@@ -2,6 +2,7 @@
 // Created by Allen on 2/11/2020.
 //
 
+#include <cstdio>
 #include "UART.h"
 #include "metadata.h"
 #include "animator.h"
@@ -24,4 +25,8 @@ void UART_sendAnimation(struct SpriteSendable sendable) {
 
 void UART_readCharacterSDCard(uint8_t charIndex) {
     animator_readCharacterSDCard(charIndex);
+}
+
+void UART_commandUpdate() {
+    animator_update();
 }

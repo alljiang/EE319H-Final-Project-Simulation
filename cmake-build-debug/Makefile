@@ -122,6 +122,33 @@ EE319K_Final_Project_Initial_Testing/fast:
 	$(MAKE) -f CMakeFiles\EE319K_Final_Project_Initial_Testing.dir\build.make CMakeFiles/EE319K_Final_Project_Initial_Testing.dir/build
 .PHONY : EE319K_Final_Project_Initial_Testing/fast
 
+Audio.obj: Audio.cpp.obj
+
+.PHONY : Audio.obj
+
+# target to build an object file
+Audio.cpp.obj:
+	$(MAKE) -f CMakeFiles\EE319K_Final_Project_Initial_Testing.dir\build.make CMakeFiles/EE319K_Final_Project_Initial_Testing.dir/Audio.cpp.obj
+.PHONY : Audio.cpp.obj
+
+Audio.i: Audio.cpp.i
+
+.PHONY : Audio.i
+
+# target to preprocess a source file
+Audio.cpp.i:
+	$(MAKE) -f CMakeFiles\EE319K_Final_Project_Initial_Testing.dir\build.make CMakeFiles/EE319K_Final_Project_Initial_Testing.dir/Audio.cpp.i
+.PHONY : Audio.cpp.i
+
+Audio.s: Audio.cpp.s
+
+.PHONY : Audio.s
+
+# target to generate assembly for a file
+Audio.cpp.s:
+	$(MAKE) -f CMakeFiles\EE319K_Final_Project_Initial_Testing.dir\build.make CMakeFiles/EE319K_Final_Project_Initial_Testing.dir/Audio.cpp.s
+.PHONY : Audio.cpp.s
+
 Flash.obj: Flash.cpp.obj
 
 .PHONY : Flash.obj
@@ -428,6 +455,9 @@ help:
 	@echo ... EE319K_Final_Project_Initial_Testing
 	@echo ... edit_cache
 	@echo ... rebuild_cache
+	@echo ... Audio.obj
+	@echo ... Audio.i
+	@echo ... Audio.s
 	@echo ... Flash.obj
 	@echo ... Flash.i
 	@echo ... Flash.s
