@@ -10,5 +10,6 @@
 
 extern void UART_readCharacterSDCard(uint8_t charIndex);
 extern void UART_sendAnimation(struct SpriteSendable sendable);
+extern void UART_commandUpdate();
 
 #endif //EE319K_FINAL_PROJECT_INITIAL_TESTING_UART_H

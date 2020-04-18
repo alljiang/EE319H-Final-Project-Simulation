@@ -26,3 +26,7 @@ void UART_sendAnimation(struct SpriteSendable sendable) {
 void UART_readCharacterSDCard(uint8_t charIndex) {
     animator_readCharacterSDCard(charIndex);
 }
+
+void UART_commandUpdate() {
+    animator_update();
+}

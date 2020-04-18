@@ -14,6 +14,7 @@
 #include "stage.h"
 #include "colors_fdst.h"
 #include "colors_tower.h"
+#include "Audio.h"
 
 using namespace std;
 using namespace chrono;
@@ -48,7 +49,7 @@ void resetPlayers() {
     p1->setX(stage.getStartX(1));
     p1->setY(stage.getStartY(1));
     p1->setMirrored(false);
-    p1->setStocks(1);
+    p1->setStocks(3);
     p1->reset();
 
     p2 = &k2;
@@ -56,7 +57,7 @@ void resetPlayers() {
     p2->setX(stage.getStartX(2));
     p2->setY(stage.getStartY(2));
     p2->setMirrored(true);
-    p2->setStocks(1);
+    p2->setStocks(3);
     p2->reset();
 
     countdown = true;
@@ -67,7 +68,7 @@ void resetPlayers() {
 
     p1->controlLoop(0,0,0,0,0, &stage, &hitboxManager);
     if(PLAYER2) p2->controlLoop(0,0,0,0,0, &stage, &hitboxManager);
-    animator_update();
+    UART_commandUpdate();
 }
 
 //  runs once at beginning
@@ -82,6 +83,7 @@ void startup() {
 
     if(stageToPlay == STAGE_FINALDESTINATION) animator_setBackgroundColors(colors_fdst);
     else if(stageToPlay == STAGE_TOWER) animator_setBackgroundColors(colors_tower);
+
     stage.initialize(stageToPlay, &hitboxManager);
     animator_readPersistentSprite(persistentSprites[stageToPlay], 0, 0);
 
@@ -109,6 +111,9 @@ void loop() {
             if(frameLength++ == 1) {
                 frameIndex++;
                 frameLength = 0;
+            }
+            if(frameIndex == 0) {
+                Audio_play(1, 1.0);     // play countdown
             }
             if(frameIndex == 36) {
                 countdown = false;
@@ -193,7 +198,7 @@ void loop() {
                 resetPlayers();
             }
             else {
-                s.x = 90;
+                s.x = 80;
                 s.y = 120;
                 s.charIndex = 3;
                 s.framePeriod = 1;
@@ -204,7 +209,6 @@ void loop() {
                 s.layer = LAYER_OVERLAY;
                 s.mirrored = false;
                 UART_sendAnimation(s);
-                printf("%d\n", frameIndex);
             }
         }
         else if(updateScore) {
@@ -239,7 +243,7 @@ void loop() {
         }
 
         if(HITBOXOVERLAY) hitboxManager.clearHitboxOverlay();
-        animator_update();
+        UART_commandUpdate();
 
         if(HITBOXOVERLAY) hitboxManager.displayHitboxesOverlay();
 

@@ -168,3 +168,5 @@ void stopSDL2() {
     SDL_DestroyWindow(window);
     SDL_Quit();
 }
+
+void ILI9341_init() {}

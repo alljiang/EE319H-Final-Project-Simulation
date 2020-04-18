@@ -34,3 +34,5 @@ void SD_closeFile() {
     if(fp != NULL)
         fclose(fp);
 }
+
+void SD_startSDCard() {}

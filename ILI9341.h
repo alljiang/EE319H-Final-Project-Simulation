@@ -17,6 +17,7 @@ extern void LCD_clearOverlay();
 extern void LCD_drawPixel(uint16_t x, uint16_t y, uint32_t rgb, bool isOverlay);
 extern void LCD_update();
 extern void stopSDL2();
+extern void ILI9341_init();
 
 /*
  *  @brief       Draws a multi-colored line, optimized for efficiency
