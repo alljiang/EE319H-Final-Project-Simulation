@@ -29,6 +29,8 @@ Kirby k1;
 Kirby k2;
 
 bool quit;
+bool countdown;
+uint8_t frameIndex, frameLength;
 
 float x = 0;
 float y = 0;
@@ -58,6 +60,8 @@ void startup() {
     p2->setMirrored(true);
     p2->setStocks(3);
 
+    countdown = true;
+
     if(PLAYER2) hitboxManager.initialize(p1, p2);
     else hitboxManager.initialize(p1);
 
@@ -75,12 +79,9 @@ void startup() {
 
 //  continually loops
 uint32_t  t1 = 0;
-uint32_t tt1 = 0;
-uint8_t frame = 0;
-
 void loop() {
-//    return;
     if(millis() - t1 >= 1./UPDATERATE*1000) {
+        SpriteSendable s;
         uint32_t sum = Flash_SPICounter + ILI9341_SPICounter;
         double max = 1000000./UPDATERATE;
 //        printf("SPI Bus Usage: %0.2f%\n", sum/max*100);
@@ -88,6 +89,30 @@ void loop() {
         ILI9341_SPICounter = 0;
 
         t1 = millis();
+
+        if(countdown) {
+            if(frameLength++ == 2) {
+                frameIndex++;
+                frameLength = 0;
+            }
+            if(frameIndex == 37) {
+                countdown = false;
+            }
+            else {
+                s.x = 130;
+                s.y = 90;
+                s.charIndex = 3;
+                s.framePeriod = 1;
+                s.animationIndex = 9;
+                s.frame = frameIndex;
+                s.persistent = false;
+                s.continuous = false;
+                s.layer = LAYER_OVERLAY;
+                s.mirrored = false;
+                UART_sendAnimation(s);
+            }
+        }
+
         stage.update();
         p1->controlLoop(
                 getJoystick_h(1), getJoystick_v(1),
@@ -120,7 +145,6 @@ void loop() {
         }
 
         if(updateScore) {
-            SpriteSendable s;
             s.charIndex = 3;
             s.framePeriod = 20;
             s.frame = 0;

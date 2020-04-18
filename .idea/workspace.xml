@@ -13,8 +13,17 @@
   <component name="ChangeListManager">
     <list default="true" id="fe664a67-824c-4cd3-aff1-f4bbf75b53a6" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/animator.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/animator.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/colors_misc.h" beforeDir="false" afterPath="$PROJECT_DIR$/colors_misc.h" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/data/sprites/SpriteParser/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/data/sprites/SpriteParser/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/sprites/SpriteParser/GIFParser.py" beforeDir="false" afterPath="$PROJECT_DIR$/data/sprites/SpriteParser/GIFParser.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/sprites/SpriteParser/colors_misc.h" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/sprites/SpriteParser/gif-misc/321go.gif" beforeDir="false" afterPath="$PROJECT_DIR$/data/sprites/SpriteParser/gif-misc/321go.gif" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/sprites/SpriteParser/misc.txt" beforeDir="false" afterPath="$PROJECT_DIR$/data/sprites/SpriteParser/misc.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/sprites/misc.txt" beforeDir="false" afterPath="$PROJECT_DIR$/data/sprites/misc.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/sprites/misc/gif/321go.gif" beforeDir="false" afterPath="$PROJECT_DIR$/data/sprites/misc/gif/321go.gif" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/sprites/misc/piskel/321gobig.piskel" beforeDir="false" afterPath="$PROJECT_DIR$/data/sprites/misc/piskel/321gobig.piskel" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/main.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/main.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/metadata.h" beforeDir="false" afterPath="$PROJECT_DIR$/metadata.h" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -49,14 +58,14 @@
     <property name="settings.editor.selected.configurable" value="CompDBSettings" />
   </component>
   <component name="RecentsManager">
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="C:\Users\Allen\Documents\GitHub\EE319H-Final-Project-Simulation\data\sprites" />
-      <recent name="C:\Users\Allen\Documents\GitHub\EE319H-Final-Project-Simulation\data\sprites\misc" />
-    </key>
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\Users\Allen\Documents\GitHub\EE319H-Final-Project-Simulation\data\sprites" />
       <recent name="C:\Users\Allen\Documents\GitHub\EE319H-Final-Project-Simulation" />
       <recent name="C:\Users\Allen\Documents\GitHub\EE319H-Final-Project-Simulation\data" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\Allen\Documents\GitHub\EE319H-Final-Project-Simulation\data\sprites" />
+      <recent name="C:\Users\Allen\Documents\GitHub\EE319H-Final-Project-Simulation\data\sprites\misc" />
     </key>
   </component>
   <component name="RunDashboard">
