@@ -31,6 +31,7 @@ Kirby k2;
 bool quit;
 bool countdown;
 uint8_t frameIndex, frameLength;
+long long loopsCompleted;
 
 float x = 0;
 float y = 0;
@@ -61,6 +62,7 @@ void startup() {
     p2->setStocks(3);
 
     countdown = true;
+    loopsCompleted = 0;
 
     if(PLAYER2) hitboxManager.initialize(p1, p2);
     else hitboxManager.initialize(p1);
@@ -91,16 +93,16 @@ void loop() {
         t1 = millis();
 
         if(countdown) {
-            if(frameLength++ == 2) {
+            if(frameLength++ == 1) {
                 frameIndex++;
                 frameLength = 0;
             }
-            if(frameIndex == 37) {
+            if(frameIndex == 36) {
                 countdown = false;
             }
             else {
-                s.x = 130;
-                s.y = 90;
+                s.x = 100;
+                s.y = 100;
                 s.charIndex = 3;
                 s.framePeriod = 1;
                 s.animationIndex = 9;
@@ -114,20 +116,28 @@ void loop() {
         }
 
         stage.update();
-        p1->controlLoop(
-                getJoystick_h(1), getJoystick_v(1),
-                getBtn_a(1), getBtn_b(1),
-                getBtn_l(1) || getBtn_r(1), &stage,
-                &hitboxManager
-                );
 
-        if(PLAYER2) {
-            p2->controlLoop(
-                    getJoystick_h(2), getJoystick_v(2),
-                    getBtn_a(2), getBtn_b(2),
-                    getBtn_l(2) || getBtn_r(2), &stage,
+        if(countdown) {
+            //  freeze players
+            p1->controlLoop(0,0,0,0,0, &stage, &hitboxManager);
+            if(PLAYER2) p2->controlLoop(0,0,0,0,0, &stage, &hitboxManager);
+        } else {
+
+            p1->controlLoop(
+                    getJoystick_h(1), getJoystick_v(1),
+                    getBtn_a(1), getBtn_b(1),
+                    getBtn_l(1) || getBtn_r(1), &stage,
                     &hitboxManager
             );
+
+            if (PLAYER2) {
+                p2->controlLoop(
+                        getJoystick_h(2), getJoystick_v(2),
+                        getBtn_a(2), getBtn_b(2),
+                        getBtn_l(2) || getBtn_r(2), &stage,
+                        &hitboxManager
+                );
+            }
         }
 
         bool updateScore = false;
@@ -181,6 +191,8 @@ void loop() {
         if(HITBOXOVERLAY) hitboxManager.displayHitboxesOverlay();
 
         hitboxManager.checkCollisions();
+
+        loopsCompleted++;
     }
     else {
         double timeUsed = millis() - t1;

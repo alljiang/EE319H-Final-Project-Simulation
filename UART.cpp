@@ -2,6 +2,7 @@
 // Created by Allen on 2/11/2020.
 //
 
+#include <cstdio>
 #include "UART.h"
 #include "metadata.h"
 #include "animator.h"
