@@ -28,8 +28,7 @@ HitboxManager hitboxManager;
 Kirby k1;
 Kirby k2;
 
-bool quit;
-bool countdown;
+bool quit, countdown, gameOver;
 uint8_t frameIndex, frameLength;
 long long loopsCompleted;
 
@@ -43,26 +42,40 @@ const double UPDATERATE = 20;   // 20
 const uint8_t stageToPlay = STAGE_FINALDESTINATION;
 //const uint8_t stageToPlay = STAGE_TOWER;
 
-//  runs once at beginning
-void startup() {
-//    /*
-    animator_initialize();
-
+void resetPlayers() {
     p1 = &k1;
     p1->setPlayer(1);
     p1->setX(stage.getStartX(1));
     p1->setY(stage.getStartY(1));
-    p1->setStocks(3);
+    p1->setMirrored(false);
+    p1->setStocks(1);
+    p1->reset();
 
     p2 = &k2;
     k2.setPlayer(2);
     p2->setX(stage.getStartX(2));
     p2->setY(stage.getStartY(2));
     p2->setMirrored(true);
-    p2->setStocks(3);
+    p2->setStocks(1);
+    p2->reset();
 
     countdown = true;
     loopsCompleted = 0;
+
+    frameIndex = 0;
+    frameLength = 0;
+
+    p1->controlLoop(0,0,0,0,0, &stage, &hitboxManager);
+    if(PLAYER2) p2->controlLoop(0,0,0,0,0, &stage, &hitboxManager);
+    animator_update();
+}
+
+//  runs once at beginning
+void startup() {
+//    /*
+    animator_initialize();
+
+    resetPlayers();
 
     if(PLAYER2) hitboxManager.initialize(p1, p2);
     else hitboxManager.initialize(p1);
@@ -117,7 +130,11 @@ void loop() {
 
         stage.update();
 
-        if(countdown) {
+        if(gameOver) {
+            if(p2->dead) p1->controlLoop(0,0,0,0,0, &stage, &hitboxManager);
+            else if(PLAYER2 && p1->dead) p2->controlLoop(0,0,0,0,0, &stage, &hitboxManager);
+        }
+        else if(countdown || gameOver) {
             //  freeze players
             p1->controlLoop(0,0,0,0,0, &stage, &hitboxManager);
             if(PLAYER2) p2->controlLoop(0,0,0,0,0, &stage, &hitboxManager);
@@ -140,21 +157,57 @@ void loop() {
             }
         }
 
-        bool updateScore = false;
-        if(!p1->dead && (p1->x < -40 || p1->x > 360 || p1->y < -40 || p1->y > 280)) {
+        bool updateScore;
+        if(!p1->dead && !gameOver && (p1->x < -40 || p1->x > 360 || p1->y < -40 || p1->y > 280)) {
             p1->dead = true;
-            updateScore = true;
-
-            if(p1->stocksRemaining > 0) p1->stocksRemaining--;
+            if(p1->stocksRemaining > 0) {
+                p1->stocksRemaining--;
+                updateScore = true;
+            }
+            else {
+                gameOver = true;
+                frameIndex = 0;
+                frameLength = 0;
+            }
         }
-        if(!p2->dead && (p2->x < -40 || p2->x > 360 || p2->y < -40 || p2->y > 280)) {
+        if(!p2->dead && !gameOver && (p2->x < -40 || p2->x > 360 || p2->y < -40 || p2->y > 280)) {
             p2->dead = true;
-            updateScore = true;
-
-            if(p2->stocksRemaining > 0) p2->stocksRemaining--;
+            if(p2->stocksRemaining > 0) {
+                p2->stocksRemaining--;
+                updateScore = true;
+            }
+            else {
+                gameOver = true;
+                frameIndex = 0;
+                frameLength = 0;
+            }
         }
 
-        if(updateScore) {
+        if(gameOver) {
+            if(frameLength++ == 1) {
+                frameIndex++;
+                frameLength = 0;
+            }
+            if(frameIndex == 25) {
+                gameOver = false;
+                resetPlayers();
+            }
+            else {
+                s.x = 90;
+                s.y = 120;
+                s.charIndex = 3;
+                s.framePeriod = 1;
+                s.animationIndex = 10;
+                s.frame = frameIndex;
+                s.persistent = false;
+                s.continuous = false;
+                s.layer = LAYER_OVERLAY;
+                s.mirrored = false;
+                UART_sendAnimation(s);
+                printf("%d\n", frameIndex);
+            }
+        }
+        else if(updateScore) {
             s.charIndex = 3;
             s.framePeriod = 20;
             s.frame = 0;
