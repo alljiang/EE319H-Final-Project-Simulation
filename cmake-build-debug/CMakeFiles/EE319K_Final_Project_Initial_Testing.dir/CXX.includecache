@@ -610,10 +610,6 @@ C:/Program Files/mingw-w64/x86_64-8.1.0-posix-seh-rt_v6-rev0/mingw64/include/SDL
 
 C:/Program Files/mingw-w64/x86_64-8.1.0-posix-seh-rt_v6-rev0/mingw64/include/SDL2/close_code.h
 
-C:/Users/Allen/Documents/GitHub/EE319H-Final-Project-Simulation/Audio.cpp
-Audio.h
-C:/Users/Allen/Documents/GitHub/EE319H-Final-Project-Simulation/Audio.h
-
 C:/Users/Allen/Documents/GitHub/EE319H-Final-Project-Simulation/Audio.h
 stdint.h
 -
@@ -624,43 +620,11 @@ stdbool.h
 
 C:/Users/Allen/Documents/GitHub/EE319H-Final-Project-Simulation/Flash.h
 
-C:/Users/Allen/Documents/GitHub/EE319H-Final-Project-Simulation/ILI9341.cpp
-cstdlib
--
-cstdio
--
-SDL.h
-C:/Users/Allen/Documents/GitHub/EE319H-Final-Project-Simulation/SDL.h
-fstream
--
-iostream
--
-ILI9341.h
-C:/Users/Allen/Documents/GitHub/EE319H-Final-Project-Simulation/ILI9341.h
-metadata.h
-C:/Users/Allen/Documents/GitHub/EE319H-Final-Project-Simulation/metadata.h
-utils.h
-C:/Users/Allen/Documents/GitHub/EE319H-Final-Project-Simulation/utils.h
-
 C:/Users/Allen/Documents/GitHub/EE319H-Final-Project-Simulation/ILI9341.h
 cstdlib
 -
 cstdint
 -
-
-C:/Users/Allen/Documents/GitHub/EE319H-Final-Project-Simulation/SD.cpp
-fstream
--
-cstdint
--
-cstdlib
--
-cstdio
--
-SD.h
-C:/Users/Allen/Documents/GitHub/EE319H-Final-Project-Simulation/SD.h
-
-C:/Users/Allen/Documents/GitHub/EE319H-Final-Project-Simulation/SD.h
 
 C:/Users/Allen/Documents/GitHub/EE319H-Final-Project-Simulation/UART.h
 animator.h
@@ -668,59 +632,11 @@ C:/Users/Allen/Documents/GitHub/EE319H-Final-Project-Simulation/animator.h
 cstdint
 -
 
-C:/Users/Allen/Documents/GitHub/EE319H-Final-Project-Simulation/animator.cpp
-cstring
--
-cstdint
--
-cstdio
--
-cstdlib
--
-animator.h
-C:/Users/Allen/Documents/GitHub/EE319H-Final-Project-Simulation/animator.h
-metadata.h
-C:/Users/Allen/Documents/GitHub/EE319H-Final-Project-Simulation/metadata.h
-Flash.h
-C:/Users/Allen/Documents/GitHub/EE319H-Final-Project-Simulation/Flash.h
-SD.h
-C:/Users/Allen/Documents/GitHub/EE319H-Final-Project-Simulation/SD.h
-utils.h
-C:/Users/Allen/Documents/GitHub/EE319H-Final-Project-Simulation/utils.h
-ILI9341.h
-C:/Users/Allen/Documents/GitHub/EE319H-Final-Project-Simulation/ILI9341.h
-colors_kirby.h
-C:/Users/Allen/Documents/GitHub/EE319H-Final-Project-Simulation/colors_kirby.h
-colors_misc.h
-C:/Users/Allen/Documents/GitHub/EE319H-Final-Project-Simulation/colors_misc.h
-cmath
--
-
 C:/Users/Allen/Documents/GitHub/EE319H-Final-Project-Simulation/animator.h
 cstdint
 -
-
-C:/Users/Allen/Documents/GitHub/EE319H-Final-Project-Simulation/collider.cpp
-cstdlib
--
-cstdio
--
-entities.h
-C:/Users/Allen/Documents/GitHub/EE319H-Final-Project-Simulation/entities.h
-utils.h
-C:/Users/Allen/Documents/GitHub/EE319H-Final-Project-Simulation/utils.h
-ILI9341.h
-C:/Users/Allen/Documents/GitHub/EE319H-Final-Project-Simulation/ILI9341.h
 
 C:/Users/Allen/Documents/GitHub/EE319H-Final-Project-Simulation/colors_fdst.h
-stdint.h
--
-
-C:/Users/Allen/Documents/GitHub/EE319H-Final-Project-Simulation/colors_kirby.h
-stdint.h
--
-
-C:/Users/Allen/Documents/GitHub/EE319H-Final-Project-Simulation/colors_misc.h
 stdint.h
 -
 
