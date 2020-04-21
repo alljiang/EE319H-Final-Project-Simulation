@@ -30,10 +30,10 @@
 
 #define CHARACTERS  4
 
-const char characterNames[CHARACTERS][15] = {
+const char characterNames[CHARACTERS][14] = {
         {"kirby"},
-        {"marth"},
-        {"jigglypuff"},
+        {"gameandwatch"},
+        {"valvano"},
         {"misc"}
 };
 
@@ -95,6 +95,48 @@ const char animations[CHARACTERS][64][12] = {
                                                 {""},
         },
         {
+                /*  0   */                      {"rest"},   //  1 + 1
+                                                {"walk"},
+                                                {"dash"},
+                                                {"jump"},
+                                                {"djump"},
+                                                {"fall"},
+                                                {"neuatk"},
+                                                {""},
+                                                {""},
+                                                {""},
+                /*  10  */                      {"ftilt"},
+                                                {"utilt"},
+                                                {"dtilt"},
+                                                {"dashatk"},
+                                                {"fsmash"},
+                                                {"dsmash"},
+                                                {"usmash"},
+                                                {""},
+                                                {""},
+                                                {""},
+                /*  20  */                      {"nair"},
+                                                {"fair"},
+                                                {"bair"},
+                                                {"dair"},
+                                                {""},
+                                                {""},
+                                                {""},
+                                                {""},
+                                                {""},
+                                                {""},
+                /*  30  */                      {"neub"},
+                                                {"neubproj"},
+                                                {"sideb"},
+                                                {"sidebnum"},
+                                                {"downb"},
+                                                {"downbproj"},
+                                                {"upb"},
+                                                {"upbfall"},
+                                                {""},
+                                                {""},
+                /*  40  */                      {"hurt"},
+                                                {"shield"},
 
         },
         {

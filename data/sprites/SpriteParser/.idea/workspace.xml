@@ -2,8 +2,291 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="2349ddb4-96f3-4450-a885-5dac0c7a4023" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/colors_gameandwatch.h" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/gameandwatch.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/gif-gameandwatch/bair.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/gif-gameandwatch/dair.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/gif-gameandwatch/dash.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/gif-gameandwatch/dashatk.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/gif-gameandwatch/djump.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/gif-gameandwatch/downb.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/gif-gameandwatch/downbproj.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/gif-gameandwatch/dsmash.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/gif-gameandwatch/dtilt.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/gif-gameandwatch/fair.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/gif-gameandwatch/fall.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/gif-gameandwatch/fsmash.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/gif-gameandwatch/ftilt.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/gif-gameandwatch/hurt.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/gif-gameandwatch/jump.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/gif-gameandwatch/neuatk.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/gif-gameandwatch/neub.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/gif-gameandwatch/neubproj.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/gif-gameandwatch/rest.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/gif-gameandwatch/shield.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/gif-gameandwatch/sideb.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/gif-gameandwatch/sidebnum.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/gif-gameandwatch/uair.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/gif-gameandwatch/upb.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/gif-gameandwatch/upbfall.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/gif-gameandwatch/uptilt.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/gif-gameandwatch/usmash.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/gif-gameandwatch/walk.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../gameandwatch/cropped/0.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../gameandwatch/cropped/1.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../gameandwatch/cropped/10.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../gameandwatch/cropped/100.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../gameandwatch/cropped/101.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../gameandwatch/cropped/102.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../gameandwatch/cropped/103.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../gameandwatch/cropped/104.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../gameandwatch/cropped/105.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../gameandwatch/cropped/106.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../gameandwatch/cropped/107.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../gameandwatch/cropped/108.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../gameandwatch/cropped/109.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../gameandwatch/cropped/11.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../gameandwatch/cropped/110.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../gameandwatch/cropped/111.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../gameandwatch/cropped/112.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../gameandwatch/cropped/113.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../gameandwatch/cropped/114.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../gameandwatch/cropped/115.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../gameandwatch/cropped/116.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../gameandwatch/cropped/117.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../gameandwatch/cropped/118.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../gameandwatch/cropped/119.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../gameandwatch/cropped/12.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../gameandwatch/cropped/120.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../gameandwatch/cropped/121.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../gameandwatch/cropped/122.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../gameandwatch/cropped/123.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../gameandwatch/cropped/124.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../gameandwatch/cropped/125.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../gameandwatch/cropped/126.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../gameandwatch/cropped/127.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../gameandwatch/cropped/128.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../gameandwatch/cropped/129.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../gameandwatch/cropped/13.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../gameandwatch/cropped/130.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../gameandwatch/cropped/131.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../gameandwatch/cropped/132.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../gameandwatch/cropped/133.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../gameandwatch/cropped/134.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../gameandwatch/cropped/135.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../gameandwatch/cropped/136.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../gameandwatch/cropped/137.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../gameandwatch/cropped/138.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../gameandwatch/cropped/139.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../gameandwatch/cropped/14.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../gameandwatch/cropped/140.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../gameandwatch/cropped/141.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../gameandwatch/cropped/142.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../gameandwatch/cropped/143.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../gameandwatch/cropped/144.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../gameandwatch/cropped/145.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../gameandwatch/cropped/146.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../gameandwatch/cropped/147.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../gameandwatch/cropped/148.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../gameandwatch/cropped/149.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../gameandwatch/cropped/15.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../gameandwatch/cropped/150.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../gameandwatch/cropped/151.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../gameandwatch/cropped/152.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../gameandwatch/cropped/153.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../gameandwatch/cropped/154.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../gameandwatch/cropped/155.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../gameandwatch/cropped/156.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../gameandwatch/cropped/157.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../gameandwatch/cropped/158.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../gameandwatch/cropped/159.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../gameandwatch/cropped/16.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../gameandwatch/cropped/160.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../gameandwatch/cropped/161.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../gameandwatch/cropped/162.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../gameandwatch/cropped/163.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../gameandwatch/cropped/164.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../gameandwatch/cropped/165.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../gameandwatch/cropped/166.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../gameandwatch/cropped/167.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../gameandwatch/cropped/168.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../gameandwatch/cropped/169.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../gameandwatch/cropped/17.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../gameandwatch/cropped/170.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../gameandwatch/cropped/171.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../gameandwatch/cropped/172.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../gameandwatch/cropped/173.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../gameandwatch/cropped/174.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../gameandwatch/cropped/175.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../gameandwatch/cropped/176.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../gameandwatch/cropped/177.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../gameandwatch/cropped/178.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../gameandwatch/cropped/18.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../gameandwatch/cropped/19.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../gameandwatch/cropped/2.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../gameandwatch/cropped/20.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../gameandwatch/cropped/21.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../gameandwatch/cropped/22.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../gameandwatch/cropped/23.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../gameandwatch/cropped/24.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../gameandwatch/cropped/25.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../gameandwatch/cropped/26.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../gameandwatch/cropped/27.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../gameandwatch/cropped/28.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../gameandwatch/cropped/29.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../gameandwatch/cropped/3.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../gameandwatch/cropped/30.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../gameandwatch/cropped/31.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../gameandwatch/cropped/32.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../gameandwatch/cropped/33.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../gameandwatch/cropped/34.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../gameandwatch/cropped/35.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../gameandwatch/cropped/36.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../gameandwatch/cropped/37.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../gameandwatch/cropped/38.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../gameandwatch/cropped/39.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../gameandwatch/cropped/4.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../gameandwatch/cropped/40.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../gameandwatch/cropped/41.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../gameandwatch/cropped/42.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../gameandwatch/cropped/43.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../gameandwatch/cropped/44.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../gameandwatch/cropped/45.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../gameandwatch/cropped/46.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../gameandwatch/cropped/47.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../gameandwatch/cropped/48.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../gameandwatch/cropped/49.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../gameandwatch/cropped/5.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../gameandwatch/cropped/50.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../gameandwatch/cropped/51.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../gameandwatch/cropped/52.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../gameandwatch/cropped/53.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../gameandwatch/cropped/54.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../gameandwatch/cropped/55.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../gameandwatch/cropped/56.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../gameandwatch/cropped/57.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../gameandwatch/cropped/58.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../gameandwatch/cropped/59.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../gameandwatch/cropped/6.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../gameandwatch/cropped/60.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../gameandwatch/cropped/61.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../gameandwatch/cropped/62.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../gameandwatch/cropped/63.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../gameandwatch/cropped/64.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../gameandwatch/cropped/65.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../gameandwatch/cropped/66.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../gameandwatch/cropped/67.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../gameandwatch/cropped/68.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../gameandwatch/cropped/69.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../gameandwatch/cropped/7.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../gameandwatch/cropped/70.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../gameandwatch/cropped/71.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../gameandwatch/cropped/72.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../gameandwatch/cropped/73.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../gameandwatch/cropped/74.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../gameandwatch/cropped/75.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../gameandwatch/cropped/76.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../gameandwatch/cropped/77.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../gameandwatch/cropped/78.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../gameandwatch/cropped/79.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../gameandwatch/cropped/8.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../gameandwatch/cropped/80.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../gameandwatch/cropped/81.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../gameandwatch/cropped/82.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../gameandwatch/cropped/83.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../gameandwatch/cropped/84.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../gameandwatch/cropped/85.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../gameandwatch/cropped/86.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../gameandwatch/cropped/87.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../gameandwatch/cropped/88.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../gameandwatch/cropped/89.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../gameandwatch/cropped/9.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../gameandwatch/cropped/90.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../gameandwatch/cropped/91.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../gameandwatch/cropped/92.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../gameandwatch/cropped/93.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../gameandwatch/cropped/94.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../gameandwatch/cropped/95.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../gameandwatch/cropped/96.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../gameandwatch/cropped/97.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../gameandwatch/cropped/98.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../gameandwatch/cropped/99.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../gameandwatch/gif/bair.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../gameandwatch/gif/dair.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../gameandwatch/gif/dash.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../gameandwatch/gif/dashatk.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../gameandwatch/gif/djump.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../gameandwatch/gif/downb.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../gameandwatch/gif/downbproj.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../gameandwatch/gif/dsmash.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../gameandwatch/gif/dtilt.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../gameandwatch/gif/fair.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../gameandwatch/gif/fall.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../gameandwatch/gif/fsmash.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../gameandwatch/gif/ftilt.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../gameandwatch/gif/hurt.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../gameandwatch/gif/jump.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../gameandwatch/gif/neuatk.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../gameandwatch/gif/neub.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../gameandwatch/gif/neubproj.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../gameandwatch/gif/rest.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../gameandwatch/gif/shield.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../gameandwatch/gif/sideb.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../gameandwatch/gif/sidebnum.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../gameandwatch/gif/uair.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../gameandwatch/gif/upb.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../gameandwatch/gif/upbfall.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../gameandwatch/gif/uptilt.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../gameandwatch/gif/usmash.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../gameandwatch/gif/walk.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../gameandwatch/piskel/bair.piskel" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../gameandwatch/piskel/dair.piskel" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../gameandwatch/piskel/dash.piskel" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../gameandwatch/piskel/dashatk.piskel" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../gameandwatch/piskel/djump.piskel" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../gameandwatch/piskel/downb.piskel" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../gameandwatch/piskel/downbproj.piskel" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../gameandwatch/piskel/dsmash.piskel" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../gameandwatch/piskel/dtilt.piskel" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../gameandwatch/piskel/fair.piskel" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../gameandwatch/piskel/fall.piskel" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../gameandwatch/piskel/fsmash.piskel" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../gameandwatch/piskel/ftilt.piskel" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../gameandwatch/piskel/hurt.piskel" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../gameandwatch/piskel/jump.piskel" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../gameandwatch/piskel/nair.piskel" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../gameandwatch/piskel/neuatk.piskel" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../gameandwatch/piskel/neub.piskel" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../gameandwatch/piskel/neubproj.piskel" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../gameandwatch/piskel/rest.piskel" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../gameandwatch/piskel/shield.piskel" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../gameandwatch/piskel/sideb.piskel" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../gameandwatch/piskel/sidebnum.piskel" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../gameandwatch/piskel/uair.piskel" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../gameandwatch/piskel/upb.piskel" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../gameandwatch/piskel/upbfall.piskel" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../gameandwatch/piskel/uptilt.piskel" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../gameandwatch/piskel/usmash.piskel" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../gameandwatch/piskel/walk.piskel" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../../../.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../../.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../cmake-build-debug/CMakeFiles/EE319K_Final_Project_Initial_Testing.dir/CXX.includecache" beforeDir="false" afterPath="$PROJECT_DIR$/../../../cmake-build-debug/CMakeFiles/EE319K_Final_Project_Initial_Testing.dir/CXX.includecache" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../cmake-build-debug/CMakeFiles/EE319K_Final_Project_Initial_Testing.dir/ILI9341.cpp.obj" beforeDir="false" afterPath="$PROJECT_DIR$/../../../cmake-build-debug/CMakeFiles/EE319K_Final_Project_Initial_Testing.dir/ILI9341.cpp.obj" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../cmake-build-debug/CMakeFiles/EE319K_Final_Project_Initial_Testing.dir/UART.cpp.obj" beforeDir="false" afterPath="$PROJECT_DIR$/../../../cmake-build-debug/CMakeFiles/EE319K_Final_Project_Initial_Testing.dir/UART.cpp.obj" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../cmake-build-debug/CMakeFiles/EE319K_Final_Project_Initial_Testing.dir/animator.cpp.obj" beforeDir="false" afterPath="$PROJECT_DIR$/../../../cmake-build-debug/CMakeFiles/EE319K_Final_Project_Initial_Testing.dir/animator.cpp.obj" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../cmake-build-debug/CMakeFiles/EE319K_Final_Project_Initial_Testing.dir/kirby.cpp.obj" beforeDir="false" afterPath="$PROJECT_DIR$/../../../cmake-build-debug/CMakeFiles/EE319K_Final_Project_Initial_Testing.dir/kirby.cpp.obj" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../cmake-build-debug/CMakeFiles/EE319K_Final_Project_Initial_Testing.dir/main.cpp.obj" beforeDir="false" afterPath="$PROJECT_DIR$/../../../cmake-build-debug/CMakeFiles/EE319K_Final_Project_Initial_Testing.dir/main.cpp.obj" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../cmake-build-debug/CMakeFiles/EE319K_Final_Project_Initial_Testing.dir/objects.a" beforeDir="false" afterPath="$PROJECT_DIR$/../../../cmake-build-debug/CMakeFiles/EE319K_Final_Project_Initial_Testing.dir/objects.a" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../cmake-build-debug/CMakeFiles/EE319K_Final_Project_Initial_Testing.dir/stage.cpp.obj" beforeDir="false" afterPath="$PROJECT_DIR$/../../../cmake-build-debug/CMakeFiles/EE319K_Final_Project_Initial_Testing.dir/stage.cpp.obj" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../cmake-build-debug/CMakeFiles/EE319K_Final_Project_Initial_Testing.dir/utils.cpp.obj" beforeDir="false" afterPath="$PROJECT_DIR$/../../../cmake-build-debug/CMakeFiles/EE319K_Final_Project_Initial_Testing.dir/utils.cpp.obj" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../cmake-build-debug/EE319K_Final_Project_Initial_Testing.exe" beforeDir="false" afterPath="$PROJECT_DIR$/../../../cmake-build-debug/EE319K_Final_Project_Initial_Testing.exe" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/GIFParser.py" beforeDir="false" afterPath="$PROJECT_DIR$/GIFParser.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/gameandwatch_minimal.png" beforeDir="false" afterPath="$PROJECT_DIR$/gameandwatch_minimal.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/SpriteParser/Main.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/SpriteParser/Main.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../gameandwatch/gameandwatch_minimal.png" beforeDir="false" afterPath="$PROJECT_DIR$/../gameandwatch/gameandwatch_minimal.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../metadata.h" beforeDir="false" afterPath="$PROJECT_DIR$/../../../metadata.h" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -21,7 +304,7 @@
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../../.." />
     <property name="project.structure.last.edited" value="Project" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.2" />
@@ -29,8 +312,8 @@
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
-      <recent name="C:\Users\Allen\Documents\GitHub\EE319H-Final-Project-Simulation\data\sprites\SpriteParser\gif-misc" />
       <recent name="C:\Users\Allen\Documents\GitHub\EE319H-Final-Project-Simulation\data\sprites\SpriteParser" />
+      <recent name="C:\Users\Allen\Documents\GitHub\EE319H-Final-Project-Simulation\data\sprites\SpriteParser\gif-misc" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\Users\Allen\Documents\GitHub\EE319H-Final-Project-Simulation\data\sprites\SpriteParser\png-misc" />
@@ -52,7 +335,8 @@
   </component>
   <component name="RunManager" selected="Python.GIFParser">
     <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="ALTERNATIVE_JRE_PATH" value="11" />
+      <option name="ALTERNATIVE_JRE_PATH" value="1.8.0_221" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="true" />
       <option name="MAIN_CLASS_NAME" value="Main" />
       <module name="SpriteParser" />
       <method v="2">
@@ -110,7 +394,6 @@
     <recent_temporary>
       <list>
         <item itemvalue="Python.GIFParser" />
-        <item itemvalue="Python.PNGParser" />
       </list>
     </recent_temporary>
   </component>
@@ -135,6 +418,8 @@
       <workItem from="1587190123341" duration="2609000" />
       <workItem from="1587240061451" duration="1444000" />
       <workItem from="1587283007002" duration="1297000" />
+      <workItem from="1587426169691" duration="833000" />
+      <workItem from="1587510132015" duration="1513000" />
     </task>
     <servers />
   </component>
@@ -155,7 +440,6 @@
     </option>
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
-    <SUITE FILE_PATH="coverage/SpriteParser$GIFParser.coverage" NAME="GIFParser Coverage Results" MODIFIED="1587240079508" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
-    <SUITE FILE_PATH="coverage/SpriteParser$PNGParser.coverage" NAME="PNGParser Coverage Results" MODIFIED="1586923899521" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/SpriteParser$GIFParser.coverage" NAME="GIFParser Coverage Results" MODIFIED="1587512774942" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
   </component>
 </project>
