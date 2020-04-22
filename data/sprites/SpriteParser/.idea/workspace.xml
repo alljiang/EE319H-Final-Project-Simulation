@@ -2,68 +2,12 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="2349ddb4-96f3-4450-a885-5dac0c7a4023" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/../../../colors_gameandwatch.h" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/gif-gameandwatch/crouch.gif" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/gif-gameandwatch/ledge.gif" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/gif-gameandwatch/nair.gif" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../gameandwatch.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../gameandwatch/gif/ledge.gif" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../gameandwatch/gif/nair.gif" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../gameandwatch/gif/utilt.gif" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../gameandwatch/piskel/crouch.piskel" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../gameandwatch/piskel/ledge.piskel" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../gameandwatch/piskel/utilt.piskel" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../../gameandwatch.cpp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../../../.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../../.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../../CMakeLists.txt" beforeDir="false" afterPath="$PROJECT_DIR$/../../../CMakeLists.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../../SD.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/../../../SD.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../../animator.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/../../../animator.cpp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../../../cmake-build-debug/CMakeFiles/EE319K_Final_Project_Initial_Testing.dir/CXX.includecache" beforeDir="false" afterPath="$PROJECT_DIR$/../../../cmake-build-debug/CMakeFiles/EE319K_Final_Project_Initial_Testing.dir/CXX.includecache" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../../cmake-build-debug/CMakeFiles/EE319K_Final_Project_Initial_Testing.dir/DependInfo.cmake" beforeDir="false" afterPath="$PROJECT_DIR$/../../../cmake-build-debug/CMakeFiles/EE319K_Final_Project_Initial_Testing.dir/DependInfo.cmake" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../../cmake-build-debug/CMakeFiles/EE319K_Final_Project_Initial_Testing.dir/ILI9341.cpp.obj" beforeDir="false" afterPath="$PROJECT_DIR$/../../../cmake-build-debug/CMakeFiles/EE319K_Final_Project_Initial_Testing.dir/ILI9341.cpp.obj" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../../cmake-build-debug/CMakeFiles/EE319K_Final_Project_Initial_Testing.dir/SD.cpp.obj" beforeDir="false" afterPath="$PROJECT_DIR$/../../../cmake-build-debug/CMakeFiles/EE319K_Final_Project_Initial_Testing.dir/SD.cpp.obj" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../../cmake-build-debug/CMakeFiles/EE319K_Final_Project_Initial_Testing.dir/UART.cpp.obj" beforeDir="false" afterPath="$PROJECT_DIR$/../../../cmake-build-debug/CMakeFiles/EE319K_Final_Project_Initial_Testing.dir/UART.cpp.obj" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../../cmake-build-debug/CMakeFiles/EE319K_Final_Project_Initial_Testing.dir/animator.cpp.obj" beforeDir="false" afterPath="$PROJECT_DIR$/../../../cmake-build-debug/CMakeFiles/EE319K_Final_Project_Initial_Testing.dir/animator.cpp.obj" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../../cmake-build-debug/CMakeFiles/EE319K_Final_Project_Initial_Testing.dir/build.make" beforeDir="false" afterPath="$PROJECT_DIR$/../../../cmake-build-debug/CMakeFiles/EE319K_Final_Project_Initial_Testing.dir/build.make" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../../cmake-build-debug/CMakeFiles/EE319K_Final_Project_Initial_Testing.dir/cmake_clean.cmake" beforeDir="false" afterPath="$PROJECT_DIR$/../../../cmake-build-debug/CMakeFiles/EE319K_Final_Project_Initial_Testing.dir/cmake_clean.cmake" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../../cmake-build-debug/CMakeFiles/EE319K_Final_Project_Initial_Testing.dir/depend.internal" beforeDir="false" afterPath="$PROJECT_DIR$/../../../cmake-build-debug/CMakeFiles/EE319K_Final_Project_Initial_Testing.dir/depend.internal" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../../cmake-build-debug/CMakeFiles/EE319K_Final_Project_Initial_Testing.dir/depend.make" beforeDir="false" afterPath="$PROJECT_DIR$/../../../cmake-build-debug/CMakeFiles/EE319K_Final_Project_Initial_Testing.dir/depend.make" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../../cmake-build-debug/CMakeFiles/EE319K_Final_Project_Initial_Testing.dir/kirby.cpp.obj" beforeDir="false" afterPath="$PROJECT_DIR$/../../../cmake-build-debug/CMakeFiles/EE319K_Final_Project_Initial_Testing.dir/kirby.cpp.obj" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../../cmake-build-debug/CMakeFiles/EE319K_Final_Project_Initial_Testing.dir/main.cpp.obj" beforeDir="false" afterPath="$PROJECT_DIR$/../../../cmake-build-debug/CMakeFiles/EE319K_Final_Project_Initial_Testing.dir/main.cpp.obj" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../cmake-build-debug/CMakeFiles/EE319K_Final_Project_Initial_Testing.dir/gameandwatch.cpp.obj" beforeDir="false" afterPath="$PROJECT_DIR$/../../../cmake-build-debug/CMakeFiles/EE319K_Final_Project_Initial_Testing.dir/gameandwatch.cpp.obj" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../../../cmake-build-debug/CMakeFiles/EE319K_Final_Project_Initial_Testing.dir/objects.a" beforeDir="false" afterPath="$PROJECT_DIR$/../../../cmake-build-debug/CMakeFiles/EE319K_Final_Project_Initial_Testing.dir/objects.a" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../../cmake-build-debug/CMakeFiles/EE319K_Final_Project_Initial_Testing.dir/objects1.rsp" beforeDir="false" afterPath="$PROJECT_DIR$/../../../cmake-build-debug/CMakeFiles/EE319K_Final_Project_Initial_Testing.dir/objects1.rsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../../cmake-build-debug/CMakeFiles/EE319K_Final_Project_Initial_Testing.dir/progress.make" beforeDir="false" afterPath="$PROJECT_DIR$/../../../cmake-build-debug/CMakeFiles/EE319K_Final_Project_Initial_Testing.dir/progress.make" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../../cmake-build-debug/CMakeFiles/EE319K_Final_Project_Initial_Testing.dir/stage.cpp.obj" beforeDir="false" afterPath="$PROJECT_DIR$/../../../cmake-build-debug/CMakeFiles/EE319K_Final_Project_Initial_Testing.dir/stage.cpp.obj" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../../cmake-build-debug/CMakeFiles/EE319K_Final_Project_Initial_Testing.dir/utils.cpp.obj" beforeDir="false" afterPath="$PROJECT_DIR$/../../../cmake-build-debug/CMakeFiles/EE319K_Final_Project_Initial_Testing.dir/utils.cpp.obj" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../../cmake-build-debug/CMakeFiles/Makefile2" beforeDir="false" afterPath="$PROJECT_DIR$/../../../cmake-build-debug/CMakeFiles/Makefile2" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../../cmake-build-debug/CMakeFiles/clion-log.txt" beforeDir="false" afterPath="$PROJECT_DIR$/../../../cmake-build-debug/CMakeFiles/clion-log.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../../cmake-build-debug/CMakeFiles/progress.marks" beforeDir="false" afterPath="$PROJECT_DIR$/../../../cmake-build-debug/CMakeFiles/progress.marks" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../../cmake-build-debug/EE319K_Final_Project_Initial_Testing.cbp" beforeDir="false" afterPath="$PROJECT_DIR$/../../../cmake-build-debug/EE319K_Final_Project_Initial_Testing.cbp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../../../cmake-build-debug/EE319K_Final_Project_Initial_Testing.exe" beforeDir="false" afterPath="$PROJECT_DIR$/../../../cmake-build-debug/EE319K_Final_Project_Initial_Testing.exe" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../../cmake-build-debug/Makefile" beforeDir="false" afterPath="$PROJECT_DIR$/../../../cmake-build-debug/Makefile" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/gameandwatch.txt" beforeDir="false" afterPath="$PROJECT_DIR$/gameandwatch.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/gif-gameandwatch/downb.gif" beforeDir="false" afterPath="$PROJECT_DIR$/gif-gameandwatch/downb.gif" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/gif-gameandwatch/dsmash.gif" beforeDir="false" afterPath="$PROJECT_DIR$/gif-gameandwatch/dsmash.gif" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/gif-gameandwatch/rest.gif" beforeDir="false" afterPath="$PROJECT_DIR$/gif-gameandwatch/rest.gif" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/gif-gameandwatch/uair.gif" beforeDir="false" afterPath="$PROJECT_DIR$/gif-gameandwatch/uair.gif" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/gif-gameandwatch/uptilt.gif" beforeDir="false" afterPath="$PROJECT_DIR$/gif-gameandwatch/utilt.gif" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/gif-gameandwatch/usmash.gif" beforeDir="false" afterPath="$PROJECT_DIR$/gif-gameandwatch/usmash.gif" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../gameandwatch/gif/downb.gif" beforeDir="false" afterPath="$PROJECT_DIR$/../gameandwatch/gif/downb.gif" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../gameandwatch/gif/dsmash.gif" beforeDir="false" afterPath="$PROJECT_DIR$/../gameandwatch/gif/dsmash.gif" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../gameandwatch/gif/rest.gif" beforeDir="false" afterPath="$PROJECT_DIR$/../gameandwatch/gif/rest.gif" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../gameandwatch/gif/uair.gif" beforeDir="false" afterPath="$PROJECT_DIR$/../gameandwatch/gif/uair.gif" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../gameandwatch/gif/uptilt.gif" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../gameandwatch/gif/usmash.gif" beforeDir="false" afterPath="$PROJECT_DIR$/../gameandwatch/gif/usmash.gif" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../gameandwatch/piskel/downb.piskel" beforeDir="false" afterPath="$PROJECT_DIR$/../gameandwatch/piskel/downb.piskel" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../gameandwatch/piskel/dsmash.piskel" beforeDir="false" afterPath="$PROJECT_DIR$/../gameandwatch/piskel/dsmash.piskel" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../gameandwatch/piskel/nair.piskel" beforeDir="false" afterPath="$PROJECT_DIR$/../gameandwatch/piskel/nair.piskel" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../gameandwatch/piskel/rest.piskel" beforeDir="false" afterPath="$PROJECT_DIR$/../gameandwatch/piskel/rest.piskel" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../gameandwatch/piskel/uptilt.piskel" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../gameandwatch/piskel/usmash.piskel" beforeDir="false" afterPath="$PROJECT_DIR$/../gameandwatch/piskel/usmash.piskel" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../../entities.h" beforeDir="false" afterPath="$PROJECT_DIR$/../../../entities.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../../main.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/../../../main.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../../metadata.h" beforeDir="false" afterPath="$PROJECT_DIR$/../../../metadata.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../gameandwatch.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/../../../gameandwatch.cpp" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -198,7 +142,7 @@
       <workItem from="1587240061451" duration="1444000" />
       <workItem from="1587283007002" duration="1297000" />
       <workItem from="1587426169691" duration="833000" />
-      <workItem from="1587510132015" duration="5400000" />
+      <workItem from="1587510132015" duration="6004000" />
     </task>
     <servers />
   </component>
@@ -219,6 +163,6 @@
     </option>
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
-    <SUITE FILE_PATH="coverage/SpriteParser$GIFParser.coverage" NAME="GIFParser Coverage Results" MODIFIED="1587518836281" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/SpriteParser$GIFParser.coverage" NAME="GIFParser Coverage Results" MODIFIED="1587546118519" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
   </component>
 </project>
