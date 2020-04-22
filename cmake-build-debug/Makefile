@@ -338,6 +338,33 @@ controller.cpp.s:
 	$(MAKE) -f CMakeFiles\EE319K_Final_Project_Initial_Testing.dir\build.make CMakeFiles/EE319K_Final_Project_Initial_Testing.dir/controller.cpp.s
 .PHONY : controller.cpp.s
 
+gameandwatch.obj: gameandwatch.cpp.obj
+
+.PHONY : gameandwatch.obj
+
+# target to build an object file
+gameandwatch.cpp.obj:
+	$(MAKE) -f CMakeFiles\EE319K_Final_Project_Initial_Testing.dir\build.make CMakeFiles/EE319K_Final_Project_Initial_Testing.dir/gameandwatch.cpp.obj
+.PHONY : gameandwatch.cpp.obj
+
+gameandwatch.i: gameandwatch.cpp.i
+
+.PHONY : gameandwatch.i
+
+# target to preprocess a source file
+gameandwatch.cpp.i:
+	$(MAKE) -f CMakeFiles\EE319K_Final_Project_Initial_Testing.dir\build.make CMakeFiles/EE319K_Final_Project_Initial_Testing.dir/gameandwatch.cpp.i
+.PHONY : gameandwatch.cpp.i
+
+gameandwatch.s: gameandwatch.cpp.s
+
+.PHONY : gameandwatch.s
+
+# target to generate assembly for a file
+gameandwatch.cpp.s:
+	$(MAKE) -f CMakeFiles\EE319K_Final_Project_Initial_Testing.dir\build.make CMakeFiles/EE319K_Final_Project_Initial_Testing.dir/gameandwatch.cpp.s
+.PHONY : gameandwatch.cpp.s
+
 kirby.obj: kirby.cpp.obj
 
 .PHONY : kirby.obj
@@ -479,6 +506,9 @@ help:
 	@echo ... controller.obj
 	@echo ... controller.i
 	@echo ... controller.s
+	@echo ... gameandwatch.obj
+	@echo ... gameandwatch.i
+	@echo ... gameandwatch.s
 	@echo ... kirby.obj
 	@echo ... kirby.i
 	@echo ... kirby.s

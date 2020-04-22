@@ -1,5 +1,3 @@
-
-#include <iostream>
 #include <SDL.h>
 #include <windows.h>
 #include <fcntl.h>
@@ -26,11 +24,12 @@ Player* p2;
 Stage stage;
 HitboxManager hitboxManager;
 
+GameandWatch gameandwatch1;
+GameandWatch gameandwatch2;
+
 Kirby kirby1;
 Kirby kirby2;
 
-GameandWatch gameandwatch1;
-GameandWatch gameandwatch2;
 
 bool quit, countdown, gameOver;
 uint8_t frameIndex, frameLength;

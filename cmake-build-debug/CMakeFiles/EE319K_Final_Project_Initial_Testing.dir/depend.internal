@@ -71,6 +71,7 @@ CMakeFiles/EE319K_Final_Project_Initial_Testing.dir/animator.cpp.obj
  C:/Users/Allen/Documents/GitHub/EE319H-Final-Project-Simulation/SD.h
  C:/Users/Allen/Documents/GitHub/EE319H-Final-Project-Simulation/animator.cpp
  C:/Users/Allen/Documents/GitHub/EE319H-Final-Project-Simulation/animator.h
+ C:/Users/Allen/Documents/GitHub/EE319H-Final-Project-Simulation/colors_gameandwatch.h
  C:/Users/Allen/Documents/GitHub/EE319H-Final-Project-Simulation/colors_kirby.h
  C:/Users/Allen/Documents/GitHub/EE319H-Final-Project-Simulation/colors_misc.h
  C:/Users/Allen/Documents/GitHub/EE319H-Final-Project-Simulation/metadata.h
@@ -128,6 +129,14 @@ CMakeFiles/EE319K_Final_Project_Initial_Testing.dir/controller.cpp.obj
  C:/Program Files/mingw-w64/x86_64-8.1.0-posix-seh-rt_v6-rev0/mingw64/include/SDL2/close_code.h
  C:/Users/Allen/Documents/GitHub/EE319H-Final-Project-Simulation/controller.cpp
  C:/Users/Allen/Documents/GitHub/EE319H-Final-Project-Simulation/controller.h
+CMakeFiles/EE319K_Final_Project_Initial_Testing.dir/gameandwatch.cpp.obj
+ C:/Users/Allen/Documents/GitHub/EE319H-Final-Project-Simulation/UART.h
+ C:/Users/Allen/Documents/GitHub/EE319H-Final-Project-Simulation/animator.h
+ C:/Users/Allen/Documents/GitHub/EE319H-Final-Project-Simulation/entities.h
+ C:/Users/Allen/Documents/GitHub/EE319H-Final-Project-Simulation/gameandwatch.cpp
+ C:/Users/Allen/Documents/GitHub/EE319H-Final-Project-Simulation/metadata.h
+ C:/Users/Allen/Documents/GitHub/EE319H-Final-Project-Simulation/stage.h
+ C:/Users/Allen/Documents/GitHub/EE319H-Final-Project-Simulation/utils.h
 CMakeFiles/EE319K_Final_Project_Initial_Testing.dir/kirby.cpp.obj
  C:/Users/Allen/Documents/GitHub/EE319H-Final-Project-Simulation/UART.h
  C:/Users/Allen/Documents/GitHub/EE319H-Final-Project-Simulation/animator.h

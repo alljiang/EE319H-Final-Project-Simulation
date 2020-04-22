@@ -70,6 +70,7 @@ CMakeFiles/EE319K_Final_Project_Initial_Testing.dir/animator.cpp.obj: ../ILI9341
 CMakeFiles/EE319K_Final_Project_Initial_Testing.dir/animator.cpp.obj: ../SD.h
 CMakeFiles/EE319K_Final_Project_Initial_Testing.dir/animator.cpp.obj: ../animator.cpp
 CMakeFiles/EE319K_Final_Project_Initial_Testing.dir/animator.cpp.obj: ../animator.h
+CMakeFiles/EE319K_Final_Project_Initial_Testing.dir/animator.cpp.obj: ../colors_gameandwatch.h
 CMakeFiles/EE319K_Final_Project_Initial_Testing.dir/animator.cpp.obj: ../colors_kirby.h
 CMakeFiles/EE319K_Final_Project_Initial_Testing.dir/animator.cpp.obj: ../colors_misc.h
 CMakeFiles/EE319K_Final_Project_Initial_Testing.dir/animator.cpp.obj: ../metadata.h
@@ -127,6 +128,14 @@ CMakeFiles/EE319K_Final_Project_Initial_Testing.dir/controller.cpp.obj: C:/Progr
 CMakeFiles/EE319K_Final_Project_Initial_Testing.dir/controller.cpp.obj: C:/Program\ Files/mingw-w64/x86_64-8.1.0-posix-seh-rt_v6-rev0/mingw64/include/SDL2/close_code.h
 CMakeFiles/EE319K_Final_Project_Initial_Testing.dir/controller.cpp.obj: ../controller.cpp
 CMakeFiles/EE319K_Final_Project_Initial_Testing.dir/controller.cpp.obj: ../controller.h
+
+CMakeFiles/EE319K_Final_Project_Initial_Testing.dir/gameandwatch.cpp.obj: ../UART.h
+CMakeFiles/EE319K_Final_Project_Initial_Testing.dir/gameandwatch.cpp.obj: ../animator.h
+CMakeFiles/EE319K_Final_Project_Initial_Testing.dir/gameandwatch.cpp.obj: ../entities.h
+CMakeFiles/EE319K_Final_Project_Initial_Testing.dir/gameandwatch.cpp.obj: ../gameandwatch.cpp
+CMakeFiles/EE319K_Final_Project_Initial_Testing.dir/gameandwatch.cpp.obj: ../metadata.h
+CMakeFiles/EE319K_Final_Project_Initial_Testing.dir/gameandwatch.cpp.obj: ../stage.h
+CMakeFiles/EE319K_Final_Project_Initial_Testing.dir/gameandwatch.cpp.obj: ../utils.h
 
 CMakeFiles/EE319K_Final_Project_Initial_Testing.dir/kirby.cpp.obj: ../UART.h
 CMakeFiles/EE319K_Final_Project_Initial_Testing.dir/kirby.cpp.obj: ../animator.h

@@ -636,18 +636,6 @@ C:/Users/Allen/Documents/GitHub/EE319H-Final-Project-Simulation/animator.h
 cstdint
 -
 
-C:/Users/Allen/Documents/GitHub/EE319H-Final-Project-Simulation/collider.cpp
-cstdlib
--
-cstdio
--
-entities.h
-C:/Users/Allen/Documents/GitHub/EE319H-Final-Project-Simulation/entities.h
-utils.h
-C:/Users/Allen/Documents/GitHub/EE319H-Final-Project-Simulation/utils.h
-ILI9341.h
-C:/Users/Allen/Documents/GitHub/EE319H-Final-Project-Simulation/ILI9341.h
-
 C:/Users/Allen/Documents/GitHub/EE319H-Final-Project-Simulation/colors_fdst.h
 stdint.h
 -
@@ -659,28 +647,10 @@ stdint.h
 C:/Users/Allen/Documents/GitHub/EE319H-Final-Project-Simulation/controller.h
 
 C:/Users/Allen/Documents/GitHub/EE319H-Final-Project-Simulation/entities.h
-cstdint
--
-list
--
-
-C:/Users/Allen/Documents/GitHub/EE319H-Final-Project-Simulation/kirby.cpp
-cstdio
--
-entities.h
-C:/Users/Allen/Documents/GitHub/EE319H-Final-Project-Simulation/entities.h
-utils.h
-C:/Users/Allen/Documents/GitHub/EE319H-Final-Project-Simulation/utils.h
-metadata.h
-C:/Users/Allen/Documents/GitHub/EE319H-Final-Project-Simulation/metadata.h
-UART.h
-C:/Users/Allen/Documents/GitHub/EE319H-Final-Project-Simulation/UART.h
-stage.h
-C:/Users/Allen/Documents/GitHub/EE319H-Final-Project-Simulation/stage.h
+stdint.h
+C:/Users/Allen/Documents/GitHub/EE319H-Final-Project-Simulation/stdint.h
 
 C:/Users/Allen/Documents/GitHub/EE319H-Final-Project-Simulation/main.cpp
-iostream
--
 SDL.h
 -
 windows.h
@@ -713,16 +683,6 @@ C:/Users/Allen/Documents/GitHub/EE319H-Final-Project-Simulation/Audio.h
 C:/Users/Allen/Documents/GitHub/EE319H-Final-Project-Simulation/metadata.h
 stdbool.h
 -
-
-C:/Users/Allen/Documents/GitHub/EE319H-Final-Project-Simulation/stage.cpp
-stage.h
-C:/Users/Allen/Documents/GitHub/EE319H-Final-Project-Simulation/stage.h
-metadata.h
-C:/Users/Allen/Documents/GitHub/EE319H-Final-Project-Simulation/metadata.h
-animator.h
-C:/Users/Allen/Documents/GitHub/EE319H-Final-Project-Simulation/animator.h
-entities.h
-C:/Users/Allen/Documents/GitHub/EE319H-Final-Project-Simulation/entities.h
 
 C:/Users/Allen/Documents/GitHub/EE319H-Final-Project-Simulation/stage.h
 cstdint

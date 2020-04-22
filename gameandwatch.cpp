@@ -2,7 +2,6 @@
 // Created by Allen on 4/21/2020.
 //
 
-#include <cstdio>
 #include "entities.h"
 #include "utils.h"
 #include "metadata.h"
@@ -814,3 +813,5 @@ void GameandWatch::reset() {
 
     dead = false;
 }
+
+

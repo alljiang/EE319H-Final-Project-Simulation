@@ -168,10 +168,24 @@ CMakeFiles/EE319K_Final_Project_Initial_Testing.dir/utils.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/EE319K_Final_Project_Initial_Testing.dir/utils.cpp.s"
 	C:\PROGRA~1\MINGW-~1\X86_64~1.0-P\mingw64\bin\G__~1.EXE $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S C:\Users\Allen\Documents\GitHub\EE319H-Final-Project-Simulation\utils.cpp -o CMakeFiles\EE319K_Final_Project_Initial_Testing.dir\utils.cpp.s
 
+CMakeFiles/EE319K_Final_Project_Initial_Testing.dir/gameandwatch.cpp.obj: CMakeFiles/EE319K_Final_Project_Initial_Testing.dir/flags.make
+CMakeFiles/EE319K_Final_Project_Initial_Testing.dir/gameandwatch.cpp.obj: CMakeFiles/EE319K_Final_Project_Initial_Testing.dir/includes_CXX.rsp
+CMakeFiles/EE319K_Final_Project_Initial_Testing.dir/gameandwatch.cpp.obj: ../gameandwatch.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=C:\Users\Allen\Documents\GitHub\EE319H-Final-Project-Simulation\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_9) "Building CXX object CMakeFiles/EE319K_Final_Project_Initial_Testing.dir/gameandwatch.cpp.obj"
+	C:\PROGRA~1\MINGW-~1\X86_64~1.0-P\mingw64\bin\G__~1.EXE  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles\EE319K_Final_Project_Initial_Testing.dir\gameandwatch.cpp.obj -c C:\Users\Allen\Documents\GitHub\EE319H-Final-Project-Simulation\gameandwatch.cpp
+
+CMakeFiles/EE319K_Final_Project_Initial_Testing.dir/gameandwatch.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/EE319K_Final_Project_Initial_Testing.dir/gameandwatch.cpp.i"
+	C:\PROGRA~1\MINGW-~1\X86_64~1.0-P\mingw64\bin\G__~1.EXE $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E C:\Users\Allen\Documents\GitHub\EE319H-Final-Project-Simulation\gameandwatch.cpp > CMakeFiles\EE319K_Final_Project_Initial_Testing.dir\gameandwatch.cpp.i
+
+CMakeFiles/EE319K_Final_Project_Initial_Testing.dir/gameandwatch.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/EE319K_Final_Project_Initial_Testing.dir/gameandwatch.cpp.s"
+	C:\PROGRA~1\MINGW-~1\X86_64~1.0-P\mingw64\bin\G__~1.EXE $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S C:\Users\Allen\Documents\GitHub\EE319H-Final-Project-Simulation\gameandwatch.cpp -o CMakeFiles\EE319K_Final_Project_Initial_Testing.dir\gameandwatch.cpp.s
+
 CMakeFiles/EE319K_Final_Project_Initial_Testing.dir/kirby.cpp.obj: CMakeFiles/EE319K_Final_Project_Initial_Testing.dir/flags.make
 CMakeFiles/EE319K_Final_Project_Initial_Testing.dir/kirby.cpp.obj: CMakeFiles/EE319K_Final_Project_Initial_Testing.dir/includes_CXX.rsp
 CMakeFiles/EE319K_Final_Project_Initial_Testing.dir/kirby.cpp.obj: ../kirby.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=C:\Users\Allen\Documents\GitHub\EE319H-Final-Project-Simulation\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_9) "Building CXX object CMakeFiles/EE319K_Final_Project_Initial_Testing.dir/kirby.cpp.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=C:\Users\Allen\Documents\GitHub\EE319H-Final-Project-Simulation\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_10) "Building CXX object CMakeFiles/EE319K_Final_Project_Initial_Testing.dir/kirby.cpp.obj"
 	C:\PROGRA~1\MINGW-~1\X86_64~1.0-P\mingw64\bin\G__~1.EXE  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles\EE319K_Final_Project_Initial_Testing.dir\kirby.cpp.obj -c C:\Users\Allen\Documents\GitHub\EE319H-Final-Project-Simulation\kirby.cpp
 
 CMakeFiles/EE319K_Final_Project_Initial_Testing.dir/kirby.cpp.i: cmake_force
@@ -185,7 +199,7 @@ CMakeFiles/EE319K_Final_Project_Initial_Testing.dir/kirby.cpp.s: cmake_force
 CMakeFiles/EE319K_Final_Project_Initial_Testing.dir/stage.cpp.obj: CMakeFiles/EE319K_Final_Project_Initial_Testing.dir/flags.make
 CMakeFiles/EE319K_Final_Project_Initial_Testing.dir/stage.cpp.obj: CMakeFiles/EE319K_Final_Project_Initial_Testing.dir/includes_CXX.rsp
 CMakeFiles/EE319K_Final_Project_Initial_Testing.dir/stage.cpp.obj: ../stage.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=C:\Users\Allen\Documents\GitHub\EE319H-Final-Project-Simulation\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_10) "Building CXX object CMakeFiles/EE319K_Final_Project_Initial_Testing.dir/stage.cpp.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=C:\Users\Allen\Documents\GitHub\EE319H-Final-Project-Simulation\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_11) "Building CXX object CMakeFiles/EE319K_Final_Project_Initial_Testing.dir/stage.cpp.obj"
 	C:\PROGRA~1\MINGW-~1\X86_64~1.0-P\mingw64\bin\G__~1.EXE  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles\EE319K_Final_Project_Initial_Testing.dir\stage.cpp.obj -c C:\Users\Allen\Documents\GitHub\EE319H-Final-Project-Simulation\stage.cpp
 
 CMakeFiles/EE319K_Final_Project_Initial_Testing.dir/stage.cpp.i: cmake_force
@@ -199,7 +213,7 @@ CMakeFiles/EE319K_Final_Project_Initial_Testing.dir/stage.cpp.s: cmake_force
 CMakeFiles/EE319K_Final_Project_Initial_Testing.dir/collider.cpp.obj: CMakeFiles/EE319K_Final_Project_Initial_Testing.dir/flags.make
 CMakeFiles/EE319K_Final_Project_Initial_Testing.dir/collider.cpp.obj: CMakeFiles/EE319K_Final_Project_Initial_Testing.dir/includes_CXX.rsp
 CMakeFiles/EE319K_Final_Project_Initial_Testing.dir/collider.cpp.obj: ../collider.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=C:\Users\Allen\Documents\GitHub\EE319H-Final-Project-Simulation\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_11) "Building CXX object CMakeFiles/EE319K_Final_Project_Initial_Testing.dir/collider.cpp.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=C:\Users\Allen\Documents\GitHub\EE319H-Final-Project-Simulation\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_12) "Building CXX object CMakeFiles/EE319K_Final_Project_Initial_Testing.dir/collider.cpp.obj"
 	C:\PROGRA~1\MINGW-~1\X86_64~1.0-P\mingw64\bin\G__~1.EXE  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles\EE319K_Final_Project_Initial_Testing.dir\collider.cpp.obj -c C:\Users\Allen\Documents\GitHub\EE319H-Final-Project-Simulation\collider.cpp
 
 CMakeFiles/EE319K_Final_Project_Initial_Testing.dir/collider.cpp.i: cmake_force
@@ -213,7 +227,7 @@ CMakeFiles/EE319K_Final_Project_Initial_Testing.dir/collider.cpp.s: cmake_force
 CMakeFiles/EE319K_Final_Project_Initial_Testing.dir/Audio.cpp.obj: CMakeFiles/EE319K_Final_Project_Initial_Testing.dir/flags.make
 CMakeFiles/EE319K_Final_Project_Initial_Testing.dir/Audio.cpp.obj: CMakeFiles/EE319K_Final_Project_Initial_Testing.dir/includes_CXX.rsp
 CMakeFiles/EE319K_Final_Project_Initial_Testing.dir/Audio.cpp.obj: ../Audio.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=C:\Users\Allen\Documents\GitHub\EE319H-Final-Project-Simulation\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_12) "Building CXX object CMakeFiles/EE319K_Final_Project_Initial_Testing.dir/Audio.cpp.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=C:\Users\Allen\Documents\GitHub\EE319H-Final-Project-Simulation\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_13) "Building CXX object CMakeFiles/EE319K_Final_Project_Initial_Testing.dir/Audio.cpp.obj"
 	C:\PROGRA~1\MINGW-~1\X86_64~1.0-P\mingw64\bin\G__~1.EXE  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles\EE319K_Final_Project_Initial_Testing.dir\Audio.cpp.obj -c C:\Users\Allen\Documents\GitHub\EE319H-Final-Project-Simulation\Audio.cpp
 
 CMakeFiles/EE319K_Final_Project_Initial_Testing.dir/Audio.cpp.i: cmake_force
@@ -234,6 +248,7 @@ EE319K_Final_Project_Initial_Testing_OBJECTS = \
 "CMakeFiles/EE319K_Final_Project_Initial_Testing.dir/controller.cpp.obj" \
 "CMakeFiles/EE319K_Final_Project_Initial_Testing.dir/UART.cpp.obj" \
 "CMakeFiles/EE319K_Final_Project_Initial_Testing.dir/utils.cpp.obj" \
+"CMakeFiles/EE319K_Final_Project_Initial_Testing.dir/gameandwatch.cpp.obj" \
 "CMakeFiles/EE319K_Final_Project_Initial_Testing.dir/kirby.cpp.obj" \
 "CMakeFiles/EE319K_Final_Project_Initial_Testing.dir/stage.cpp.obj" \
 "CMakeFiles/EE319K_Final_Project_Initial_Testing.dir/collider.cpp.obj" \
@@ -250,6 +265,7 @@ EE319K_Final_Project_Initial_Testing.exe: CMakeFiles/EE319K_Final_Project_Initia
 EE319K_Final_Project_Initial_Testing.exe: CMakeFiles/EE319K_Final_Project_Initial_Testing.dir/controller.cpp.obj
 EE319K_Final_Project_Initial_Testing.exe: CMakeFiles/EE319K_Final_Project_Initial_Testing.dir/UART.cpp.obj
 EE319K_Final_Project_Initial_Testing.exe: CMakeFiles/EE319K_Final_Project_Initial_Testing.dir/utils.cpp.obj
+EE319K_Final_Project_Initial_Testing.exe: CMakeFiles/EE319K_Final_Project_Initial_Testing.dir/gameandwatch.cpp.obj
 EE319K_Final_Project_Initial_Testing.exe: CMakeFiles/EE319K_Final_Project_Initial_Testing.dir/kirby.cpp.obj
 EE319K_Final_Project_Initial_Testing.exe: CMakeFiles/EE319K_Final_Project_Initial_Testing.dir/stage.cpp.obj
 EE319K_Final_Project_Initial_Testing.exe: CMakeFiles/EE319K_Final_Project_Initial_Testing.dir/collider.cpp.obj
@@ -259,7 +275,7 @@ EE319K_Final_Project_Initial_Testing.exe: C:/Program\ Files/mingw-w64/x86_64-8.1
 EE319K_Final_Project_Initial_Testing.exe: CMakeFiles/EE319K_Final_Project_Initial_Testing.dir/linklibs.rsp
 EE319K_Final_Project_Initial_Testing.exe: CMakeFiles/EE319K_Final_Project_Initial_Testing.dir/objects1.rsp
 EE319K_Final_Project_Initial_Testing.exe: CMakeFiles/EE319K_Final_Project_Initial_Testing.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=C:\Users\Allen\Documents\GitHub\EE319H-Final-Project-Simulation\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_13) "Linking CXX executable EE319K_Final_Project_Initial_Testing.exe"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=C:\Users\Allen\Documents\GitHub\EE319H-Final-Project-Simulation\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_14) "Linking CXX executable EE319K_Final_Project_Initial_Testing.exe"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles\EE319K_Final_Project_Initial_Testing.dir\link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.

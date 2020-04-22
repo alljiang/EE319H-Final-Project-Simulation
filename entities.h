@@ -2,8 +2,7 @@
 // Created by Allen on 2/28/2020.
 //
 
-#include <cstdint>
-#include <list>
+#include "stdint.h"
 
 #ifndef EE319K_FINAL_PROJECT_INITIAL_TESTING_ENTITIES_H
 #define EE319K_FINAL_PROJECT_INITIAL_TESTING_ENTITIES_H
@@ -460,7 +459,6 @@ protected:
 
 
 public:
-
 
     GameandWatch() {}
 

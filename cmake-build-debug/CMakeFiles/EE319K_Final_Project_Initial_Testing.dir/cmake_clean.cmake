@@ -7,6 +7,7 @@ file(REMOVE_RECURSE
   "CMakeFiles/EE319K_Final_Project_Initial_Testing.dir/animator.cpp.obj"
   "CMakeFiles/EE319K_Final_Project_Initial_Testing.dir/collider.cpp.obj"
   "CMakeFiles/EE319K_Final_Project_Initial_Testing.dir/controller.cpp.obj"
+  "CMakeFiles/EE319K_Final_Project_Initial_Testing.dir/gameandwatch.cpp.obj"
   "CMakeFiles/EE319K_Final_Project_Initial_Testing.dir/kirby.cpp.obj"
   "CMakeFiles/EE319K_Final_Project_Initial_Testing.dir/main.cpp.obj"
   "CMakeFiles/EE319K_Final_Project_Initial_Testing.dir/stage.cpp.obj"
