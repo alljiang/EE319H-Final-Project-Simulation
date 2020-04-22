@@ -96,47 +96,48 @@ const char animations[CHARACTERS][64][12] = {
         },
         {
                 /*  0   */                      {"rest"},   //  1 + 1
-                                                {"walk"},
-                                                {"dash"},
-                                                {"jump"},
-                                                {"djump"},
-                                                {"fall"},
-                                                {"neuatk"},
+                                                {"walk"},   //  1 (start) + 2
+                                                {"dash"},   //  2
+                                                {"jump"},   //  4
+                                                {"djump"},  //  4
+                                                {"fall"},   //  2
+                                                {"crouch"}, //  1
                                                 {""},
                                                 {""},
                                                 {""},
-                /*  10  */                      {"ftilt"},
-                                                {"utilt"},
-                                                {"dtilt"},
-                                                {"dashatk"},
-                                                {"fsmash"},
-                                                {"dsmash"},
-                                                {"usmash"},
+                /*  10  */                      {"ftilt"},  //  2
+                                                {"utilt"},  //  3
+                                                {"dtilt"},  //  4
+                                                {"dashatk"},    //  1
+                                                {"fsmash"},     //  2 (charge) + 2
+                                                {"dsmash"},     //  2 (charge) + 1
+                                                {"usmash"},     //  2 (charge) + 2
+                                                {"neuatk"},     //  2
+                                                {""},
+                                                {""},
+                /*  20  */                      {"nair"},   //  3
+                                                {"fair"},   //  3
+                                                {"bair"},   //  3
+                                                {"dair"},   //  3
+                                                {"uair"},   //  2
                                                 {""},
                                                 {""},
                                                 {""},
-                /*  20  */                      {"nair"},
-                                                {"fair"},
-                                                {"bair"},
-                                                {"dair"},
                                                 {""},
                                                 {""},
+                /*  30  */                      {"neub"},   //  2
+                                                {"neubproj"},   //  4 (each frame is another projectile)
+                                                {"sideb"},  //  3
+                                                {"sidebnum"},   //  9 (each frame is a number, frame 0 = 1)
+                                                {"downb"},  //  1 (catch) + 1 (let go) + 3 (charge levels) + 1 (release)
+                                                {"downbproj"},  //  1
+                                                {"upb"},    //  2 (up) + 1 (peak) + 2 (down)
+                                                {"upbfall"},    //  1 (start) + 8 (loop)
                                                 {""},
                                                 {""},
-                                                {""},
-                                                {""},
-                /*  30  */                      {"neub"},
-                                                {"neubproj"},
-                                                {"sideb"},
-                                                {"sidebnum"},
-                                                {"downb"},
-                                                {"downbproj"},
-                                                {"upb"},
-                                                {"upbfall"},
-                                                {""},
-                                                {""},
-                /*  40  */                      {"hurt"},
-                                                {"shield"},
+                /*  40  */                      {"hurt"},   //  2
+                                                {"shield"},     //  1
+                                                {"ledge"},      //  1
 
         },
         {
@@ -158,7 +159,7 @@ const char animations[CHARACTERS][64][12] = {
         }
 };
 
-const uint16_t numberOfAnimations = 100;
+const uint16_t numberOfAnimations = 50;
 
 struct Animation {
     uint32_t memLocation;

@@ -26,8 +26,11 @@ Player* p2;
 Stage stage;
 HitboxManager hitboxManager;
 
-Kirby k1;
-Kirby k2;
+Kirby kirby1;
+Kirby kirby2;
+
+GameandWatch gameandwatch1;
+GameandWatch gameandwatch2;
 
 bool quit, countdown, gameOver;
 uint8_t frameIndex, frameLength;
@@ -39,12 +42,14 @@ float y = 0;
 const bool PLAYER2 = true;
 const bool HITBOXOVERLAY = false;
 const double UPDATERATE = 20;   // 20
+const bool ENABLECOUNTDOWN = false;
 
 const uint8_t stageToPlay = STAGE_FINALDESTINATION;
 //const uint8_t stageToPlay = STAGE_TOWER;
 
 void resetPlayers() {
-    p1 = &k1;
+//    p1 = &kirby1;
+    p1 = &gameandwatch1;
     p1->setPlayer(1);
     p1->setX(stage.getStartX(1));
     p1->setY(stage.getStartY(1));
@@ -52,8 +57,8 @@ void resetPlayers() {
     p1->setStocks(3);
     p1->reset();
 
-    p2 = &k2;
-    k2.setPlayer(2);
+    p2 = &kirby2;
+    p2->setPlayer(2);
     p2->setX(stage.getStartX(2));
     p2->setY(stage.getStartY(2));
     p2->setMirrored(true);
@@ -88,6 +93,7 @@ void startup() {
     animator_readPersistentSprite(persistentSprites[stageToPlay], 0, 0);
 
     UART_readCharacterSDCard(0);
+    UART_readCharacterSDCard(1);
     UART_readCharacterSDCard(3);
 
     printf("Flash Used: %0.1f%\n", getCurrentMemoryLocation() / (1024.*1024) * 100);
@@ -107,7 +113,7 @@ void loop() {
 
         t1 = millis();
 
-        if(countdown) {
+        if(countdown && ENABLECOUNTDOWN) {
             if(frameLength++ == 1) {
                 frameIndex++;
                 frameLength = 0;
@@ -139,7 +145,7 @@ void loop() {
             if(p2->dead) p1->controlLoop(0,0,0,0,0, &stage, &hitboxManager);
             else if(PLAYER2 && p1->dead) p2->controlLoop(0,0,0,0,0, &stage, &hitboxManager);
         }
-        else if(countdown || gameOver) {
+        else if((countdown && ENABLECOUNTDOWN) || gameOver) {
             //  freeze players
             p1->controlLoop(0,0,0,0,0, &stage, &hitboxManager);
             if(PLAYER2) p2->controlLoop(0,0,0,0,0, &stage, &hitboxManager);

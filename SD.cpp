@@ -28,11 +28,14 @@ char SD_readNextChar() {
 
 void SD_openFile(char* filename) {
     fp = fopen(filename, "rb");
+    if(fp == NULL) {
+        printf("Error: Cannot open file %s\n", filename);
+        while(1);
+    }
 }
 
 void SD_closeFile() {
-    if(fp != NULL)
-        fclose(fp);
+    if(fp != NULL) fclose(fp);
 }
 
 void SD_startSDCard() {}

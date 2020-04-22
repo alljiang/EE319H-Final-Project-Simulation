@@ -10,8 +10,8 @@
 #include "utils.h"
 #include "ILI9341.h"
 #include "colors_kirby.h"
+#include "colors_gameandwatch.h"
 #include "colors_misc.h"
-#include <cmath>
 using namespace std;
 
 #define maxSprites 16
@@ -307,11 +307,12 @@ void animator_initialize() {
     persistentBackgroundMemLocation = Flash_allocateMemory(241*321*3);
 
     colors[0] = colors_kirby;
+    colors[1] = colors_gameandwatch;
     colors[3] = colors_misc;
 
     // Find which color index is 0xFFFFFFFF (background)
     for(int c = 0; c < CHARACTERS; c++) {
-        if(c != 0 && c != 3) continue;
+        if(c == 2) continue;
         for(int32_t i = 0; i < sizeof(colors); i++) {
             if(colors[c][i] == 0xFFFFFFFF) {
                 backgroundColorIndex[c] = i;

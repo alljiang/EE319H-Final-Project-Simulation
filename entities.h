@@ -250,6 +250,7 @@ class Kirby: public Player {
 #define KIRBY_ACTION_DOWNSPECIALFALL 57
 #define KIRBY_ACTION_DOWNSPECIALUNMORPH 58
 #define KIRBY_ACTION_HURT 60
+#define KIRBY_ACTION_SHIELD 61
 
 #define KIRBY_STAGE_OFFSET 18
 
@@ -260,7 +261,7 @@ protected:
 
     //  physics config
     const double groundSpeed = 1.8*3;  // pps
-    const double airSpeed = 1*3;
+    const double airSpeed = 1.1*3;
 
     const double initialJumpSpeed = 1.5*3;
     const double repeatedJumpSpeed = 1.3*3;
@@ -383,7 +384,91 @@ public:
     void controlLoop(double joyH, double joyV, bool btnA, bool btnB, bool shield, class Stage* stage,
                      class HitboxManager* hitboxManager) override; //  called every update
 
-    void updateLastValues(double joyH, double joyV, bool btnA, bool btnB, bool shield) override ;
+    void updateLastValues(double joyH, double joyV, bool btnA, bool btnB, bool shield) override;
+
+    void collide(class Hurtbox *hurtbox, class Player *otherPlayer) override;
+
+    void reset() override;
+};
+
+class GameandWatch: public Player {
+
+#define GAW_ACTION_RESTING 0
+#define GAW_ACTION_RUNNING 1
+#define GAW_ACTION_FALLING 2
+#define GAW_ACTION_JUMPING 3
+#define GAW_ACTION_DOUBLEJUMPING 4
+#define GAW_ACTION_CROUCHING 5
+#define GAW_ACTION_NEUTRALATTACK 6
+#define GAW_ACTION_FORWARDTILT 7
+#define GAW_ACTION_DOWNTILT 8
+#define GAW_ACTION_UPTILT 9
+#define GAW_ACTION_FORWARDSMASHHOLD 10
+#define GAW_ACTION_FORWARDSMASH 11
+#define GAW_ACTION_DOWNSMASHHOLD 12
+#define GAW_ACTION_DOWNSMASH 13
+#define GAW_ACTION_UPSMASHHOLD 14
+#define GAW_ACTION_UPSMASH 15
+#define GAW_ACTION_DASHATTACK 18
+#define GAW_ACTION_NEUTRALB 20
+#define GAW_ACTION_SIDEB 21
+#define GAW_ACTION_DOWNB 22
+#define GAW_ACTION_DOWNBATTACK 23
+#define GAW_ACTION_UPSPECIALRISING 25
+#define GAW_ACTION_UPSPECIALTOP 26
+#define GAW_ACTION_UPSPECIALFALLING 27
+#define GAW_ACTION_LEDGEGRAB 30
+#define GAW_ACTION_BACKAIR 40
+#define GAW_ACTION_FORWARDAIR 41
+#define GAW_ACTION_DOWNAIR 42
+#define GAW_ACTION_UPAIR 44
+#define GAW_ACTION_NEUTRALAIR 45
+#define GAW_ACTION_HURT 50
+#define GAW_ACTION_SHIELD 51
+
+#define GAW_STAGE_OFFSET 18
+
+protected:
+    //  animation config
+    const uint8_t charIndex = 1;
+    const uint16_t blinkPeriod = 2000;      //  how often gaw changes idle animation
+
+    //  physics config
+    const double groundSpeed = 1.85*3;  // pps
+    const double airSpeed = 0.9*3;
+
+    const double initialJumpSpeed = 2.0*3;
+    const double repeatedJumpSpeed = 2.1*3;
+    const double gravityRising = 0.08*7;
+    const double gravityFalling = 0.12*7;
+    const double maxFallingVelocity = -2.6*3;
+
+    const double airResistance = .2;
+    const double maxHorizontalSpeed = 19*3;
+    const double groundFriction = 0.6;
+
+    const double DIVerticalSpeed = 0.2 * 3;
+    const double DIHorizontalSpeed = 0.2 * 3;
+    const double DIKnockbackVerticalSpeed = 0.3 * 3;
+    const double DIKnockbackHorizontalSpeed = 0.4 * 3;
+
+    //  standing, resting
+    long long lastBlink{0};
+
+    //  up special
+    double startY;
+
+
+public:
+
+
+    GameandWatch() {}
+
+    //  general control loop
+    void controlLoop(double joyH, double joyV, bool btnA, bool btnB, bool shield, class Stage* stage,
+                     class HitboxManager* hitboxManager) override; //  called every update
+
+    void updateLastValues(double joyH, double joyV, bool btnA, bool btnB, bool shield) override;
 
     void collide(class Hurtbox *hurtbox, class Player *otherPlayer) override;
 
