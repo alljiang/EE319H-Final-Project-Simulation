@@ -85,23 +85,35 @@ class Hitbox: public Collider {
 
 public:
     double radiusOffset{0};
+    double heightOffset{0};
+    double widthOffset{0};
 
-    Hitbox(double cX, double cY, uint8_t boxShape, double radius)
-            : Collider(cX, cY, boxShape, radius) {}
-    Hitbox(double cX, double cY, uint8_t boxShape, double length, double width)
-            : Collider(cX, cY, boxShape, length, width) {}
+    Hitbox(double cX, double cY, double radius)
+            : Collider(cX, cY, SHAPE_CIRCLE, radius) {}
+    Hitbox(double cX, double cY, double length, double width)
+            : Collider(cX, cY, SHAPE_RECTANGLE, length, width) {}
 
     void offsetY(double yOffset) { this->yOffset = yOffset; }
     void offsetX(double xOffset) { this->xOffset = xOffset; }
     void offsetX(double xOffset, bool mirrored) { if(mirrored) offsetX(-xOffset); else offsetX(xOffset); }
 
     void offsetRadius(double radius) { this->radiusOffset = radius; };
+    void offsetHeight(double height) { this->heightOffset = heightOffset; }
+    void offsetWidth(double width) { this->widthOffset = widthOffset; }
 
     void initialize(double cX, double cY, uint8_t boxShape, double radius) {
         x = cX;
         y = cY;
         shape = boxShape;
         this->radius = radius;
+    }
+
+    void initialize(double cX, double cY, uint8_t boxShape, double width, double height) {
+        x = cX;
+        y = cY;
+        shape = boxShape;
+        this->width = width;
+        this->height = height;
     }
 
     bool isColliding(class Hurtbox hurtbox);
@@ -197,7 +209,7 @@ public:
     bool dead;
     uint8_t stocksRemaining;
 
-    Hitbox hitbox = Hitbox(0, 0, 0, 0);
+    Hitbox hitbox = Hitbox(0, 0, 0);
 
     void setPlayer(uint8_t p) { player = p; }
     void setMirrored(bool mirror) { l_mirrored = mirrored = mirror; }
@@ -377,8 +389,6 @@ public:
     Hurtbox sideSpecial5 = Hurtbox(true,17, 10, SHAPE_CIRCLE,
                                    11, 1);
 
-    Kirby() {}
-
     //  general control loop
     void controlLoop(double joyH, double joyV, bool btnA, bool btnB, bool shield, class Stage* stage,
                      class HitboxManager* hitboxManager) override; //  called every update
@@ -476,7 +486,9 @@ protected:
 
 public:
 
-    GameandWatch() {}
+    GameandWatch() {
+        hitbox = Hitbox(0, 0, 0, 0);
+    }
 
     //  general control loop
     void controlLoop(double joyH, double joyV, bool btnA, bool btnB, bool shield, class Stage* stage,

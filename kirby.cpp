@@ -16,6 +16,8 @@ void Kirby::controlLoop(double joyH, double joyV, bool btnA, bool btnB, bool shi
     double dt = 49;
     currentTime += (uint8_t)dt;
 
+    printf("%f\n", hitbox.radius);
+
     SpriteSendable s;
 
     //  check if dead

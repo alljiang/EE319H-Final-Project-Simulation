@@ -878,7 +878,7 @@ void GameandWatch::controlLoop(double joyH, double joyV, bool btnA, bool btnB, b
         xAnimationOffset = 0;
         yAnimationOffset = 0;
 
-        hitbox.offsetY(0);
+        hitbox.offsetY(5);
         if(mirrored) hitbox.offsetX(1, mirrored);
         else hitbox.offsetX(0, mirrored);
 
