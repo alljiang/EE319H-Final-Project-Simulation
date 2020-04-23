@@ -98,20 +98,20 @@ public:
     void offsetX(double xOffset, bool mirrored) { if(mirrored) offsetX(-xOffset); else offsetX(xOffset); }
 
     void offsetRadius(double radius) { this->radiusOffset = radius; };
-    void offsetHeight(double height) { this->heightOffset = heightOffset; }
-    void offsetWidth(double width) { this->widthOffset = widthOffset; }
+    void offsetHeight(double height) { this->heightOffset = height; }
+    void offsetWidth(double width) { this->widthOffset = width; }
 
-    void initialize(double cX, double cY, uint8_t boxShape, double radius) {
+    void initialize(double cX, double cY, double radius) {
         x = cX;
         y = cY;
-        shape = boxShape;
+        shape = SHAPE_CIRCLE;
         this->radius = radius;
     }
 
-    void initialize(double cX, double cY, uint8_t boxShape, double width, double height) {
+    void initialize(double cX, double cY, double width, double height) {
         x = cX;
         y = cY;
-        shape = boxShape;
+        shape = SHAPE_RECTANGLE;
         this->width = width;
         this->height = height;
     }

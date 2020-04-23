@@ -40,7 +40,7 @@ float y = 0;
 
 const bool PLAYER2 = true;
 const bool HITBOXOVERLAY = true;
-const double UPDATERATE = 20;   // 20
+const double UPDATERATE = 5;   // 20
 const bool ENABLECOUNTDOWN = false;
 
 const uint8_t stageToPlay = STAGE_FINALDESTINATION;

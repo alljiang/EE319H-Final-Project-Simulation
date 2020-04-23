@@ -16,8 +16,6 @@ void Kirby::controlLoop(double joyH, double joyV, bool btnA, bool btnB, bool shi
     double dt = 49;
     currentTime += (uint8_t)dt;
 
-    printf("%f\n", hitbox.radius);
-
     SpriteSendable s;
 
     //  check if dead
@@ -1348,7 +1346,7 @@ void Kirby::controlLoop(double joyH, double joyV, bool btnA, bool btnB, bool shi
     if(x > rightBound) x = rightBound;
     else if(x < leftBound) x = leftBound;
 
-    this->hitbox.initialize(x+16, y+10, SHAPE_CIRCLE, 12);
+    this->hitbox.initialize(x+16, y+10, 12);
 
     if(!mirrored) x_mirroredOffset = 0;
     else x_mirroredOffset -= xAnimationOffset;
@@ -1662,7 +1660,7 @@ void Kirby::controlLoop(double joyH, double joyV, bool btnA, bool btnB, bool shi
         if(y == floor) action = KIRBY_ACTION_RESTING;
         else action = KIRBY_ACTION_FALLING;
     }
-        //  drop down
+        //  ledge grab drop down
     else if(disabledFrames == 0 && (action == KIRBY_ACTION_LEDGEGRAB) &&
             joyV < -0.3) {
         action = KIRBY_ACTION_FALLING;

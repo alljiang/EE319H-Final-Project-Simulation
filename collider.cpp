@@ -63,7 +63,6 @@ void HitboxManager::displayHitboxesOverlay() {
 
     if(p2 != nullptr) {
         if (p2->hitbox.shape == SHAPE_CIRCLE) {
-            printf("%f\n", p2->hitbox.radius);
             LCD_drawOverlayCircle(p2->hitbox.x + p2->hitbox.xOffset,
                     p2->hitbox.y + p2->hitbox.yOffset,
                     p2->hitbox.radius + p2->hitbox.radiusOffset, hitboxColorsub);

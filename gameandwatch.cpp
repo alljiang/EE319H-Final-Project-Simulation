@@ -62,6 +62,8 @@ void GameandWatch::controlLoop(double joyH, double joyV, bool btnA, bool btnB, b
     hitbox.offsetY(0);
     hitbox.offsetX(0);
     hitbox.offsetRadius(0);
+    hitbox.offsetWidth(0);
+    hitbox.offsetHeight(0);
 
     double ceiling = stage->ceil(x + GAW_STAGE_OFFSET, y);
     double floor = stage->floor(x + GAW_STAGE_OFFSET, y);
@@ -75,8 +77,9 @@ void GameandWatch::controlLoop(double joyH, double joyV, bool btnA, bool btnB, b
 
     //  movement
     if(action == GAW_ACTION_JUMPING) {
-        hitbox.offsetY(4);
-        hitbox.offsetX(4);
+        hitbox.offsetY(0);
+        if(mirrored) hitbox.offsetX(4);
+        else hitbox.offsetX(2);
         gravityScale = 1;
         x += airSpeed * joyH;
         if(x > rightBound) x = rightBound;
@@ -104,8 +107,9 @@ void GameandWatch::controlLoop(double joyH, double joyV, bool btnA, bool btnB, b
         else if(x < leftBound) x = leftBound;
         animationIndex = 4;
 
-        hitbox.offsetY(3);
-        hitbox.offsetX(0, mirrored);
+        hitbox.offsetY(0);
+        if(mirrored) hitbox.offsetX(3);
+        else hitbox.offsetX(1);
 
         frameExtension = 3;
         if(frameLengthCounter++ >= frameExtension) {
@@ -127,10 +131,11 @@ void GameandWatch::controlLoop(double joyH, double joyV, bool btnA, bool btnB, b
 
         yVel = 0;
 
-        hitbox.offsetY(-17);
-        hitbox.offsetRadius(2);
-        if(mirrored) hitbox.offsetX(4, mirrored);
-        else hitbox.offsetX(-3, mirrored);
+        hitbox.offsetWidth(-11);
+        hitbox.offsetHeight(9);
+        hitbox.offsetY(-28);
+        if(mirrored) hitbox.offsetX(-5);
+        else hitbox.offsetX(2);
     }
     else if(action == GAW_ACTION_NEUTRALATTACK) {
         animationIndex = 17;
@@ -141,8 +146,8 @@ void GameandWatch::controlLoop(double joyH, double joyV, bool btnA, bool btnB, b
         frameExtension = 2;
 
         hitbox.offsetY(0);
-        if(mirrored) hitbox.offsetX(0, mirrored);
-        else hitbox.offsetX(-2, mirrored);
+        if(mirrored) hitbox.offsetX(5);
+        else hitbox.offsetX(0);
 
         if(frameLengthCounter++ >= frameExtension) {
             frameLengthCounter = 0;
@@ -213,9 +218,9 @@ void GameandWatch::controlLoop(double joyH, double joyV, bool btnA, bool btnB, b
         x_mirroredOffset = -20;
         disabledFrames = 2;
 
-        hitbox.offsetY(-6);
+        hitbox.offsetY(0);
         hitbox.offsetX(2);
-        hitbox.offsetRadius(-3);
+        hitbox.offsetWidth(3);
 
         frameExtension = 3;
         if(frameLengthCounter++ >= frameExtension) {
@@ -243,7 +248,7 @@ void GameandWatch::controlLoop(double joyH, double joyV, bool btnA, bool btnB, b
         x_mirroredOffset = -20;
 
         hitbox.offsetY(0);
-        hitbox.offsetX(-3, mirrored);
+        hitbox.offsetX(0, mirrored);
 
         if(frameIndex == 0) frameExtension = 4;
         else if(frameIndex == 1) frameExtension = 7;
@@ -269,11 +274,6 @@ void GameandWatch::controlLoop(double joyH, double joyV, bool btnA, bool btnB, b
         x_mirroredOffset = -12;
         xAnimationOffset = -16;
 
-        hitbox.offsetY(4);
-        hitbox.offsetX(2, mirrored);
-//        if(mirrored) hitbox.offsetX(0, mirrored);
-//        else hitbox.offsetX(0, mirrored);
-
         frameExtension = 3;
         if(frameLengthCounter++ >= frameExtension) {
             frameLengthCounter = 0;
@@ -286,9 +286,23 @@ void GameandWatch::controlLoop(double joyH, double joyV, bool btnA, bool btnB, b
             x_mirroredOffset = 0;
         }
         else {
-//            if(frameIndex < 4)
-//                hitboxManager->addHurtbox(x + 16, y, mirrored,
-//                                          upTilt, player);
+            if(frameIndex == 0) {
+                hitbox.offsetWidth(6);
+                if(mirrored) hitbox.offsetX(0);
+                else hitbox.offsetX(6);
+            }
+            else if(frameIndex == 1) {
+                hitbox.offsetWidth(10);
+                if(mirrored) hitbox.offsetX(0);
+                else hitbox.offsetX(-2);
+
+            }
+            else if(frameIndex == 2) {
+                hitbox.offsetWidth(10);
+                if(mirrored) hitbox.offsetX(0);
+                else hitbox.offsetX(-2);
+
+            }
         }
     }
     else if(action == GAW_ACTION_FORWARDSMASHHOLD) {
@@ -821,9 +835,10 @@ void GameandWatch::controlLoop(double joyH, double joyV, bool btnA, bool btnB, b
         animationIndex = 6;
         frameIndex = 0;
 
-        hitbox.offsetY(-6);
-        hitbox.offsetX(0, mirrored);
-        hitbox.offsetRadius(-2);
+        hitbox.offsetY(-8);
+        hitbox.offsetX(4);
+        hitbox.offsetHeight(-17);
+        hitbox.offsetWidth(6);
 
         if(joyV > -0.3) {
             action = GAW_ACTION_RESTING;
@@ -853,9 +868,10 @@ void GameandWatch::controlLoop(double joyH, double joyV, bool btnA, bool btnB, b
             gravityScale = 1;
 
             mirrored = l_mirrored;
-            hitbox.offsetY(2);
-            if(mirrored) hitbox.offsetX(1, mirrored);
-            else hitbox.offsetX(0, mirrored);
+            hitbox.offsetWidth(4);
+            hitbox.offsetY(-1);
+            if(mirrored) hitbox.offsetX(4);
+            else hitbox.offsetX(2);
             animationIndex = 5;
 
             frameExtension = 2;
@@ -878,7 +894,7 @@ void GameandWatch::controlLoop(double joyH, double joyV, bool btnA, bool btnB, b
         xAnimationOffset = 0;
         yAnimationOffset = 0;
 
-        hitbox.offsetY(5);
+        hitbox.offsetY(0);
         if(mirrored) hitbox.offsetX(1, mirrored);
         else hitbox.offsetX(0, mirrored);
 
@@ -924,12 +940,15 @@ void GameandWatch::controlLoop(double joyH, double joyV, bool btnA, bool btnB, b
                 }
                 if (frameIndex >= 2) frameIndex = 0;
                 animationIndex = 2;
-                hitbox.offsetY(2);
-                hitbox.offsetX(0, mirrored);
+                hitbox.offsetY(0);
+                if(mirrored) hitbox.offsetX(1);
+                else hitbox.offsetX(1);
+                hitbox.offsetHeight(4);
+                hitbox.offsetWidth(5);
 
-                xAnimationOffset = 0;
+                xAnimationOffset = -6;
                 yAnimationOffset = 0;
-                x_mirroredOffset = 0;
+                x_mirroredOffset = -3;
                 // walk
             } else {
                 frameExtension = (uint8_t) ((-2 * absVal(joyH)) + 5);
@@ -939,8 +958,10 @@ void GameandWatch::controlLoop(double joyH, double joyV, bool btnA, bool btnB, b
                 }
                 if (frameIndex >= 3) frameIndex = 1;
                 animationIndex = 1;
-                hitbox.offsetY(1);
-                hitbox.offsetX(-1, mirrored);
+                if(mirrored) hitbox.offsetX(4);
+                else hitbox.offsetX(2);
+                hitbox.offsetHeight(4);
+                hitbox.offsetWidth(3);
 
                 xAnimationOffset = 0;
                 yAnimationOffset = 0;
@@ -965,7 +986,7 @@ void GameandWatch::controlLoop(double joyH, double joyV, bool btnA, bool btnB, b
     if(x > rightBound) x = rightBound;
     else if(x < leftBound) x = leftBound;
 
-    this->hitbox.initialize(x+16, y+10, SHAPE_CIRCLE, 12);
+    this->hitbox.initialize(x+15, y+15, 28, 30);
 
     if(!mirrored) x_mirroredOffset = 0;
     else x_mirroredOffset -= xAnimationOffset;
@@ -1229,6 +1250,7 @@ void GameandWatch::controlLoop(double joyH, double joyV, bool btnA, bool btnB, b
         l_action = action;
         action = GAW_ACTION_JUMPING;
         frameIndex = 0;
+        frameLengthCounter = 0;
         ledgeGrabTime = currentTime;
     }
         //  double jump
@@ -1242,6 +1264,7 @@ void GameandWatch::controlLoop(double joyH, double joyV, bool btnA, bool btnB, b
         l_action = action;
         action = GAW_ACTION_DOUBLEJUMPING;
         frameIndex = 0;
+        frameLengthCounter = 0;
 
         if(joyH == 0) mirrored = l_mirrored;
         else mirrored = joyH < 0;
@@ -1251,12 +1274,17 @@ void GameandWatch::controlLoop(double joyH, double joyV, bool btnA, bool btnB, b
             && absVal(joyH) > 0) {
         l_action = action;
         action = GAW_ACTION_RUNNING;
+        frameIndex = 0;
+        frameLengthCounter = 0;
     }
         //  crouching
     else if((action == GAW_ACTION_RESTING || action == GAW_ACTION_RUNNING || action == GAW_ACTION_HURT) &&
             joyV <= -0.3 && y == floor) {
         l_action = action;
         action = GAW_ACTION_CROUCHING;
+
+        frameIndex = 0;
+        frameLengthCounter = 0;
     }
         //  resting
     else if(disabledFrames == 0 &&
@@ -1264,6 +1292,16 @@ void GameandWatch::controlLoop(double joyH, double joyV, bool btnA, bool btnB, b
         l_action = action;
         if(y == floor) action = GAW_ACTION_RESTING;
         else action = GAW_ACTION_FALLING;
+
+        frameIndex = 0;
+        frameLengthCounter = 0;
+    }
+        //  ledge grab drop down
+    else if(disabledFrames == 0 && (action == GAW_ACTION_LEDGEGRAB) &&
+            joyV < -0.3) {
+        action = GAW_ACTION_FALLING;
+        y -= 30;
+        ledgeGrabTime = currentTime;
     }
 
     updateLastValues(joyH, joyV, btnA, btnB, shield);
