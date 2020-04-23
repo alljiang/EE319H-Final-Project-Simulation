@@ -119,7 +119,7 @@ const char animations[CHARACTERS][64][12] = {
                                                 {"fair"},   //  3
                                                 {"bair"},   //  3
                                                 {"dair"},   //  3
-                                                {"uair"},   //  2
+                                                {"uair"},   //  5
                                                 {""},
                                                 {""},
                                                 {""},

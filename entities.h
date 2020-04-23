@@ -457,6 +457,11 @@ protected:
     //  up special
     double startY;
 
+    //  down air
+    bool overrideMaxVelocity;
+
+    //  dash attack
+    long long dashAttackStartTime;
 
 public:
 
