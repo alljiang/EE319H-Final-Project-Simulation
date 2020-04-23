@@ -125,7 +125,7 @@ const char animations[CHARACTERS][64][12] = {
                                                 {""},
                                                 {""},
                                                 {""},
-                /*  30  */                      {"neub"},   //  2
+                /*  30  */                      {"neub"},   //  3
                                                 {"neubproj"},   //  4 (each frame is another projectile)
                                                 {"sideb"},  //  3
                                                 {"sidebnum"},   //  9 (each frame is a number, frame 0 = 1)

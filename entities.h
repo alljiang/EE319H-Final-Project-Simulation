@@ -462,6 +462,18 @@ protected:
     //  dash attack
     long long dashAttackStartTime;
 
+    //  side b
+    uint8_t sideBStrength;
+
+    //  neutral b
+    double proj_x[4];
+    double proj_y[4];
+    double proj_xVel[4];
+    double proj_yVel[4];
+    bool proj_active[4];
+    bool proj_mirrored[4];
+    uint8_t projectileCount;
+
 public:
 
     GameandWatch() {}

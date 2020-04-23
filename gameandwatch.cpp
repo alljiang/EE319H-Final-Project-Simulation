@@ -701,6 +701,93 @@ void GameandWatch::controlLoop(double joyH, double joyV, bool btnA, bool btnB, b
             else hitbox.offsetX(2);
         }
     }
+    else if(action == GAW_ACTION_SIDEB) {
+        animationIndex = 32;
+        mirrored = l_mirrored;
+        disabledFrames = 2;
+        if(frameIndex == 0) frameExtension = 4;
+        else if(frameIndex == 1) frameExtension = 5;
+        else if(frameIndex == 2) frameExtension = 3;
+
+        x_mirroredOffset = -17;
+        xAnimationOffset = -11;
+        yAnimationOffset = 0;
+
+        int xNumberOffset =  18;
+        int yNumberOffset = 40;
+        int xMirroredNumberOffset = 6;
+
+        if(frameLengthCounter++ >= frameExtension) {
+            frameLengthCounter = 0;
+            frameIndex++;
+        }
+        if(frameIndex >= 3) {
+            disabledFrames = 1;
+            if(y == floor) action = GAW_ACTION_RESTING;
+            else action = GAW_ACTION_FALLING;
+        }
+
+        //  add rng number to sign
+        if(frameIndex == 1 || frameIndex == 2) {
+            SpriteSendable number;
+            number.charIndex = charIndex;
+            number.mirrored = false;
+            number.animationIndex = 33;
+            number.frame = sideBStrength - 1;
+            number.x = x + xAnimationOffset + xNumberOffset;
+            if(mirrored) number.x += x_mirroredOffset + xMirroredNumberOffset - xAnimationOffset;
+            number.y = y + yAnimationOffset + yNumberOffset;
+            number.continuous = false;
+            number.persistent = false;
+            number.layer = LAYER_CHARACTER;
+            number.framePeriod = 1;
+
+            UART_sendAnimation(number);
+        }
+    }
+    else if(action == GAW_ACTION_NEUTRALB) {
+        animationIndex = 30;
+        mirrored = l_mirrored;
+        disabledFrames = 2;
+
+        xAnimationOffset = 0;
+        yAnimationOffset = 0;
+        x_mirroredOffset = 0;
+
+        int frameExtension = 2;
+        if(frameLengthCounter++ >= frameExtension) {
+            frameLengthCounter = 0;
+            frameIndex++;
+
+            //  add a projectile
+            if(frameIndex == 1 && projectileCount < 3) {
+                //  get a random inactive projectile
+                int projectileIndex;
+                do { projectileIndex = random(0, 3); }
+                while(proj_active[projectileIndex]);
+
+                projectileCount++;
+                proj_active[projectileIndex] = true;
+                proj_x[projectileIndex] = x + 25;
+                proj_y[projectileIndex] = y + 23;
+                proj_xVel[projectileIndex] = mirrored ? -random(15, 25)/10. : random(15, 25)/10.;
+                proj_yVel[projectileIndex] = mirrored ? -random(70, 90)/10. : random(70, 90)/10.;
+                proj_mirrored[projectileIndex] = mirrored;
+            }
+        }
+
+        if(frameIndex >= 3) {
+            if(currentTime - l_btnBRise_t < 300) {
+                frameIndex = 0;
+                frameLengthCounter = 0;
+            }
+            else {
+                disabledFrames = 4;
+                if (y == floor) action = GAW_ACTION_RESTING;
+                else action = GAW_ACTION_FALLING;
+            }
+        }
+    }
     if(action == GAW_ACTION_PARACHUTE) {
         animationIndex = 37;
         mirrored = l_mirrored;
@@ -882,6 +969,42 @@ void GameandWatch::controlLoop(double joyH, double joyV, bool btnA, bool btnB, b
 
     if(!mirrored) x_mirroredOffset = 0;
     else x_mirroredOffset -= xAnimationOffset;
+
+    //  handle all the neutral b projectiles
+    for(int i = 0; i < 4 && projectileCount > 0; i++) {
+        if(!proj_active[i]) continue;
+        SpriteSendable projectile;
+        projectile.charIndex = charIndex;
+        projectile.animationIndex = 31;
+        projectile.framePeriod = 1;
+        projectile.frame = i;
+        projectile.persistent = false;
+        projectile.continuous = false;
+        projectile.x = proj_x[i];
+        projectile.y = proj_y[i];
+        projectile.mirrored = proj_mirrored[i];
+        projectile.layer = LAYER_CHARACTER_PROJECTILE;
+
+        UART_sendAnimation(projectile);
+
+        bool killProjectile = false;
+
+        //  will the projectile fall on the floor?
+        if(proj_y[i] + proj_yVel[i]< stage->floor(proj_x[i] + proj_xVel[i], proj_y[i])) killProjectile = true;
+
+        //  is projectile out of the screen?
+        if(proj_y[i] < 0) killProjectile = true;
+
+        proj_x[i] += proj_xVel[i];
+        proj_y[i] += proj_yVel[i];
+
+        proj_yVel[i] -= gravityFalling;
+
+        if(killProjectile) {
+            proj_active[i] = false;
+            projectileCount--;
+        }
+    }
 
     s.charIndex = charIndex;
     s.animationIndex = animationIndex;
@@ -1072,6 +1195,25 @@ void GameandWatch::controlLoop(double joyH, double joyV, bool btnA, bool btnB, b
         yVel = 8.5;
         y++;
     }
+        //  side special
+    else if(disabledFrames == 0 && currentTime - l_btnBRise_t == 0
+            && absVal(joyH) >= 0.5) {
+        action = GAW_ACTION_SIDEB;
+        disabledFrames = 2;
+        frameIndex = 0;
+        frameLengthCounter = 0;
+        mirrored = joyH < 0;
+        sideBStrength = random(1, 9);
+    }
+        //  neutral B
+    else if(disabledFrames == 0 && currentTime - l_btnBRise_t == 0
+            && absVal(joyH) < 0.5) {
+        action = GAW_ACTION_NEUTRALB;
+        disabledFrames = 2;
+        frameIndex = 0;
+        frameLengthCounter = 0;
+        mirrored = joyH < 0;
+    }
 
         //  movement
         //  jumping
@@ -1203,6 +1345,12 @@ void GameandWatch::reset() {
     usmash_startTime = 0;
     ledgeGrabTime = 0;
     jumpsUsed = 0;
+
+    proj_active[0] = false;
+    proj_active[1] = false;
+    proj_active[2] = false;
+    proj_active[3] = false;
+    projectileCount = 0;
 
     dead = false;
 }
