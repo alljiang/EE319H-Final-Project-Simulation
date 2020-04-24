@@ -196,14 +196,15 @@ void GameandWatch::controlLoop(double joyH, double joyV, bool btnA, bool btnB, b
         gravityScale = 0;
         yVel = 0;
 
+        hitbox.offsetWidth(6);
         hitbox.offsetY(0);
-        hitbox.offsetX(0);
+        hitbox.offsetX(3);
 
         if(currentTime - dashAttackStartTime > 700) {
             l_action = GAW_ACTION_DASHATTACK;
             if(absVal(joyH) > 0.1) action = GAW_ACTION_RUNNING;
             else action = GAW_ACTION_RESTING;
-            disabledFrames = 10;
+            disabledFrames = 4;
         }
         else {
 //            if(frameIndex > 1) {
@@ -577,9 +578,10 @@ void GameandWatch::controlLoop(double joyH, double joyV, bool btnA, bool btnB, b
             xAnimationOffset = 0;
             yAnimationOffset = 0;
 
-            hitbox.offsetY(9);
-            if(mirrored) hitbox.offsetX(3);
-            else hitbox.offsetX(2);
+            hitbox.offsetHeight(-2);
+            hitbox.offsetY(-1);
+            if(mirrored) hitbox.offsetX(-4);
+            else hitbox.offsetX(-1);
 
             frameExtension = 2;
             if (frameLengthCounter++ >= frameExtension) {
@@ -609,6 +611,10 @@ void GameandWatch::controlLoop(double joyH, double joyV, bool btnA, bool btnB, b
         disabledFrames = 2;
 
         if(frameIndex == 0) {
+            hitbox.offsetX(5);
+            hitbox.offsetY(5);
+            hitbox.offsetHeight(-4);
+
             frameExtension = 1;
             gravityScale = 0;
             yVel = 0;
@@ -618,6 +624,12 @@ void GameandWatch::controlLoop(double joyH, double joyV, bool btnA, bool btnB, b
             }
         }
         if(frameIndex == 1) {
+            if(mirrored) hitbox.offsetX(11);
+            else hitbox.offsetX(7);
+            hitbox.offsetY(18);
+            hitbox.offsetWidth(6);
+            hitbox.offsetHeight(-6);
+
             if(y <= floor) {
                 y = floor;
                 frameIndex++;
@@ -633,6 +645,12 @@ void GameandWatch::controlLoop(double joyH, double joyV, bool btnA, bool btnB, b
             }
         }
         if(frameIndex == 2) {
+            hitbox.offsetWidth(6);
+            hitbox.offsetHeight(-10);
+            if(mirrored) hitbox.offsetX(22);
+            else hitbox.offsetX(-9);
+            hitbox.offsetY(-5);
+
             frameExtension = 7;
             xAnimationOffset = -12;
             x_mirroredOffset = 10;
@@ -663,9 +681,11 @@ void GameandWatch::controlLoop(double joyH, double joyV, bool btnA, bool btnB, b
             xAnimationOffset = -17;
             yAnimationOffset = 0;
 
-            hitbox.offsetY(6);
-            if(mirrored) hitbox.offsetX(2);
-            else hitbox.offsetX(1);
+            hitbox.offsetHeight(-3);
+            hitbox.offsetWidth(4);
+            hitbox.offsetY(-1);
+            if(mirrored) hitbox.offsetX(4);
+            else hitbox.offsetX(3);
 
             disabledFrames = 2;
             frameExtension = 3;
@@ -699,6 +719,11 @@ void GameandWatch::controlLoop(double joyH, double joyV, bool btnA, bool btnB, b
             xAnimationOffset = 0;
             yAnimationOffset = 0;
 
+            hitbox.offsetWidth(4);
+            if(mirrored) hitbox.offsetX(1);
+            else hitbox.offsetX(3);
+            hitbox.offsetY(0);
+
             if(frameIndex == 0 || frameIndex == 1) {
                 frameExtension = 2;
                 if(frameLengthCounter++ >= frameExtension) {
@@ -720,15 +745,15 @@ void GameandWatch::controlLoop(double joyH, double joyV, bool btnA, bool btnB, b
                     frameLengthCounter = 0;
                 }
 
-                if(frameIndex >= 5) action = GAW_ACTION_PARACHUTE;
+                if(frameIndex >= 5) {
+                    action = GAW_ACTION_PARACHUTE;
+                    frameIndex = 0;
+                    frameLengthCounter = 0;
+                }
             }
-
-            hitbox.offsetY(9);
-            if(mirrored) hitbox.offsetX(3);
-            else hitbox.offsetX(2);
         }
     }
-    else if(action == GAW_ACTION_SIDEB) {
+    else if(action == GAW_ACTION_SIDESPECIAL) {
         animationIndex = 32;
         mirrored = l_mirrored;
         disabledFrames = 2;
@@ -743,6 +768,9 @@ void GameandWatch::controlLoop(double joyH, double joyV, bool btnA, bool btnB, b
         int xNumberOffset =  18;
         int yNumberOffset = 40;
         int xMirroredNumberOffset = 6;
+
+        if(mirrored) hitbox.offsetX(-2);
+        else hitbox.offsetX(3);
 
         if(frameLengthCounter++ >= frameExtension) {
             frameLengthCounter = 0;
@@ -772,14 +800,16 @@ void GameandWatch::controlLoop(double joyH, double joyV, bool btnA, bool btnB, b
             UART_sendAnimation(number);
         }
     }
-    else if(action == GAW_ACTION_NEUTRALB) {
+    else if(action == GAW_ACTION_NEUTRALSPECIAL) {
         animationIndex = 30;
         mirrored = l_mirrored;
         disabledFrames = 2;
 
         xAnimationOffset = 0;
         yAnimationOffset = 0;
-        x_mirroredOffset = 0;
+        x_mirroredOffset = -15;
+
+        hitbox.offsetX(-1);
 
         int frameExtension = 2;
         if(frameLengthCounter++ >= frameExtension) {
@@ -795,10 +825,10 @@ void GameandWatch::controlLoop(double joyH, double joyV, bool btnA, bool btnB, b
 
                 projectileCount++;
                 proj_active[projectileIndex] = true;
-                proj_x[projectileIndex] = x + 25;
+                proj_x[projectileIndex] = mirrored ? x : x+27;
                 proj_y[projectileIndex] = y + 23;
                 proj_xVel[projectileIndex] = mirrored ? -random(15, 25)/10. : random(15, 25)/10.;
-                proj_yVel[projectileIndex] = mirrored ? -random(70, 90)/10. : random(70, 90)/10.;
+                proj_yVel[projectileIndex] = random(70, 90)/10.;
                 proj_mirrored[projectileIndex] = mirrored;
             }
         }
@@ -827,6 +857,43 @@ void GameandWatch::controlLoop(double joyH, double joyV, bool btnA, bool btnB, b
         x += airSpeed * joyH * 0.8;
         gravityScale = 0.3;
         if(yVel < -3) yVel = -3;
+
+        if(frameIndex == 0) {
+            if(mirrored) hitbox.offsetX(8);
+            else hitbox.offsetX(16);
+        }
+        else if(frameIndex == 1) {
+            if(mirrored) hitbox.offsetX(8);
+            else hitbox.offsetX(20);
+        }
+        else if(frameIndex == 2) {
+            if(mirrored) hitbox.offsetX(8);
+            else hitbox.offsetX(16);
+        }
+        else if(frameIndex == 3) {
+            if(mirrored) hitbox.offsetX(14);
+            else hitbox.offsetX(10);
+        }
+        else if(frameIndex == 4) {
+            if(mirrored) hitbox.offsetX(20);
+            else hitbox.offsetX(4);
+        }
+        else if(frameIndex == 5) {
+            if(mirrored) hitbox.offsetX(22);
+            else hitbox.offsetX(0);
+        }
+        else if(frameIndex == 6) {
+            if(mirrored) hitbox.offsetX(20);
+            else hitbox.offsetX(4);
+        }
+        else if(frameIndex == 7) {
+            if(mirrored) hitbox.offsetX(14);
+            else hitbox.offsetX(16);
+        }
+        else if(frameIndex == 8) {
+            if(mirrored) hitbox.offsetX(8);
+            else hitbox.offsetX(20);
+        }
 
         frameExtension = 2;
         if(frameLengthCounter++ >= frameExtension) {
@@ -907,6 +974,8 @@ void GameandWatch::controlLoop(double joyH, double joyV, bool btnA, bool btnB, b
         xAnimationOffset = 0;
         yAnimationOffset = 0;
 
+        hitbox.offsetHeight(0);
+        hitbox.offsetWidth(0);
         hitbox.offsetY(0);
         if(mirrored) hitbox.offsetX(1, mirrored);
         else hitbox.offsetX(0, mirrored);
@@ -1243,7 +1312,7 @@ void GameandWatch::controlLoop(double joyH, double joyV, bool btnA, bool btnB, b
         //  side special
     else if(disabledFrames == 0 && currentTime - l_btnBRise_t == 0
             && absVal(joyH) >= 0.5) {
-        action = GAW_ACTION_SIDEB;
+        action = GAW_ACTION_SIDESPECIAL;
         disabledFrames = 2;
         frameIndex = 0;
         frameLengthCounter = 0;
@@ -1253,11 +1322,11 @@ void GameandWatch::controlLoop(double joyH, double joyV, bool btnA, bool btnB, b
         //  neutral B
     else if(disabledFrames == 0 && currentTime - l_btnBRise_t == 0
             && absVal(joyH) < 0.5) {
-        action = GAW_ACTION_NEUTRALB;
+        action = GAW_ACTION_NEUTRALSPECIAL;
         disabledFrames = 2;
         frameIndex = 0;
         frameLengthCounter = 0;
-        mirrored = joyH < 0;
+        mirrored = l_mirrored;
     }
 
         //  movement
