@@ -486,6 +486,16 @@ protected:
 
 public:
 
+    Hurtbox forwardTilt = Hurtbox(20., 14, SHAPE_RECTANGLE,
+                                  20, 30, 1,
+                                  3, 1.5, 3.3, -1);
+    Hurtbox downTilt = Hurtbox(24., 8, SHAPE_RECTANGLE,
+                                  9, 23, 1,
+                                  3, 1.5, 3.3, -1);
+    Hurtbox upTilt = Hurtbox(-6., 21, SHAPE_RECTANGLE,
+                             25, 18, 1,
+                             3, 1.5, 3.3, -1);
+
     GameandWatch() {
         hitbox = Hitbox(0, 0, 0, 0);
     }

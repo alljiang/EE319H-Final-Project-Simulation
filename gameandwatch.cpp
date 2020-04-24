@@ -239,8 +239,8 @@ void GameandWatch::controlLoop(double joyH, double joyV, bool btnA, bool btnB, b
             x_mirroredOffset = 0;
         }
         else {
-//            hitboxManager->addHurtbox(x + 16, y, mirrored,
-//                                      downTilt, player);
+            hitboxManager->addHurtbox(x + 18, y, mirrored,
+                                      downTilt, player);
         }
     }
     else if(action == GAW_ACTION_FORWARDTILT) {
@@ -264,9 +264,10 @@ void GameandWatch::controlLoop(double joyH, double joyV, bool btnA, bool btnB, b
             x_mirroredOffset = 0;
         }
         else {
-//            if(frameIndex < 3)
-//                hitboxManager->addHurtbox(x + 16, y, mirrored,
-//                                          forwardTilt, player);
+            if(frameIndex == 1) {
+                hitboxManager->addHurtbox(x + 16, y, mirrored,
+                                          forwardTilt, player);
+            }
         }
     }
     else if(action == GAW_ACTION_UPTILT) {
