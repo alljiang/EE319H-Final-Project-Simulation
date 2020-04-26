@@ -771,8 +771,9 @@ void GameandWatch::controlLoop(double joyH, double joyV, bool btnA, bool btnB, b
         }
         else {
             if(frameIndex == 1) {
+                double multiplier = 0.17857 * sideBStrength + 0.2142857;
                 hitboxManager->addHurtbox(x + 17, y, mirrored,
-                                          sideSpecial, player);
+                                          sideSpecial, player, multiplier);
             }
         }
 

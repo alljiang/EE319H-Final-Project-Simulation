@@ -1705,7 +1705,7 @@ void Kirby::collide(Hurtbox *hurtbox, Player *otherPlayer) {
         damage += hurtbox->damage;
 
         double knockbackMultiplier = damage / 200. + 1.0;
-//        printf("%0.1f\n", damage);
+        printf("%0.1f\n", damage);
 
         if (otherPlayer->x < x) xVel = hurtbox->xKnockback * knockbackMultiplier;
         else xVel = -hurtbox->xKnockback * knockbackMultiplier;
