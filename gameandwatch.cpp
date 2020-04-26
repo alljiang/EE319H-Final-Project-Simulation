@@ -165,17 +165,10 @@ void GameandWatch::controlLoop(double joyH, double joyV, bool btnA, bool btnB, b
             disabledFrames = 2;
         }
 
-//            if(frameIndex == 6 || frameIndex == 7 || frameIndex == 8 || frameIndex == 10) {
-//                hitboxManager->addHurtbox(x + 16, y, mirrored,
-//                                          jabRepeating0, player);
-//            }
-//            else if(frameIndex == 9) {
-//                hitboxManager->addHurtbox(x + 16, y, mirrored,
-//                                          jabRepeating1, player);
-//            }
-//            else if(frameIndex == 11) {
-//                hitboxManager->addHurtbox(x + 16, y, mirrored,
-//                                          jabRepeating2, player);
+        if(frameIndex == 1) {
+            hitboxManager->addHurtbox(x + 17, y, mirrored,
+                    neutralAttack, player);
+        }
     }
     else if(action == GAW_ACTION_DASHATTACK) {
         animationIndex = 13;
@@ -207,10 +200,8 @@ void GameandWatch::controlLoop(double joyH, double joyV, bool btnA, bool btnB, b
             disabledFrames = 4;
         }
         else {
-//            if(frameIndex > 1) {
-//                hitboxManager->addHurtbox(x + 16, y, mirrored,
-//                                          dashAttack, player);
-//            }
+            hitboxManager->addHurtbox(x + 18, y, mirrored,
+                                      dashAttack, player);
         }
     }
     else if(action == GAW_ACTION_DOWNTILT) {
@@ -298,12 +289,16 @@ void GameandWatch::controlLoop(double joyH, double joyV, bool btnA, bool btnB, b
                 if(mirrored) hitbox.offsetX(0);
                 else hitbox.offsetX(-2);
 
+                hitboxManager->addHurtbox(x + 18, y, mirrored,
+                                          upTilt1, player);
             }
             else if(frameIndex == 2) {
                 hitbox.offsetWidth(10);
                 if(mirrored) hitbox.offsetX(0);
                 else hitbox.offsetX(-2);
 
+                hitboxManager->addHurtbox(x + 18, y, mirrored,
+                                          upTilt2, player);
             }
         }
     }
@@ -359,11 +354,9 @@ void GameandWatch::controlLoop(double joyH, double joyV, bool btnA, bool btnB, b
             disabledFrames = 5;
         }
         else {
-//            if(frameIndex > 6) {
-//                double chargeScale = (currentTime - fsmash_startTime) / 3000. * 0.6 + 1;
-//                hitboxManager->addHurtbox(x + 16, y, mirrored,
-//                                          forwardSmash, player, chargeScale);
-//            }
+            double chargeScale = (currentTime - fsmash_startTime) / 3000. * 0.6 + 1;
+            hitboxManager->addHurtbox(x + 15, y, mirrored,
+                                      forwardSmash, player, chargeScale);
         }
     }
     else if(action == GAW_ACTION_UPSMASHHOLD) {
@@ -414,14 +407,9 @@ void GameandWatch::controlLoop(double joyH, double joyV, bool btnA, bool btnB, b
         }
         else {
             double chargeScale = (currentTime - usmash_startTime) / 3000. * 0.6 + 1;
-            if(frameIndex == 2) {
-                if(mirrored) hitbox.offsetX(6);
-                else hitbox.offsetX(-8);
-            }
-            else if(frameIndex == 3) {
-                hitbox.offsetWidth(4);
-                if(mirrored) hitbox.offsetX(-7);
-                else hitbox.offsetX(5);
+            if(frameIndex > 1) {
+                hitboxManager->addHurtbox(x + 14, y, mirrored,
+                                          upSmash, player, chargeScale);
             }
         }
     }
@@ -477,11 +465,9 @@ void GameandWatch::controlLoop(double joyH, double joyV, bool btnA, bool btnB, b
             disabledFrames = 5;
         }
         else {
-//            if(frameIndex > 1) {
-//                double chargeScale = (currentTime - dsmash_startTime) / 3000. * 0.6 + 1;
-//                hitboxManager->addHurtbox(x + 16, y, mirrored,
-//                                          downSmash, player, chargeScale);
-//            }
+            double chargeScale = (currentTime - dsmash_startTime) / 3000. * 0.6 + 1;
+            hitboxManager->addHurtbox(x + 16, y, mirrored,
+                                          downSmash, player, chargeScale);
         }
     }
     else if(action == GAW_ACTION_FORWARDAIR) {
@@ -518,10 +504,9 @@ void GameandWatch::controlLoop(double joyH, double joyV, bool btnA, bool btnB, b
                 disabledFrames = 4;
             }
             else {
-//                if(frameIndex > 1) {
-//                    hitboxManager->addHurtbox(x + 16, y, mirrored,
-//                                              forwardAir, player);
-//                }
+                if(frameIndex == 1)
+                    hitboxManager->addHurtbox(x + 22, y, mirrored,
+                                          forwardAir, player);
             }
         }
     }
@@ -556,10 +541,10 @@ void GameandWatch::controlLoop(double joyH, double joyV, bool btnA, bool btnB, b
                 disabledFrames = 0;
             }
             else {
-//                if(frameIndex > 1 && frameIndex < 5) {
-//                    hitboxManager->addHurtbox(x + 16, y, mirrored,
-//                                              backAir, player);
-//                }
+                if(frameIndex == 1 || frameIndex == 2) {
+                    hitboxManager->addHurtbox(x + 17, y, mirrored,
+                                              backAir, player);
+                }
             }
         }
     }
@@ -595,10 +580,10 @@ void GameandWatch::controlLoop(double joyH, double joyV, bool btnA, bool btnB, b
                 disabledFrames = 5;
             }
             else {
-//                if(frameIndex > 1 && frameIndex < 5) {
-//                    hitboxManager->addHurtbox(x + 16, y, mirrored,
-//                                              upAir, player);
-//                }
+                if(frameIndex == 1 || frameIndex == 3) {
+                    hitboxManager->addHurtbox(x + 13, y, mirrored,
+                                              upAir, player);
+                }
             }
         }
     }
@@ -641,8 +626,10 @@ void GameandWatch::controlLoop(double joyH, double joyV, bool btnA, bool btnB, b
                 if(yVel < -12) yVel = -12;
                 overrideMaxVelocity = true;
                 xVel = 0;
-//                hitboxManager->addHurtbox(x + 16, y, mirrored,
-//                                          neutralAir, player);
+
+                if(frameIndex == 1)
+                    hitboxManager->addHurtbox(x + 22, y, mirrored,
+                                              downAir, player);
             }
         }
         if(frameIndex == 2) {
@@ -700,8 +687,8 @@ void GameandWatch::controlLoop(double joyH, double joyV, bool btnA, bool btnB, b
                 disabledFrames = 5;
             }
             else {
-//                hitboxManager->addHurtbox(x + 16, y, mirrored,
-//                                          neutralAir, player);
+                hitboxManager->addHurtbox(x + 18, y, mirrored,
+                                          neutralAir, player);
             }
         }
     }
@@ -781,6 +768,12 @@ void GameandWatch::controlLoop(double joyH, double joyV, bool btnA, bool btnB, b
             disabledFrames = 1;
             if(y == floor) action = GAW_ACTION_RESTING;
             else action = GAW_ACTION_FALLING;
+        }
+        else {
+            if(frameIndex == 1) {
+                hitboxManager->addHurtbox(x + 17, y, mirrored,
+                                          sideSpecial, player);
+            }
         }
 
         //  add rng number to sign
@@ -1101,6 +1094,10 @@ void GameandWatch::controlLoop(double joyH, double joyV, bool btnA, bool btnB, b
         projectile.layer = LAYER_CHARACTER_PROJECTILE;
 
         UART_sendAnimation(projectile);
+
+        //  add hurtbox
+        hitboxManager->addHurtbox(proj_x[i]+7, proj_y[i], mirrored,
+                                  neutralSpecialProjectile, player);
 
         bool killProjectile = false;
 

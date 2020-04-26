@@ -486,15 +486,53 @@ protected:
 
 public:
 
-    Hurtbox forwardTilt = Hurtbox(20., 14, SHAPE_RECTANGLE,
+    Hurtbox neutralAttack = Hurtbox(29., 12, SHAPE_RECTANGLE,
+                                    20, 20, 1,
+                                    3, 1.5, 3.3, -1);
+    Hurtbox dashAttack = Hurtbox(0., 15, SHAPE_RECTANGLE,
+                                    28, 32, 1,
+                                    3, 1.5, 3.3, -1);
+    Hurtbox forwardTilt = Hurtbox(35., 11, SHAPE_RECTANGLE,
                                   20, 30, 1,
                                   3, 1.5, 3.3, -1);
     Hurtbox downTilt = Hurtbox(24., 8, SHAPE_RECTANGLE,
                                   9, 23, 1,
                                   3, 1.5, 3.3, -1);
-    Hurtbox upTilt = Hurtbox(-6., 21, SHAPE_RECTANGLE,
-                             25, 18, 1,
-                             3, 1.5, 3.3, -1);
+    Hurtbox upTilt1 = Hurtbox(14., 40, SHAPE_RECTANGLE,
+                              23, 23, 1,
+                              3, 1.5, 3.3, -1);
+    Hurtbox upTilt2 = Hurtbox(-21., 43, SHAPE_RECTANGLE,
+                              23, 23, 1,
+                              3, 1.5, 3.3, -1);
+    Hurtbox forwardSmash = Hurtbox(30., 18, SHAPE_RECTANGLE,
+                                  20, 20, 1,
+                                  3, 1.5, 3.3, -1);
+    Hurtbox upSmash = Hurtbox(1., 20, SHAPE_RECTANGLE,
+                              23, 46, 1,
+                              3, 1.5, 3.3, -1);
+    Hurtbox downSmash = Hurtbox(0., 12, SHAPE_RECTANGLE,
+                              24, 66, 1,
+                              3, 1.5, 3.3, -1);
+    Hurtbox forwardAir = Hurtbox(24., 20, SHAPE_RECTANGLE,
+                                  15, 25, 1,
+                                  3, 1.5, 3.3, -1);
+    Hurtbox downAir = Hurtbox(5., 12, SHAPE_RECTANGLE,
+                               26, 14, 1,
+                               3, 1.5, 3.3, -1);
+    Hurtbox upAir = Hurtbox(-4., 44, SHAPE_RECTANGLE,
+                              19, 20, 1,
+                              3, 1.5, 3.3, -1);
+    Hurtbox backAir = Hurtbox(-25., 15, SHAPE_RECTANGLE,
+                                 21, 31, 1,
+                                 3, 1.5, 3.3, -1);
+    Hurtbox neutralAir = Hurtbox(1., 34, SHAPE_RECTANGLE,
+                                30, 40, 1,
+                                3, 1.5, 3.3, -1);
+    Hurtbox sideSpecial = Hurtbox(21., 28, SHAPE_RECTANGLE,
+                                  16, 24, 1,
+                                  3, 1.5, 3.3, -1);
+    Hurtbox neutralSpecialProjectile = Hurtbox(true,0, 5, SHAPE_CIRCLE,
+                                 8, 1);
 
     GameandWatch() {
         hitbox = Hitbox(0, 0, 0, 0);
