@@ -12,18 +12,29 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="fe664a67-824c-4cd3-aff1-f4bbf75b53a6" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/data/sprites/menu/Smash Menu.psd" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/sprites/menu/charmenu.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/sprites/menu/gif/p1big.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/sprites/menu/gif/p1small.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/sprites/menu/gif/p2big.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/sprites/menu/gif/p2small.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/sprites/menu/gif/prvwgaw.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/sprites/menu/gif/prvwkirby.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/sprites/menu/gif/prvwvalvano.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/sprites/menu/p1.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/sprites/menu/p2.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/sprites/menu/piskel/a.piskel" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/sprites/menu/piskel/p1big.piskel" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/sprites/menu/piskel/p1small.piskel" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/sprites/menu/piskel/p2big.piskel" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/sprites/menu/piskel/p2small.piskel" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/sprites/menu/piskel/prvwgaw.piskel" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/sprites/menu/piskel/prvwkirby.piskel" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/sprites/menu/piskel/prvwvalvano.piskel" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/EE319K_Final_Project_Initial_Testing.dir/CXX.includecache" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/EE319K_Final_Project_Initial_Testing.dir/CXX.includecache" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/EE319K_Final_Project_Initial_Testing.dir/collider.cpp.obj" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/EE319K_Final_Project_Initial_Testing.dir/collider.cpp.obj" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/EE319K_Final_Project_Initial_Testing.dir/gameandwatch.cpp.obj" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/EE319K_Final_Project_Initial_Testing.dir/gameandwatch.cpp.obj" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/EE319K_Final_Project_Initial_Testing.dir/kirby.cpp.obj" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/EE319K_Final_Project_Initial_Testing.dir/kirby.cpp.obj" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/EE319K_Final_Project_Initial_Testing.dir/main.cpp.obj" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/EE319K_Final_Project_Initial_Testing.dir/main.cpp.obj" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/EE319K_Final_Project_Initial_Testing.dir/objects.a" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/EE319K_Final_Project_Initial_Testing.dir/objects.a" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/EE319K_Final_Project_Initial_Testing.dir/stage.cpp.obj" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/EE319K_Final_Project_Initial_Testing.dir/stage.cpp.obj" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/EE319K_Final_Project_Initial_Testing.exe" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/EE319K_Final_Project_Initial_Testing.exe" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/entities.h" beforeDir="false" afterPath="$PROJECT_DIR$/entities.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/gameandwatch.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/gameandwatch.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/kirby.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/kirby.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/sprites/gameandwatch/cropped/142.png" beforeDir="false" afterPath="$PROJECT_DIR$/data/sprites/gameandwatch/cropped/142.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/sprites/kirby/cropped/286.png" beforeDir="false" afterPath="$PROJECT_DIR$/data/sprites/kirby/cropped/286.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/sprites/kirby/cropped/332.png" beforeDir="false" afterPath="$PROJECT_DIR$/data/sprites/kirby/cropped/332.png" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
