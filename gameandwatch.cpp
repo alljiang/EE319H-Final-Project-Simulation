@@ -788,6 +788,81 @@ void GameandWatch::controlLoop(double joyH, double joyV, bool btnA, bool btnB, b
             UART_sendAnimation(number);
         }
     }
+    else if(action == GAW_ACTION_DOWNSPECIAL) {
+        animationIndex = 34;
+        mirrored = l_mirrored;
+        disabledFrames = 2;
+
+        if (!btnB && currentTime - holdBucketStartTime > 500) {
+            droppingBucket = true;
+        }
+
+        if (droppingBucket) {
+            xAnimationOffset = 0;
+            yAnimationOffset = 0;
+            x_mirroredOffset = -14;
+
+            if (mirrored) hitbox.offsetX(0);
+            else hitbox.offsetX(0);
+
+            frameIndex = 1;
+            frameExtension = 6;
+            if(frameLengthCounter++ >= frameExtension) {
+                if (y > floor) action = GAW_ACTION_FALLING;
+                else if (joyV < -0.3) action = GAW_ACTION_CROUCHING;
+                else action = GAW_ACTION_RESTING;
+            }
+        }
+        else {
+            if (bucketCount == 0) frameIndex = 0;
+            else if (bucketCount == 1) frameIndex = 2;
+            else if (bucketCount == 2) frameIndex = 3;
+            else if (bucketCount == 3) frameIndex = 4;
+            else if (bucketCount >= 4) {
+                frameIndex = 5;
+                invulnerableFrames = 2;
+
+                int x_mirroredSplashOffset = -90;
+                int xSplashOffset = 55;
+                int ySplashOffset = 0;
+
+                if (mirrored) xSplashOffset = 0;
+                else x_mirroredSplashOffset = 0;
+
+                SpriteSendable splash;
+                //  animate shield
+                splash.charIndex = charIndex;
+                splash.animationIndex = 35;
+                splash.frame = 0;
+                splash.framePeriod = 1;
+                splash.persistent = false;
+                splash.continuous = false;
+                splash.x = (int16_t) x + x_mirroredSplashOffset + xSplashOffset;
+                splash.y = (int16_t) y + ySplashOffset;
+                splash.layer = LAYER_NAMETAG;
+                splash.mirrored = mirrored;
+
+                UART_sendAnimation(splash);
+
+                hitboxManager->addHurtbox(x + 18, y, mirrored,
+                                          downSpecialProjectile, player);
+
+                frameExtension = 4;
+                if (frameLengthCounter++ >= frameExtension) {
+                    droppingBucket = true;
+                    bucketCount = 0;
+                }
+
+            }
+
+            xAnimationOffset = 0;
+            yAnimationOffset = 0;
+            x_mirroredOffset = -14;
+
+            if (mirrored) hitbox.offsetX(0);
+            else hitbox.offsetX(0);
+        }
+    }
     else if(action == GAW_ACTION_NEUTRALSPECIAL) {
         animationIndex = 30;
         mirrored = l_mirrored;
@@ -907,7 +982,6 @@ void GameandWatch::controlLoop(double joyH, double joyV, bool btnA, bool btnB, b
             y += DIVerticalSpeed * joyV;
         }
 
-        printf("%d %d\n", frameIndex, frameLengthCounter);
         frameExtension = 2;
         if (frameLengthCounter++ >= frameExtension) {
             frameLengthCounter = 0;
@@ -1005,10 +1079,13 @@ void GameandWatch::controlLoop(double joyH, double joyV, bool btnA, bool btnB, b
         animationIndex = 6;
         frameIndex = 0;
 
+        x_mirroredOffset = -3;
+
         hitbox.offsetY(-8);
-        hitbox.offsetX(4);
         hitbox.offsetHeight(-17);
         hitbox.offsetWidth(6);
+        if(mirrored) hitbox.offsetX(2);
+        else hitbox.offsetX(4);
 
         if(joyV > -0.3) {
             action = GAW_ACTION_RESTING;
@@ -1067,8 +1144,8 @@ void GameandWatch::controlLoop(double joyH, double joyV, bool btnA, bool btnB, b
         hitbox.offsetHeight(0);
         hitbox.offsetWidth(0);
         hitbox.offsetY(0);
-        if(mirrored) hitbox.offsetX(1, mirrored);
-        else hitbox.offsetX(0, mirrored);
+        if(mirrored) hitbox.offsetX(2);
+        else hitbox.offsetX(0);
 
         if (l_action != GAW_ACTION_RESTING || lastBlink == 0) {
             lastBlink = currentTime;
@@ -1393,6 +1470,18 @@ void GameandWatch::controlLoop(double joyH, double joyV, bool btnA, bool btnB, b
         frameLengthCounter = 0;
         dashAttackStartTime = currentTime;
     }
+        //  down B bucket
+    else if(disabledFrames == 0 && currentTime - l_btnBRise_t == 0
+            && joyV < -0.5) {
+        action = GAW_ACTION_DOWNSPECIAL;
+        disabledFrames = 2;
+        frameIndex = 0;
+        frameLengthCounter = 0;
+        mirrored = l_mirrored;
+
+        holdBucketStartTime = currentTime;
+        droppingBucket = false;
+    }
         //  up special
     else if(
             ( (action == GAW_ACTION_FALLING || action == GAW_ACTION_JUMPING  ||
@@ -1537,12 +1626,17 @@ void GameandWatch::collide(Hurtbox *hurtbox, Player *otherPlayer) {
         }
         return;
     }
+    else if(action == GAW_ACTION_DOWNSPECIAL && hurtbox->isProjectile && currentTime - lastBucket > 750) {
+        bucketCount++;
+        lastBucket = currentTime;
+    }
     else if(action == GAW_ACTION_SHIELD) {
-        if(hurtbox->damage < PLAYER_SHIELD_MAXDAMAGE/2.) shieldDamage += hurtbox->damage;
+        if(hurtbox->damage < PLAYER_SHIELD_MAXDAMAGE/2.) shieldDamage += hurtbox->damage * 0.3;
         else shieldDamage += PLAYER_SHIELD_MAXDAMAGE/2.;
     }
         // only knockback if not currently knocked back
-    else if(disabledFrames != -1 && invulnerableFrames == 0) {
+    else if(disabledFrames != -1 && invulnerableFrames == 0
+    && !(hurtbox->isProjectile && currentTime - lastBucket <= 750)) {
         disabledFrames = hurtbox->stunFrames;
         damage += hurtbox->damage;
 
@@ -1597,6 +1691,8 @@ void GameandWatch::reset() {
     projectileCount = 0;
 
     shieldDamage = 0;
+    bucketCount = 0;
+    lastBucket = 0;
 
     dead = false;
 }

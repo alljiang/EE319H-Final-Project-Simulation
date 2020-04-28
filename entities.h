@@ -44,7 +44,7 @@ public:
     double damage;
     int8_t source;     //  player who created this hitbox, will not damage this player
     int8_t frames, currentFrame;
-    bool active{false};
+    bool active{false}, isProjectile{false};
     double xKnockback, yKnockback;
     int16_t stunFrames;
 
@@ -54,7 +54,7 @@ public:
             uint8_t boxShape, double radius,
             int8_t frames=1, double damage=0,
             double xknockback=0, double yknockback=0,
-            int16_t stunFrames=0)
+            int16_t stunFrames=0, bool isProjectile=false)
             : Collider(cX, cY, boxShape, radius) {
         shape = boxShape;
         this->frames = frames;
@@ -62,12 +62,13 @@ public:
         this->xKnockback = xknockback;
         this->yKnockback = yknockback;
         this->stunFrames = stunFrames;
+        this->isProjectile = isProjectile;
     }
 
     Hurtbox(double cX, double cY, uint8_t boxShape, double height, double width,
             int8_t frames=1, double damage=0,
             double xknockback=0, double yknockback=0,
-            int16_t stunFrames=0)
+            int16_t stunFrames=0, bool isProjectile=false)
             : Collider(cX, cY, boxShape, height, width) {
         shape = boxShape;
         this->frames = frames;
@@ -75,6 +76,7 @@ public:
         this->xKnockback = xknockback;
         this->yKnockback = yknockback;
         this->stunFrames = stunFrames;
+        this->isProjectile = isProjectile;
     }
 
     //  if source is 0, hurtbox is a grabbable stage ledge
@@ -374,7 +376,7 @@ public:
                                       1.2, 2.8, -0.8, -1);
     Hurtbox upSpecialProjectile = Hurtbox(4., 16, SHAPE_RECTANGLE,
                                           32, 20, 1,
-                                          4, 3.2, 2.9, 7);
+                                          4, 3.2, 2.9, 7, true);
     Hurtbox downSpecial = Hurtbox(true,0, 5, SHAPE_CIRCLE,
                                   12, 1,
                                   6, 3.8, 4.9, -1);
@@ -415,7 +417,7 @@ public:
                                    5, 3.5, 3.7, -1);
     Hurtbox starProjectile = Hurtbox(true, 0, 13, SHAPE_CIRCLE,
                                      13, 1,
-                                    7, 3.0, 3.2, -1);
+                                    7, 3.0, 3.2, -1, true);
 
     //  general control loop
     void controlLoop(double joyH, double joyV, bool btnA, bool btnB, bool shield, class Stage* stage,
@@ -449,7 +451,7 @@ class GameandWatch: public Player {
 #define GAW_ACTION_DASHATTACK 18
 #define GAW_ACTION_NEUTRALSPECIAL 20
 #define GAW_ACTION_SIDESPECIAL 21
-#define GAW_ACTION_DOWNB 22
+#define GAW_ACTION_DOWNSPECIAL 22
 #define GAW_ACTION_DOWNBATTACK 23
 #define GAW_ACTION_UPSPECIAL 25
 #define GAW_ACTION_PARACHUTE 26
@@ -503,6 +505,12 @@ protected:
 
     //  side b
     uint8_t sideBStrength;
+
+    //  down b
+    uint8_t bucketCount;
+    long long lastBucket;
+    long long holdBucketStartTime;
+    bool droppingBucket;
 
     //  neutral b
     double proj_x[4];
@@ -563,6 +571,9 @@ public:
     Hurtbox neutralSpecialProjectile = Hurtbox(true,0, 5, SHAPE_CIRCLE,
                                  8, 1,
                                  2, 1.2, 1.5, -1);
+    Hurtbox downSpecialProjectile = Hurtbox(62., 20, SHAPE_RECTANGLE,
+                                  40, 90, 1,
+                                  7, 2.8, 2.8, -1);
 
     GameandWatch() {
         hitbox = Hitbox(0, 0, 0, 0);

@@ -1469,6 +1469,7 @@ void Kirby::controlLoop(double joyH, double joyV, bool btnA, bool btnB, bool shi
 
         UART_sendAnimation(sp);
 
+
         hitboxManager->addHurtbox(starProj_x+12, starProj_y, mirrored,
                                   starProjectile, player);
 
@@ -1876,7 +1877,7 @@ void Kirby::collide(Hurtbox *hurtbox, Player *otherPlayer) {
         }
         return;
     }
-    else if(action == KIRBY_ACTION_SHIELD) shieldDamage +=  hurtbox->damage;
+    else if(action == KIRBY_ACTION_SHIELD) shieldDamage +=  hurtbox->damage * 0.3;
         // only knockback if not currently knocked back
     else if(disabledFrames != -1 && invulnerableFrames == 0) {
         disabledFrames = hurtbox->stunFrames;
