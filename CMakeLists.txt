@@ -12,6 +12,7 @@ set(CMAKE_CXX_STANDARD 14)
 add_executable(EE319K_Final_Project_Initial_Testing main.cpp Flash.cpp Flash.h SD.cpp SD.h animator.cpp animator.h
         ILI9341.cpp ILI9341.h controller.cpp controller.h metadata.h utils.h UART.cpp UART.h utils.h utils.cpp
         gameandwatch.cpp kirby.cpp entities.h stage.cpp stage.h collider.cpp colors_fdst.h colors_tower.h Audio.cpp
-        Audio.h menu.cpp menu.h colors_menu.h colors_charmenu.h
+        Audio.h charactermenu.cpp charactermenu.h colors_menu.h colors_charmenu.h colors_smashville.h colors_stagemenu.h
+        colors_battlefield.h stagemenu.cpp stagemenu.h
         )
 target_link_libraries(EE319K_Final_Project_Initial_Testing ${SDL2_LIBRARY} -lmingw32 -lSDL2main -lSDL2 -mwindows)

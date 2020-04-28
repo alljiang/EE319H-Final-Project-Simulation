@@ -13,14 +13,16 @@
 #include "colors_fdst.h"
 #include "colors_tower.h"
 #include "Audio.h"
-#include "menu.h"
+#include "charactermenu.h"
+#include "stagemenu.h"
 
 using namespace std;
 using namespace chrono;
 
 SDL_Event event;
 
-Menu menu;
+StageMenu stageMenu;
+CharacterMenu characterMenu;
 
 Player* p1;
 Player* p2;
@@ -33,7 +35,7 @@ GameandWatch gameandwatch2;
 Kirby kirby1;
 Kirby kirby2;
 
-bool inMenu = true, inStageSelect = false;
+bool inCharMenu = false, inStageSelect = true;
 bool quit, countdown, gameOver;
 uint8_t frameIndex, frameLength;
 long long loopsCompleted;
@@ -46,12 +48,12 @@ const bool HITBOXOVERLAY = false;
 const double UPDATERATE = 20;   // 20
 const bool ENABLECOUNTDOWN = false;
 
-const uint8_t stageToPlay = STAGE_FINALDESTINATION;
+uint8_t stageToPlay = STAGE_FINALDESTINATION;
 //const uint8_t stageToPlay = STAGE_TOWER;
 
 void resetPlayers() {
 //    p1 = &kirby1;
-    p1 = &gameandwatch1;
+//    p1 = &gameandwatch1;
     p1->setPlayer(1);
     p1->setX(stage.getStartX(1));
     p1->setY(stage.getStartY(1));
@@ -59,7 +61,7 @@ void resetPlayers() {
     p1->setStocks(3);
     p1->reset();
 
-    p2 = &kirby2;
+//    p2 = &kirby2;
     p2->setPlayer(2);
     p2->setX(stage.getStartX(2));
     p2->setY(stage.getStartY(2));
@@ -258,24 +260,55 @@ void loopGame() {
 void startup() {
     animator_initialize();
 
-    menu.start();
-
-//    startupGame();
-//    loopGame();
+    if(inStageSelect) {
+        stageMenu.start();
+    }
+    else if(inCharMenu) {
+        characterMenu.start();
+    }
+    else {
+        startupGame();
+    }
 }
+
+void switchStageMenuToCharMenu(int8_t stageSelect) {
+    inStageSelect = false;
+    inCharMenu = true;
+    stageToPlay = stageSelect;
+    startup();
+}
+
+void switchCharMenuToGame(int8_t char1, int8_t char2) {
+    if(char1 == CHARACTER_KIRBY) p1 = &kirby1;
+    else if(char1 == CHARACTER_VALVANO) printf("nooooo");
+    else p1 =  &gameandwatch1;
+
+    if(char2 == CHARACTER_KIRBY) p2 = &kirby2;
+    else if(char2 == CHARACTER_VALVANO) printf("nooooo");
+    else p2 =  &gameandwatch2;
+
+    inCharMenu = false;
+    startup();
+}
+
 
 void loop() {
     if(millis() - t1 >= 1./UPDATERATE*1000) {
         t1 = millis();
 
-        if(inMenu) {
-            menu.loop(getJoystick_h(1), getJoystick_v(1),
-                    getJoystick_h(2), getJoystick_v(2),
-                      getBtn_a(1), getBtn_a(2),
-                      getBtn_b(1), getBtn_b(2));
+        if(inStageSelect) {
+            stageMenu.loop(getJoystick_h(1), getJoystick_v(1),
+                           getJoystick_h(2), getJoystick_v(2),
+                           getBtn_a(1) || getBtn_a(2),
+                           &switchStageMenuToCharMenu);
         }
-        else if(inStageSelect) {
-
+        else if(inCharMenu) {
+            characterMenu.loop(getJoystick_h(1), getJoystick_v(1),
+                               getJoystick_h(2), getJoystick_v(2),
+                               getBtn_a(1), getBtn_a(2),
+                               getBtn_b(1), getBtn_b(2),
+                               getBtn_start(1) || getBtn_start(2),
+                               &switchCharMenuToGame);
         }
         else {
             loopGame();

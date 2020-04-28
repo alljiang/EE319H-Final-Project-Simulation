@@ -118,7 +118,16 @@
 		<Unit filename="C:/Users/Allen/Documents/GitHub/EE319H-Final-Project-Simulation/animator.h">
 			<Option target="EE319K_Final_Project_Initial_Testing"/>
 		</Unit>
+		<Unit filename="C:/Users/Allen/Documents/GitHub/EE319H-Final-Project-Simulation/charactermenu.cpp">
+			<Option target="EE319K_Final_Project_Initial_Testing"/>
+		</Unit>
+		<Unit filename="C:/Users/Allen/Documents/GitHub/EE319H-Final-Project-Simulation/charactermenu.h">
+			<Option target="EE319K_Final_Project_Initial_Testing"/>
+		</Unit>
 		<Unit filename="C:/Users/Allen/Documents/GitHub/EE319H-Final-Project-Simulation/collider.cpp">
+			<Option target="EE319K_Final_Project_Initial_Testing"/>
+		</Unit>
+		<Unit filename="C:/Users/Allen/Documents/GitHub/EE319H-Final-Project-Simulation/colors_battlefield.h">
 			<Option target="EE319K_Final_Project_Initial_Testing"/>
 		</Unit>
 		<Unit filename="C:/Users/Allen/Documents/GitHub/EE319H-Final-Project-Simulation/colors_charmenu.h">
@@ -128,6 +137,12 @@
 			<Option target="EE319K_Final_Project_Initial_Testing"/>
 		</Unit>
 		<Unit filename="C:/Users/Allen/Documents/GitHub/EE319H-Final-Project-Simulation/colors_menu.h">
+			<Option target="EE319K_Final_Project_Initial_Testing"/>
+		</Unit>
+		<Unit filename="C:/Users/Allen/Documents/GitHub/EE319H-Final-Project-Simulation/colors_smashville.h">
+			<Option target="EE319K_Final_Project_Initial_Testing"/>
+		</Unit>
+		<Unit filename="C:/Users/Allen/Documents/GitHub/EE319H-Final-Project-Simulation/colors_stagemenu.h">
 			<Option target="EE319K_Final_Project_Initial_Testing"/>
 		</Unit>
 		<Unit filename="C:/Users/Allen/Documents/GitHub/EE319H-Final-Project-Simulation/colors_tower.h">
@@ -151,12 +166,6 @@
 		<Unit filename="C:/Users/Allen/Documents/GitHub/EE319H-Final-Project-Simulation/main.cpp">
 			<Option target="EE319K_Final_Project_Initial_Testing"/>
 		</Unit>
-		<Unit filename="C:/Users/Allen/Documents/GitHub/EE319H-Final-Project-Simulation/menu.cpp">
-			<Option target="EE319K_Final_Project_Initial_Testing"/>
-		</Unit>
-		<Unit filename="C:/Users/Allen/Documents/GitHub/EE319H-Final-Project-Simulation/menu.h">
-			<Option target="EE319K_Final_Project_Initial_Testing"/>
-		</Unit>
 		<Unit filename="C:/Users/Allen/Documents/GitHub/EE319H-Final-Project-Simulation/metadata.h">
 			<Option target="EE319K_Final_Project_Initial_Testing"/>
 		</Unit>
@@ -164,6 +173,12 @@
 			<Option target="EE319K_Final_Project_Initial_Testing"/>
 		</Unit>
 		<Unit filename="C:/Users/Allen/Documents/GitHub/EE319H-Final-Project-Simulation/stage.h">
+			<Option target="EE319K_Final_Project_Initial_Testing"/>
+		</Unit>
+		<Unit filename="C:/Users/Allen/Documents/GitHub/EE319H-Final-Project-Simulation/stagemenu.cpp">
+			<Option target="EE319K_Final_Project_Initial_Testing"/>
+		</Unit>
+		<Unit filename="C:/Users/Allen/Documents/GitHub/EE319H-Final-Project-Simulation/stagemenu.h">
 			<Option target="EE319K_Final_Project_Initial_Testing"/>
 		</Unit>
 		<Unit filename="C:/Users/Allen/Documents/GitHub/EE319H-Final-Project-Simulation/utils.cpp">

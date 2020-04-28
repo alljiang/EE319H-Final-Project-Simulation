@@ -77,6 +77,13 @@ CMakeFiles/EE319K_Final_Project_Initial_Testing.dir/animator.cpp.obj
  C:/Users/Allen/Documents/GitHub/EE319H-Final-Project-Simulation/colors_misc.h
  C:/Users/Allen/Documents/GitHub/EE319H-Final-Project-Simulation/metadata.h
  C:/Users/Allen/Documents/GitHub/EE319H-Final-Project-Simulation/utils.h
+CMakeFiles/EE319K_Final_Project_Initial_Testing.dir/charactermenu.cpp.obj
+ C:/Users/Allen/Documents/GitHub/EE319H-Final-Project-Simulation/UART.h
+ C:/Users/Allen/Documents/GitHub/EE319H-Final-Project-Simulation/animator.h
+ C:/Users/Allen/Documents/GitHub/EE319H-Final-Project-Simulation/charactermenu.cpp
+ C:/Users/Allen/Documents/GitHub/EE319H-Final-Project-Simulation/charactermenu.h
+ C:/Users/Allen/Documents/GitHub/EE319H-Final-Project-Simulation/colors_charmenu.h
+ C:/Users/Allen/Documents/GitHub/EE319H-Final-Project-Simulation/metadata.h
 CMakeFiles/EE319K_Final_Project_Initial_Testing.dir/collider.cpp.obj
  C:/Users/Allen/Documents/GitHub/EE319H-Final-Project-Simulation/ILI9341.h
  C:/Users/Allen/Documents/GitHub/EE319H-Final-Project-Simulation/collider.cpp
@@ -197,28 +204,29 @@ CMakeFiles/EE319K_Final_Project_Initial_Testing.dir/main.cpp.obj
  C:/Users/Allen/Documents/GitHub/EE319H-Final-Project-Simulation/ILI9341.h
  C:/Users/Allen/Documents/GitHub/EE319H-Final-Project-Simulation/UART.h
  C:/Users/Allen/Documents/GitHub/EE319H-Final-Project-Simulation/animator.h
+ C:/Users/Allen/Documents/GitHub/EE319H-Final-Project-Simulation/charactermenu.h
  C:/Users/Allen/Documents/GitHub/EE319H-Final-Project-Simulation/colors_fdst.h
  C:/Users/Allen/Documents/GitHub/EE319H-Final-Project-Simulation/colors_tower.h
  C:/Users/Allen/Documents/GitHub/EE319H-Final-Project-Simulation/controller.h
  C:/Users/Allen/Documents/GitHub/EE319H-Final-Project-Simulation/entities.h
  C:/Users/Allen/Documents/GitHub/EE319H-Final-Project-Simulation/main.cpp
- C:/Users/Allen/Documents/GitHub/EE319H-Final-Project-Simulation/menu.h
  C:/Users/Allen/Documents/GitHub/EE319H-Final-Project-Simulation/metadata.h
  C:/Users/Allen/Documents/GitHub/EE319H-Final-Project-Simulation/stage.h
+ C:/Users/Allen/Documents/GitHub/EE319H-Final-Project-Simulation/stagemenu.h
  C:/Users/Allen/Documents/GitHub/EE319H-Final-Project-Simulation/utils.h
-CMakeFiles/EE319K_Final_Project_Initial_Testing.dir/menu.cpp.obj
- C:/Users/Allen/Documents/GitHub/EE319H-Final-Project-Simulation/UART.h
- C:/Users/Allen/Documents/GitHub/EE319H-Final-Project-Simulation/animator.h
- C:/Users/Allen/Documents/GitHub/EE319H-Final-Project-Simulation/colors_charmenu.h
- C:/Users/Allen/Documents/GitHub/EE319H-Final-Project-Simulation/menu.cpp
- C:/Users/Allen/Documents/GitHub/EE319H-Final-Project-Simulation/menu.h
- C:/Users/Allen/Documents/GitHub/EE319H-Final-Project-Simulation/metadata.h
 CMakeFiles/EE319K_Final_Project_Initial_Testing.dir/stage.cpp.obj
  C:/Users/Allen/Documents/GitHub/EE319H-Final-Project-Simulation/animator.h
  C:/Users/Allen/Documents/GitHub/EE319H-Final-Project-Simulation/entities.h
  C:/Users/Allen/Documents/GitHub/EE319H-Final-Project-Simulation/metadata.h
  C:/Users/Allen/Documents/GitHub/EE319H-Final-Project-Simulation/stage.cpp
  C:/Users/Allen/Documents/GitHub/EE319H-Final-Project-Simulation/stage.h
+CMakeFiles/EE319K_Final_Project_Initial_Testing.dir/stagemenu.cpp.obj
+ C:/Users/Allen/Documents/GitHub/EE319H-Final-Project-Simulation/UART.h
+ C:/Users/Allen/Documents/GitHub/EE319H-Final-Project-Simulation/animator.h
+ C:/Users/Allen/Documents/GitHub/EE319H-Final-Project-Simulation/colors_stagemenu.h
+ C:/Users/Allen/Documents/GitHub/EE319H-Final-Project-Simulation/metadata.h
+ C:/Users/Allen/Documents/GitHub/EE319H-Final-Project-Simulation/stagemenu.cpp
+ C:/Users/Allen/Documents/GitHub/EE319H-Final-Project-Simulation/stagemenu.h
 CMakeFiles/EE319K_Final_Project_Initial_Testing.dir/utils.cpp.obj
  C:/Users/Allen/Documents/GitHub/EE319H-Final-Project-Simulation/UART.h
  C:/Users/Allen/Documents/GitHub/EE319H-Final-Project-Simulation/animator.h

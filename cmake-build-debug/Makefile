@@ -284,6 +284,33 @@ animator.cpp.s:
 	$(MAKE) -f CMakeFiles\EE319K_Final_Project_Initial_Testing.dir\build.make CMakeFiles/EE319K_Final_Project_Initial_Testing.dir/animator.cpp.s
 .PHONY : animator.cpp.s
 
+charactermenu.obj: charactermenu.cpp.obj
+
+.PHONY : charactermenu.obj
+
+# target to build an object file
+charactermenu.cpp.obj:
+	$(MAKE) -f CMakeFiles\EE319K_Final_Project_Initial_Testing.dir\build.make CMakeFiles/EE319K_Final_Project_Initial_Testing.dir/charactermenu.cpp.obj
+.PHONY : charactermenu.cpp.obj
+
+charactermenu.i: charactermenu.cpp.i
+
+.PHONY : charactermenu.i
+
+# target to preprocess a source file
+charactermenu.cpp.i:
+	$(MAKE) -f CMakeFiles\EE319K_Final_Project_Initial_Testing.dir\build.make CMakeFiles/EE319K_Final_Project_Initial_Testing.dir/charactermenu.cpp.i
+.PHONY : charactermenu.cpp.i
+
+charactermenu.s: charactermenu.cpp.s
+
+.PHONY : charactermenu.s
+
+# target to generate assembly for a file
+charactermenu.cpp.s:
+	$(MAKE) -f CMakeFiles\EE319K_Final_Project_Initial_Testing.dir\build.make CMakeFiles/EE319K_Final_Project_Initial_Testing.dir/charactermenu.cpp.s
+.PHONY : charactermenu.cpp.s
+
 collider.obj: collider.cpp.obj
 
 .PHONY : collider.obj
@@ -419,33 +446,6 @@ main.cpp.s:
 	$(MAKE) -f CMakeFiles\EE319K_Final_Project_Initial_Testing.dir\build.make CMakeFiles/EE319K_Final_Project_Initial_Testing.dir/main.cpp.s
 .PHONY : main.cpp.s
 
-menu.obj: menu.cpp.obj
-
-.PHONY : menu.obj
-
-# target to build an object file
-menu.cpp.obj:
-	$(MAKE) -f CMakeFiles\EE319K_Final_Project_Initial_Testing.dir\build.make CMakeFiles/EE319K_Final_Project_Initial_Testing.dir/menu.cpp.obj
-.PHONY : menu.cpp.obj
-
-menu.i: menu.cpp.i
-
-.PHONY : menu.i
-
-# target to preprocess a source file
-menu.cpp.i:
-	$(MAKE) -f CMakeFiles\EE319K_Final_Project_Initial_Testing.dir\build.make CMakeFiles/EE319K_Final_Project_Initial_Testing.dir/menu.cpp.i
-.PHONY : menu.cpp.i
-
-menu.s: menu.cpp.s
-
-.PHONY : menu.s
-
-# target to generate assembly for a file
-menu.cpp.s:
-	$(MAKE) -f CMakeFiles\EE319K_Final_Project_Initial_Testing.dir\build.make CMakeFiles/EE319K_Final_Project_Initial_Testing.dir/menu.cpp.s
-.PHONY : menu.cpp.s
-
 stage.obj: stage.cpp.obj
 
 .PHONY : stage.obj
@@ -472,6 +472,33 @@ stage.s: stage.cpp.s
 stage.cpp.s:
 	$(MAKE) -f CMakeFiles\EE319K_Final_Project_Initial_Testing.dir\build.make CMakeFiles/EE319K_Final_Project_Initial_Testing.dir/stage.cpp.s
 .PHONY : stage.cpp.s
+
+stagemenu.obj: stagemenu.cpp.obj
+
+.PHONY : stagemenu.obj
+
+# target to build an object file
+stagemenu.cpp.obj:
+	$(MAKE) -f CMakeFiles\EE319K_Final_Project_Initial_Testing.dir\build.make CMakeFiles/EE319K_Final_Project_Initial_Testing.dir/stagemenu.cpp.obj
+.PHONY : stagemenu.cpp.obj
+
+stagemenu.i: stagemenu.cpp.i
+
+.PHONY : stagemenu.i
+
+# target to preprocess a source file
+stagemenu.cpp.i:
+	$(MAKE) -f CMakeFiles\EE319K_Final_Project_Initial_Testing.dir\build.make CMakeFiles/EE319K_Final_Project_Initial_Testing.dir/stagemenu.cpp.i
+.PHONY : stagemenu.cpp.i
+
+stagemenu.s: stagemenu.cpp.s
+
+.PHONY : stagemenu.s
+
+# target to generate assembly for a file
+stagemenu.cpp.s:
+	$(MAKE) -f CMakeFiles\EE319K_Final_Project_Initial_Testing.dir\build.make CMakeFiles/EE319K_Final_Project_Initial_Testing.dir/stagemenu.cpp.s
+.PHONY : stagemenu.cpp.s
 
 utils.obj: utils.cpp.obj
 
@@ -527,6 +554,9 @@ help:
 	@echo ... animator.obj
 	@echo ... animator.i
 	@echo ... animator.s
+	@echo ... charactermenu.obj
+	@echo ... charactermenu.i
+	@echo ... charactermenu.s
 	@echo ... collider.obj
 	@echo ... collider.i
 	@echo ... collider.s
@@ -542,12 +572,12 @@ help:
 	@echo ... main.obj
 	@echo ... main.i
 	@echo ... main.s
-	@echo ... menu.obj
-	@echo ... menu.i
-	@echo ... menu.s
 	@echo ... stage.obj
 	@echo ... stage.i
 	@echo ... stage.s
+	@echo ... stagemenu.obj
+	@echo ... stagemenu.i
+	@echo ... stagemenu.s
 	@echo ... utils.obj
 	@echo ... utils.i
 	@echo ... utils.s

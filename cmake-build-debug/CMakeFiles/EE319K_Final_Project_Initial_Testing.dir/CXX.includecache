@@ -16,13 +16,9 @@ C:/Users/Allen/Documents/GitHub/EE319H-Final-Project-Simulation/animator.h
 cstdint
 -
 
-C:/Users/Allen/Documents/GitHub/EE319H-Final-Project-Simulation/colors_charmenu.h
-stdint.h
--
-
-C:/Users/Allen/Documents/GitHub/EE319H-Final-Project-Simulation/menu.cpp
-menu.h
-C:/Users/Allen/Documents/GitHub/EE319H-Final-Project-Simulation/menu.h
+C:/Users/Allen/Documents/GitHub/EE319H-Final-Project-Simulation/charactermenu.cpp
+charactermenu.h
+C:/Users/Allen/Documents/GitHub/EE319H-Final-Project-Simulation/charactermenu.h
 UART.h
 C:/Users/Allen/Documents/GitHub/EE319H-Final-Project-Simulation/UART.h
 metadata.h
@@ -30,13 +26,17 @@ C:/Users/Allen/Documents/GitHub/EE319H-Final-Project-Simulation/metadata.h
 colors_charmenu.h
 C:/Users/Allen/Documents/GitHub/EE319H-Final-Project-Simulation/colors_charmenu.h
 
-C:/Users/Allen/Documents/GitHub/EE319H-Final-Project-Simulation/menu.h
+C:/Users/Allen/Documents/GitHub/EE319H-Final-Project-Simulation/charactermenu.h
 stdlib.h
 C:/Users/Allen/Documents/GitHub/EE319H-Final-Project-Simulation/stdlib.h
 stdint.h
 C:/Users/Allen/Documents/GitHub/EE319H-Final-Project-Simulation/stdint.h
 stdio.h
 C:/Users/Allen/Documents/GitHub/EE319H-Final-Project-Simulation/stdio.h
+
+C:/Users/Allen/Documents/GitHub/EE319H-Final-Project-Simulation/colors_charmenu.h
+stdint.h
+-
 
 C:/Users/Allen/Documents/GitHub/EE319H-Final-Project-Simulation/metadata.h
 stdbool.h

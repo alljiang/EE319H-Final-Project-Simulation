@@ -24,18 +24,24 @@
 #define LAYER_PERCENTAGE 110
 #define LAYER_TOP 255
 
+#define CHARACTER_KIRBY 0
+#define CHARACTER_GAMEANDWATCH 1
+#define CHARACTER_VALVANO 2
+
 #define STAGE_FINALDESTINATION 0
 #define STAGE_TOWER 1
 #define STAGE_BATTLEFIELD 2
+#define STAGE_SMASHVILLE 2
 
 #define BACKGROUND_FINALDESTINATION 0
 #define BACKGROUND_TOWER 1
 #define BACKGROUND_BATTLEFIELD 2
-#define BACKGROUND_RESERVED0 3
+#define BACKGROUND_SMASHVILLE 3
 #define BACKGROUND_RESERVED1 4
 #define BACKGROUND_RESERVED2 5
 #define BACKGROUND_RESERVED3 6
 #define BACKGROUND_MENU 10
+#define BACKGROUND_STAGEMENU 11
 
 #define CHARACTERS  5
 
@@ -51,7 +57,7 @@ const char persistentSprites[15][10] = {
 /* 0  */{"fdst"},
         {"tower"},
         {"battle"},
-        {""},
+        {"sville"},
         {""},
         {""},
         {""},
@@ -59,7 +65,7 @@ const char persistentSprites[15][10] = {
         {""},
         {""},
 /* 10 */{"charmenu"},
-        {""},
+        {"stagemenu"},
         {""},
         {""},
         {""},
@@ -187,7 +193,7 @@ const char animations[CHARACTERS][64][12] = {
                                                 {""},
                                                 {""},
                                                 {""},
-                                                {""},
+                /*  20  */                      {"platform"},
                                                 {""},
                                                 {""},
                                                 {""},
@@ -200,7 +206,7 @@ const char animations[CHARACTERS][64][12] = {
                                                 {"p1big"},
                                                 {"p2small"},
                                                 {"p2big"},
-                                                {""},
+                                                {"stageselect"},
                                                 {""},
                                                 {""},
                                                 {""},
