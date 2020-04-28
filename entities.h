@@ -265,7 +265,7 @@ class Kirby: public Player {
 #define KIRBY_ACTION_FORWARDAIR 42
 #define KIRBY_ACTION_UPAIR 43
 #define KIRBY_ACTION_NEUTRALAIR 44
-#define KIRBY_ACTION_NEUTRALB 50
+#define KIRBY_ACTION_NEUTRALSPECIAL 50
 #define KIRBY_ACTION_SIDESPECIALCHARGE 53
 #define KIRBY_ACTION_SIDESPECIALRELEASE 54
 #define KIRBY_ACTION_DOWNSPECIALMORPH 56
@@ -320,6 +320,14 @@ protected:
     //  side special
     long long hammerChargeStartTime;
     uint32_t hammerChargeTime;
+
+    //  neutral special projectile
+    bool starProjActive;
+    long long starProjStartTime;
+    uint8_t starProjFrameIndex;
+    uint8_t starProjFrameCounter;
+    bool starProjMirrored;
+    double starProj_x, starProj_y;
 
 public:
     Hurtbox jabSingle = Hurtbox(true,14, 11, SHAPE_CIRCLE,
@@ -405,6 +413,9 @@ public:
     Hurtbox sideSpecial5 = Hurtbox(true,17, 10, SHAPE_CIRCLE,
                                    11, 1,
                                    5, 3.5, 3.7, -1);
+    Hurtbox starProjectile = Hurtbox(true, 0, 13, SHAPE_CIRCLE,
+                                     13, 1,
+                                    7, 3.0, 3.2, -1);
 
     //  general control loop
     void controlLoop(double joyH, double joyV, bool btnA, bool btnB, bool shield, class Stage* stage,

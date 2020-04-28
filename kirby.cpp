@@ -870,6 +870,45 @@ void Kirby::controlLoop(double joyH, double joyV, bool btnA, bool btnB, bool shi
             disabledFrames = 6;
         }
     }
+    else if(action == KIRBY_ACTION_NEUTRALSPECIAL) {
+        animationIndex = 32;
+        mirrored = l_mirrored;
+        disabledFrames = 2;
+
+        xAnimationOffset = 2;
+        yAnimationOffset = 0;
+        x_mirroredOffset = 3;
+
+        hitbox.offsetX(0);
+
+        int frameExtension = 2;
+        if(frameIndex == 3) frameExtension = 6;
+        if(frameLengthCounter++ >= frameExtension) {
+            frameLengthCounter = 0;
+            frameIndex++;
+
+            //  add a projectile
+            if(frameIndex == 1) {
+                starProjActive = true;
+                starProjStartTime = currentTime;
+                starProjFrameIndex = 0;
+                starProjFrameCounter = 0;
+                starProjMirrored = mirrored;
+
+                if(mirrored) starProj_x = x - 12;
+                else starProj_x = x + 20;
+                starProj_y = y + 1;
+            }
+        }
+
+        if(frameIndex >= 4) {
+            disabledFrames = 2;
+            if (y == floor) action = KIRBY_ACTION_RESTING;
+            else action = KIRBY_ACTION_FALLING;
+            frameIndex = 0;
+            frameLengthCounter = 0;
+        }
+    }
     else if(action == KIRBY_ACTION_SIDESPECIALCHARGE) {
         animationIndex = 33;
         if(joyH == 0) mirrored = l_mirrored;
@@ -1414,6 +1453,41 @@ void Kirby::controlLoop(double joyH, double joyV, bool btnA, bool btnB, bool shi
         if(shieldDamage < 0) shieldDamage = 0;
     }
 
+    //  neutral b star projectile
+    if(starProjActive) {
+        SpriteSendable sp;
+        sp.charIndex = charIndex;
+        sp.animationIndex = 31;
+        sp.framePeriod = 1;
+        sp.frame = starProjFrameIndex;
+        sp.persistent = false;
+        sp.continuous = false;
+        sp.x = starProj_x;
+        sp.y = starProj_y;
+        sp.layer = LAYER_CHARACTER_PROJECTILE;
+        sp.mirrored = starProjMirrored;
+
+        UART_sendAnimation(sp);
+
+        hitboxManager->addHurtbox(starProj_x+12, starProj_y, mirrored,
+                                  starProjectile, player);
+
+        if(currentTime - starProjStartTime >= 300) {
+            starProjActive = false;
+        } else {
+            double starSpeed = 5;
+            if(starProjMirrored) starProj_x -= starSpeed;
+            else starProj_x += starSpeed;
+
+            frameExtension = 0;
+            if (starProjFrameCounter++ >= frameExtension) {
+                starProjFrameCounter = 0;
+                starProjFrameIndex++;
+            }
+            starProjFrameIndex %= 4;
+        }
+    }
+
     //  disabled means can interrupt current action and start new action
     if(disabledFrames > 0) disabledFrames--;
     if(invulnerableFrames > 0) invulnerableFrames--;
@@ -1694,6 +1768,15 @@ void Kirby::controlLoop(double joyH, double joyV, bool btnA, bool btnB, bool shi
         frameLengthCounter = 0;
         hammerChargeStartTime = currentTime;
     }
+        //  neutral B
+    else if(disabledFrames == 0 && currentTime - l_btnBRise_t == 0
+            && absVal(joyH) < 0.5) {
+        action = KIRBY_ACTION_NEUTRALSPECIAL;
+        disabledFrames = 2;
+        frameIndex = 0;
+        frameLengthCounter = 0;
+        mirrored = l_mirrored;
+    }
     //  shield
     else if(disabledFrames == 0 &&
             ( (action == KIRBY_ACTION_FALLING || action == KIRBY_ACTION_JUMPING  ||
@@ -1843,6 +1926,7 @@ void Kirby::reset() {
     ledgeGrabTime = 0;
     jumpsUsed = 0;
     shieldDamage = 0;
+    starProjActive = false;
 
     dead = false;
 }

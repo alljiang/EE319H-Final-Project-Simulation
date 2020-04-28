@@ -77,8 +77,8 @@ const char animations[CHARACTERS][64][12] = {
                                                 {"nair"},       //  8
                                                 {"dashatk"},    //  7
                 /* 30 */                        {""},
-                                                {""},
-                                                {"neutralb"},    //  11
+                                                {"starproj"},   //  1 + 3
+                                                {"neutralb"},    //  4
                                                 {"fwdspec"},   //  10
                                                 {"downspec"},   //  3
                                                 {"downsmash"},  //  12
