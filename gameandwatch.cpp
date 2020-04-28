@@ -24,23 +24,16 @@ void GameandWatch::controlLoop(double joyH, double joyV, bool btnA, bool btnB, b
             //  respawn
 
             //  reset
-            l_joyH = 0;
-            l_joyV = 0;
-            l_btnA = 0;
-            l_btnB = 0;
-            l_shield = 0;
-            l_mirrored = 0;
-            frameIndex = 0;
-            frameLengthCounter = 0;
-            deathTime = 0;
-            jumpsUsed = 0;
+            reset();
 
             y = 240;
-            x = 159;
+            x = stage->getStartX(player);
             invulnerableFrames = 20 * 3;
 
             dead = false;
             action = GAW_ACTION_FALLING;
+
+            if(player == 2) mirrored = true;
         }
         return;
     }
@@ -840,6 +833,108 @@ void GameandWatch::controlLoop(double joyH, double joyV, bool btnA, bool btnB, b
             }
         }
     }
+    else if(action == GAW_ACTION_SHIELD) {
+        animationIndex = 41;
+        frameIndex = 0;
+        mirrored = l_mirrored;
+
+        if(y > floor) x += airSpeed * 0.3 * joyH;
+
+        xAnimationOffset = 1;
+        yAnimationOffset = 0;
+        x_mirroredOffset = -1;
+
+        int xShieldOffset = xAnimationOffset + 3;
+        int yShieldOffset = yAnimationOffset + 3;
+        int x_mirroredShieldOffset = x_mirroredOffset + 3;
+
+        disabledFrames = 2;
+        invulnerableFrames = 2;
+
+        shieldDamage += PLAYER_SHIELD_DEGEN;
+
+        if(currentTime - l_shieldFall_t == 0) {
+            if(y == floor) action = GAW_ACTION_RESTING;
+            else action = GAW_ACTION_FALLING;
+        }
+        else if(shieldDamage > PLAYER_SHIELD_MAXDAMAGE) {
+            action = GAW_ACTION_STUN;
+            frameLengthCounter = 0;
+            frameIndex = 0;
+            stunTimeStart = currentTime;
+        }
+        else {
+            uint8_t shieldIndex;
+            if(shieldDamage < PLAYER_SHIELD_MAXDAMAGE / 3.) shieldIndex = 0;
+            else if(shieldDamage < (PLAYER_SHIELD_MAXDAMAGE * 2.) / 3.) shieldIndex = 1;
+            else shieldIndex = 2;
+
+            if(player == 2) shieldIndex += 3;
+
+            if(mirrored) xShieldOffset = 0;
+            else x_mirroredShieldOffset = 0;
+
+            SpriteSendable shield;
+            //  animate shield
+            shield.charIndex = 3;
+            shield.animationIndex = 11;
+            shield.frame = shieldIndex;
+            shield.framePeriod = 1;
+            shield.persistent = false;
+            shield.continuous = false;
+            shield.x = (int16_t) x + x_mirroredShieldOffset + xShieldOffset;
+            shield.y = (int16_t) y + yShieldOffset;
+            shield.layer = LAYER_NAMETAG;
+            shield.mirrored = mirrored;
+
+            UART_sendAnimation(shield);
+        }
+    }
+    else if(action == GAW_ACTION_HURT) {
+        animationIndex = 40;
+
+        xAnimationOffset = 7;
+        yAnimationOffset = -2;
+        x_mirroredOffset = 5;
+
+        if(disabledFrames == -1) {
+            //  knockback
+            x += DIKnockbackHorizontalSpeed * joyH;
+            y += DIKnockbackVerticalSpeed * joyV;
+        }
+        else {
+            x += DIHorizontalSpeed * joyH;
+            y += DIVerticalSpeed * joyV;
+        }
+
+        printf("%d %d\n", frameIndex, frameLengthCounter);
+        frameExtension = 2;
+        if (frameLengthCounter++ >= frameExtension) {
+            frameLengthCounter = 0;
+            frameIndex++;
+        }
+        frameIndex %= 2;
+    }
+    if(action == GAW_ACTION_STUN) {
+        animationIndex = 43;
+        disabledFrames = 2;
+
+        xAnimationOffset = 0;
+        yAnimationOffset = 0;
+        x_mirroredOffset = 3;
+
+        if(currentTime - stunTimeStart >= PLAYER_STUN_LENGTH_SECONDS * 1000)  {
+            if(y == floor) action = GAW_ACTION_RESTING;
+            else action = GAW_ACTION_FALLING;
+        }
+
+        frameExtension = 7;
+        if(frameLengthCounter++ >= frameExtension) {
+            frameLengthCounter = 0;
+            frameIndex++;
+            frameIndex %= 4;
+        }
+    }
     if(action == GAW_ACTION_PARACHUTE) {
         animationIndex = 37;
         mirrored = l_mirrored;
@@ -1059,6 +1154,12 @@ void GameandWatch::controlLoop(double joyH, double joyV, bool btnA, bool btnB, b
     }
 
     l_action = action;
+
+    //  regenerate shield
+    if(action != GAW_ACTION_SHIELD) {
+        shieldDamage -= PLAYER_SHIELD_REGEN;
+        if(shieldDamage < 0) shieldDamage = 0;
+    }
 
     //  disabled means can interrupt current action and start new action
     if(disabledFrames > 0) disabledFrames--;
@@ -1361,8 +1462,18 @@ void GameandWatch::controlLoop(double joyH, double joyV, bool btnA, bool btnB, b
         if(joyH == 0) mirrored = l_mirrored;
         else mirrored = joyH < 0;
     }
+        //  shield
+    else if(disabledFrames == 0 &&
+            ( (action == GAW_ACTION_FALLING || action == GAW_ACTION_JUMPING  ||
+               action == GAW_ACTION_DOUBLEJUMPING) ||
+              (y == floor && (action == GAW_ACTION_RESTING || action == GAW_ACTION_RUNNING ||
+                              action == GAW_ACTION_CROUCHING)) )
+            && shield && !l_shield && (PLAYER_SHIELD_MAXDAMAGE - shieldDamage > 10)) {
+        action = GAW_ACTION_SHIELD;
+        disabledFrames = 2;
+    }
         //  running/walking
-    else if((action == GAW_ACTION_RESTING || action == GAW_ACTION_HURT)
+    else if(((action == GAW_ACTION_RESTING) || (disabledFrames == 0 && action == GAW_ACTION_HURT))
             && absVal(joyH) > 0) {
         l_action = action;
         action = GAW_ACTION_RUNNING;
@@ -1414,7 +1525,7 @@ void GameandWatch::collide(Hurtbox *hurtbox, Player *otherPlayer) {
     if(hurtbox->source == 0) {
         if(this->hitbox.y < hurtbox->y
            && currentTime - ledgeGrabTime > 1000
-           && yVel <= 0) {
+           && yVel <= 0 && action != GAW_ACTION_SHIELD) {
             action = GAW_ACTION_LEDGEGRAB;
             mirrored = hurtbox->damage != 0;
             yVel = 0;
@@ -1426,20 +1537,23 @@ void GameandWatch::collide(Hurtbox *hurtbox, Player *otherPlayer) {
         }
         return;
     }
-
+    else if(action == GAW_ACTION_SHIELD) {
+        if(hurtbox->damage < PLAYER_SHIELD_MAXDAMAGE/2.) shieldDamage += hurtbox->damage;
+        else shieldDamage += PLAYER_SHIELD_MAXDAMAGE/2.;
+    }
         // only knockback if not currently knocked back
     else if(disabledFrames != -1 && invulnerableFrames == 0) {
-//        disabledFrames = hurtbox->stunFrames;
-//        damage += hurtbox->damage;
-//
-//        double knockbackMultiplier = damage / 200. + 1.0;
-////        printf("%0.1f\n", damage);
-//
-//        if (otherPlayer->x < x) xVel = hurtbox->xKnockback * knockbackMultiplier;
-//        else xVel = -hurtbox->xKnockback * knockbackMultiplier;
-//        yVel = hurtbox->yKnockback * knockbackMultiplier;
-//
-//        action = GAW_ACTION_HURT;
+        disabledFrames = hurtbox->stunFrames;
+        damage += hurtbox->damage;
+
+        double knockbackMultiplier = damage / 200. + 1.0;
+//        printf("%0.1f\n", damage);
+
+        if (otherPlayer->x < x) xVel = hurtbox->xKnockback * knockbackMultiplier;
+        else xVel = -hurtbox->xKnockback * knockbackMultiplier;
+        yVel = hurtbox->yKnockback * knockbackMultiplier;
+
+        action = GAW_ACTION_HURT;
     }
 }
 
@@ -1481,6 +1595,8 @@ void GameandWatch::reset() {
     proj_active[2] = false;
     proj_active[3] = false;
     projectileCount = 0;
+
+    shieldDamage = 0;
 
     dead = false;
 }

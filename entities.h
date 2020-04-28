@@ -163,6 +163,11 @@ public:
 
 class Player: public Entity {
 
+#define PLAYER_SHIELD_MAXDAMAGE 30
+#define PLAYER_SHIELD_REGEN 0.375
+#define PLAYER_SHIELD_DEGEN 0.375
+#define PLAYER_STUN_LENGTH_SECONDS 7
+
 protected:
     const double joystickJumpSpeed = 0.4;   //  joystick must change by this much to activate a jump
 
@@ -202,6 +207,12 @@ protected:
 
     //  jumping
     uint8_t jumpsUsed;  // midair only
+
+    //  shielding
+    double shieldDamage;
+
+    //  stunned
+    long long stunTimeStart;
 
 public:
     Player() {}
@@ -262,6 +273,7 @@ class Kirby: public Player {
 #define KIRBY_ACTION_DOWNSPECIALUNMORPH 58
 #define KIRBY_ACTION_HURT 60
 #define KIRBY_ACTION_SHIELD 61
+#define KIRBY_ACTION_STUN 62
 
 #define KIRBY_STAGE_OFFSET 18
 
@@ -365,7 +377,7 @@ public:
                                  8, 1,
                                  4.5, 3.3, 2.0, -1);
     Hurtbox backAir = Hurtbox(true,-14, 11, SHAPE_CIRCLE,
-                              4.5, 1,
+                              6.0, 1,
                               6, 3.7, 2.3, -1);
     Hurtbox upAir = Hurtbox(true,0, 28, SHAPE_CIRCLE,
                             16, 1,
@@ -379,15 +391,20 @@ public:
     Hurtbox sideSpecial0 = Hurtbox(true,-28, 7, SHAPE_CIRCLE,
                                    11, 1);
     Hurtbox sideSpecial1 = Hurtbox(true,-17, 3, SHAPE_CIRCLE,
-                                   11, 1);
+                                   11, 1,
+                                   5, 3.5, 3.7, -1);
     Hurtbox sideSpecial2 = Hurtbox(true,0, 2, SHAPE_CIRCLE,
-                                   11, 1);
+                                   11, 1,
+                                   5, 3.5, 3.7, -1);
     Hurtbox sideSpecial3 = Hurtbox(true,15, 5, SHAPE_CIRCLE,
-                                   11, 1);
+                                   11, 1,
+                                   5, 3.5, 3.7, -1);
     Hurtbox sideSpecial4 = Hurtbox(true,30, 6, SHAPE_CIRCLE,
-                                   11, 1);
+                                   11, 1,
+                                   5, 3.5, 3.7, -1);
     Hurtbox sideSpecial5 = Hurtbox(true,17, 10, SHAPE_CIRCLE,
-                                   11, 1);
+                                   11, 1,
+                                   5, 3.5, 3.7, -1);
 
     //  general control loop
     void controlLoop(double joyH, double joyV, bool btnA, bool btnB, bool shield, class Stage* stage,
@@ -433,6 +450,7 @@ class GameandWatch: public Player {
 #define GAW_ACTION_NEUTRALAIR 45
 #define GAW_ACTION_HURT 50
 #define GAW_ACTION_SHIELD 51
+#define GAW_ACTION_STUN 52
 
 #define GAW_STAGE_OFFSET 18
 

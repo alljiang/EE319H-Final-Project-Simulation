@@ -91,7 +91,7 @@ const char animations[CHARACTERS][64][12] = {
                                                 {"hurtfall"},   //  3
                                                 {"knockout"},   //  1
                                                 {"stun"},       //  8
-                                                {""},
+                                                {"shield"},     //  1
                                                 {""},
         },
         {
@@ -138,6 +138,7 @@ const char animations[CHARACTERS][64][12] = {
                 /*  40  */                      {"hurt"},   //  2
                                                 {"shield"},     //  1
                                                 {"ledge"},      //  1
+                                                {"stun"}    //  4
 
         },
         {
@@ -154,7 +155,22 @@ const char animations[CHARACTERS][64][12] = {
                                                 {"blastright"}, //  17
                                                 {"blastup"},    //  17
                                                 {"321go"},      //  36
-                /*  10  */                      {"game"}        //  25
+                /*  10  */                      {"game"},       //  25
+                                                {"shield"},      //  3 (red) + 3 (blue)
+                                                {""},
+                                                {""},
+                                                {""},
+                                                {""},
+                                                {""},
+                                                {""},
+                                                {""},
+                                                {""},
+                                                {""},
+                                                {""},
+                                                {""},
+                                                {""},
+                                                {""},
+                                                {""},
 
         }
 };

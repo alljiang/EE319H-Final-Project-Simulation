@@ -39,7 +39,7 @@ float x = 0;
 float y = 0;
 
 const bool PLAYER2 = true;
-const bool HITBOXOVERLAY = true;
+const bool HITBOXOVERLAY = false;
 const double UPDATERATE = 20;   // 20
 const bool ENABLECOUNTDOWN = false;
 
