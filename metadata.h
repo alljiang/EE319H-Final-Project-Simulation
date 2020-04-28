@@ -28,22 +28,44 @@
 #define STAGE_TOWER 1
 #define STAGE_BATTLEFIELD 2
 
-#define CHARACTERS  4
+#define BACKGROUND_FINALDESTINATION 0
+#define BACKGROUND_TOWER 1
+#define BACKGROUND_BATTLEFIELD 2
+#define BACKGROUND_RESERVED0 3
+#define BACKGROUND_RESERVED1 4
+#define BACKGROUND_RESERVED2 5
+#define BACKGROUND_RESERVED3 6
+#define BACKGROUND_MENU 10
+
+#define CHARACTERS  5
 
 const char characterNames[CHARACTERS][14] = {
         {"kirby"},
         {"gameandwatch"},
         {"valvano"},
-        {"misc"}
+        {"misc"},
+        {"menu"}
 };
 
-const char persistentSprites[4][10] = {
-        {"fdst"},
+const char persistentSprites[15][10] = {
+/* 0  */{"fdst"},
         {"tower"},
         {"battle"},
-        {}
+        {""},
+        {""},
+        {""},
+        {""},
+        {""},
+        {""},
+        {""},
+/* 10 */{"charmenu"},
+        {""},
+        {""},
+        {""},
+        {""},
 };
 
+const uint16_t numberOfAnimations = 64;
 const char animations[CHARACTERS][64][12] = {
         {                                                   // frames
                 /* 0 */                         {"crouch"}, // 1
@@ -172,10 +194,32 @@ const char animations[CHARACTERS][64][12] = {
                                                 {""},
                                                 {""},
 
+        },
+        {
+                /*  0   */                      {"p1small"},
+                                                {"p1big"},
+                                                {"p2small"},
+                                                {"p2big"},
+                                                {""},
+                                                {""},
+                                                {""},
+                                                {""},
+                                                {""},
+                                                {""},
+               /*   10  */                      {"prvwkirby"},
+                                                {"prvwvalvano"},
+                                                {"prvwgaw"},
+                                                {""},
+                                                {""},
+                                                {""},
+                                                {""},
+                                                {""},
+                                                {""},
+                                                {""},
+                                                {""},
+                                                {""},
         }
 };
-
-const uint16_t numberOfAnimations = 50;
 
 struct Animation {
     uint32_t memLocation;

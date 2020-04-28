@@ -15,6 +15,7 @@ set(CMAKE_DEPENDS_CHECK_CXX
   "C:/Users/Allen/Documents/GitHub/EE319H-Final-Project-Simulation/gameandwatch.cpp" "C:/Users/Allen/Documents/GitHub/EE319H-Final-Project-Simulation/cmake-build-debug/CMakeFiles/EE319K_Final_Project_Initial_Testing.dir/gameandwatch.cpp.obj"
   "C:/Users/Allen/Documents/GitHub/EE319H-Final-Project-Simulation/kirby.cpp" "C:/Users/Allen/Documents/GitHub/EE319H-Final-Project-Simulation/cmake-build-debug/CMakeFiles/EE319K_Final_Project_Initial_Testing.dir/kirby.cpp.obj"
   "C:/Users/Allen/Documents/GitHub/EE319H-Final-Project-Simulation/main.cpp" "C:/Users/Allen/Documents/GitHub/EE319H-Final-Project-Simulation/cmake-build-debug/CMakeFiles/EE319K_Final_Project_Initial_Testing.dir/main.cpp.obj"
+  "C:/Users/Allen/Documents/GitHub/EE319H-Final-Project-Simulation/menu.cpp" "C:/Users/Allen/Documents/GitHub/EE319H-Final-Project-Simulation/cmake-build-debug/CMakeFiles/EE319K_Final_Project_Initial_Testing.dir/menu.cpp.obj"
   "C:/Users/Allen/Documents/GitHub/EE319H-Final-Project-Simulation/stage.cpp" "C:/Users/Allen/Documents/GitHub/EE319H-Final-Project-Simulation/cmake-build-debug/CMakeFiles/EE319K_Final_Project_Initial_Testing.dir/stage.cpp.obj"
   "C:/Users/Allen/Documents/GitHub/EE319H-Final-Project-Simulation/utils.cpp" "C:/Users/Allen/Documents/GitHub/EE319H-Final-Project-Simulation/cmake-build-debug/CMakeFiles/EE319K_Final_Project_Initial_Testing.dir/utils.cpp.obj"
   )

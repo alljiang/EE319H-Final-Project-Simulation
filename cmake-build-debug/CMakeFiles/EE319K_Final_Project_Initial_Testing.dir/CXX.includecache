@@ -16,37 +16,29 @@ C:/Users/Allen/Documents/GitHub/EE319H-Final-Project-Simulation/animator.h
 cstdint
 -
 
-C:/Users/Allen/Documents/GitHub/EE319H-Final-Project-Simulation/entities.h
+C:/Users/Allen/Documents/GitHub/EE319H-Final-Project-Simulation/colors_charmenu.h
 stdint.h
-C:/Users/Allen/Documents/GitHub/EE319H-Final-Project-Simulation/stdint.h
+-
 
-C:/Users/Allen/Documents/GitHub/EE319H-Final-Project-Simulation/gameandwatch.cpp
-entities.h
-C:/Users/Allen/Documents/GitHub/EE319H-Final-Project-Simulation/entities.h
-utils.h
-C:/Users/Allen/Documents/GitHub/EE319H-Final-Project-Simulation/utils.h
-metadata.h
-C:/Users/Allen/Documents/GitHub/EE319H-Final-Project-Simulation/metadata.h
+C:/Users/Allen/Documents/GitHub/EE319H-Final-Project-Simulation/menu.cpp
+menu.h
+C:/Users/Allen/Documents/GitHub/EE319H-Final-Project-Simulation/menu.h
 UART.h
 C:/Users/Allen/Documents/GitHub/EE319H-Final-Project-Simulation/UART.h
-stage.h
-C:/Users/Allen/Documents/GitHub/EE319H-Final-Project-Simulation/stage.h
+metadata.h
+C:/Users/Allen/Documents/GitHub/EE319H-Final-Project-Simulation/metadata.h
+colors_charmenu.h
+C:/Users/Allen/Documents/GitHub/EE319H-Final-Project-Simulation/colors_charmenu.h
+
+C:/Users/Allen/Documents/GitHub/EE319H-Final-Project-Simulation/menu.h
+stdlib.h
+C:/Users/Allen/Documents/GitHub/EE319H-Final-Project-Simulation/stdlib.h
+stdint.h
+C:/Users/Allen/Documents/GitHub/EE319H-Final-Project-Simulation/stdint.h
+stdio.h
+C:/Users/Allen/Documents/GitHub/EE319H-Final-Project-Simulation/stdio.h
 
 C:/Users/Allen/Documents/GitHub/EE319H-Final-Project-Simulation/metadata.h
 stdbool.h
--
-
-C:/Users/Allen/Documents/GitHub/EE319H-Final-Project-Simulation/stage.h
-cstdint
--
-entities.h
-C:/Users/Allen/Documents/GitHub/EE319H-Final-Project-Simulation/entities.h
-
-C:/Users/Allen/Documents/GitHub/EE319H-Final-Project-Simulation/utils.h
-chrono
--
-cstdlib
--
-cstdio
 -
 

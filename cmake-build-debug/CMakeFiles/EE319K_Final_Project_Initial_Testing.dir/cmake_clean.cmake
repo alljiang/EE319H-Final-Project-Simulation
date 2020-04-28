@@ -10,6 +10,7 @@ file(REMOVE_RECURSE
   "CMakeFiles/EE319K_Final_Project_Initial_Testing.dir/gameandwatch.cpp.obj"
   "CMakeFiles/EE319K_Final_Project_Initial_Testing.dir/kirby.cpp.obj"
   "CMakeFiles/EE319K_Final_Project_Initial_Testing.dir/main.cpp.obj"
+  "CMakeFiles/EE319K_Final_Project_Initial_Testing.dir/menu.cpp.obj"
   "CMakeFiles/EE319K_Final_Project_Initial_Testing.dir/stage.cpp.obj"
   "CMakeFiles/EE319K_Final_Project_Initial_Testing.dir/utils.cpp.obj"
   "EE319K_Final_Project_Initial_Testing.exe"

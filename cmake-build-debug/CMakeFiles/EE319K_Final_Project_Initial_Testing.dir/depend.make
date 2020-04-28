@@ -72,6 +72,7 @@ CMakeFiles/EE319K_Final_Project_Initial_Testing.dir/animator.cpp.obj: ../animato
 CMakeFiles/EE319K_Final_Project_Initial_Testing.dir/animator.cpp.obj: ../animator.h
 CMakeFiles/EE319K_Final_Project_Initial_Testing.dir/animator.cpp.obj: ../colors_gameandwatch.h
 CMakeFiles/EE319K_Final_Project_Initial_Testing.dir/animator.cpp.obj: ../colors_kirby.h
+CMakeFiles/EE319K_Final_Project_Initial_Testing.dir/animator.cpp.obj: ../colors_menu.h
 CMakeFiles/EE319K_Final_Project_Initial_Testing.dir/animator.cpp.obj: ../colors_misc.h
 CMakeFiles/EE319K_Final_Project_Initial_Testing.dir/animator.cpp.obj: ../metadata.h
 CMakeFiles/EE319K_Final_Project_Initial_Testing.dir/animator.cpp.obj: ../utils.h
@@ -200,9 +201,17 @@ CMakeFiles/EE319K_Final_Project_Initial_Testing.dir/main.cpp.obj: ../colors_towe
 CMakeFiles/EE319K_Final_Project_Initial_Testing.dir/main.cpp.obj: ../controller.h
 CMakeFiles/EE319K_Final_Project_Initial_Testing.dir/main.cpp.obj: ../entities.h
 CMakeFiles/EE319K_Final_Project_Initial_Testing.dir/main.cpp.obj: ../main.cpp
+CMakeFiles/EE319K_Final_Project_Initial_Testing.dir/main.cpp.obj: ../menu.h
 CMakeFiles/EE319K_Final_Project_Initial_Testing.dir/main.cpp.obj: ../metadata.h
 CMakeFiles/EE319K_Final_Project_Initial_Testing.dir/main.cpp.obj: ../stage.h
 CMakeFiles/EE319K_Final_Project_Initial_Testing.dir/main.cpp.obj: ../utils.h
+
+CMakeFiles/EE319K_Final_Project_Initial_Testing.dir/menu.cpp.obj: ../UART.h
+CMakeFiles/EE319K_Final_Project_Initial_Testing.dir/menu.cpp.obj: ../animator.h
+CMakeFiles/EE319K_Final_Project_Initial_Testing.dir/menu.cpp.obj: ../colors_charmenu.h
+CMakeFiles/EE319K_Final_Project_Initial_Testing.dir/menu.cpp.obj: ../menu.cpp
+CMakeFiles/EE319K_Final_Project_Initial_Testing.dir/menu.cpp.obj: ../menu.h
+CMakeFiles/EE319K_Final_Project_Initial_Testing.dir/menu.cpp.obj: ../metadata.h
 
 CMakeFiles/EE319K_Final_Project_Initial_Testing.dir/stage.cpp.obj: ../animator.h
 CMakeFiles/EE319K_Final_Project_Initial_Testing.dir/stage.cpp.obj: ../entities.h

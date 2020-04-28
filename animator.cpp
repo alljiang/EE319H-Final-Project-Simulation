@@ -12,6 +12,7 @@
 #include "colors_kirby.h"
 #include "colors_gameandwatch.h"
 #include "colors_misc.h"
+#include "colors_menu.h"
 using namespace std;
 
 #define maxSprites 16
@@ -28,7 +29,7 @@ const uint32_t* colors[CHARACTERS];
 uint32_t backgroundColorIndex[CHARACTERS];
 
 uint32_t persistentBackgroundMemLocation;
-Animation animation[4][numberOfAnimations];
+Animation animation[CHARACTERS][numberOfAnimations];
 SpriteSendable spriteSendables[maxSprites]; // up to maxSprites sprites on screen at once
 uint16_t activeAnimations = 0;  // each bit represents if the corresponding sendable is being used, big endian
 uint16_t toRemove = 0;  // each bit represents if the corresponding sendable should be removed next update, big endian
@@ -309,6 +310,7 @@ void animator_initialize() {
     colors[0] = colors_kirby;
     colors[1] = colors_gameandwatch;
     colors[3] = colors_misc;
+    colors[4] = colors_menu;
 
     // Find which color index is 0xFFFFFFFF (background)
     for(int c = 0; c < CHARACTERS; c++) {
