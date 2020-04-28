@@ -76,24 +76,24 @@ void Menu::loop(double joyH1, double joyV1, double joyH2, double joyV2,
         //  kirby
         if(selectedCharacter == 0) {
             s.animationIndex = 10;
-            xCharPreviewOffset = 0;
+            xCharPreviewOffset = 5;
             yCharPreviewOffset = 0;
         }
         //  valvano
         else if(selectedCharacter == 2) {
             s.animationIndex = 11;
             xCharPreviewOffset = 0;
-            yCharPreviewOffset = 0;
+            yCharPreviewOffset = -5;
         }
         //  game and watch
         else if(selectedCharacter == 1) {
             s.animationIndex = 12;
-            xCharPreviewOffset = 0;
-            yCharPreviewOffset = 0;
+            xCharPreviewOffset = -15;
+            yCharPreviewOffset = -1;
         }
 
-        s.x = 20 + xCharPreviewOffset;
-        s.y = 8 + yCharPreviewOffset;
+        s.x = 10 + xCharPreviewOffset;
+        s.y = 5 + yCharPreviewOffset;
         s.layer = LAYER_CHARACTER;
 
         UART_sendAnimation(s);
