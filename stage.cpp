@@ -91,6 +91,7 @@ double Stage::floor(double x, double y) {
             if(y >= 108 && x >= 92 && x <= 243) return 108;
             if(y >= 77 && x >= 91 && x <= 244) return 77;
             if(y >= 43 && x >= 88 && x <= 247) return 43;
+            return FLOOR_MAX;
 
         case STAGE_GREGORYGYM:
             if(y >= 164 && x >= 138 && x <= 190) return 164;

@@ -257,6 +257,33 @@ UART.cpp.s:
 	$(MAKE) -f CMakeFiles\EE319K_Final_Project_Initial_Testing.dir\build.make CMakeFiles/EE319K_Final_Project_Initial_Testing.dir/UART.cpp.s
 .PHONY : UART.cpp.s
 
+WinScreen.obj: WinScreen.cpp.obj
+
+.PHONY : WinScreen.obj
+
+# target to build an object file
+WinScreen.cpp.obj:
+	$(MAKE) -f CMakeFiles\EE319K_Final_Project_Initial_Testing.dir\build.make CMakeFiles/EE319K_Final_Project_Initial_Testing.dir/WinScreen.cpp.obj
+.PHONY : WinScreen.cpp.obj
+
+WinScreen.i: WinScreen.cpp.i
+
+.PHONY : WinScreen.i
+
+# target to preprocess a source file
+WinScreen.cpp.i:
+	$(MAKE) -f CMakeFiles\EE319K_Final_Project_Initial_Testing.dir\build.make CMakeFiles/EE319K_Final_Project_Initial_Testing.dir/WinScreen.cpp.i
+.PHONY : WinScreen.cpp.i
+
+WinScreen.s: WinScreen.cpp.s
+
+.PHONY : WinScreen.s
+
+# target to generate assembly for a file
+WinScreen.cpp.s:
+	$(MAKE) -f CMakeFiles\EE319K_Final_Project_Initial_Testing.dir\build.make CMakeFiles/EE319K_Final_Project_Initial_Testing.dir/WinScreen.cpp.s
+.PHONY : WinScreen.cpp.s
+
 animator.obj: animator.cpp.obj
 
 .PHONY : animator.obj
@@ -551,6 +578,9 @@ help:
 	@echo ... UART.obj
 	@echo ... UART.i
 	@echo ... UART.s
+	@echo ... WinScreen.obj
+	@echo ... WinScreen.i
+	@echo ... WinScreen.s
 	@echo ... animator.obj
 	@echo ... animator.i
 	@echo ... animator.s

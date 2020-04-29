@@ -65,6 +65,17 @@ CMakeFiles/EE319K_Final_Project_Initial_Testing.dir/UART.cpp.obj
  C:/Users/Allen/Documents/GitHub/EE319H-Final-Project-Simulation/UART.h
  C:/Users/Allen/Documents/GitHub/EE319H-Final-Project-Simulation/animator.h
  C:/Users/Allen/Documents/GitHub/EE319H-Final-Project-Simulation/metadata.h
+CMakeFiles/EE319K_Final_Project_Initial_Testing.dir/WinScreen.cpp.obj
+ C:/Users/Allen/Documents/GitHub/EE319H-Final-Project-Simulation/WinScreen.cpp
+ C:/Users/Allen/Documents/GitHub/EE319H-Final-Project-Simulation/WinScreen.h
+ C:/Users/Allen/Documents/GitHub/EE319H-Final-Project-Simulation/animator.h
+ C:/Users/Allen/Documents/GitHub/EE319H-Final-Project-Simulation/colors_winp1gaw.h
+ C:/Users/Allen/Documents/GitHub/EE319H-Final-Project-Simulation/colors_winp1kirby.h
+ C:/Users/Allen/Documents/GitHub/EE319H-Final-Project-Simulation/colors_winp1val.h
+ C:/Users/Allen/Documents/GitHub/EE319H-Final-Project-Simulation/colors_winp2gaw.h
+ C:/Users/Allen/Documents/GitHub/EE319H-Final-Project-Simulation/colors_winp2kirby.h
+ C:/Users/Allen/Documents/GitHub/EE319H-Final-Project-Simulation/colors_winp2val.h
+ C:/Users/Allen/Documents/GitHub/EE319H-Final-Project-Simulation/metadata.h
 CMakeFiles/EE319K_Final_Project_Initial_Testing.dir/animator.cpp.obj
  C:/Users/Allen/Documents/GitHub/EE319H-Final-Project-Simulation/Flash.h
  C:/Users/Allen/Documents/GitHub/EE319H-Final-Project-Simulation/ILI9341.h
@@ -203,6 +214,7 @@ CMakeFiles/EE319K_Final_Project_Initial_Testing.dir/main.cpp.obj
  C:/Users/Allen/Documents/GitHub/EE319H-Final-Project-Simulation/Flash.h
  C:/Users/Allen/Documents/GitHub/EE319H-Final-Project-Simulation/ILI9341.h
  C:/Users/Allen/Documents/GitHub/EE319H-Final-Project-Simulation/UART.h
+ C:/Users/Allen/Documents/GitHub/EE319H-Final-Project-Simulation/WinScreen.h
  C:/Users/Allen/Documents/GitHub/EE319H-Final-Project-Simulation/animator.h
  C:/Users/Allen/Documents/GitHub/EE319H-Final-Project-Simulation/charactermenu.h
  C:/Users/Allen/Documents/GitHub/EE319H-Final-Project-Simulation/colors_battlefield.h

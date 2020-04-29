@@ -4,6 +4,7 @@ file(REMOVE_RECURSE
   "CMakeFiles/EE319K_Final_Project_Initial_Testing.dir/ILI9341.cpp.obj"
   "CMakeFiles/EE319K_Final_Project_Initial_Testing.dir/SD.cpp.obj"
   "CMakeFiles/EE319K_Final_Project_Initial_Testing.dir/UART.cpp.obj"
+  "CMakeFiles/EE319K_Final_Project_Initial_Testing.dir/WinScreen.cpp.obj"
   "CMakeFiles/EE319K_Final_Project_Initial_Testing.dir/animator.cpp.obj"
   "CMakeFiles/EE319K_Final_Project_Initial_Testing.dir/charactermenu.cpp.obj"
   "CMakeFiles/EE319K_Final_Project_Initial_Testing.dir/collider.cpp.obj"

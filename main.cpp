@@ -19,6 +19,7 @@
 #include "Audio.h"
 #include "charactermenu.h"
 #include "stagemenu.h"
+#include "WinScreen.h"
 
 using namespace std;
 using namespace chrono;
@@ -27,6 +28,7 @@ SDL_Event event;
 
 StageMenu stageMenu;
 CharacterMenu characterMenu;
+WinScreen winScreen;
 
 Player* p1;
 Player* p2;
@@ -39,8 +41,9 @@ GameandWatch gameandwatch2;
 Kirby kirby1;
 Kirby kirby2;
 
+int8_t winner, winningCharacter;
 int8_t p1char, p2char;
-bool inCharMenu = false, inStageSelect = true;
+bool inCharMenu = false, inStageSelect = true, inWinScreen = false;
 bool quit, countdown, gameOver;
 uint8_t frameIndex, frameLength;
 long long loopsCompleted;
@@ -54,6 +57,8 @@ const double UPDATERATE = 20;   // 20
 const bool ENABLECOUNTDOWN = false;
 
 uint8_t stageToPlay = STAGE_FINALDESTINATION;
+
+void switchGameToWin(int8_t, int8_t);
 
 void resetPlayers() {
     p1->setPlayer(1);
@@ -177,6 +182,7 @@ void loopGame() {
     bool updateScore;
     if(!p1->dead && !gameOver && (p1->x < -40 || p1->x > 360 || p1->y < -40 || p1->y > 280)) {
         p1->dead = true;
+        p1->setMirrored(false);
         if(p1->stocksRemaining > 0) {
             p1->stocksRemaining--;
             updateScore = true;
@@ -189,6 +195,7 @@ void loopGame() {
     }
     if(!p2->dead && !gameOver && (p2->x < -40 || p2->x > 360 || p2->y < -40 || p2->y > 280)) {
         p2->dead = true;
+        p2->setMirrored(true);
         if(p2->stocksRemaining > 0) {
             p2->stocksRemaining--;
             updateScore = true;
@@ -201,13 +208,15 @@ void loopGame() {
     }
 
     if(gameOver) {
-        if(frameLength++ == 1) {
+        int frameExtension = 2;
+        if(frameLength++ == frameExtension) {
             frameIndex++;
             frameLength = 0;
         }
-        if(frameIndex == 25) {
+        if(frameIndex == 9) {
             gameOver = false;
-            resetPlayers();
+            if(p1->dead) switchGameToWin(2, p2char);
+            else switchGameToWin(1, p1char);
         }
         else {
             s.x = 80;
@@ -220,6 +229,7 @@ void loopGame() {
             s.continuous = false;
             s.layer = LAYER_OVERLAY;
             s.mirrored = false;
+
             UART_sendAnimation(s);
         }
     }
@@ -273,6 +283,9 @@ void startup() {
     else if(inCharMenu) {
         characterMenu.start();
     }
+    else if(inWinScreen) {
+        winScreen.start(winner, winningCharacter);
+    }
     else {
         startupGame();
     }
@@ -301,6 +314,21 @@ void switchCharMenuToGame(int8_t char1, int8_t char2) {
     startup();
 }
 
+void switchGameToWin(int8_t survivor, int8_t character) {
+    winner = survivor;
+    winningCharacter = character;
+
+    inWinScreen = true;
+    startup();
+}
+
+void switchWinToStageMenu() {
+    inWinScreen = false;
+    inStageSelect = true;
+
+    startup();
+}
+
 
 void loop() {
     if(millis() - t1 >= 1./UPDATERATE*1000) {
@@ -319,6 +347,9 @@ void loop() {
                                getBtn_b(1), getBtn_b(2),
                                getBtn_start(1) || getBtn_start(2),
                                &switchCharMenuToGame);
+        }
+        else if(inWinScreen) {
+            winScreen.loop(&switchWinToStageMenu);
         }
         else {
             loopGame();

@@ -176,12 +176,8 @@ void CharacterMenu::loop(double joyH1, double joyV1, double joyH2, double joyV2,
 
 void CharacterMenu::updateLastValues(double joyH1, double joyV1, double joyH2, double joyV2,
                                      bool btnA1, bool btnA2, bool btnB1, bool btnB2) {
-    l_joyH1 = joyH1;
-    l_joyV1 = joyV1;
     l_btnA1 = btnA1;
     l_btnB1 = btnB1;
-    l_joyH2 = joyH2;
-    l_joyV2 = joyV2;
     l_btnA2 = btnA2;
     l_btnB2 = btnB2;
 }
@@ -189,12 +185,8 @@ void CharacterMenu::updateLastValues(double joyH1, double joyV1, double joyH2, d
 void CharacterMenu::reset() {
     p1Selected = p2Selected = false;
     currentTime = 0;
-    l_joyH1 = 0;
-    l_joyV1 = 0;
     l_btnA1 = false;
     l_btnB1 = false;
-    l_joyH2 = 0;
-    l_joyV2 = 0;
     l_btnA2 = false;
     l_btnB2 = false;
     p1CursorX = 100;

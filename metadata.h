@@ -43,6 +43,12 @@
 #define BACKGROUND_GREGORYGYM 5
 #define BACKGROUND_MENU 10
 #define BACKGROUND_STAGEMENU 11
+#define BACKGROUND_WIN_P1_KIRBY 14
+#define BACKGROUND_WIN_P2_KIRBY 15
+#define BACKGROUND_WIN_P1_GAMEANDWATCH 16
+#define BACKGROUND_WIN_P2_GAMEANDWATCH 17
+#define BACKGROUND_WIN_P1_VALVANO 18
+#define BACKGROUND_WIN_P2_VALVANO 19
 
 #define CHARACTERS  5
 
@@ -54,7 +60,7 @@ const char characterNames[CHARACTERS][14] = {
         {"menu"}
 };
 
-const char persistentSprites[15][10] = {
+const char persistentSprites[20][15] = {
 /* 0  */{"fdst"},
         {"tower"},
         {"battle"},
@@ -69,7 +75,12 @@ const char persistentSprites[15][10] = {
         {"stagemenu"},
         {""},
         {""},
-        {""},
+        {"winp1kirby"},
+        {"winp2kirby"},
+        {"winp1gaw"},
+        {"winp2gaw"},
+        {"winp1val"},
+        {"winp2val"}
 };
 
 const uint16_t numberOfAnimations = 64;

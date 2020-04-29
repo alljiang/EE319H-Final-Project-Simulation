@@ -17,7 +17,7 @@ using namespace std;
 
 #define maxSprites 16
 
-uint8_t buffer[1000];   // it's big because i can. if this is too big, lower it down to like 700
+uint8_t buffer[700];   // it's big because i can. if this is too big, lower it down to like 700
 uint8_t* bufferptr;
 
 uint8_t smallBuffer2[300];
@@ -165,6 +165,7 @@ void animator_update() {
                             }
                         }
                         else {
+                            if(ss->x > 400) printf("%d\n", ss->x);
                             if(!(ss->x + column > 320 || ss->x + column < 0)) {
                                 if (layer[ss->x + column] < ss->layer) {
                                     finalColors[ss->x + column] = colors[anim->characterIndex][colorIndex];

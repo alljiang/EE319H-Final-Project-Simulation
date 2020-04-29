@@ -14,12 +14,8 @@ class CharacterMenu {
 #define CHARMENU_CURSORSPEED 9
 
 public:
-    double l_joyH1;              //  P1 last joystick horizontal value
-    double l_joyV1;              //  P1 last joystick vertical value
     bool l_btnA1;                //  P1 last button A value
     bool l_btnB1;                //  P1 last button B value
-    double l_joyH2;              //  P2 last joystick horizontal value
-    double l_joyV2;              //  P2 last joystick vertical value
     bool l_btnA2;                //  P2 last button A value
     bool l_btnB2;                //  P2 last button B value
 

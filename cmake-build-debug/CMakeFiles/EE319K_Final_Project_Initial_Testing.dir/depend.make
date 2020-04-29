@@ -65,6 +65,17 @@ CMakeFiles/EE319K_Final_Project_Initial_Testing.dir/UART.cpp.obj: ../UART.h
 CMakeFiles/EE319K_Final_Project_Initial_Testing.dir/UART.cpp.obj: ../animator.h
 CMakeFiles/EE319K_Final_Project_Initial_Testing.dir/UART.cpp.obj: ../metadata.h
 
+CMakeFiles/EE319K_Final_Project_Initial_Testing.dir/WinScreen.cpp.obj: ../WinScreen.cpp
+CMakeFiles/EE319K_Final_Project_Initial_Testing.dir/WinScreen.cpp.obj: ../WinScreen.h
+CMakeFiles/EE319K_Final_Project_Initial_Testing.dir/WinScreen.cpp.obj: ../animator.h
+CMakeFiles/EE319K_Final_Project_Initial_Testing.dir/WinScreen.cpp.obj: ../colors_winp1gaw.h
+CMakeFiles/EE319K_Final_Project_Initial_Testing.dir/WinScreen.cpp.obj: ../colors_winp1kirby.h
+CMakeFiles/EE319K_Final_Project_Initial_Testing.dir/WinScreen.cpp.obj: ../colors_winp1val.h
+CMakeFiles/EE319K_Final_Project_Initial_Testing.dir/WinScreen.cpp.obj: ../colors_winp2gaw.h
+CMakeFiles/EE319K_Final_Project_Initial_Testing.dir/WinScreen.cpp.obj: ../colors_winp2kirby.h
+CMakeFiles/EE319K_Final_Project_Initial_Testing.dir/WinScreen.cpp.obj: ../colors_winp2val.h
+CMakeFiles/EE319K_Final_Project_Initial_Testing.dir/WinScreen.cpp.obj: ../metadata.h
+
 CMakeFiles/EE319K_Final_Project_Initial_Testing.dir/animator.cpp.obj: ../Flash.h
 CMakeFiles/EE319K_Final_Project_Initial_Testing.dir/animator.cpp.obj: ../ILI9341.h
 CMakeFiles/EE319K_Final_Project_Initial_Testing.dir/animator.cpp.obj: ../SD.h
@@ -202,6 +213,7 @@ CMakeFiles/EE319K_Final_Project_Initial_Testing.dir/main.cpp.obj: ../Audio.h
 CMakeFiles/EE319K_Final_Project_Initial_Testing.dir/main.cpp.obj: ../Flash.h
 CMakeFiles/EE319K_Final_Project_Initial_Testing.dir/main.cpp.obj: ../ILI9341.h
 CMakeFiles/EE319K_Final_Project_Initial_Testing.dir/main.cpp.obj: ../UART.h
+CMakeFiles/EE319K_Final_Project_Initial_Testing.dir/main.cpp.obj: ../WinScreen.h
 CMakeFiles/EE319K_Final_Project_Initial_Testing.dir/main.cpp.obj: ../animator.h
 CMakeFiles/EE319K_Final_Project_Initial_Testing.dir/main.cpp.obj: ../charactermenu.h
 CMakeFiles/EE319K_Final_Project_Initial_Testing.dir/main.cpp.obj: ../colors_battlefield.h

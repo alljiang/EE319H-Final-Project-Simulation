@@ -169,4 +169,8 @@ void stopSDL2() {
     SDL_Quit();
 }
 
-void ILI9341_init() {}
+void ILI9341_init() {
+//    ILI9341_fillScreen(0);
+//    LCD_update();
+//    for(int i = 0; i < 99999999; i++) {}
+}
