@@ -38,7 +38,7 @@ void Kirby::controlLoop(double joyH, double joyV, bool btnA, bool btnB, bool shi
         }
         return;
     }
-
+    printf("%0.0f\n", x);
     if(!l_btnA && btnA) l_btnARise_t = currentTime;
     else if(l_btnA && !btnA) l_btnAFall_t = currentTime;
     if(!l_btnB && btnB) l_btnBRise_t = currentTime;

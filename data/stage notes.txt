@@ -5,3 +5,18 @@ Final destination:
     Right wall: (280, 104) to (280, 70)
     Left slope: (38, 70) to (159, -5)      ax+b     a=-.6198 b=93.55
     Right slope: (159, -5) to (280, 70)     ax+b    a=.6198  b=-103.55
+
+Battlefield:
+
+    Top floor: (52, 86) to (268, 86)
+    Left wall: (52, 86) to (52, 55)
+    Right wall: (268, 86) to (268, 55)
+    Left slope: (52, 55) to (161, -5)      ax+b    a=-.5505    b=83.624
+    Right slope: (268, 55) to (161, -5)    ax+b    a=.5607    b=-95.28
+
+Smashville:
+
+    Top floor: (35, 65) to (295, 65)
+    Left slope: (35, 65) to (47, 23)        a=-3.5  b=187.5
+    Right slope: (295, 65) to (274, 23)     a=2  b=-525
+    Floor ceiling: (47, 23) to (274, 23)

@@ -12,6 +12,8 @@
 #include "stage.h"
 #include "colors_fdst.h"
 #include "colors_tower.h"
+#include "colors_battlefield.h"
+#include "colors_smashville.h"
 #include "Audio.h"
 #include "charactermenu.h"
 #include "stagemenu.h"
@@ -82,6 +84,7 @@ void resetPlayers() {
 
 //  runs once at beginning
 void startupGame() {
+    stage.initialize(stageToPlay, &hitboxManager);
     resetPlayers();
 
     if(PLAYER2) hitboxManager.initialize(p1, p2);
@@ -89,8 +92,9 @@ void startupGame() {
 
     if(stageToPlay == STAGE_FINALDESTINATION) animator_setBackgroundColors(colors_fdst);
     else if(stageToPlay == STAGE_TOWER) animator_setBackgroundColors(colors_tower);
+    else if(stageToPlay == STAGE_BATTLEFIELD) animator_setBackgroundColors(colors_battle);
+    else if(stageToPlay == STAGE_SMASHVILLE) animator_setBackgroundColors(colors_smashville);
 
-    stage.initialize(stageToPlay, &hitboxManager);
     animator_readPersistentSprite(persistentSprites[stageToPlay], 0, 0);
 
     UART_readCharacterSDCard(0);

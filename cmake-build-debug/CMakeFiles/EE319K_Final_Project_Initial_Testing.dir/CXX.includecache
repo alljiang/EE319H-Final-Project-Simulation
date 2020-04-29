@@ -6,39 +6,25 @@
 
 #IncludeRegexTransform: 
 
-C:/Users/Allen/Documents/GitHub/EE319H-Final-Project-Simulation/UART.h
-animator.h
-C:/Users/Allen/Documents/GitHub/EE319H-Final-Project-Simulation/animator.h
-cstdint
--
-
-C:/Users/Allen/Documents/GitHub/EE319H-Final-Project-Simulation/animator.h
-cstdint
--
-
-C:/Users/Allen/Documents/GitHub/EE319H-Final-Project-Simulation/charactermenu.cpp
-charactermenu.h
-C:/Users/Allen/Documents/GitHub/EE319H-Final-Project-Simulation/charactermenu.h
-UART.h
-C:/Users/Allen/Documents/GitHub/EE319H-Final-Project-Simulation/UART.h
-metadata.h
-C:/Users/Allen/Documents/GitHub/EE319H-Final-Project-Simulation/metadata.h
-colors_charmenu.h
-C:/Users/Allen/Documents/GitHub/EE319H-Final-Project-Simulation/colors_charmenu.h
-
-C:/Users/Allen/Documents/GitHub/EE319H-Final-Project-Simulation/charactermenu.h
-stdlib.h
-C:/Users/Allen/Documents/GitHub/EE319H-Final-Project-Simulation/stdlib.h
+C:/Users/Allen/Documents/GitHub/EE319H-Final-Project-Simulation/entities.h
 stdint.h
 C:/Users/Allen/Documents/GitHub/EE319H-Final-Project-Simulation/stdint.h
-stdio.h
-C:/Users/Allen/Documents/GitHub/EE319H-Final-Project-Simulation/stdio.h
-
-C:/Users/Allen/Documents/GitHub/EE319H-Final-Project-Simulation/colors_charmenu.h
-stdint.h
--
 
 C:/Users/Allen/Documents/GitHub/EE319H-Final-Project-Simulation/metadata.h
 stdbool.h
 -
+
+C:/Users/Allen/Documents/GitHub/EE319H-Final-Project-Simulation/stage.cpp
+stage.h
+C:/Users/Allen/Documents/GitHub/EE319H-Final-Project-Simulation/stage.h
+metadata.h
+C:/Users/Allen/Documents/GitHub/EE319H-Final-Project-Simulation/metadata.h
+entities.h
+C:/Users/Allen/Documents/GitHub/EE319H-Final-Project-Simulation/entities.h
+
+C:/Users/Allen/Documents/GitHub/EE319H-Final-Project-Simulation/stage.h
+cstdint
+-
+entities.h
+C:/Users/Allen/Documents/GitHub/EE319H-Final-Project-Simulation/entities.h
 

@@ -11,7 +11,7 @@
 
 class CharacterMenu {
 
-    #define MENU_CURSORSPEED 6
+#define CHARMENU_CURSORSPEED 9
 
 public:
     double l_joyH1;              //  P1 last joystick horizontal value

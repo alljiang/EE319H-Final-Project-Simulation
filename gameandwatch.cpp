@@ -1610,6 +1610,7 @@ void GameandWatch::updateLastValues(double joyH, double joyV, bool btnA, bool bt
 }
 
 void GameandWatch::collide(Hurtbox *hurtbox, Player *otherPlayer) {
+    printf("hit");
     //  ledge grab
     if(hurtbox->source == 0) {
         if(this->hitbox.y < hurtbox->y

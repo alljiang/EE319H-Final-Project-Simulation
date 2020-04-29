@@ -205,7 +205,9 @@ CMakeFiles/EE319K_Final_Project_Initial_Testing.dir/main.cpp.obj
  C:/Users/Allen/Documents/GitHub/EE319H-Final-Project-Simulation/UART.h
  C:/Users/Allen/Documents/GitHub/EE319H-Final-Project-Simulation/animator.h
  C:/Users/Allen/Documents/GitHub/EE319H-Final-Project-Simulation/charactermenu.h
+ C:/Users/Allen/Documents/GitHub/EE319H-Final-Project-Simulation/colors_battlefield.h
  C:/Users/Allen/Documents/GitHub/EE319H-Final-Project-Simulation/colors_fdst.h
+ C:/Users/Allen/Documents/GitHub/EE319H-Final-Project-Simulation/colors_smashville.h
  C:/Users/Allen/Documents/GitHub/EE319H-Final-Project-Simulation/colors_tower.h
  C:/Users/Allen/Documents/GitHub/EE319H-Final-Project-Simulation/controller.h
  C:/Users/Allen/Documents/GitHub/EE319H-Final-Project-Simulation/entities.h
@@ -215,7 +217,6 @@ CMakeFiles/EE319K_Final_Project_Initial_Testing.dir/main.cpp.obj
  C:/Users/Allen/Documents/GitHub/EE319H-Final-Project-Simulation/stagemenu.h
  C:/Users/Allen/Documents/GitHub/EE319H-Final-Project-Simulation/utils.h
 CMakeFiles/EE319K_Final_Project_Initial_Testing.dir/stage.cpp.obj
- C:/Users/Allen/Documents/GitHub/EE319H-Final-Project-Simulation/animator.h
  C:/Users/Allen/Documents/GitHub/EE319H-Final-Project-Simulation/entities.h
  C:/Users/Allen/Documents/GitHub/EE319H-Final-Project-Simulation/metadata.h
  C:/Users/Allen/Documents/GitHub/EE319H-Final-Project-Simulation/stage.cpp

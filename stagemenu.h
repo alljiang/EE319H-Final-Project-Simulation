@@ -11,7 +11,7 @@
 
 class StageMenu {
 
-#define MENU_CURSORSPEED 6
+#define STAGEMENU_CURSORSPEED 12
 
 public:
 

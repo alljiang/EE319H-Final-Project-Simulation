@@ -59,8 +59,8 @@ void CharacterMenu::loop(double joyH1, double joyV1, double joyH2, double joyV2,
     }
 
     if(!p1Selected) {
-        p1CursorX += MENU_CURSORSPEED * joyH1;
-        p1CursorY += MENU_CURSORSPEED * joyV1;
+        p1CursorX += CHARMENU_CURSORSPEED * joyH1;
+        p1CursorY += CHARMENU_CURSORSPEED * joyV1;
 
         int p1CursorSmall_xAnimationOffset = 0;
         int p1CursorSmall_yAnimationOffset = 0;
@@ -114,8 +114,8 @@ void CharacterMenu::loop(double joyH1, double joyV1, double joyH2, double joyV2,
         UART_sendAnimation(s);
     }
     if(!p2Selected) {
-        p2CursorX += MENU_CURSORSPEED * joyH2;
-        p2CursorY += MENU_CURSORSPEED * joyV2;
+        p2CursorX += CHARMENU_CURSORSPEED * joyH2;
+        p2CursorY += CHARMENU_CURSORSPEED * joyV2;
 
         int p2CursorSmall_xAnimationOffset = 0;
         int p2CursorSmall_yAnimationOffset = 0;

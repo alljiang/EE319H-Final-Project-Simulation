@@ -353,8 +353,8 @@ public:
     Hurtbox upTilt = Hurtbox(-6., 21, SHAPE_RECTANGLE,
                              25, 18, 1,
                              3, 1.5, 3.3, -1);
-    Hurtbox downTilt = Hurtbox(4., 2, SHAPE_RECTANGLE,
-                               6, 28, 1,
+    Hurtbox downTilt = Hurtbox(4., 5, SHAPE_RECTANGLE,
+                               10, 33, 1,
                                3, 1, 2.6, -1);
     Hurtbox forwardSmash = Hurtbox(25., 5, SHAPE_RECTANGLE,
                                    20, 20, 1,
@@ -362,8 +362,8 @@ public:
     Hurtbox upSmash = Hurtbox(true, 0., 26, SHAPE_CIRCLE,
                               14, 1,
                               3.9,3.1, 4.1,-1);
-    Hurtbox downSmash = Hurtbox(0., 2, SHAPE_RECTANGLE,
-                                10, 44, 1,
+    Hurtbox downSmash = Hurtbox(0., 5, SHAPE_RECTANGLE,
+                                10, 35, 1,
                                 3.9,4.2, 1.5, -1);
     Hurtbox upSpecialRising = Hurtbox(25., 18, SHAPE_RECTANGLE,
                                       20, 30, 1,
