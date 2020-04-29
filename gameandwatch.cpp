@@ -8,11 +8,11 @@
 #include "UART.h"
 #include "stage.h"
 
-void GameandWatch::controlLoop(double joyH, double joyV, bool btnA, bool btnB, bool shield,
+void GameandWatch::controlLoop(float joyH, float joyV, bool btnA, bool btnB, bool shield,
                         class Stage *stage, class HitboxManager *hitboxManager) {
     //  assume joystick deadzone filtering is already done
 
-    double dt = 49;
+    float dt = 49;
     currentTime += (uint8_t)dt;
 
     SpriteSendable s;
@@ -47,8 +47,8 @@ void GameandWatch::controlLoop(double joyH, double joyV, bool btnA, bool btnB, b
 
     int16_t x_mirroredOffset = 0;
 
-    double yAnimationOffset = 0;
-    double xAnimationOffset = 0;
+    float yAnimationOffset = 0;
+    float xAnimationOffset = 0;
 
     bool continuous = false;
 
@@ -58,13 +58,13 @@ void GameandWatch::controlLoop(double joyH, double joyV, bool btnA, bool btnB, b
     hitbox.offsetWidth(0);
     hitbox.offsetHeight(0);
 
-    double ceiling = stage->ceil(x + GAW_STAGE_OFFSET, y);
-    double floor = stage->floor(x + GAW_STAGE_OFFSET, y);
-    double leftBound = stage->leftBound(x + GAW_STAGE_OFFSET, y) - GAW_STAGE_OFFSET / 2;
-    double rightBound = stage->rightBound(x - GAW_STAGE_OFFSET, y) - GAW_STAGE_OFFSET;
+    float ceiling = stage->ceil(x + GAW_STAGE_OFFSET, y);
+    float floor = stage->floor(x + GAW_STAGE_OFFSET, y);
+    float leftBound = stage->leftBound(x + GAW_STAGE_OFFSET, y) - GAW_STAGE_OFFSET / 2;
+    float rightBound = stage->rightBound(x - GAW_STAGE_OFFSET, y) - GAW_STAGE_OFFSET;
     bool onPlatform = stage->onPlatform(x + KIRBY_STAGE_OFFSET, y);
-    double stageVelocity = stage->xVelocity(x, y);
-    double gravityScale = 1;
+    float stageVelocity = stage->xVelocity(x, y);
+    float gravityScale = 1;
 
     //  first, follow up on any currently performing actions
     noJumpsDisabled = jumpsUsed >= 5;
@@ -172,7 +172,7 @@ void GameandWatch::controlLoop(double joyH, double joyV, bool btnA, bool btnB, b
         disabledFrames = 2;
         frameIndex = 0;
 
-        double baseSpeed = 4;
+        float baseSpeed = 4;
         frameExtension = 3;
         if(frameLengthCounter++ >= frameExtension) {
             frameLengthCounter = 0;
@@ -348,7 +348,7 @@ void GameandWatch::controlLoop(double joyH, double joyV, bool btnA, bool btnB, b
             disabledFrames = 5;
         }
         else {
-            double chargeScale = (currentTime - fsmash_startTime) / 3000. * 0.6 + 1;
+            float chargeScale = (currentTime - fsmash_startTime) / 3000. * 0.6 + 1;
             hitboxManager->addHurtbox(x + 15, y, mirrored,
                                       forwardSmash, player, chargeScale);
         }
@@ -400,7 +400,7 @@ void GameandWatch::controlLoop(double joyH, double joyV, bool btnA, bool btnB, b
             disabledFrames = 2;
         }
         else {
-            double chargeScale = (currentTime - usmash_startTime) / 3000. * 0.6 + 1;
+            float chargeScale = (currentTime - usmash_startTime) / 3000. * 0.6 + 1;
             if(frameIndex > 1) {
                 hitboxManager->addHurtbox(x + 14, y, mirrored,
                                           upSmash, player, chargeScale);
@@ -459,7 +459,7 @@ void GameandWatch::controlLoop(double joyH, double joyV, bool btnA, bool btnB, b
             disabledFrames = 5;
         }
         else {
-            double chargeScale = (currentTime - dsmash_startTime) / 3000. * 0.6 + 1;
+            float chargeScale = (currentTime - dsmash_startTime) / 3000. * 0.6 + 1;
             hitboxManager->addHurtbox(x + 16, y, mirrored,
                                           downSmash, player, chargeScale);
         }
@@ -765,7 +765,7 @@ void GameandWatch::controlLoop(double joyH, double joyV, bool btnA, bool btnB, b
         }
         else {
             if(frameIndex == 1) {
-                double multiplier = 0.17857 * sideBStrength + 0.2142857;
+                float multiplier = 0.17857 * sideBStrength + 0.2142857;
                 hitboxManager->addHurtbox(x + 17, y, mirrored,
                                           sideSpecial, player, multiplier);
             }
@@ -1608,7 +1608,7 @@ void GameandWatch::controlLoop(double joyH, double joyV, bool btnA, bool btnB, b
     updateLastValues(joyH, joyV, btnA, btnB, shield);
 }
 
-void GameandWatch::updateLastValues(double joyH, double joyV, bool btnA, bool btnB, bool shield) {
+void GameandWatch::updateLastValues(float joyH, float joyV, bool btnA, bool btnB, bool shield) {
     l_joyH = joyH;
     l_joyV = joyV;
     l_btnA = btnA;
@@ -1649,7 +1649,7 @@ void GameandWatch::collide(Hurtbox *hurtbox, Player *otherPlayer) {
         disabledFrames = hurtbox->stunFrames;
         damage += hurtbox->damage;
 
-        double knockbackMultiplier = damage / 200. + 1.0;
+        float knockbackMultiplier = damage / 200. + 1.0;
 //        printf("%0.1f\n", damage);
 
         if (otherPlayer->x < x) xVel = hurtbox->xKnockback * knockbackMultiplier;

@@ -95,7 +95,7 @@ void HitboxManager::clearHitboxOverlay() {
     LCD_clearOverlay();
 }
 
-bool* HitboxManager::addHurtboxFullConfig(double xOffset, double yOffset, bool mirrored,
+bool* HitboxManager::addHurtboxFullConfig(float xOffset, float yOffset, bool mirrored,
                                          class Hurtbox hurtBox, uint8_t playerSource, bool persistent) {
     hurtBox.active = true;
     hurtBox.currentFrame = 0;
@@ -120,8 +120,8 @@ bool* HitboxManager::addHurtboxFullConfig(double xOffset, double yOffset, bool m
     return nullptr;    //  no slots remaining
 }
 
-bool* HitboxManager::addHurtbox(double xOffset, double yOffset, bool mirrored,
-       class Hurtbox hurtBox, uint8_t playerSource, double multiplier) {
+bool* HitboxManager::addHurtbox(float xOffset, float yOffset, bool mirrored,
+       class Hurtbox hurtBox, uint8_t playerSource, float multiplier) {
     hurtBox.damage *= multiplier;
     hurtBox.yKnockback *= multiplier;
     hurtBox.xKnockback *= multiplier;

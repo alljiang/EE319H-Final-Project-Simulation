@@ -87,7 +87,7 @@ void resetPlayers() {
 }
 
 //  runs on ce at beginning
-void startupGame() {
+void game_startup() {
     stage.initialize(stageToPlay, &hitboxManager);
     resetPlayers();
 
@@ -113,8 +113,8 @@ void startupGame() {
 }
 
 //  continually loops
-uint32_t  t1 = 0;
-void loopGame() {
+uint32_t  lastUpdate = 0;
+void game_loop() {
     SpriteSendable s;
     uint32_t sum = Flash_SPICounter + ILI9341_SPICounter;
     double max = 1000000./UPDATERATE;
@@ -122,7 +122,7 @@ void loopGame() {
     Flash_SPICounter = 0;
     ILI9341_SPICounter = 0;
 
-    t1 = millis();
+    lastUpdate = millis();
 
     if(countdown && ENABLECOUNTDOWN) {
         if(frameLength++ == 1) {
@@ -275,7 +275,11 @@ void loopGame() {
 }
 
 void startup() {
+    Flash_init();
     animator_initialize();
+
+//    SD_startSDCard();
+    ILI9341_init();
 
     if(inStageSelect) {
         stageMenu.start();
@@ -287,7 +291,7 @@ void startup() {
         winScreen.start(winner, winningCharacter);
     }
     else {
-        startupGame();
+        game_startup();
     }
 }
 
@@ -331,8 +335,8 @@ void switchWinToStageMenu() {
 
 
 void loop() {
-    if(millis() - t1 >= 1./UPDATERATE*1000) {
-        t1 = millis();
+    if(millis() - lastUpdate >= 1. / UPDATERATE * 1000) {
+        lastUpdate = millis();
 
         if(inStageSelect) {
             stageMenu.loop(getJoystick_h(1), getJoystick_v(1),
@@ -352,7 +356,7 @@ void loop() {
             winScreen.loop(&switchWinToStageMenu);
         }
         else {
-            loopGame();
+            game_loop();
         }
     }
 }

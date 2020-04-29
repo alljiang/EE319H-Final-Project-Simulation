@@ -54,8 +54,8 @@
 
 const char characterNames[CHARACTERS][14] = {
         {"kirby"},
-        {"gameandwatch"},
-        {"valvano"},
+        {"gaw"},
+        {"val"},
         {"misc"},
         {"menu"}
 };
@@ -63,24 +63,24 @@ const char characterNames[CHARACTERS][14] = {
 const char persistentSprites[20][15] = {
 /* 0  */{"fdst"},
         {"tower"},
-        {"battle"},
-        {"sville"},
+        {"batt"},
+        {"smvl"},
         {"eer"},
-        {"gregory"},
+        {"greg"},
         {""},
         {""},
         {""},
         {""},
-/* 10 */{"charmenu"},
-        {"stagemenu"},
+/* 10 */{"cmenu"},
+        {"smenu"},
         {""},
         {""},
-        {"winp1kirby"},
-        {"winp2kirby"},
-        {"winp1gaw"},
-        {"winp2gaw"},
-        {"winp1val"},
-        {"winp2val"}
+        {"w1kb"},
+        {"w2kb"},
+        {"w1gw"},
+        {"w2gw"},
+        {"w1va"},
+        {"w2va"}
 };
 
 const uint16_t numberOfAnimations = 64;

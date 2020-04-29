@@ -9,11 +9,11 @@
 #include "UART.h"
 #include "stage.h"
 
-void Kirby::controlLoop(double joyH, double joyV, bool btnA, bool btnB, bool shield,
+void Kirby::controlLoop(float joyH, float joyV, bool btnA, bool btnB, bool shield,
                         class Stage *stage, class HitboxManager *hitboxManager) {
     //  assume joystick deadzone filtering is already done
 
-    double dt = 49;
+    float dt = 49;
     currentTime += (uint8_t)dt;
 
     SpriteSendable s;
@@ -47,8 +47,8 @@ void Kirby::controlLoop(double joyH, double joyV, bool btnA, bool btnB, bool shi
 
     int16_t x_mirroredOffset = 0;
 
-    double yAnimationOffset = 0;
-    double xAnimationOffset = 0;
+    float yAnimationOffset = 0;
+    float xAnimationOffset = 0;
 
     bool continuous = false;
 
@@ -56,13 +56,13 @@ void Kirby::controlLoop(double joyH, double joyV, bool btnA, bool btnB, bool shi
     hitbox.offsetX(0);
     hitbox.offsetRadius(0);
 
-    double ceiling = stage->ceil(x + KIRBY_STAGE_OFFSET, y);
-    double floor = stage->floor(x + KIRBY_STAGE_OFFSET, y);
-    double leftBound = stage->leftBound(x + KIRBY_STAGE_OFFSET, y) - KIRBY_STAGE_OFFSET / 2;
-    double rightBound = stage->rightBound(x - KIRBY_STAGE_OFFSET, y) - KIRBY_STAGE_OFFSET;
+    float ceiling = stage->ceil(x + KIRBY_STAGE_OFFSET, y);
+    float floor = stage->floor(x + KIRBY_STAGE_OFFSET, y);
+    float leftBound = stage->leftBound(x + KIRBY_STAGE_OFFSET, y) - KIRBY_STAGE_OFFSET / 2;
+    float rightBound = stage->rightBound(x - KIRBY_STAGE_OFFSET, y) - KIRBY_STAGE_OFFSET;
     bool onPlatform = stage->onPlatform(x + KIRBY_STAGE_OFFSET, y);
-    double stageVelocity = stage->xVelocity(x + KIRBY_STAGE_OFFSET, y);
-    double gravityScale = 1;
+    float stageVelocity = stage->xVelocity(x + KIRBY_STAGE_OFFSET, y);
+    float gravityScale = 1;
 
     //  first, follow up on any currently performing actions
     noJumpsDisabled = jumpsUsed >= 5;
@@ -422,7 +422,7 @@ void Kirby::controlLoop(double joyH, double joyV, bool btnA, bool btnB, bool shi
         }
         else {
             if(frameIndex > 6) {
-                double chargeScale = (currentTime - fsmash_startTime) / 3000. * 0.6 + 1;
+                float chargeScale = (currentTime - fsmash_startTime) / 3000. * 0.6 + 1;
                 hitboxManager->addHurtbox(x + 16, y, mirrored,
                                           forwardSmash, player, chargeScale);
             }
@@ -474,7 +474,7 @@ void Kirby::controlLoop(double joyH, double joyV, bool btnA, bool btnB, bool shi
             disabledFrames = 5;
         }
         else {
-            double chargeScale = (currentTime - usmash_startTime) / 3000. * 0.6 + 1;
+            float chargeScale = (currentTime - usmash_startTime) / 3000. * 0.6 + 1;
             if(frameIndex > 4 && frameIndex < 7) {
                 hitboxManager->addHurtbox(x + 16, y, mirrored,
                                           upSmash, player, chargeScale);
@@ -530,7 +530,7 @@ void Kirby::controlLoop(double joyH, double joyV, bool btnA, bool btnB, bool shi
         }
         else {
             if(frameIndex > 1) {
-                double chargeScale = (currentTime - dsmash_startTime) / 3000. * 0.6 + 1;
+                float chargeScale = (currentTime - dsmash_startTime) / 3000. * 0.6 + 1;
                 hitboxManager->addHurtbox(x + 16, y, mirrored,
                                           downSmash, player, chargeScale);
             }
@@ -994,7 +994,7 @@ void Kirby::controlLoop(double joyH, double joyV, bool btnA, bool btnB, bool shi
             l_action = KIRBY_ACTION_SIDESPECIALRELEASE;
             action = KIRBY_ACTION_FALLING;
         }
-        double chargeScale = (currentTime - hammerChargeStartTime) / 4000. * 0.6 + 1;
+        float chargeScale = (currentTime - hammerChargeStartTime) / 4000. * 0.6 + 1;
         switch (frameIndex) {
             case 3:
                 x_mirroredOffset = 2;
@@ -1487,7 +1487,7 @@ void Kirby::controlLoop(double joyH, double joyV, bool btnA, bool btnB, bool shi
         if(currentTime - starProjStartTime >= 300) {
             starProjActive = false;
         } else {
-            double starSpeed = 5;
+            float starSpeed = 5;
             if(starProjMirrored) starProj_x -= starSpeed;
             else starProj_x += starSpeed;
 
@@ -1862,7 +1862,7 @@ void Kirby::controlLoop(double joyH, double joyV, bool btnA, bool btnB, bool shi
     updateLastValues(joyH, joyV, btnA, btnB, shield);
 }
 
-void Kirby::updateLastValues(double joyH, double joyV, bool btnA, bool btnB, bool shield) {
+void Kirby::updateLastValues(float joyH, float joyV, bool btnA, bool btnB, bool shield) {
     l_joyH = joyH;
     l_joyV = joyV;
     l_btnA = btnA;
@@ -1895,7 +1895,7 @@ void Kirby::collide(Hurtbox *hurtbox, Player *otherPlayer) {
         disabledFrames = hurtbox->stunFrames;
         damage += hurtbox->damage;
 
-        double knockbackMultiplier = damage / 200. + 1.0;
+        float knockbackMultiplier = damage / 200. + 1.0;
 
         if (otherPlayer->x < x) xVel = hurtbox->xKnockback * knockbackMultiplier;
         else xVel = -hurtbox->xKnockback * knockbackMultiplier;

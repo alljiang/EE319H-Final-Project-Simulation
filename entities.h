@@ -16,19 +16,19 @@ class Collider {
 #define SHAPE_RECTANGLE 1
 
 public:
-    double x, y;
-    double xOffset, yOffset;
+    float x, y;
+    float xOffset, yOffset;
     uint8_t shape;
-    double height=0, width=0, radius=0;
+    float height=0, width=0, radius=0;
 
-    Collider(double x, double y, uint8_t shape, double radius) {
+    Collider(float x, float y, uint8_t shape, float radius) {
         this->x = x;
         this->y = y;
         this->shape = shape;
         this->radius = radius;
     }
 
-    Collider(double x, double y, uint8_t shape, double length, double width) {
+    Collider(float x, float y, uint8_t shape, float length, float width) {
         this->x = x;
         this->y = y;
         this->shape = shape;
@@ -41,19 +41,19 @@ public:
 class Hurtbox: public Collider {
 
 public:
-    double damage;
+    float damage;
     int8_t source;     //  player who created this hitbox, will not damage this player
     int8_t frames, currentFrame;
     bool active{false}, isProjectile{false};
-    double xKnockback, yKnockback;
+    float xKnockback, yKnockback;
     int16_t stunFrames;
 
     Hurtbox() : Collider(0,0,0,0) {}
 
-    Hurtbox(bool circle, double cX, double cY,
-            uint8_t boxShape, double radius,
-            int8_t frames=1, double damage=0,
-            double xknockback=0, double yknockback=0,
+    Hurtbox(bool circle, float cX, float cY,
+            uint8_t boxShape, float radius,
+            int8_t frames=1, float damage=0,
+            float xknockback=0, float yknockback=0,
             int16_t stunFrames=0, bool isProjectile=false)
             : Collider(cX, cY, boxShape, radius) {
         shape = boxShape;
@@ -65,9 +65,9 @@ public:
         this->isProjectile = isProjectile;
     }
 
-    Hurtbox(double cX, double cY, uint8_t boxShape, double height, double width,
-            int8_t frames=1, double damage=0,
-            double xknockback=0, double yknockback=0,
+    Hurtbox(float cX, float cY, uint8_t boxShape, float height, float width,
+            int8_t frames=1, float damage=0,
+            float xknockback=0, float yknockback=0,
             int16_t stunFrames=0, bool isProjectile=false)
             : Collider(cX, cY, boxShape, height, width) {
         shape = boxShape;
@@ -86,31 +86,31 @@ public:
 class Hitbox: public Collider {
 
 public:
-    double radiusOffset{0};
-    double heightOffset{0};
-    double widthOffset{0};
+    float radiusOffset{0};
+    float heightOffset{0};
+    float widthOffset{0};
 
-    Hitbox(double cX, double cY, double radius)
+    Hitbox(float cX, float cY, float radius)
             : Collider(cX, cY, SHAPE_CIRCLE, radius) {}
-    Hitbox(double cX, double cY, double length, double width)
+    Hitbox(float cX, float cY, float length, float width)
             : Collider(cX, cY, SHAPE_RECTANGLE, length, width) {}
 
-    void offsetY(double yOffset) { this->yOffset = yOffset; }
-    void offsetX(double xOffset) { this->xOffset = xOffset; }
-    void offsetX(double xOffset, bool mirrored) { if(mirrored) offsetX(-xOffset); else offsetX(xOffset); }
+    void offsetY(float yOffset) { this->yOffset = yOffset; }
+    void offsetX(float xOffset) { this->xOffset = xOffset; }
+    void offsetX(float xOffset, bool mirrored) { if(mirrored) offsetX(-xOffset); else offsetX(xOffset); }
 
-    void offsetRadius(double radius) { this->radiusOffset = radius; };
-    void offsetHeight(double height) { this->heightOffset = height; }
-    void offsetWidth(double width) { this->widthOffset = width; }
+    void offsetRadius(float radius) { this->radiusOffset = radius; };
+    void offsetHeight(float height) { this->heightOffset = height; }
+    void offsetWidth(float width) { this->widthOffset = width; }
 
-    void initialize(double cX, double cY, double radius) {
+    void initialize(float cX, float cY, float radius) {
         x = cX;
         y = cY;
         shape = SHAPE_CIRCLE;
         this->radius = radius;
     }
 
-    void initialize(double cX, double cY, double width, double height) {
+    void initialize(float cX, float cY, float width, float height) {
         x = cX;
         y = cY;
         shape = SHAPE_RECTANGLE;
@@ -140,10 +140,10 @@ public:
     }
 
     void checkCollisions();
-    bool* addHurtboxFullConfig(double xOffset, double yOffset, bool mirrored,
+    bool* addHurtboxFullConfig(float xOffset, float yOffset, bool mirrored,
                               class Hurtbox hurtBox, uint8_t playerSource, bool persistent);
-    bool* addHurtbox(double xOffset, double yOffset, bool mirrored,
-                    class Hurtbox hurtBox, uint8_t playerSource, double multiplier=1);
+    bool* addHurtbox(float xOffset, float yOffset, bool mirrored,
+                    class Hurtbox hurtBox, uint8_t playerSource, float multiplier=1);
     void displayHitboxesOverlay();
     void clearHitboxOverlay();
 };
@@ -151,15 +151,15 @@ public:
 class Entity {
 
 public:
-    double x; //  [0, 320]
-    double y;  //  [0, 240]
-    double yVel;    //  pps
-    double xVel;
+    float x; //  [0, 320]
+    float y;  //  [0, 240]
+    float yVel;    //  pps
+    float xVel;
 
     long long currentTime = 0;
 
-    void setX(double newX) { x = newX; }
-    void setY(double newY) { y = newY; }
+    void setX(float newX) { x = newX; }
+    void setY(float newY) { y = newY; }
 
 };
 
@@ -171,10 +171,10 @@ class Player: public Entity {
 #define PLAYER_STUN_LENGTH_SECONDS 7
 
 protected:
-    const double joystickJumpSpeed = 0.4;   //  joystick must change by this much to activate a jump
+    const float joystickJumpSpeed = 0.4;   //  joystick must change by this much to activate a jump
 
     uint8_t player;             //  1 or 2
-    double damage;            //  percentage between 0% and 999%
+    float damage;            //  percentage between 0% and 999%
     int16_t action, l_action;
 
     uint8_t animationIndex;     //  index of animation
@@ -189,8 +189,8 @@ protected:
     long long invulnerableFrames {0};   //  frames of hurtbox invulnerability
     bool noJumpsDisabled;           //  disabled until landing because of running out of jumps
 
-    double l_joyH;              //  last joystick horizontal value
-    double l_joyV;              //  last joystick vertical value
+    float l_joyH;              //  last joystick horizontal value
+    float l_joyV;              //  last joystick vertical value
     bool l_btnA;                //  last button A value
     long long l_btnARise_t;     //  last button A pressed time in millis
     long long l_btnAFall_t;     //  last button A release time in millis
@@ -211,7 +211,7 @@ protected:
     uint8_t jumpsUsed;  // midair only
 
     //  shielding
-    double shieldDamage;
+    float shieldDamage;
 
     //  stunned
     long long stunTimeStart;
@@ -228,9 +228,9 @@ public:
     void setMirrored(bool mirror) { l_mirrored = mirrored = mirror; }
     void setStocks(uint8_t lives) { stocksRemaining = lives; }
 
-    virtual void controlLoop(double joyH, double joyV, bool btnA, bool btnB, bool shield, class Stage* stage,
+    virtual void controlLoop(float joyH, float joyV, bool btnA, bool btnB, bool shield, class Stage* stage,
                              class HitboxManager* hitboxManager) = 0; //  called every update
-    virtual void updateLastValues(double joyH, double joyV, bool btnA, bool btnB, bool shield) = 0;
+    virtual void updateLastValues(float joyH, float joyV, bool btnA, bool btnB, bool shield) = 0;
     virtual void collide(class Hurtbox *hurtbox, class Player *otherPlayer) = 0;
     virtual void reset() = 0;
 };
@@ -285,23 +285,23 @@ protected:
     const uint16_t blinkPeriod = 2000;      //  how often kirby blinks when standing still
 
     //  physics config
-    const double groundSpeed = 1.8*3;  // pps
-    const double airSpeed = 1.1*3;
+    const float groundSpeed = 1.8*3;  // pps
+    const float airSpeed = 1.1*3;
 
-    const double initialJumpSpeed = 1.5*3;
-    const double repeatedJumpSpeed = 1.3*3;
-    const double gravityRising = 0.07*7;
-    const double gravityFalling = 0.1*7;
-    const double maxFallingVelocity = -2.3*3;
+    const float initialJumpSpeed = 1.5*3;
+    const float repeatedJumpSpeed = 1.3*3;
+    const float gravityRising = 0.07*7;
+    const float gravityFalling = 0.1*7;
+    const float maxFallingVelocity = -2.3*3;
 
-    const double airResistance = .2;
-    const double maxHorizontalSpeed = 20*3;
-    const double groundFriction = 0.5;
+    const float airResistance = .2;
+    const float maxHorizontalSpeed = 20*3;
+    const float groundFriction = 0.5;
 
-    const double DIVerticalSpeed = 0.2 * 3;
-    const double DIHorizontalSpeed = 0.2 * 3;
-    const double DIKnockbackVerticalSpeed = 0.3 * 3;
-    const double DIKnockbackHorizontalSpeed = 0.4 * 3;
+    const float DIVerticalSpeed = 0.2 * 3;
+    const float DIHorizontalSpeed = 0.2 * 3;
+    const float DIKnockbackVerticalSpeed = 0.3 * 3;
+    const float DIKnockbackHorizontalSpeed = 0.4 * 3;
 
     //  standing, resting
     long long lastBlink{0};
@@ -310,8 +310,8 @@ protected:
     long long l_singleJabTime, l_doubleJabTime;
 
     //  up special
-    double startY;
-    double upb_projectile_x, upb_projectile_startX, upb_projectile_startY;
+    float startY;
+    float upb_projectile_x, upb_projectile_startX, upb_projectile_startY;
     bool upb_projectile_mirrored;
     bool upb_projectile_active;
     bool* upb_projectile_activationFlag = nullptr;
@@ -329,7 +329,7 @@ protected:
     uint8_t starProjFrameIndex;
     uint8_t starProjFrameCounter;
     bool starProjMirrored;
-    double starProj_x, starProj_y;
+    float starProj_x, starProj_y;
 
 public:
     Hurtbox jabSingle = Hurtbox(true,14, 11, SHAPE_CIRCLE,
@@ -350,31 +350,31 @@ public:
     Hurtbox forwardTilt = Hurtbox(true,10, 11, SHAPE_CIRCLE,
                                   8, 1,
                                   3, 3.0, 2.5, -1);
-    Hurtbox upTilt = Hurtbox(-6., 21, SHAPE_RECTANGLE,
+    Hurtbox upTilt = Hurtbox((float)-6., 21, SHAPE_RECTANGLE,
                              25, 18, 1,
                              3, 1.5, 3.3, -1);
-    Hurtbox downTilt = Hurtbox(4., 5, SHAPE_RECTANGLE,
+    Hurtbox downTilt = Hurtbox((float)4., 5, SHAPE_RECTANGLE,
                                10, 33, 1,
                                3, 1, 2.6, -1);
-    Hurtbox forwardSmash = Hurtbox(25., 5, SHAPE_RECTANGLE,
+    Hurtbox forwardSmash = Hurtbox((float)25., 5, SHAPE_RECTANGLE,
                                    20, 20, 1,
                                    3.9, 3.7, 3.1, -1);
     Hurtbox upSmash = Hurtbox(true, 0., 26, SHAPE_CIRCLE,
                               14, 1,
                               3.9,3.1, 4.1,-1);
-    Hurtbox downSmash = Hurtbox(0., 5, SHAPE_RECTANGLE,
+    Hurtbox downSmash = Hurtbox((float)0., 5, SHAPE_RECTANGLE,
                                 10, 35, 1,
                                 3.9,4.2, 1.5, -1);
-    Hurtbox upSpecialRising = Hurtbox(25., 18, SHAPE_RECTANGLE,
+    Hurtbox upSpecialRising = Hurtbox((float)25., 18, SHAPE_RECTANGLE,
                                       20, 30, 1,
                                       3, 2.1, 3.2, -1);
-    Hurtbox upSpecialTop = Hurtbox(0., 40, SHAPE_RECTANGLE,
+    Hurtbox upSpecialTop = Hurtbox((float)0., 40, SHAPE_RECTANGLE,
                                    20, 40, 1,
                                    2.2, 2.8, 3.3, -1);
-    Hurtbox upSpecialFalling = Hurtbox(25., 18, SHAPE_RECTANGLE,
+    Hurtbox upSpecialFalling = Hurtbox((float)25., 18, SHAPE_RECTANGLE,
                                       20, 30, 1,
                                       1.2, 2.8, -0.8, -1);
-    Hurtbox upSpecialProjectile = Hurtbox(4., 16, SHAPE_RECTANGLE,
+    Hurtbox upSpecialProjectile = Hurtbox((float)4., 16, SHAPE_RECTANGLE,
                                           32, 20, 1,
                                           4, 3.2, 2.9, 7, true);
     Hurtbox downSpecial = Hurtbox(true,0, 5, SHAPE_CIRCLE,
@@ -392,7 +392,7 @@ public:
     Hurtbox upAir = Hurtbox(true,0, 28, SHAPE_CIRCLE,
                             16, 1,
                             6, 1.6, 2.7, -1);
-    Hurtbox downAir = Hurtbox(5., -2, SHAPE_RECTANGLE,
+    Hurtbox downAir = Hurtbox((float)5., -2, SHAPE_RECTANGLE,
                               17, 10, 1,
                               0.8, 0.6, 0.1, 2);
     Hurtbox dashAttack = Hurtbox(true,2, 13, SHAPE_CIRCLE,
@@ -420,10 +420,10 @@ public:
                                     7, 3.0, 3.2, -1, true);
 
     //  general control loop
-    void controlLoop(double joyH, double joyV, bool btnA, bool btnB, bool shield, class Stage* stage,
+    void controlLoop(float joyH, float joyV, bool btnA, bool btnB, bool shield, class Stage* stage,
                      class HitboxManager* hitboxManager) override; //  called every update
 
-    void updateLastValues(double joyH, double joyV, bool btnA, bool btnB, bool shield) override;
+    void updateLastValues(float joyH, float joyV, bool btnA, bool btnB, bool shield) override;
 
     void collide(class Hurtbox *hurtbox, class Player *otherPlayer) override;
 
@@ -473,29 +473,29 @@ protected:
     const uint16_t blinkPeriod = 2000;      //  how often gaw changes idle animation
 
     //  physics config
-    const double groundSpeed = 1.85*3;  // pps
-    const double airSpeed = 0.9*3;
+    const float groundSpeed = 1.85*3;  // pps
+    const float airSpeed = 0.9*3;
 
-    const double initialJumpSpeed = 2.0*3;
-    const double repeatedJumpSpeed = 2.1*3;
-    const double gravityRising = 0.08*7;
-    const double gravityFalling = 0.12*7;
-    const double maxFallingVelocity = -2.6*3;
+    const float initialJumpSpeed = 2.0*3;
+    const float repeatedJumpSpeed = 2.1*3;
+    const float gravityRising = 0.08*7;
+    const float gravityFalling = 0.12*7;
+    const float maxFallingVelocity = -2.6*3;
 
-    const double airResistance = .2;
-    const double maxHorizontalSpeed = 19*3;
-    const double groundFriction = 0.6;
+    const float airResistance = .2;
+    const float maxHorizontalSpeed = 19*3;
+    const float groundFriction = 0.6;
 
-    const double DIVerticalSpeed = 0.2 * 3;
-    const double DIHorizontalSpeed = 0.2 * 3;
-    const double DIKnockbackVerticalSpeed = 0.3 * 3;
-    const double DIKnockbackHorizontalSpeed = 0.4 * 3;
+    const float DIVerticalSpeed = 0.2 * 3;
+    const float DIHorizontalSpeed = 0.2 * 3;
+    const float DIKnockbackVerticalSpeed = 0.3 * 3;
+    const float DIKnockbackHorizontalSpeed = 0.4 * 3;
 
     //  standing, resting
     long long lastBlink{0};
 
     //  up special
-    double startY;
+    float startY;
 
     //  down air
     bool overrideMaxVelocity;
@@ -513,65 +513,65 @@ protected:
     bool droppingBucket;
 
     //  neutral b
-    double proj_x[4];
-    double proj_y[4];
-    double proj_xVel[4];
-    double proj_yVel[4];
+    float proj_x[4];
+    float proj_y[4];
+    float proj_xVel[4];
+    float proj_yVel[4];
     bool proj_active[4];
     bool proj_mirrored[4];
     uint8_t projectileCount;
 
 public:
 
-    Hurtbox neutralAttack = Hurtbox(29., 12, SHAPE_RECTANGLE,
+    Hurtbox neutralAttack = Hurtbox((float)29., 12, SHAPE_RECTANGLE,
                                     20, 20, 1,
                                     0.8, 0.8, 0, 3);
-    Hurtbox dashAttack = Hurtbox(0., 15, SHAPE_RECTANGLE,
+    Hurtbox dashAttack = Hurtbox((float)0., 15, SHAPE_RECTANGLE,
                                     28, 32, 1,
                                     3, 3.1, 2.5, -1);
-    Hurtbox forwardTilt = Hurtbox(35., 11, SHAPE_RECTANGLE,
+    Hurtbox forwardTilt = Hurtbox((float)35., 11, SHAPE_RECTANGLE,
                                   20, 30, 1,
                                   4  , 2.5, 3.5, -1);
-    Hurtbox downTilt = Hurtbox(24., 8, SHAPE_RECTANGLE,
+    Hurtbox downTilt = Hurtbox((float)24., 8, SHAPE_RECTANGLE,
                                   9, 23, 1,
                                   3, 2.5, 3.7, -1);
-    Hurtbox upTilt1 = Hurtbox(14., 40, SHAPE_RECTANGLE,
+    Hurtbox upTilt1 = Hurtbox((float)14., 40, SHAPE_RECTANGLE,
                               23, 23, 1,
                               7, 3.3, 4.1, -1);
-    Hurtbox upTilt2 = Hurtbox(-21., 43, SHAPE_RECTANGLE,
+    Hurtbox upTilt2 = Hurtbox((float)-21., 43, SHAPE_RECTANGLE,
                               23, 23, 1,
                               7, 3.3, 4.1, -1);
-    Hurtbox forwardSmash = Hurtbox(30., 18, SHAPE_RECTANGLE,
+    Hurtbox forwardSmash = Hurtbox((float)30., 18, SHAPE_RECTANGLE,
                                   20, 20, 1,
                                   10, 3.5, 3.8, -1);
-    Hurtbox upSmash = Hurtbox(1., 20, SHAPE_RECTANGLE,
+    Hurtbox upSmash = Hurtbox((float)1., 20, SHAPE_RECTANGLE,
                               23, 46, 1,
                               10, 3.7, 3.9, -1);
-    Hurtbox downSmash = Hurtbox(0., 12, SHAPE_RECTANGLE,
+    Hurtbox downSmash = Hurtbox((float)0., 12, SHAPE_RECTANGLE,
                               24, 66, 1,
                               8, 4.0, 3.2, -1);
-    Hurtbox forwardAir = Hurtbox(24., 20, SHAPE_RECTANGLE,
+    Hurtbox forwardAir = Hurtbox((float)24., 20, SHAPE_RECTANGLE,
                                   15, 25, 1,
                                   6, 3.9, 3.5, -1);
-    Hurtbox downAir = Hurtbox(5., 12, SHAPE_RECTANGLE,
+    Hurtbox downAir = Hurtbox((float)5., 12, SHAPE_RECTANGLE,
                                26, 14, 1,
                                7, 3.7, 3.1, -1);
-    Hurtbox upAir = Hurtbox(-4., 44, SHAPE_RECTANGLE,
+    Hurtbox upAir = Hurtbox((float)-4., 44, SHAPE_RECTANGLE,
                               19, 20, 1,
                               3, 2.2, 3.7, -1);
-    Hurtbox backAir = Hurtbox(-25., 15, SHAPE_RECTANGLE,
+    Hurtbox backAir = Hurtbox((float)-25., 15, SHAPE_RECTANGLE,
                                  21, 31, 1,
                                  8, 3.7, 3.0, -1);
-    Hurtbox neutralAir = Hurtbox(1., 34, SHAPE_RECTANGLE,
+    Hurtbox neutralAir = Hurtbox((float)1., 34, SHAPE_RECTANGLE,
                                 30, 40, 1,
                                 5, 3.3, 3.3, -1);
-    Hurtbox sideSpecial = Hurtbox(21., 28, SHAPE_RECTANGLE,
+    Hurtbox sideSpecial = Hurtbox((float)21., 28, SHAPE_RECTANGLE,
                                   16, 24, 1,
                                   7, 2.8, 2.8, -1);
     Hurtbox neutralSpecialProjectile = Hurtbox(true,0, 5, SHAPE_CIRCLE,
                                  8, 1,
                                  2, 1.2, 1.5, -1);
-    Hurtbox downSpecialProjectile = Hurtbox(62., 20, SHAPE_RECTANGLE,
+    Hurtbox downSpecialProjectile = Hurtbox((float)62., 20, SHAPE_RECTANGLE,
                                   40, 90, 1,
                                   7, 2.8, 2.8, -1);
 
@@ -580,10 +580,10 @@ public:
     }
 
     //  general control loop
-    void controlLoop(double joyH, double joyV, bool btnA, bool btnB, bool shield, class Stage* stage,
+    void controlLoop(float joyH, float joyV, bool btnA, bool btnB, bool shield, class Stage* stage,
                      class HitboxManager* hitboxManager) override; //  called every update
 
-    void updateLastValues(double joyH, double joyV, bool btnA, bool btnB, bool shield) override;
+    void updateLastValues(float joyH, float joyV, bool btnA, bool btnB, bool shield) override;
 
     void collide(class Hurtbox *hurtbox, class Player *otherPlayer) override;
 
