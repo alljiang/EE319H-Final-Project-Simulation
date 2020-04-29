@@ -14,6 +14,7 @@
 #include "colors_tower.h"
 #include "colors_battlefield.h"
 #include "colors_smashville.h"
+#include "colors_eer.h"
 #include "Audio.h"
 #include "charactermenu.h"
 #include "stagemenu.h"
@@ -94,6 +95,7 @@ void startupGame() {
     else if(stageToPlay == STAGE_TOWER) animator_setBackgroundColors(colors_tower);
     else if(stageToPlay == STAGE_BATTLEFIELD) animator_setBackgroundColors(colors_battle);
     else if(stageToPlay == STAGE_SMASHVILLE) animator_setBackgroundColors(colors_smashville);
+    else if(stageToPlay == STAGE_EER) animator_setBackgroundColors(colors_eer);
 
     animator_readPersistentSprite(persistentSprites[stageToPlay], 0, 0);
 

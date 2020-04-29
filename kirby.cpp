@@ -123,6 +123,7 @@ void Kirby::controlLoop(double joyH, double joyV, bool btnA, bool btnB, bool shi
         hitbox.offsetY(-6);
         hitbox.offsetX(0, mirrored);
         hitbox.offsetRadius(-2);
+        //  platform dropdown
         if(onPlatform) {
             action = KIRBY_ACTION_FALLING;
             y -= 1;
@@ -935,8 +936,13 @@ void Kirby::controlLoop(double joyH, double joyV, bool btnA, bool btnB, bool shi
 
         //  allow movement when charged
         if(frameIndex == 2) {
-            if(y == floor && joyV - l_joyV > 0.5) {
+            if(y == floor && joyV - l_joyV > 0.5 && joyV > 0.1) {
                 yVel = initialJumpSpeed;
+            }
+            else if(onPlatform && joyV < -0.5) {
+                y -= 1;
+                yVel = 0;
+                floor = stage->floor(x + KIRBY_STAGE_OFFSET, y);
             }
 
             gravityScale = 1;

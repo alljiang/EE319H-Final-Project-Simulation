@@ -64,25 +64,21 @@ int8_t StageMenu::getStage(double x, double y) {
 
     if(y > 102) {
         if(x < 100) {
-            //  final destination
             return STAGE_FINALDESTINATION;
         }
         else if(x < 182) {
-            //  ut tower
             return STAGE_TOWER;
         }
         else {
-            //  battlefield
             return STAGE_BATTLEFIELD;
         }
     }
     else {
         if(x < 100) {
-            //  smashville
             return STAGE_SMASHVILLE;
         }
         else if(x < 182) {
-            return -1;
+            return STAGE_EER;
         }
         else {
             return -1;

@@ -32,14 +32,14 @@
 #define STAGE_TOWER 1
 #define STAGE_BATTLEFIELD 2
 #define STAGE_SMASHVILLE 3
+#define STAGE_EER 4
 
 #define BACKGROUND_FINALDESTINATION 0
 #define BACKGROUND_TOWER 1
 #define BACKGROUND_BATTLEFIELD 2
 #define BACKGROUND_SMASHVILLE 3
-#define BACKGROUND_RESERVED1 4
+#define BACKGROUND_EER 4
 #define BACKGROUND_RESERVED2 5
-#define BACKGROUND_RESERVED3 6
 #define BACKGROUND_MENU 10
 #define BACKGROUND_STAGEMENU 11
 
@@ -58,7 +58,7 @@ const char persistentSprites[15][10] = {
         {"tower"},
         {"battle"},
         {"sville"},
-        {""},
+        {"eer"},
         {""},
         {""},
         {""},

@@ -51,6 +51,9 @@ double Stage::ceil(double x, double y) {
             else if(x <= 47) return -3.5 * x + 187.5;
             else if(x >= 295) return 2 * x -525;
             else return 23;
+
+        case STAGE_EER:
+            return CEIL_MAX;
     }
     return CEIL_MAX;
 }
@@ -78,6 +81,13 @@ double Stage::floor(double x, double y) {
                 && y >= sv_platform_y + SMASHVILLE_PLATFORM_HEIGHT) return sv_platform_y + SMASHVILLE_PLATFORM_HEIGHT;
             if(x >= 35 && x <= 295 && y >= 65) return 65;
             else return FLOOR_MAX;
+
+        case STAGE_EER:
+            if(y >= 167 && x >= 94 && x <= 241) return 167;
+            if(y >= 139 && x >= 93 && x <= 242) return 139;
+            if(y >= 108 && x >= 92 && x <= 243) return 108;
+            if(y >= 77 && x >= 91 && x <= 244) return 77;
+            if(y >= 43 && x >= 88 && x <= 247) return 43;
     }
     return FLOOR_MAX;
 }
@@ -97,6 +107,9 @@ double Stage::rightBound(double x, double y) {
             return RIGHT_MAX;
 
         case STAGE_SMASHVILLE:
+            return RIGHT_MAX;
+
+        case STAGE_EER:
             return RIGHT_MAX;
     }
     return RIGHT_MAX;
@@ -118,6 +131,9 @@ double Stage::leftBound(double x, double y) {
 
         case STAGE_SMASHVILLE:
             return LEFT_MAX;
+
+        case STAGE_EER:
+            return LEFT_MAX;
     }
     return LEFT_MAX;
 }
@@ -138,6 +154,10 @@ double Stage::getStartX(uint8_t player) {
         case STAGE_SMASHVILLE:
             if(player == 1) return 60;
             else return 232;
+
+        case STAGE_EER:
+            if(player == 1) return 100;
+            else return 192;
     }
     return 0;
 }
@@ -148,13 +168,17 @@ double Stage::getStartY(uint8_t player) {
             return 104;
 
         case STAGE_TOWER:
-            return 0;
+            return 1;
 
         case STAGE_BATTLEFIELD:
             return 86;
 
         case STAGE_SMASHVILLE:
             return 65;
+
+        case STAGE_EER:
+            if(player == 1) return 140;
+            else return 77;
     }
     return 0;
 }
@@ -176,6 +200,13 @@ bool Stage::onPlatform(double x, double y) {
             if(x >= sv_platform_x && x <= sv_platform_x + SMASHVILLE_PLATFORM_LENGTH
                && y == sv_platform_y + SMASHVILLE_PLATFORM_HEIGHT) return true;
             return false;
+
+        case STAGE_EER:
+            if(y == 167 && x >= 94 && x <= 241) return true;
+            if(y == 139 && x >= 93 && x <= 242) return true;
+            if(y == 108 && x >= 92 && x <= 243) return true;
+            if(y == 77 && x >= 91 && x <= 244) return true;
+            if(y == 43 && x >= 88 && x <= 247) return true;
     }
     return false;
 }
@@ -193,6 +224,9 @@ double Stage::xVelocity(double x, double y) {
 
         case STAGE_SMASHVILLE:
             if(onPlatform(x, y)) return sv_platform_xvel;
+            return 0;
+
+        case STAGE_EER:
             return 0;
     }
     return 0;
@@ -245,6 +279,10 @@ void Stage::update() {
                 sv_platform_x += sv_platform_xvel;
             }
             break;
+
+        case STAGE_EER:
+            break;
+
     }
 }
 
@@ -273,5 +311,8 @@ void Stage::initialize(uint8_t index, HitboxManager *hitboxManager) {
         sv_platform_x = 20;
         sv_platform_y = 115;
         sv_platform_xvel = 0;
+    }
+    else if(stageIndex == STAGE_EER) {
+
     }
 }

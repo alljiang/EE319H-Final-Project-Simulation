@@ -25,3 +25,11 @@ Smashville:
     Left slope: (35, 65) to (47, 23)        a=-3.5  b=187.5
     Right slope: (295, 65) to (274, 23)     a=2  b=-525
     Floor ceiling: (47, 23) to (274, 23)
+
+EER:
+
+    Platform 5: (94, 167) to (241, 167)
+    Platform 4: (93, 139) to (242, 139)
+    Platform 3: (92, 108) to (243, 108)
+    Platform 2: (91, 77) to (244, 77)
+    Platform 1: (88, 43) to (247, 43)
