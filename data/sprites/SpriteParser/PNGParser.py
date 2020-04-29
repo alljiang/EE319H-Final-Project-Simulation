@@ -11,7 +11,7 @@ import os
 #   CONFIG
 backgroundColor = 0x00FF00
 imageDirectory = "./png/"
-imageFilename = "stagemenu"
+imageFilename = "charmenu"
 
 # color index list
 indexed_rgb = list()

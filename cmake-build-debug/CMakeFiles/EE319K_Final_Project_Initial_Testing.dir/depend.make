@@ -207,6 +207,7 @@ CMakeFiles/EE319K_Final_Project_Initial_Testing.dir/main.cpp.obj: ../characterme
 CMakeFiles/EE319K_Final_Project_Initial_Testing.dir/main.cpp.obj: ../colors_battlefield.h
 CMakeFiles/EE319K_Final_Project_Initial_Testing.dir/main.cpp.obj: ../colors_eer.h
 CMakeFiles/EE319K_Final_Project_Initial_Testing.dir/main.cpp.obj: ../colors_fdst.h
+CMakeFiles/EE319K_Final_Project_Initial_Testing.dir/main.cpp.obj: ../colors_gregory.h
 CMakeFiles/EE319K_Final_Project_Initial_Testing.dir/main.cpp.obj: ../colors_smashville.h
 CMakeFiles/EE319K_Final_Project_Initial_Testing.dir/main.cpp.obj: ../colors_tower.h
 CMakeFiles/EE319K_Final_Project_Initial_Testing.dir/main.cpp.obj: ../controller.h

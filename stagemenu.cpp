@@ -55,7 +55,7 @@ void StageMenu::loop(double joyH1, double joyV1, double joyH2, double joyV2, boo
 void StageMenu::reset() {
     currentTime = 0;
     cursorX = 145;
-    cursorY = 35;
+    cursorY = 25;
 }
 
 int8_t StageMenu::getStage(double x, double y) {
@@ -81,7 +81,7 @@ int8_t StageMenu::getStage(double x, double y) {
             return STAGE_EER;
         }
         else {
-            return -1;
+            return STAGE_GREGORYGYM;
         }
     }
 

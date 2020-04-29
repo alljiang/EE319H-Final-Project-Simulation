@@ -139,6 +139,9 @@
 		<Unit filename="C:/Users/Allen/Documents/GitHub/EE319H-Final-Project-Simulation/colors_fdst.h">
 			<Option target="EE319K_Final_Project_Initial_Testing"/>
 		</Unit>
+		<Unit filename="C:/Users/Allen/Documents/GitHub/EE319H-Final-Project-Simulation/colors_gregory.h">
+			<Option target="EE319K_Final_Project_Initial_Testing"/>
+		</Unit>
 		<Unit filename="C:/Users/Allen/Documents/GitHub/EE319H-Final-Project-Simulation/colors_menu.h">
 			<Option target="EE319K_Final_Project_Initial_Testing"/>
 		</Unit>

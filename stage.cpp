@@ -54,6 +54,9 @@ double Stage::ceil(double x, double y) {
 
         case STAGE_EER:
             return CEIL_MAX;
+
+        case STAGE_GREGORYGYM:
+            return CEIL_MAX;
     }
     return CEIL_MAX;
 }
@@ -88,6 +91,11 @@ double Stage::floor(double x, double y) {
             if(y >= 108 && x >= 92 && x <= 243) return 108;
             if(y >= 77 && x >= 91 && x <= 244) return 77;
             if(y >= 43 && x >= 88 && x <= 247) return 43;
+
+        case STAGE_GREGORYGYM:
+            if(y >= 164 && x >= 138 && x <= 190) return 164;
+            if(y >= 53 && x >= 78 && x <= 248) return 53;
+            else return 1;
     }
     return FLOOR_MAX;
 }
@@ -111,6 +119,9 @@ double Stage::rightBound(double x, double y) {
 
         case STAGE_EER:
             return RIGHT_MAX;
+
+        case STAGE_GREGORYGYM:
+            return RIGHT_MAX;
     }
     return RIGHT_MAX;
 }
@@ -133,6 +144,9 @@ double Stage::leftBound(double x, double y) {
             return LEFT_MAX;
 
         case STAGE_EER:
+            return LEFT_MAX;
+
+        case STAGE_GREGORYGYM:
             return LEFT_MAX;
     }
     return LEFT_MAX;
@@ -158,6 +172,10 @@ double Stage::getStartX(uint8_t player) {
         case STAGE_EER:
             if(player == 1) return 100;
             else return 192;
+
+        case STAGE_GREGORYGYM:
+            if(player == 1) return 60;
+            else return 200;
     }
     return 0;
 }
@@ -177,8 +195,12 @@ double Stage::getStartY(uint8_t player) {
             return 65;
 
         case STAGE_EER:
-            if(player == 1) return 140;
+            if(player == 1) return 139;
             else return 77;
+
+        case STAGE_GREGORYGYM:
+            if(player == 1) return 1;
+            else return 53;
     }
     return 0;
 }
@@ -207,6 +229,11 @@ bool Stage::onPlatform(double x, double y) {
             if(y == 108 && x >= 92 && x <= 243) return true;
             if(y == 77 && x >= 91 && x <= 244) return true;
             if(y == 43 && x >= 88 && x <= 247) return true;
+
+        case STAGE_GREGORYGYM:
+            if(y == 164 && x >= 138 && x <= 190) return true;
+            if(y == 53 && x >= 78 && x <= 248) return true;
+            else return false;
     }
     return false;
 }
@@ -227,6 +254,9 @@ double Stage::xVelocity(double x, double y) {
             return 0;
 
         case STAGE_EER:
+            return 0;
+
+        case STAGE_GREGORYGYM:
             return 0;
     }
     return 0;
@@ -283,6 +313,9 @@ void Stage::update() {
         case STAGE_EER:
             break;
 
+        case STAGE_GREGORYGYM:
+            break;
+
     }
 }
 
@@ -313,6 +346,9 @@ void Stage::initialize(uint8_t index, HitboxManager *hitboxManager) {
         sv_platform_xvel = 0;
     }
     else if(stageIndex == STAGE_EER) {
+
+    }
+    else if(stageIndex == STAGE_GREGORYGYM) {
 
     }
 }

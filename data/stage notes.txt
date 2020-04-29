@@ -33,3 +33,8 @@ EER:
     Platform 3: (92, 108) to (243, 108)
     Platform 2: (91, 77) to (244, 77)
     Platform 1: (88, 43) to (247, 43)
+
+Gregory Gym:
+
+    Platform Top: (138, 164) to (190, 164)
+    Platform Bottom: (78, 53) to (248, 53)

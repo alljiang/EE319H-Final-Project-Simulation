@@ -14,6 +14,7 @@
 #include "colors_tower.h"
 #include "colors_battlefield.h"
 #include "colors_smashville.h"
+#include "colors_gregory.h"
 #include "colors_eer.h"
 #include "Audio.h"
 #include "charactermenu.h"
@@ -38,6 +39,7 @@ GameandWatch gameandwatch2;
 Kirby kirby1;
 Kirby kirby2;
 
+int8_t p1char, p2char;
 bool inCharMenu = false, inStageSelect = true;
 bool quit, countdown, gameOver;
 uint8_t frameIndex, frameLength;
@@ -52,11 +54,8 @@ const double UPDATERATE = 20;   // 20
 const bool ENABLECOUNTDOWN = false;
 
 uint8_t stageToPlay = STAGE_FINALDESTINATION;
-//const uint8_t stageToPlay = STAGE_TOWER;
 
 void resetPlayers() {
-//    p1 = &kirby1;
-//    p1 = &gameandwatch1;
     p1->setPlayer(1);
     p1->setX(stage.getStartX(1));
     p1->setY(stage.getStartY(1));
@@ -64,7 +63,6 @@ void resetPlayers() {
     p1->setStocks(3);
     p1->reset();
 
-//    p2 = &kirby2;
     p2->setPlayer(2);
     p2->setX(stage.getStartX(2));
     p2->setY(stage.getStartY(2));
@@ -83,7 +81,7 @@ void resetPlayers() {
     UART_commandUpdate();
 }
 
-//  runs once at beginning
+//  runs on ce at beginning
 void startupGame() {
     stage.initialize(stageToPlay, &hitboxManager);
     resetPlayers();
@@ -96,11 +94,14 @@ void startupGame() {
     else if(stageToPlay == STAGE_BATTLEFIELD) animator_setBackgroundColors(colors_battle);
     else if(stageToPlay == STAGE_SMASHVILLE) animator_setBackgroundColors(colors_smashville);
     else if(stageToPlay == STAGE_EER) animator_setBackgroundColors(colors_eer);
+    else if(stageToPlay == STAGE_GREGORYGYM) animator_setBackgroundColors(colors_gregory);
+
+    if(p1char == 0 || p2char == 0) UART_readCharacterSDCard(0);
+    if(p1char == 1 || p2char == 1) UART_readCharacterSDCard(1);
+    if(p1char == 2 || p2char == 2) UART_readCharacterSDCard(2);
 
     animator_readPersistentSprite(persistentSprites[stageToPlay], 0, 0);
 
-    UART_readCharacterSDCard(0);
-    UART_readCharacterSDCard(1);
     UART_readCharacterSDCard(3);
 
     printf("Flash Used: %0.1f%\n", getCurrentMemoryLocation() / (1024.*1024) * 100);\
@@ -287,11 +288,14 @@ void switchStageMenuToCharMenu(int8_t stageSelect) {
 void switchCharMenuToGame(int8_t char1, int8_t char2) {
     if(char1 == CHARACTER_KIRBY) p1 = &kirby1;
     else if(char1 == CHARACTER_VALVANO) printf("nooooo");
-    else p1 =  &gameandwatch1;
+    else p1 = &gameandwatch1;
 
     if(char2 == CHARACTER_KIRBY) p2 = &kirby2;
     else if(char2 == CHARACTER_VALVANO) printf("nooooo");
-    else p2 =  &gameandwatch2;
+    else p2 = &gameandwatch2;
+
+    p1char = char1;
+    p2char = char2;
 
     inCharMenu = false;
     startup();
