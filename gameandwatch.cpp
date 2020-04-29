@@ -62,6 +62,7 @@ void GameandWatch::controlLoop(double joyH, double joyV, bool btnA, bool btnB, b
     double floor = stage->floor(x + GAW_STAGE_OFFSET, y);
     double leftBound = stage->leftBound(x + GAW_STAGE_OFFSET, y) - GAW_STAGE_OFFSET / 2;
     double rightBound = stage->rightBound(x - GAW_STAGE_OFFSET, y) - GAW_STAGE_OFFSET;
+    bool onPlatform = stage->onPlatform(x + KIRBY_STAGE_OFFSET, y);
     double stageVelocity = stage->xVelocity(x, y);
     double gravityScale = 1;
 
@@ -464,7 +465,7 @@ void GameandWatch::controlLoop(double joyH, double joyV, bool btnA, bool btnB, b
         }
     }
     else if(action == GAW_ACTION_FORWARDAIR) {
-        if(y <= floor) {
+        if(y == floor) {
             action = GAW_ACTION_RESTING;
             disabledFrames = 4;
         }
@@ -504,7 +505,7 @@ void GameandWatch::controlLoop(double joyH, double joyV, bool btnA, bool btnB, b
         }
     }
     else if(action == GAW_ACTION_BACKAIR) {
-        if(y <= floor) {
+        if(y == floor) {
             action = GAW_ACTION_RESTING;
             disabledFrames = 4;
         }
@@ -542,7 +543,7 @@ void GameandWatch::controlLoop(double joyH, double joyV, bool btnA, bool btnB, b
         }
     }
     else if(action == GAW_ACTION_UPAIR) {
-        if(y <= floor) {
+        if(y == floor) {
             action = GAW_ACTION_RESTING;
             disabledFrames = 4;
         }
@@ -1087,6 +1088,13 @@ void GameandWatch::controlLoop(double joyH, double joyV, bool btnA, bool btnB, b
         if(mirrored) hitbox.offsetX(2);
         else hitbox.offsetX(4);
 
+        if(onPlatform) {
+            action = GAW_ACTION_FALLING;
+            y -= 1;
+            yVel = 0;
+            floor = stage->floor(x + GAW_STAGE_OFFSET, y);
+        }
+
         if(joyV > -0.3) {
             action = GAW_ACTION_RESTING;
             lastBlink = currentTime;
@@ -1318,6 +1326,7 @@ void GameandWatch::controlLoop(double joyH, double joyV, bool btnA, bool btnB, b
     if(y > ceiling && action != GAW_ACTION_LEDGEGRAB) y = ceiling;
     if(y <= floor) {
         y = floor;
+        yVel = 0;
         jumpsUsed = 0;
     }
 
@@ -1336,7 +1345,7 @@ void GameandWatch::controlLoop(double joyH, double joyV, bool btnA, bool btnB, b
         else if(xVel > 0) xVel -= airResistance;
         else if(xVel < 0) xVel += airResistance;
     }
-    x += xVel;
+    x += xVel + stageVelocity;
     //  start any new sequences
     //  neutral attack
     if(disabledFrames == 0 && absVal(joyH) < 0.15 && absVal(joyV) < 0.15 &&

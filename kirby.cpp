@@ -20,8 +20,8 @@ void Kirby::controlLoop(double joyH, double joyV, bool btnA, bool btnB, bool shi
 
     //  check if dead
     if(dead) {
-        if(deathTime == 0) deathTime = currentTime;
-        else if(currentTime - deathTime > 1000) {
+        if (deathTime == 0) deathTime = currentTime;
+        else if (currentTime - deathTime > 1000) {
             //  respawn
 
             //  reset
@@ -34,11 +34,10 @@ void Kirby::controlLoop(double joyH, double joyV, bool btnA, bool btnB, bool shi
             dead = false;
             action = KIRBY_ACTION_FALLING;
 
-            if(player == 2) mirrored = true;
+            if (player == 2) mirrored = true;
         }
         return;
     }
-    printf("%0.0f\n", x);
     if(!l_btnA && btnA) l_btnARise_t = currentTime;
     else if(l_btnA && !btnA) l_btnAFall_t = currentTime;
     if(!l_btnB && btnB) l_btnBRise_t = currentTime;
@@ -61,7 +60,8 @@ void Kirby::controlLoop(double joyH, double joyV, bool btnA, bool btnB, bool shi
     double floor = stage->floor(x + KIRBY_STAGE_OFFSET, y);
     double leftBound = stage->leftBound(x + KIRBY_STAGE_OFFSET, y) - KIRBY_STAGE_OFFSET / 2;
     double rightBound = stage->rightBound(x - KIRBY_STAGE_OFFSET, y) - KIRBY_STAGE_OFFSET;
-    double stageVelocity = stage->xVelocity(x, y);
+    bool onPlatform = stage->onPlatform(x + KIRBY_STAGE_OFFSET, y);
+    double stageVelocity = stage->xVelocity(x + KIRBY_STAGE_OFFSET, y);
     double gravityScale = 1;
 
     //  first, follow up on any currently performing actions
@@ -123,8 +123,13 @@ void Kirby::controlLoop(double joyH, double joyV, bool btnA, bool btnB, bool shi
         hitbox.offsetY(-6);
         hitbox.offsetX(0, mirrored);
         hitbox.offsetRadius(-2);
-
-        if(joyV > -0.3) {
+        if(onPlatform) {
+            action = KIRBY_ACTION_FALLING;
+            y -= 1;
+            yVel = 0;
+            floor = stage->floor(x + KIRBY_STAGE_OFFSET, y);
+        }
+        else if(joyV > -0.3) {
             action = KIRBY_ACTION_RESTING;
             lastBlink = currentTime;
         }
@@ -1556,6 +1561,7 @@ void Kirby::controlLoop(double joyH, double joyV, bool btnA, bool btnB, bool shi
     if(y > ceiling && action != KIRBY_ACTION_LEDGEGRAB) y = ceiling;
     if(y <= floor) {
         y = floor;
+        yVel = 0;
         jumpsUsed = 0;
     }
 
@@ -1574,7 +1580,7 @@ void Kirby::controlLoop(double joyH, double joyV, bool btnA, bool btnB, bool shi
         else if(xVel > 0) xVel -= airResistance;
         else if(xVel < 0) xVel += airResistance;
     }
-    x += xVel;
+    x += xVel + stageVelocity;
 
     //  start any new sequences
 
@@ -1884,7 +1890,6 @@ void Kirby::collide(Hurtbox *hurtbox, Player *otherPlayer) {
         damage += hurtbox->damage;
 
         double knockbackMultiplier = damage / 200. + 1.0;
-        printf("%0.1f\n", damage);
 
         if (otherPlayer->x < x) xVel = hurtbox->xKnockback * knockbackMultiplier;
         else xVel = -hurtbox->xKnockback * knockbackMultiplier;

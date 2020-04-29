@@ -33,7 +33,6 @@ void StageMenu::loop(double joyH1, double joyV1, double joyH2, double joyV2, boo
             (*transitionCall)(selectedStage);
             return;
         }
-
     }
 
     double joyH = joyH1 + joyH2;
@@ -60,8 +59,7 @@ void StageMenu::reset() {
 }
 
 int8_t StageMenu::getStage(double x, double y) {
-    printf("%0.0f\t%0.0f\n", x, y);
-
+//    printf("%0.0f\t%0.0f\n", x, y);
     if(y < 43 || y > 160 || x < 20 || x > 263) return -1;
 
     if(y > 102) {

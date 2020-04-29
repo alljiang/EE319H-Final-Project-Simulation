@@ -14,6 +14,11 @@ Battlefield:
     Left slope: (52, 55) to (161, -5)      ax+b    a=-.5505    b=83.624
     Right slope: (268, 55) to (161, -5)    ax+b    a=.5607    b=-95.28
 
+    Platforms:
+        (76, 119) to (128, 119)
+        (135, 151) to (185, 151)
+        (193, 119) to (244, 119)
+
 Smashville:
 
     Top floor: (35, 65) to (295, 65)
