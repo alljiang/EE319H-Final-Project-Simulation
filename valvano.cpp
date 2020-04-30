@@ -65,7 +65,6 @@ void Valvano::controlLoop(float joyH, float joyV, bool btnA, bool btnB, bool shi
     float gravityScale = 1;
 
     //  first, follow up on any currently performing actions
-    noJumpsDisabled = jumpsUsed >= 5;
 
     //  movement
     if(action == VAL_ACTION_JUMPING) {
@@ -123,7 +122,8 @@ void Valvano::controlLoop(float joyH, float joyV, bool btnA, bool btnB, bool shi
     else if(action == VAL_ACTION_JAB) {
         animationIndex = 11;
         mirrored = l_mirrored;
-        x_mirroredOffset = -15;
+        xAnimationOffset = 0;
+        x_mirroredOffset = -5;
 
         disabledFrames = 2;
         frameExtension = 1;
@@ -468,6 +468,7 @@ void Valvano::controlLoop(float joyH, float joyV, bool btnA, bool btnB, bool shi
                 disabledFrames = 5;
                 action = VAL_ACTION_FALLING;
                 yVel = 0;
+                noJumpsDisabled = true;
             }
             else {
                 //  go up
@@ -881,6 +882,9 @@ void Valvano::controlLoop(float joyH, float joyV, bool btnA, bool btnB, bool shi
         else if(xVel < 0) xVel += airResistance;
     }
     x += xVel + stageVelocity;
+
+    if(y == floor || action == GAW_ACTION_LEDGEGRAB) noJumpsDisabled = false;
+
     //  start any new sequences
     //  neutral attack
     if(disabledFrames == 0 && absVal(joyH) < 0.15 && absVal(joyV) < 0.15 &&
@@ -983,7 +987,7 @@ void Valvano::controlLoop(float joyH, float joyV, bool btnA, bool btnB, bool shi
 //        mirrored = l_mirrored;
 //    }
         //  up special
-    else if(
+    else if(!noJumpsDisabled &&
             ( (action == VAL_ACTION_FALLING || action == VAL_ACTION_JUMPING  ||
                action == VAL_ACTION_DOUBLEJUMPING) ||
               (y == floor && (action == VAL_ACTION_RESTING || action == VAL_ACTION_RUNNING)) ) &&

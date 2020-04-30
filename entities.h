@@ -616,7 +616,7 @@ class Valvano: public Player {
 #define VAL_ACTION_SHIELD 51
 #define VAL_ACTION_STUN 52
 
-#define VAL_STAGE_OFFSET 13
+#define VAL_STAGE_OFFSET 6
 
 protected:
     //  animation config

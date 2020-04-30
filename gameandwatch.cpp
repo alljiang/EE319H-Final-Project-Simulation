@@ -67,7 +67,6 @@ void GameandWatch::controlLoop(float joyH, float joyV, bool btnA, bool btnB, boo
     float gravityScale = 1;
 
     //  first, follow up on any currently performing actions
-    noJumpsDisabled = jumpsUsed >= 5;
 
     //  movement
     if(action == GAW_ACTION_JUMPING) {
@@ -1014,6 +1013,7 @@ void GameandWatch::controlLoop(float joyH, float joyV, bool btnA, bool btnB, boo
         animationIndex = 37;
         mirrored = l_mirrored;
         disabledFrames = 2;
+        noJumpsDisabled = true;
 
         xAnimationOffset = 0;
         yAnimationOffset = 0;
@@ -1346,6 +1346,9 @@ void GameandWatch::controlLoop(float joyH, float joyV, bool btnA, bool btnB, boo
         else if(xVel < 0) xVel += airResistance;
     }
     x += xVel + stageVelocity;
+
+    if(y == floor || action == GAW_ACTION_LEDGEGRAB) noJumpsDisabled = false;
+
     //  start any new sequences
     //  neutral attack
     if(disabledFrames == 0 && absVal(joyH) < 0.15 && absVal(joyV) < 0.15 &&
@@ -1492,7 +1495,7 @@ void GameandWatch::controlLoop(float joyH, float joyV, bool btnA, bool btnB, boo
         droppingBucket = false;
     }
         //  up special
-    else if(
+    else if(!noJumpsDisabled &&
             ( (action == GAW_ACTION_FALLING || action == GAW_ACTION_JUMPING  ||
                action == GAW_ACTION_DOUBLEJUMPING) ||
               (y == floor && (action == GAW_ACTION_RESTING || action == GAW_ACTION_RUNNING)) ) &&
