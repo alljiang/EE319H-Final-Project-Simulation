@@ -554,6 +554,33 @@ utils.cpp.s:
 	$(MAKE) -f CMakeFiles\EE319K_Final_Project_Initial_Testing.dir\build.make CMakeFiles/EE319K_Final_Project_Initial_Testing.dir/utils.cpp.s
 .PHONY : utils.cpp.s
 
+valvano.obj: valvano.cpp.obj
+
+.PHONY : valvano.obj
+
+# target to build an object file
+valvano.cpp.obj:
+	$(MAKE) -f CMakeFiles\EE319K_Final_Project_Initial_Testing.dir\build.make CMakeFiles/EE319K_Final_Project_Initial_Testing.dir/valvano.cpp.obj
+.PHONY : valvano.cpp.obj
+
+valvano.i: valvano.cpp.i
+
+.PHONY : valvano.i
+
+# target to preprocess a source file
+valvano.cpp.i:
+	$(MAKE) -f CMakeFiles\EE319K_Final_Project_Initial_Testing.dir\build.make CMakeFiles/EE319K_Final_Project_Initial_Testing.dir/valvano.cpp.i
+.PHONY : valvano.cpp.i
+
+valvano.s: valvano.cpp.s
+
+.PHONY : valvano.s
+
+# target to generate assembly for a file
+valvano.cpp.s:
+	$(MAKE) -f CMakeFiles\EE319K_Final_Project_Initial_Testing.dir\build.make CMakeFiles/EE319K_Final_Project_Initial_Testing.dir/valvano.cpp.s
+.PHONY : valvano.cpp.s
+
 # Help Target
 help:
 	@echo The following are some of the valid targets for this Makefile:
@@ -611,6 +638,9 @@ help:
 	@echo ... utils.obj
 	@echo ... utils.i
 	@echo ... utils.s
+	@echo ... valvano.obj
+	@echo ... valvano.i
+	@echo ... valvano.s
 .PHONY : help
 
 

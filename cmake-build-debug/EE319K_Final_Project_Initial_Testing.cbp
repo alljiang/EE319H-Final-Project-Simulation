@@ -217,6 +217,9 @@
 		<Unit filename="C:/Users/Allen/Documents/GitHub/EE319H-Final-Project-Simulation/utils.h">
 			<Option target="EE319K_Final_Project_Initial_Testing"/>
 		</Unit>
+		<Unit filename="C:/Users/Allen/Documents/GitHub/EE319H-Final-Project-Simulation/valvano.cpp">
+			<Option target="EE319K_Final_Project_Initial_Testing"/>
+		</Unit>
 		<Unit filename="C:/Users/Allen/Documents/GitHub/EE319H-Final-Project-Simulation/CMakeLists.txt">
 			<Option virtualFolder="CMake Files\"/>
 		</Unit>

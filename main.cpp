@@ -35,6 +35,9 @@ Player* p2;
 Stage stage;
 HitboxManager hitboxManager;
 
+Valvano valvano1;
+Valvano valvano2;
+
 GameandWatch gameandwatch1;
 GameandWatch gameandwatch2;
 
@@ -304,11 +307,11 @@ void switchStageMenuToCharMenu(int8_t stageSelect) {
 
 void switchCharMenuToGame(int8_t char1, int8_t char2) {
     if(char1 == CHARACTER_KIRBY) p1 = &kirby1;
-    else if(char1 == CHARACTER_VALVANO) printf("nooooo");
+    else if(char1 == CHARACTER_VALVANO) p1 = &valvano1;
     else p1 = &gameandwatch1;
 
     if(char2 == CHARACTER_KIRBY) p2 = &kirby2;
-    else if(char2 == CHARACTER_VALVANO) printf("nooooo");
+    else if(char2 == CHARACTER_VALVANO) p2 = &valvano2;
     else p2 = &gameandwatch2;
 
     p1char = char1;

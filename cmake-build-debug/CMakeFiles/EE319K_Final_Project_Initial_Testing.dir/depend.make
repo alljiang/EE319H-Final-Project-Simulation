@@ -250,3 +250,11 @@ CMakeFiles/EE319K_Final_Project_Initial_Testing.dir/utils.cpp.obj: ../metadata.h
 CMakeFiles/EE319K_Final_Project_Initial_Testing.dir/utils.cpp.obj: ../utils.cpp
 CMakeFiles/EE319K_Final_Project_Initial_Testing.dir/utils.cpp.obj: ../utils.h
 
+CMakeFiles/EE319K_Final_Project_Initial_Testing.dir/valvano.cpp.obj: ../UART.h
+CMakeFiles/EE319K_Final_Project_Initial_Testing.dir/valvano.cpp.obj: ../animator.h
+CMakeFiles/EE319K_Final_Project_Initial_Testing.dir/valvano.cpp.obj: ../entities.h
+CMakeFiles/EE319K_Final_Project_Initial_Testing.dir/valvano.cpp.obj: ../metadata.h
+CMakeFiles/EE319K_Final_Project_Initial_Testing.dir/valvano.cpp.obj: ../stage.h
+CMakeFiles/EE319K_Final_Project_Initial_Testing.dir/valvano.cpp.obj: ../utils.h
+CMakeFiles/EE319K_Final_Project_Initial_Testing.dir/valvano.cpp.obj: ../valvano.cpp
+

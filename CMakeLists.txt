@@ -15,5 +15,5 @@ add_executable(EE319K_Final_Project_Initial_Testing main.cpp Flash.cpp Flash.h S
         Audio.h charactermenu.cpp charactermenu.h colors_menu.h colors_charmenu.h colors_smashville.h colors_stagemenu.h
         colors_battlefield.h stagemenu.cpp stagemenu.h colors_eer.h colors_gregory.h colors_winp1gaw.h
         colors_winp1kirby.h colors_winp1val.h colors_winp2gaw.h colors_winp2kirby.h colors_winp2val.h
-        WinScreen.cpp WinScreen.h)
+        WinScreen.cpp WinScreen.h valvano.cpp)
 target_link_libraries(EE319K_Final_Project_Initial_Testing ${SDL2_LIBRARY} -lmingw32 -lSDL2main -lSDL2 -mwindows)

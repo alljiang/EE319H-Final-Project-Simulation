@@ -590,4 +590,145 @@ public:
     void reset() override;
 };
 
+class Valvano: public Player {
+
+#define VAL_ACTION_RESTING 0
+#define VAL_ACTION_RUNNING 1
+#define VAL_ACTION_FALLING 2
+#define VAL_ACTION_JUMPING 3
+#define VAL_ACTION_DOUBLEJUMPING 4
+#define VAL_ACTION_CROUCHING 5
+#define VAL_ACTION_JAB 6
+#define VAL_ACTION_FORWARDTILT 7
+#define VAL_ACTION_DOWNTILT 8
+#define VAL_ACTION_UPTILT 9
+#define VAL_ACTION_DASHATTACK 18
+#define VAL_ACTION_NEUTRALSPECIAL 20
+#define VAL_ACTION_SIDESPECIAL 21
+#define VAL_ACTION_DOWNSPECIAL 22
+#define VAL_ACTION_UPSPECIAL 25
+#define VAL_ACTION_LEDGEGRAB 30
+#define VAL_ACTION_FORWARDAIR 40
+#define VAL_ACTION_DOWNAIR 42
+#define VAL_ACTION_UPAIR 44
+#define VAL_ACTION_NEUTRALAIR 45
+#define VAL_ACTION_HURT 50
+#define VAL_ACTION_SHIELD 51
+#define VAL_ACTION_STUN 52
+
+#define VAL_STAGE_OFFSET 13
+
+protected:
+    //  animation config
+    const uint8_t charIndex = 2;
+    const uint16_t blinkPeriod = 1500;
+
+    //  physics config
+    const float groundSpeed = 2.0*3;  // pps
+    const float airSpeed = 1.1*3;
+
+    const float initialJumpSpeed = 2.0*3;
+    const float repeatedJumpSpeed = 2.1*3;
+    const float gravityRising = 0.08*7;
+    const float gravityFalling = 0.12*7;
+    const float maxFallingVelocity = -2.6*3;
+
+    const float airResistance = .2;
+    const float maxHorizontalSpeed = 19*3;
+    const float groundFriction = 0.6;
+
+    const float DIVerticalSpeed = 0.2 * 3;
+    const float DIHorizontalSpeed = 0.2 * 3;
+    const float DIKnockbackVerticalSpeed = 0.3 * 3;
+    const float DIKnockbackHorizontalSpeed = 0.4 * 3;
+
+    //  standing, resting
+    long long lastBlink{0};
+
+    //  up special
+    long long upSpecialStartTime;
+
+    //  dash attack
+    long long dashAttackStartTime;
+
+    //  side b
+
+    //  down b
+
+    //  neutral b
+    bool laserActive;
+    bool laserMirrored;
+    long long laserStartTime;
+    float laserX, laserY;
+
+public:
+
+    Hurtbox jab = Hurtbox((float)29., 12, SHAPE_RECTANGLE,
+                          20, 20, 1,
+                          0.8, 0.8, 0, 3);
+    Hurtbox dashAttack = Hurtbox((float)0., 15, SHAPE_RECTANGLE,
+                                 28, 32, 1,
+                                 3, 3.1, 2.5, -1);
+    Hurtbox forwardTilt = Hurtbox((float)35., 11, SHAPE_RECTANGLE,
+                                  20, 30, 1,
+                                  4  , 2.5, 3.5, -1);
+    Hurtbox downTilt = Hurtbox((float)24., 8, SHAPE_RECTANGLE,
+                               9, 23, 1,
+                               3, 2.5, 3.7, -1);
+    Hurtbox upTilt1 = Hurtbox((float)14., 40, SHAPE_RECTANGLE,
+                              23, 23, 1,
+                              7, 3.3, 4.1, -1);
+    Hurtbox upTilt2 = Hurtbox((float)-21., 43, SHAPE_RECTANGLE,
+                              23, 23, 1,
+                              7, 3.3, 4.1, -1);
+    Hurtbox forwardSmash = Hurtbox((float)30., 18, SHAPE_RECTANGLE,
+                                   20, 20, 1,
+                                   10, 3.5, 3.8, -1);
+    Hurtbox upSmash = Hurtbox((float)1., 20, SHAPE_RECTANGLE,
+                              23, 46, 1,
+                              10, 3.7, 3.9, -1);
+    Hurtbox downSmash = Hurtbox((float)0., 12, SHAPE_RECTANGLE,
+                                24, 66, 1,
+                                8, 4.0, 3.2, -1);
+    Hurtbox forwardAir = Hurtbox((float)24., 20, SHAPE_RECTANGLE,
+                                 15, 25, 1,
+                                 6, 3.9, 3.5, -1);
+    Hurtbox downAir = Hurtbox((float)5., 12, SHAPE_RECTANGLE,
+                              26, 14, 1,
+                              7, 3.7, 3.1, -1);
+    Hurtbox upAir = Hurtbox((float)-4., 44, SHAPE_RECTANGLE,
+                            19, 20, 1,
+                            3, 2.2, 3.7, -1);
+    Hurtbox backAir = Hurtbox((float)-25., 15, SHAPE_RECTANGLE,
+                              21, 31, 1,
+                              8, 3.7, 3.0, -1);
+    Hurtbox neutralAir = Hurtbox((float)1., 34, SHAPE_RECTANGLE,
+                                 30, 40, 1,
+                                 5, 3.3, 3.3, -1);
+    Hurtbox sideSpecial = Hurtbox((float)21., 28, SHAPE_RECTANGLE,
+                                  16, 24, 1,
+                                  7, 2.8, 2.8, -1);
+    Hurtbox neutralSpecialProjectile = Hurtbox(true,0, 5, SHAPE_CIRCLE,
+                                               8, 1,
+                                               2, 1.2, 1.5, -1);
+    Hurtbox downSpecialProjectile = Hurtbox((float)62., 20, SHAPE_RECTANGLE,
+                                            40, 90, 1,
+                                            7, 2.8, 2.8, -1);
+
+    Valvano() {
+        hitbox = Hitbox(0, 0, 0, 0);
+    }
+
+    //  general control loop
+    void controlLoop(float joyH, float joyV, bool btnA, bool btnB, bool shield, class Stage* stage,
+                     class HitboxManager* hitboxManager) override; //  called every update
+
+    void updateLastValues(float joyH, float joyV, bool btnA, bool btnB, bool shield) override;
+
+    void collide(class Hurtbox *hurtbox, class Player *otherPlayer) override;
+
+    void reset() override;
+};
+
+
 #endif //EE319K_FINAL_PROJECT_INITIAL_TESTING_ENTITIES_H
