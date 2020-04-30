@@ -26,6 +26,7 @@ void Flash_init() {
     for(uint32_t i = 0; i < 1024*1024; i++) {
         Flash_storage[i] = 0;
     }
+    currentLocation = 0;
 }
 
 uint8_t* Flash_readMemory(uint32_t location, uint32_t bytesToRead, uint8_t* buffer) {

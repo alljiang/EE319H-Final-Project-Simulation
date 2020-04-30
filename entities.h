@@ -624,7 +624,7 @@ protected:
     const uint16_t blinkPeriod = 1500;
 
     //  physics config
-    const float groundSpeed = 2.0*3;  // pps
+    const float groundSpeed = 1.7*3;  // pps
     const float airSpeed = 1.1*3;
 
     const float initialJumpSpeed = 2.0*3;

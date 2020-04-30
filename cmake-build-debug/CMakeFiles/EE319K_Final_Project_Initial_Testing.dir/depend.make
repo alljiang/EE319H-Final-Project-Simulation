@@ -85,6 +85,7 @@ CMakeFiles/EE319K_Final_Project_Initial_Testing.dir/animator.cpp.obj: ../colors_
 CMakeFiles/EE319K_Final_Project_Initial_Testing.dir/animator.cpp.obj: ../colors_kirby.h
 CMakeFiles/EE319K_Final_Project_Initial_Testing.dir/animator.cpp.obj: ../colors_menu.h
 CMakeFiles/EE319K_Final_Project_Initial_Testing.dir/animator.cpp.obj: ../colors_misc.h
+CMakeFiles/EE319K_Final_Project_Initial_Testing.dir/animator.cpp.obj: ../colors_valvano.h
 CMakeFiles/EE319K_Final_Project_Initial_Testing.dir/animator.cpp.obj: ../metadata.h
 CMakeFiles/EE319K_Final_Project_Initial_Testing.dir/animator.cpp.obj: ../utils.h
 

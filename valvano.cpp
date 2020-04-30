@@ -156,23 +156,21 @@ void Valvano::controlLoop(float joyH, float joyV, bool btnA, bool btnB, bool shi
     else if(action == VAL_ACTION_DASHATTACK) {
         animationIndex = 10;
         mirrored = l_mirrored;
-        x_mirroredOffset = 0;
+        x_mirroredOffset = -10;
         xAnimationOffset = 0;
         disabledFrames = 2;
-        frameIndex = 0;
 
-        frameExtension = 3;
+        frameExtension = 0;
         if(frameLengthCounter++ >= frameExtension) {
             frameLengthCounter = 0;
             frameIndex++;
         }
-        if(frameIndex >= 5) {
-            frameIndex = 0;
-            frameLengthCounter = 0;
-        }
+        frameIndex %= 5;
 
         //  I AM SPEED
-        x += 2.8;
+        double dashAttackSpeed = 4.5;
+        if(mirrored) x -= dashAttackSpeed;
+        else x += dashAttackSpeed;
 
         gravityScale = 0;
         yVel = 0;
@@ -302,7 +300,7 @@ void Valvano::controlLoop(float joyH, float joyV, bool btnA, bool btnB, bool shi
             x += airSpeed * joyH * 0.7;
 
             x_mirroredOffset = -14;
-            xAnimationOffset = -1;
+            xAnimationOffset = -11;
             yAnimationOffset = 0;
 
             hitbox.offsetHeight(4);
@@ -312,8 +310,8 @@ void Valvano::controlLoop(float joyH, float joyV, bool btnA, bool btnB, bool shi
             else hitbox.offsetX(4);
 
             disabledFrames = 2;
-            if(frameIndex == 1) frameExtension = 5;
-            else frameExtension = 2;
+            if(frameIndex == 3) frameExtension = 3;
+            frameExtension = 1;
             if (frameLengthCounter++ >= frameExtension) {
                 frameLengthCounter = 0;
                 frameIndex++;
@@ -447,11 +445,11 @@ void Valvano::controlLoop(float joyH, float joyV, bool btnA, bool btnB, bool shi
         else {
             animationIndex = 32;
             mirrored = l_mirrored;
-            x += airSpeed * joyH * 0.6;
+            x += airSpeed * joyH * 0.8;
             disabledFrames = 2;
 
-            x_mirroredOffset = -4;
-            xAnimationOffset = 0;
+            x_mirroredOffset = -18;
+            xAnimationOffset = -18;
             yAnimationOffset = 0;
 
             hitbox.offsetWidth(4);
@@ -466,10 +464,17 @@ void Valvano::controlLoop(float joyH, float joyV, bool btnA, bool btnB, bool shi
             }
             frameIndex %= 5;
 
-            if(currentTime - upSpecialStartTime > 2000) {
+            if(currentTime - upSpecialStartTime > 2000 || joyV < -0.3) {
+                disabledFrames = 5;
                 action = VAL_ACTION_FALLING;
+                yVel = 0;
             }
-            else yVel += 2.5;
+            else {
+                //  go up
+                if(yVel > 0) yVel += gravityRising + 0.2;
+                else yVel += gravityFalling + 0.4;
+                if(yVel > 5) yVel = 5;
+            }
         }
     }
     else if(action == VAL_ACTION_SIDESPECIAL) {
@@ -477,19 +482,19 @@ void Valvano::controlLoop(float joyH, float joyV, bool btnA, bool btnB, bool shi
         mirrored = l_mirrored;
         disabledFrames = 2;
 
-        x_mirroredOffset = -40;
-        xAnimationOffset = -15;
+        x_mirroredOffset = -48;
+        xAnimationOffset = 0;
         yAnimationOffset = 0;
 
         if(mirrored) hitbox.offsetX(-2);
         else hitbox.offsetX(3);
 
-        frameExtension = 2;
+        frameExtension = 1;
         if(frameLengthCounter++ >= frameExtension) {
             frameLengthCounter = 0;
             frameIndex++;
         }
-        if(frameIndex >= 31) {
+        if(frameIndex >= 8) {
             disabledFrames = 1;
             if(y == floor) action = VAL_ACTION_RESTING;
             else action = VAL_ACTION_FALLING;
@@ -514,7 +519,7 @@ void Valvano::controlLoop(float joyH, float joyV, bool btnA, bool btnB, bool shi
 
         xAnimationOffset = 0;
         yAnimationOffset = 0;
-        x_mirroredOffset = -8;
+        x_mirroredOffset = -14;
 
         hitbox.offsetX(-1);
 
@@ -525,9 +530,9 @@ void Valvano::controlLoop(float joyH, float joyV, bool btnA, bool btnB, bool shi
             frameIndex++;
 
             if(frameIndex == 2) {
-                double xLaserOffset = 0;
-                double yLaserOffset = 0;
-                double xMirroredLaserOffset = 0;
+                int xLaserOffset = 30;
+                int yLaserOffset = 14;
+                int xMirroredLaserOffset = -10;
 
                 if(mirrored) xLaserOffset = 0;
                 else xMirroredLaserOffset = 0;
@@ -688,8 +693,8 @@ void Valvano::controlLoop(float joyH, float joyV, bool btnA, bool btnB, bool shi
         }
         else {
             x_mirroredOffset = 0;
-            xAnimationOffset = 0;
-            yAnimationOffset = 0;
+            xAnimationOffset = -3;
+            yAnimationOffset = -5;
             x += airSpeed * joyH;
             if(x > rightBound) x = rightBound;
             else if(x < leftBound) x = leftBound;
@@ -762,7 +767,10 @@ void Valvano::controlLoop(float joyH, float joyV, bool btnA, bool btnB, bool shi
             else mirrored = joyH < 0;
 
             animationIndex = 2;
-            frameExtension = (uint8_t) ((4 - absVal(0.7 * joyH)));
+            int8_t calculatedExtension = -5*absVal(joyH) + 3.5;
+            if(calculatedExtension < 0) frameExtension = 0;
+            else if(calculatedExtension > 2) frameExtension = 2;
+            else frameExtension = calculatedExtension;
             if (frameLengthCounter++ > frameExtension) {
                 frameLengthCounter = 0;
                 frameIndex++;
@@ -773,9 +781,9 @@ void Valvano::controlLoop(float joyH, float joyV, bool btnA, bool btnB, bool shi
             if(mirrored) hitbox.offsetX(1);
             else hitbox.offsetX(-1);
 
-            xAnimationOffset = -6;
+            xAnimationOffset = -1;
             yAnimationOffset = 0;
-            x_mirroredOffset = -3;
+            x_mirroredOffset = 1;
         }
     }
 
@@ -986,6 +994,8 @@ void Valvano::controlLoop(float joyH, float joyV, bool btnA, bool btnB, bool shi
         disabledFrames = 2;
         frameIndex = 0;
         frameLengthCounter = 0;
+        if(yVel < -3) yVel = -3;
+        else if(yVel > 0) yVel = 0;
 
         upSpecialStartTime = currentTime;
         y++;

@@ -13,6 +13,8 @@
 #include "colors_gameandwatch.h"
 #include "colors_misc.h"
 #include "colors_menu.h"
+#include "colors_valvano.h"
+
 using namespace std;
 
 #define maxSprites 16
@@ -310,12 +312,12 @@ void animator_initialize() {
 
     colors[0] = colors_kirby;
     colors[1] = colors_gameandwatch;
+    colors[2] = colors_valvano;
     colors[3] = colors_misc;
     colors[4] = colors_menu;
 
     // Find which color index is 0xFFFFFFFF (background)
     for(int c = 0; c < CHARACTERS; c++) {
-        if(c == 2) continue;
         for(int32_t i = 0; i < sizeof(colors); i++) {
             if(colors[c][i] == 0xFFFFFFFF) {
                 backgroundColorIndex[c] = i;
