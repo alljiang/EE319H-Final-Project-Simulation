@@ -216,8 +216,8 @@ const char animations[CHARACTERS][64][12] = {
                                                 {"sidespecial"},    //  8
                                                 {"upspecial"},      //  5
                                                 {"laserproj"},  //  1
-                                                {""},
-                                                {""},
+                                                {"downspecial"},    //  2
+                                                {"robotcar"},   //  2 + 3 (explosion)
                                                 {""},
                                                 {""},
                                                 {""},

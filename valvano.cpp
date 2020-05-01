@@ -129,7 +129,7 @@ void Valvano::controlLoop(float joyH, float joyV, bool btnA, bool btnB, bool shi
         frameExtension = 1;
 
         hitbox.offsetY(0);
-        if(mirrored) hitbox.offsetX(5);
+        if(mirrored) hitbox.offsetX(0);
         else hitbox.offsetX(0);
 
         if(frameLengthCounter++ >= frameExtension) {
@@ -140,7 +140,7 @@ void Valvano::controlLoop(float joyH, float joyV, bool btnA, bool btnB, bool shi
             frameIndex = 0;
             frameLengthCounter = 0;
         }
-        if(currentTime-l_btnARise_t > 300) {
+        if(currentTime-l_btnARise_t > 400) {
             l_action = VAL_ACTION_JAB;
             x_mirroredOffset = 0;
             action = VAL_ACTION_RESTING;
@@ -148,8 +148,8 @@ void Valvano::controlLoop(float joyH, float joyV, bool btnA, bool btnB, bool shi
             disabledFrames = 2;
         }
 
-        if(frameIndex == 4 || frameIndex == 7) {
-            hitboxManager->addHurtbox(x + 17, y, mirrored,
+        if(frameIndex == 2 || frameIndex == 5) {
+            hitboxManager->addHurtbox(x + 8, y, mirrored,
                                       jab, player);
         }
     }
@@ -172,21 +172,21 @@ void Valvano::controlLoop(float joyH, float joyV, bool btnA, bool btnB, bool shi
         if(mirrored) x -= dashAttackSpeed;
         else x += dashAttackSpeed;
 
-        gravityScale = 0;
         yVel = 0;
 
-        hitbox.offsetWidth(6);
+        hitbox.offsetWidth(16);
         hitbox.offsetY(0);
-        hitbox.offsetX(3);
+        if(mirrored) hitbox.offsetX(-1);
+        else hitbox.offsetX(6);
 
-        if(currentTime - dashAttackStartTime > 1000) {
+        if(currentTime - dashAttackStartTime > 750) {
             l_action = VAL_ACTION_DASHATTACK;
             if(absVal(joyH) > 0.1) action = VAL_ACTION_RUNNING;
             else action = VAL_ACTION_RESTING;
             disabledFrames = 4;
         }
         else {
-            hitboxManager->addHurtbox(x + 18, y, mirrored,
+            hitboxManager->addHurtbox(x + 10, y, mirrored,
                                       dashAttack, player);
         }
     }
@@ -303,11 +303,11 @@ void Valvano::controlLoop(float joyH, float joyV, bool btnA, bool btnB, bool shi
             xAnimationOffset = -11;
             yAnimationOffset = 0;
 
-            hitbox.offsetHeight(4);
-            hitbox.offsetWidth(3);
-            hitbox.offsetY(3);
-            if(mirrored) hitbox.offsetX(9);
-            else hitbox.offsetX(4);
+            hitbox.offsetHeight(-12);
+            hitbox.offsetWidth(28);
+            hitbox.offsetY(-4);
+            if(mirrored) hitbox.offsetX(5);
+            else hitbox.offsetX(3);
 
             disabledFrames = 2;
             if(frameIndex == 3) frameExtension = 3;
@@ -323,7 +323,7 @@ void Valvano::controlLoop(float joyH, float joyV, bool btnA, bool btnB, bool shi
             }
             else {
                 if(frameIndex == 2 || frameIndex == 3)
-                    hitboxManager->addHurtbox(x + 22, y, mirrored,
+                    hitboxManager->addHurtbox(x + 12, y, mirrored,
                                           forwardAir, player);
             }
         }
@@ -376,17 +376,12 @@ void Valvano::controlLoop(float joyH, float joyV, bool btnA, bool btnB, bool shi
 
         disabledFrames = 2;
 
-        if(frameIndex == 0) {
-            hitbox.offsetX(5);
-            hitbox.offsetY(5);
-            hitbox.offsetHeight(-4);
+        hitbox.offsetX(3);
+        hitbox.offsetY(2);
+        hitbox.offsetWidth(0);
+        hitbox.offsetHeight(4);
 
-            frameExtension = 1;
-            if (frameLengthCounter++ >= frameExtension) {
-                frameLengthCounter = 0;
-                frameIndex++;
-            }
-        }
+        if(frameIndex == 0) frameExtension = 3;
         else if(frameIndex == 1) frameExtension = 4;
 
         if (frameLengthCounter++ >= frameExtension) {
@@ -397,7 +392,7 @@ void Valvano::controlLoop(float joyH, float joyV, bool btnA, bool btnB, bool shi
             if(y == floor) action = VAL_ACTION_RESTING;
             else action = VAL_ACTION_FALLING;
         }
-        else if(frameIndex == 1) hitboxManager->addHurtbox(x + 22, y, mirrored,
+        else if(frameIndex == 1) hitboxManager->addHurtbox(x + 11, y, mirrored,
                                       downAir, player);
     }
     else if(action == VAL_ACTION_NEUTRALAIR) {
@@ -414,14 +409,14 @@ void Valvano::controlLoop(float joyH, float joyV, bool btnA, bool btnB, bool shi
             xAnimationOffset = -17;
             yAnimationOffset = 0;
 
-            hitbox.offsetHeight(-3);
-            hitbox.offsetWidth(4);
-            hitbox.offsetY(-1);
-            if(mirrored) hitbox.offsetX(4);
-            else hitbox.offsetX(3);
+            hitbox.offsetHeight(8);
+            hitbox.offsetWidth(30);
+            hitbox.offsetY(5);
+            if(mirrored) hitbox.offsetX(0);
+            else hitbox.offsetX(0);
 
             disabledFrames = 2;
-            frameExtension = 3;
+            frameExtension = 1;
             if (frameLengthCounter++ >= frameExtension) {
                 frameLengthCounter = 0;
                 frameIndex++;
@@ -432,7 +427,7 @@ void Valvano::controlLoop(float joyH, float joyV, bool btnA, bool btnB, bool shi
                 disabledFrames = 5;
             }
             else {
-                hitboxManager->addHurtbox(x + 18, y, mirrored,
+                hitboxManager->addHurtbox(x+8, y, mirrored,
                                           neutralAir, player);
             }
         }
@@ -501,16 +496,55 @@ void Valvano::controlLoop(float joyH, float joyV, bool btnA, bool btnB, bool shi
             else action = VAL_ACTION_FALLING;
         }
         else {
-            if(frameIndex == 3) {
-                hitboxManager->addHurtbox(x + 17, y, mirrored,
-                                          sideSpecial, player);
-            }
+            if(frameIndex == 2) hitboxManager->addHurtbox(x + 10, y, mirrored,
+                                                          sideSpecial1, player);
+            else if(frameIndex == 3) hitboxManager->addHurtbox(x + 10, y, mirrored,
+                                                               sideSpecial2, player);
+            else if(frameIndex == 4) hitboxManager->addHurtbox(x + 10, y, mirrored,
+                                                               sideSpecial3, player);
+            else if(frameIndex == 5) hitboxManager->addHurtbox(x + 10, y, mirrored,
+                                                               sideSpecial4, player);
         }
     }
     else if(action == VAL_ACTION_DOWNSPECIAL) {
         animationIndex = 34;
         mirrored = l_mirrored;
         disabledFrames = 2;
+
+        xAnimationOffset = 0;
+        yAnimationOffset = 0;
+        x_mirroredOffset = -6;
+
+        if(frameIndex == 0) frameExtension = 3;
+        else if(frameIndex == 1) frameExtension = 8;
+        if(frameLengthCounter++ >= frameExtension) {
+            frameLengthCounter = 0;
+            frameIndex++;
+
+            if(frameIndex == 1) {
+                //  release robot car
+                float robotCarXAnimationOffset = 0;
+                float robotCarXMirroredAnimationOffset = 0;
+                float robotCarYAnimationOffset = 0;
+
+                if(mirrored) robotCarXAnimationOffset = 0;
+                else robotCarXMirroredAnimationOffset = 0;
+
+                robotCarActive = true;
+                robotCarActivationFlag = false;
+                robotCarStartTime = currentTime;
+                if(mirrored) robotX = x + x_mirroredOffset + robotCarXMirroredAnimationOffset;
+                else robotX = x + xAnimationOffset + robotCarXAnimationOffset;
+                robotY = y + yAnimationOffset + robotCarYAnimationOffset;
+                robotMirrored = mirrored;
+                robotCarFrameIndex = 0;
+            }
+        }
+        if(frameIndex >= 2) {
+            disabledFrames = 1;
+            if(y == floor) action = VAL_ACTION_RESTING;
+            else action = VAL_ACTION_FALLING;
+        }
 
     }
     else if(action == VAL_ACTION_NEUTRALSPECIAL) {
@@ -522,7 +556,9 @@ void Valvano::controlLoop(float joyH, float joyV, bool btnA, bool btnB, bool shi
         yAnimationOffset = 0;
         x_mirroredOffset = -14;
 
-        hitbox.offsetX(-1);
+        hitbox.offsetY(-1);
+        hitbox.offsetHeight(-2);
+        hitbox.offsetWidth(2);
 
         frameExtension = 2;
         if(frameIndex == 2) frameExtension = 5;
@@ -539,8 +575,8 @@ void Valvano::controlLoop(float joyH, float joyV, bool btnA, bool btnB, bool shi
                 else xMirroredLaserOffset = 0;
 
                 laserActive = true;
+                laserActivationFlag = false;
                 laserStartTime = currentTime;
-                laserX = x + xLaserOffset + xMirroredLaserOffset;
                 if(mirrored) laserX = x + x_mirroredOffset + xMirroredLaserOffset;
                 else laserX = x + xAnimationOffset + xLaserOffset;
                 laserY = y + yAnimationOffset + yLaserOffset;
@@ -662,11 +698,9 @@ void Valvano::controlLoop(float joyH, float joyV, bool btnA, bool btnB, bool shi
 
         x_mirroredOffset = -3;
 
-        hitbox.offsetY(-8);
-        hitbox.offsetHeight(-17);
-        hitbox.offsetWidth(6);
-        if(mirrored) hitbox.offsetX(2);
-        else hitbox.offsetX(4);
+        hitbox.offsetY(-1);
+        hitbox.offsetHeight(-2);
+        hitbox.offsetWidth(2);
 
         if(onPlatform) {
             action = VAL_ACTION_FALLING;
@@ -778,10 +812,6 @@ void Valvano::controlLoop(float joyH, float joyV, bool btnA, bool btnB, bool shi
             }
             frameIndex %= 5;
 
-            hitbox.offsetY(-4);
-            if(mirrored) hitbox.offsetX(1);
-            else hitbox.offsetX(-1);
-
             xAnimationOffset = -1;
             yAnimationOffset = 0;
             x_mirroredOffset = 1;
@@ -806,7 +836,10 @@ void Valvano::controlLoop(float joyH, float joyV, bool btnA, bool btnB, bool shi
 
         UART_sendAnimation(laser);
 
-        if(currentTime - laserStartTime > 500) {
+        hitboxManager->addHurtbox(laserX+7, laserY, laserMirrored,
+                                  laserProjectile, player);
+
+        if(currentTime - laserStartTime > 500 || laserActivationFlag) {
             laserActive = false;
         }
         else {
@@ -814,6 +847,58 @@ void Valvano::controlLoop(float joyH, float joyV, bool btnA, bool btnB, bool shi
             double laserSpeed = 7.0;
             if(laserMirrored) laserX -= laserSpeed;
             else laserX += laserSpeed;
+        }
+    }
+
+    //  robot car
+    if(robotCarActive) {
+        SpriteSendable robot;
+        robot.charIndex = charIndex;
+        robot.frame = robotCarFrameIndex;
+        robot.mirrored = robotMirrored;
+        robot.animationIndex = 35;
+        robot.x = robotX;
+        robot.y = robotY;
+        robot.continuous = false;
+        robot.persistent = false;
+        robot.layer = LAYER_CHARACTER_PROJECTILE;
+        robot.framePeriod = 1;
+
+        UART_sendAnimation(robot);
+
+        if(currentTime - robotCarStartTime > 3000 || robotCarActivationFlag) {
+            //  explode
+            if(robotCarFrameIndex < 2) robotCarFrameIndex = 2;
+
+            frameExtension = 2;
+            if(robotCarFrameCounter++ >= frameExtension) {
+                robotCarFrameIndex++;
+            }
+            if(robotCarFrameIndex >= 5) {
+                robotCarActive = false;
+            }
+            printf("%d\n", robotCarFrameIndex);
+        }
+        else {
+            (++robotCarFrameIndex) %= 2;
+
+            hitboxManager->addHurtbox(robotX + 9, robotY, mirrored,
+                                      robotCar, player);
+
+            if (robotY < -5) robotCarActive = false;
+            else {
+                //  update robot car position
+                float robotFloor = stage->floor(robotX + 7, robotY);
+                double robotSpeed = 2.0;
+                if (robotMirrored) robotX -= robotSpeed;
+                else robotX += robotSpeed;
+
+                //  gravity
+                robotYVel -= gravityFalling;
+                if (robotYVel < -5) robotYVel = -5;
+                robotY += robotYVel;
+                if (robotY < robotFloor) robotY = robotFloor;
+            }
         }
     }
 
@@ -837,7 +922,7 @@ void Valvano::controlLoop(float joyH, float joyV, bool btnA, bool btnB, bool shi
     if(x > rightBound) x = rightBound;
     else if(x < leftBound) x = leftBound;
 
-    this->hitbox.initialize(x+15, y+15, 28, 30);
+    this->hitbox.initialize(x+8, y+17, 18, 34);
 
     if(!mirrored) x_mirroredOffset = 0;
     else x_mirroredOffset -= xAnimationOffset;
@@ -977,15 +1062,15 @@ void Valvano::controlLoop(float joyH, float joyV, bool btnA, bool btnB, bool shi
         frameLengthCounter = 0;
         dashAttackStartTime = currentTime;
     }
-//        //  down B
-//    else if(disabledFrames == 0 && currentTime - l_btnBRise_t == 0
-//            && joyV < -0.5) {
-//        action = VAL_ACTION_DOWNSPECIAL;
-//        disabledFrames = 2;
-//        frameIndex = 0;
-//        frameLengthCounter = 0;
-//        mirrored = l_mirrored;
-//    }
+        //  down B
+    else if(!robotCarActive && disabledFrames == 0 && currentTime - l_btnBRise_t == 0
+            && joyV < -0.5) {
+        action = VAL_ACTION_DOWNSPECIAL;
+        disabledFrames = 2;
+        frameIndex = 0;
+        frameLengthCounter = 0;
+        mirrored = l_mirrored;
+    }
         //  up special
     else if(!noJumpsDisabled &&
             ( (action == VAL_ACTION_FALLING || action == VAL_ACTION_JUMPING  ||
@@ -1135,6 +1220,10 @@ void Valvano::collide(Hurtbox *hurtbox, Player *otherPlayer) {
     else if(action == VAL_ACTION_SHIELD) {
         if(hurtbox->damage < PLAYER_SHIELD_MAXDAMAGE/2.) shieldDamage += hurtbox->damage * 0.3;
         else shieldDamage += PLAYER_SHIELD_MAXDAMAGE/2.;
+
+        if(hurtbox->activationFlagPointer != nullptr) {
+            *(hurtbox->activationFlagPointer) = true;
+        }
     }
         // only knockback if not currently knocked back
     else if(disabledFrames != -1 && invulnerableFrames == 0) {
@@ -1153,6 +1242,7 @@ void Valvano::collide(Hurtbox *hurtbox, Player *otherPlayer) {
 }
 
 void Valvano::reset() {
+    action = VAL_ACTION_RESTING;
     yVel = 0;
     xVel = 0;
     currentTime = 0;
@@ -1186,6 +1276,7 @@ void Valvano::reset() {
     jumpsUsed = 0;
 
     laserActive = false;
+    robotCarActive = false;
 
     shieldDamage = 0;
     dead = false;

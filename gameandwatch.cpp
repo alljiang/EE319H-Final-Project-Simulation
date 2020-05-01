@@ -1641,10 +1641,21 @@ void GameandWatch::collide(Hurtbox *hurtbox, Player *otherPlayer) {
     else if(action == GAW_ACTION_DOWNSPECIAL && hurtbox->isProjectile && currentTime - lastBucket > 750) {
         bucketCount++;
         lastBucket = currentTime;
+        droppingBucket = true;
+
+        invulnerableFrames = 3;
+
+        if(hurtbox->activationFlagPointer != nullptr) {
+            *(hurtbox->activationFlagPointer) = true;
+        }
     }
     else if(action == GAW_ACTION_SHIELD) {
         if(hurtbox->damage < PLAYER_SHIELD_MAXDAMAGE/2.) shieldDamage += hurtbox->damage * 0.3;
         else shieldDamage += PLAYER_SHIELD_MAXDAMAGE/2.;
+
+        if(hurtbox->activationFlagPointer != nullptr) {
+            *(hurtbox->activationFlagPointer) = true;
+        }
     }
         // only knockback if not currently knocked back
     else if(disabledFrames != -1 && invulnerableFrames == 0
@@ -1653,17 +1664,22 @@ void GameandWatch::collide(Hurtbox *hurtbox, Player *otherPlayer) {
         damage += hurtbox->damage;
 
         float knockbackMultiplier = damage / 200. + 1.0;
-//        printf("%0.1f\n", damage);
+        printf("%0.1f\n", damage);
 
         if (otherPlayer->x < x) xVel = hurtbox->xKnockback * knockbackMultiplier;
         else xVel = -hurtbox->xKnockback * knockbackMultiplier;
         yVel = hurtbox->yKnockback * knockbackMultiplier;
+
+        if(hurtbox->activationFlagPointer != nullptr) {
+            *(hurtbox->activationFlagPointer) = true;
+        }
 
         action = GAW_ACTION_HURT;
     }
 }
 
 void GameandWatch::reset() {
+    action = GAW_ACTION_RESTING;
     yVel = 0;
     xVel = 0;
     currentTime = 0;

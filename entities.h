@@ -47,6 +47,7 @@ public:
     bool active{false}, isProjectile{false};
     float xKnockback, yKnockback;
     int16_t stunFrames;
+    bool* activationFlagPointer;
 
     Hurtbox() : Collider(0,0,0,0) {}
 
@@ -68,7 +69,7 @@ public:
     Hurtbox(float cX, float cY, uint8_t boxShape, float height, float width,
             int8_t frames=1, float damage=0,
             float xknockback=0, float yknockback=0,
-            int16_t stunFrames=0, bool isProjectile=false)
+            int16_t stunFrames=0, bool isProjectile=false, bool* activationFlag=nullptr)
             : Collider(cX, cY, boxShape, height, width) {
         shape = boxShape;
         this->frames = frames;
@@ -77,6 +78,7 @@ public:
         this->yKnockback = yknockback;
         this->stunFrames = stunFrames;
         this->isProjectile = isProjectile;
+        this->activationFlagPointer = activationFlag;
     }
 
     //  if source is 0, hurtbox is a grabbable stage ledge
@@ -452,7 +454,6 @@ class GameandWatch: public Player {
 #define GAW_ACTION_NEUTRALSPECIAL 20
 #define GAW_ACTION_SIDESPECIAL 21
 #define GAW_ACTION_DOWNSPECIAL 22
-#define GAW_ACTION_DOWNBATTACK 23
 #define GAW_ACTION_UPSPECIAL 25
 #define GAW_ACTION_PARACHUTE 26
 #define GAW_ACTION_LEDGEGRAB 30
@@ -573,7 +574,7 @@ public:
                                  2, 1.2, 1.5, -1);
     Hurtbox downSpecialProjectile = Hurtbox((float)62., 20, SHAPE_RECTANGLE,
                                   40, 90, 1,
-                                  7, 2.8, 2.8, -1);
+                                  7, 4.8, 4.8, -1);
 
     GameandWatch() {
         hitbox = Hitbox(0, 0, 0, 0);
@@ -616,7 +617,7 @@ class Valvano: public Player {
 #define VAL_ACTION_SHIELD 51
 #define VAL_ACTION_STUN 52
 
-#define VAL_STAGE_OFFSET 6
+#define VAL_STAGE_OFFSET 11
 
 protected:
     //  animation config
@@ -654,20 +655,22 @@ protected:
     //  side b
 
     //  down b
+    bool robotCarActive, robotMirrored, robotCarActivationFlag;
+    long long robotCarStartTime;
+    float robotX, robotY, robotYVel;
+    int8_t robotCarFrameIndex, robotCarFrameCounter;
 
     //  neutral b
-    bool laserActive;
-    bool laserMirrored;
+    bool laserActive, laserMirrored, laserActivationFlag;
     long long laserStartTime;
     float laserX, laserY;
 
 public:
-
-    Hurtbox jab = Hurtbox((float)29., 12, SHAPE_RECTANGLE,
-                          20, 20, 1,
-                          0.8, 0.8, 0, 3);
-    Hurtbox dashAttack = Hurtbox((float)0., 15, SHAPE_RECTANGLE,
-                                 28, 32, 1,
+    Hurtbox jab = Hurtbox(true,13, 14, SHAPE_CIRCLE,
+                                               5, 1,
+                                               2, 1.9, 1.5, 2);
+    Hurtbox dashAttack = Hurtbox((float)16., 17, SHAPE_RECTANGLE,
+                                 34, 10, 1,
                                  3, 3.1, 2.5, -1);
     Hurtbox forwardTilt = Hurtbox((float)35., 11, SHAPE_RECTANGLE,
                                   20, 30, 1,
@@ -690,30 +693,41 @@ public:
     Hurtbox downSmash = Hurtbox((float)0., 12, SHAPE_RECTANGLE,
                                 24, 66, 1,
                                 8, 4.0, 3.2, -1);
-    Hurtbox forwardAir = Hurtbox((float)24., 20, SHAPE_RECTANGLE,
-                                 15, 25, 1,
-                                 6, 3.9, 3.5, -1);
-    Hurtbox downAir = Hurtbox((float)5., 12, SHAPE_RECTANGLE,
-                              26, 14, 1,
-                              7, 3.7, 3.1, -1);
+    Hurtbox forwardAir =  Hurtbox(true,25, 14, SHAPE_CIRCLE,
+                                  11, 1,
+                                  2, 1.9, 1.5, 2);
+    Hurtbox downAir = Hurtbox(true,0, 0, SHAPE_CIRCLE,
+                              11, 1,
+                              2, 1.9, 1.5, 2);
     Hurtbox upAir = Hurtbox((float)-4., 44, SHAPE_RECTANGLE,
                             19, 20, 1,
                             3, 2.2, 3.7, -1);
     Hurtbox backAir = Hurtbox((float)-25., 15, SHAPE_RECTANGLE,
                               21, 31, 1,
                               8, 3.7, 3.0, -1);
-    Hurtbox neutralAir = Hurtbox((float)1., 34, SHAPE_RECTANGLE,
-                                 30, 40, 1,
+    Hurtbox neutralAir = Hurtbox((float)0., 22, SHAPE_RECTANGLE,
+                                 42, 50, 1,
                                  5, 3.3, 3.3, -1);
-    Hurtbox sideSpecial = Hurtbox((float)21., 28, SHAPE_RECTANGLE,
-                                  16, 24, 1,
-                                  7, 2.8, 2.8, -1);
-    Hurtbox neutralSpecialProjectile = Hurtbox(true,0, 5, SHAPE_CIRCLE,
-                                               8, 1,
-                                               2, 1.2, 1.5, -1);
-    Hurtbox downSpecialProjectile = Hurtbox((float)62., 20, SHAPE_RECTANGLE,
-                                            40, 90, 1,
-                                            7, 2.8, 2.8, -1);
+    Hurtbox sideSpecial1 = Hurtbox((float)13., 20, SHAPE_RECTANGLE,
+                                   5, 16, 1,
+                                   7, 2.8, 2.8, -1);
+    Hurtbox sideSpecial2 = Hurtbox((float)26., 17, SHAPE_RECTANGLE,
+                                   6, 18, 1,
+                                   7, 2.8, 2.8, -1);
+    Hurtbox sideSpecial3 = Hurtbox((float)33., 17, SHAPE_RECTANGLE,
+                                   6, 48, 1,
+                                   7, 2.8, 2.8, -1);
+    Hurtbox sideSpecial4 = Hurtbox((float)25., 17, SHAPE_RECTANGLE,
+                                   8, 36, 1,
+                                   7, 2.8, 2.8, -1);
+    Hurtbox laserProjectile = Hurtbox((float)0., 1, SHAPE_RECTANGLE,
+                                      3, 15, 1,
+                                      3.5, 1.5, 1.6, 3,
+                                      true, &laserActivationFlag);
+    Hurtbox robotCar = Hurtbox((float)0., 5, SHAPE_RECTANGLE,
+                                            10, 16, 1,
+                                            11, 3.9, 4.1, -1,
+                                            true, &robotCarActivationFlag);
 
     Valvano() {
         hitbox = Hitbox(0, 0, 0, 0);
