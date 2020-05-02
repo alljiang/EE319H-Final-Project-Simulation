@@ -205,7 +205,7 @@ const char animations[CHARACTERS][64][12] = {
                /*   20  */                      {"nair"},   //  4
                                                 {"fair"},   //  6
                                                 {"dair"},   //  2
-                                                {""},
+                                                {"uair"},   //  3
                                                 {""},
                                                 {""},
                                                 {""},

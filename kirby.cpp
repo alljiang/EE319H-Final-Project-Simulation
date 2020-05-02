@@ -1181,7 +1181,7 @@ void Kirby::controlLoop(float joyH, float joyV, bool btnA, bool btnB, bool shiel
         } else {
             animationIndex = 25;
             mirrored = l_mirrored;
-            gravityScale = 0.3;
+            gravityScale = 0.4;
             x += airSpeed * joyH * 0.5;
             if (yVel < -2) yVel = -2;
             else if (yVel > 2) yVel = 2;

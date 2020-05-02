@@ -703,8 +703,8 @@ public:
     Hurtbox downAir = Hurtbox(true,0, 0, SHAPE_CIRCLE,
                               11, 1,
                               2, 1.9, 1.5, 2);
-    Hurtbox upAir = Hurtbox((short)-4, 44, SHAPE_RECTANGLE,
-                            19, 20, 1,
+    Hurtbox upAir = Hurtbox((short)-1, 41, SHAPE_RECTANGLE,
+                            21, 20, 1,
                             3, 2.2, 3.7, -1);
     Hurtbox neutralAir = Hurtbox((short)0, 22, SHAPE_RECTANGLE,
                                  42, 50, 1,

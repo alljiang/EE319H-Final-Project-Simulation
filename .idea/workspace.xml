@@ -12,6 +12,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="fe664a67-824c-4cd3-aff1-f4bbf75b53a6" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/data/sprites/SpriteParser/gif-valvano/uair.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/sprites/valvano/gif/uair.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/sprites/valvano/piskel/uair.piskel" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/EE319K_Final_Project_Initial_Testing.dir/CXX.includecache" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/EE319K_Final_Project_Initial_Testing.dir/CXX.includecache" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/EE319K_Final_Project_Initial_Testing.dir/ILI9341.cpp.obj" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/EE319K_Final_Project_Initial_Testing.dir/ILI9341.cpp.obj" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/EE319K_Final_Project_Initial_Testing.dir/UART.cpp.obj" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/EE319K_Final_Project_Initial_Testing.dir/UART.cpp.obj" afterDir="false" />
@@ -27,6 +31,13 @@
       <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/EE319K_Final_Project_Initial_Testing.dir/utils.cpp.obj" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/EE319K_Final_Project_Initial_Testing.dir/utils.cpp.obj" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/EE319K_Final_Project_Initial_Testing.dir/valvano.cpp.obj" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/EE319K_Final_Project_Initial_Testing.dir/valvano.cpp.obj" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cmake-build-debug/EE319K_Final_Project_Initial_Testing.exe" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/EE319K_Final_Project_Initial_Testing.exe" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/colors_valvano.h" beforeDir="false" afterPath="$PROJECT_DIR$/colors_valvano.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/sprites/SpriteParser/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/data/sprites/SpriteParser/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/sprites/SpriteParser/colors_valvano.h" beforeDir="false" afterPath="$PROJECT_DIR$/data/sprites/SpriteParser/colors_valvano.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/sprites/SpriteParser/valvano.txt" beforeDir="false" afterPath="$PROJECT_DIR$/data/sprites/SpriteParser/valvano.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/sprites/valvano.txt" beforeDir="false" afterPath="$PROJECT_DIR$/data/sprites/valvano.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/entities.h" beforeDir="false" afterPath="$PROJECT_DIR$/entities.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/kirby.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/kirby.cpp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/metadata.h" beforeDir="false" afterPath="$PROJECT_DIR$/metadata.h" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/valvano.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/valvano.cpp" afterDir="false" />
     </list>
@@ -65,8 +76,8 @@
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
-      <recent name="C:\Users\Allen\Documents\GitHub\EE319H-Final-Project-Simulation\data\sprites" />
       <recent name="C:\Users\Allen\Documents\GitHub\EE319H-Final-Project-Simulation" />
+      <recent name="C:\Users\Allen\Documents\GitHub\EE319H-Final-Project-Simulation\data\sprites" />
       <recent name="C:\Users\Allen\Documents\GitHub\EE319H-Final-Project-Simulation\data" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
@@ -123,7 +134,7 @@
       <workItem from="1587090698065" duration="21288000" />
       <workItem from="1587413874637" duration="617000" />
       <workItem from="1587510567343" duration="12000" />
-      <workItem from="1588403707309" duration="15267000" />
+      <workItem from="1588403707309" duration="17359000" />
     </task>
     <servers />
   </component>
