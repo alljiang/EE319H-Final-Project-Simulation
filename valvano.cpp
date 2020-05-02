@@ -104,20 +104,25 @@ void Valvano::controlLoop(float joyH, float joyV, bool btnA, bool btnB, bool shi
         }
     }
     else if(action == VAL_ACTION_LEDGEGRAB) {
-        animationIndex = 42;
+        animationIndex = 5;
         frameIndex = 0;
 
         x_mirroredOffset = 0;
-        xAnimationOffset = 8;
-        yAnimationOffset = -32;
+        xAnimationOffset = -1;
+        yAnimationOffset = -28;
+
+        //  i don't know why but i need this
+        if(stage->stageIndex == STAGE_SMASHVILLE && !mirrored) {
+            xAnimationOffset = 8;
+        }
 
         yVel = 0;
 
-        hitbox.offsetWidth(-11);
-        hitbox.offsetHeight(9);
+        hitbox.offsetWidth(0);
+        hitbox.offsetHeight(4);
         hitbox.offsetY(-28);
-        if(mirrored) hitbox.offsetX(-5);
-        else hitbox.offsetX(2);
+        if(mirrored) hitbox.offsetX(3);
+        else hitbox.offsetX(7);
     }
     else if(action == VAL_ACTION_JAB) {
         animationIndex = 11;
@@ -949,7 +954,10 @@ void Valvano::controlLoop(float joyH, float joyV, bool btnA, bool btnB, bool shi
     if(yVel < maxFallingVelocity) yVel = maxFallingVelocity;
 
     y += yVel;
-    if(y > ceiling && action != VAL_ACTION_LEDGEGRAB) y = ceiling;
+    if(y > ceiling && action != VAL_ACTION_LEDGEGRAB) {
+        y = ceiling;
+        yVel = 0;
+    }
     if(y <= floor) {
         y = floor;
         yVel = 0;
@@ -1206,7 +1214,6 @@ void Valvano::updateLastValues(float joyH, float joyV, bool btnA, bool btnB, boo
 }
 
 void Valvano::collide(Hurtbox *hurtbox, Player *otherPlayer) {
-    return;
     //  ledge grab
     if(hurtbox->source == 0) {
         if(this->hitbox.y < hurtbox->y

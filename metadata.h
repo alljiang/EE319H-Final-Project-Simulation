@@ -187,7 +187,7 @@ const char animations[CHARACTERS][64][12] = {
                                                 {"run"},    //  5
                                                 {"jump"},   //  1
                                                 {"falling"},    //  2
-                                                {""},
+                                                {"ledge"},  //  1
                                                 {""},
                                                 {""},
                                                 {""},
@@ -269,7 +269,7 @@ const char animations[CHARACTERS][64][12] = {
                                                 {"p2small"},
                                                 {"p2big"},
                                                 {"stageselect"},
-                                                {""},
+                                                {"selectbox"},
                                                 {""},
                                                 {""},
                                                 {""},

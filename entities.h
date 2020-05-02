@@ -139,6 +139,13 @@ public:
         p1 = player1;
         if(player2 != nullptr) p2 = player2;
         else p2 = nullptr;
+
+        //  clear hitboxes
+        for(int i = 0; i < hurtboxSlots; i++) {
+            hurtboxes[i].active = false;
+            activationFlags[i] = false;
+        }
+        persistentHurtbox = 0;
     }
 
     void checkCollisions();
@@ -617,7 +624,7 @@ class Valvano: public Player {
 #define VAL_ACTION_SHIELD 51
 #define VAL_ACTION_STUN 52
 
-#define VAL_STAGE_OFFSET 11
+#define VAL_STAGE_OFFSET 13
 
 protected:
     //  animation config

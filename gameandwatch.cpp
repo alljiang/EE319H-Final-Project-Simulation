@@ -1323,7 +1323,10 @@ void GameandWatch::controlLoop(float joyH, float joyV, bool btnA, bool btnB, boo
     overrideMaxVelocity = false;
 
     y += yVel;
-    if(y > ceiling && action != GAW_ACTION_LEDGEGRAB) y = ceiling;
+    if(y > ceiling && action != GAW_ACTION_LEDGEGRAB) {
+        y = ceiling;
+        yVel = 0;
+    }
     if(y <= floor) {
         y = floor;
         yVel = 0;

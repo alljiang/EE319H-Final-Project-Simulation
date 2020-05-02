@@ -1564,7 +1564,10 @@ void Kirby::controlLoop(float joyH, float joyV, bool btnA, bool btnB, bool shiel
     if(yVel < maxFallingVelocity
        && action != KIRBY_ACTION_DOWNSPECIALFALL) yVel = maxFallingVelocity;
     y += yVel;
-    if(y > ceiling && action != KIRBY_ACTION_LEDGEGRAB) y = ceiling;
+    if(y > ceiling && action != KIRBY_ACTION_LEDGEGRAB) {
+        y = ceiling;
+        yVel = 0;
+    }
     if(y <= floor) {
         y = floor;
         yVel = 0;

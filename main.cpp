@@ -46,6 +46,7 @@ Kirby kirby2;
 
 int8_t winner, winningCharacter;
 int8_t p1char, p2char;
+bool english;
 bool inCharMenu = false, inStageSelect = true, inWinScreen = false;
 bool quit, countdown, gameOver;
 uint8_t frameIndex, frameLength;
@@ -91,11 +92,10 @@ void resetPlayers() {
 
 //  runs on ce at beginning
 void game_startup() {
-    stage.initialize(stageToPlay, &hitboxManager);
-    resetPlayers();
-
     if(PLAYER2) hitboxManager.initialize(p1, p2);
     else hitboxManager.initialize(p1);
+    stage.initialize(stageToPlay, &hitboxManager);
+    resetPlayers();
 
     if(stageToPlay == STAGE_FINALDESTINATION) animator_setBackgroundColors(colors_fdst);
     else if(stageToPlay == STAGE_TOWER) animator_setBackgroundColors(colors_tower);
@@ -298,9 +298,10 @@ void startup() {
     }
 }
 
-void switchStageMenuToCharMenu(int8_t stageSelect) {
+void switchStageMenuToCharMenu(int8_t stageSelect, bool isEnglish) {
     inStageSelect = false;
     inCharMenu = true;
+    english = isEnglish;
     stageToPlay = stageSelect;
     startup();
 }
