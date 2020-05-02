@@ -1,38 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="2349ddb4-96f3-4450-a885-5dac0c7a4023" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/gif-valvano/dtilt.gif" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/gif-valvano/shield.gif" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../valvano/gif/dtilt.gif" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../valvano/gif/shield.gif" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../valvano/piskel/dtilt.piskel" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../valvano/piskel/shield.piskel" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../../.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../../.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../../cmake-build-debug/CMakeFiles/EE319K_Final_Project_Initial_Testing.dir/CXX.includecache" beforeDir="false" afterPath="$PROJECT_DIR$/../../../cmake-build-debug/CMakeFiles/EE319K_Final_Project_Initial_Testing.dir/CXX.includecache" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../../cmake-build-debug/CMakeFiles/EE319K_Final_Project_Initial_Testing.dir/ILI9341.cpp.obj" beforeDir="false" afterPath="$PROJECT_DIR$/../../../cmake-build-debug/CMakeFiles/EE319K_Final_Project_Initial_Testing.dir/ILI9341.cpp.obj" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../../cmake-build-debug/CMakeFiles/EE319K_Final_Project_Initial_Testing.dir/UART.cpp.obj" beforeDir="false" afterPath="$PROJECT_DIR$/../../../cmake-build-debug/CMakeFiles/EE319K_Final_Project_Initial_Testing.dir/UART.cpp.obj" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../../cmake-build-debug/CMakeFiles/EE319K_Final_Project_Initial_Testing.dir/WinScreen.cpp.obj" beforeDir="false" afterPath="$PROJECT_DIR$/../../../cmake-build-debug/CMakeFiles/EE319K_Final_Project_Initial_Testing.dir/WinScreen.cpp.obj" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../../cmake-build-debug/CMakeFiles/EE319K_Final_Project_Initial_Testing.dir/animator.cpp.obj" beforeDir="false" afterPath="$PROJECT_DIR$/../../../cmake-build-debug/CMakeFiles/EE319K_Final_Project_Initial_Testing.dir/animator.cpp.obj" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../../cmake-build-debug/CMakeFiles/EE319K_Final_Project_Initial_Testing.dir/charactermenu.cpp.obj" beforeDir="false" afterPath="$PROJECT_DIR$/../../../cmake-build-debug/CMakeFiles/EE319K_Final_Project_Initial_Testing.dir/charactermenu.cpp.obj" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../../cmake-build-debug/CMakeFiles/EE319K_Final_Project_Initial_Testing.dir/gameandwatch.cpp.obj" beforeDir="false" afterPath="$PROJECT_DIR$/../../../cmake-build-debug/CMakeFiles/EE319K_Final_Project_Initial_Testing.dir/gameandwatch.cpp.obj" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../../cmake-build-debug/CMakeFiles/EE319K_Final_Project_Initial_Testing.dir/kirby.cpp.obj" beforeDir="false" afterPath="$PROJECT_DIR$/../../../cmake-build-debug/CMakeFiles/EE319K_Final_Project_Initial_Testing.dir/kirby.cpp.obj" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../../cmake-build-debug/CMakeFiles/EE319K_Final_Project_Initial_Testing.dir/main.cpp.obj" beforeDir="false" afterPath="$PROJECT_DIR$/../../../cmake-build-debug/CMakeFiles/EE319K_Final_Project_Initial_Testing.dir/main.cpp.obj" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../../cmake-build-debug/CMakeFiles/EE319K_Final_Project_Initial_Testing.dir/objects.a" beforeDir="false" afterPath="$PROJECT_DIR$/../../../cmake-build-debug/CMakeFiles/EE319K_Final_Project_Initial_Testing.dir/objects.a" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../../cmake-build-debug/CMakeFiles/EE319K_Final_Project_Initial_Testing.dir/stage.cpp.obj" beforeDir="false" afterPath="$PROJECT_DIR$/../../../cmake-build-debug/CMakeFiles/EE319K_Final_Project_Initial_Testing.dir/stage.cpp.obj" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../../cmake-build-debug/CMakeFiles/EE319K_Final_Project_Initial_Testing.dir/stagemenu.cpp.obj" beforeDir="false" afterPath="$PROJECT_DIR$/../../../cmake-build-debug/CMakeFiles/EE319K_Final_Project_Initial_Testing.dir/stagemenu.cpp.obj" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../../cmake-build-debug/CMakeFiles/EE319K_Final_Project_Initial_Testing.dir/utils.cpp.obj" beforeDir="false" afterPath="$PROJECT_DIR$/../../../cmake-build-debug/CMakeFiles/EE319K_Final_Project_Initial_Testing.dir/utils.cpp.obj" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../../cmake-build-debug/CMakeFiles/EE319K_Final_Project_Initial_Testing.dir/valvano.cpp.obj" beforeDir="false" afterPath="$PROJECT_DIR$/../../../cmake-build-debug/CMakeFiles/EE319K_Final_Project_Initial_Testing.dir/valvano.cpp.obj" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../../cmake-build-debug/EE319K_Final_Project_Initial_Testing.exe" beforeDir="false" afterPath="$PROJECT_DIR$/../../../cmake-build-debug/EE319K_Final_Project_Initial_Testing.exe" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../../colors_valvano.h" beforeDir="false" afterPath="$PROJECT_DIR$/../../../colors_valvano.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/colors_valvano.h" beforeDir="false" afterPath="$PROJECT_DIR$/colors_valvano.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/valvano.txt" beforeDir="false" afterPath="$PROJECT_DIR$/valvano.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../valvano.txt" beforeDir="false" afterPath="$PROJECT_DIR$/../valvano.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../../main.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/../../../main.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../../metadata.h" beforeDir="false" afterPath="$PROJECT_DIR$/../../../metadata.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../../valvano.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/../../../valvano.cpp" afterDir="false" />
-    </list>
+    <list default="true" id="2349ddb4-96f3-4450-a885-5dac0c7a4023" name="Default Changelist" comment="" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
