@@ -189,7 +189,7 @@ const char animations[CHARACTERS][64][12] = {
                                                 {"falling"},    //  2
                                                 {"ledge"},  //  1
                                                 {"shield"}, //  1
-                                                {""},
+                                                {"hurt"},   //  2
                                                 {""},
                                                 {""},
                /*   10  */                      {"dashattack"},     //  5

@@ -661,14 +661,14 @@ void Valvano::controlLoop(float joyH, float joyV, bool btnA, bool btnB, bool shi
         }
     }
     else if(action == VAL_ACTION_HURT) {
-        animationIndex = 40;
+        animationIndex = 7;
 
-        xAnimationOffset = 7;
-        yAnimationOffset = -2;
-        x_mirroredOffset = 5;
+        xAnimationOffset = -6;
+        yAnimationOffset = -4;
+        x_mirroredOffset = -5;
 
+        //  knockback, add directional input
         if(disabledFrames == -1) {
-            //  knockback
             x += DIKnockbackHorizontalSpeed * joyH;
             y += DIKnockbackVerticalSpeed * joyV;
         }
