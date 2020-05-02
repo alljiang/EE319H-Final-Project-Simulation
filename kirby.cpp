@@ -120,6 +120,10 @@ void Kirby::controlLoop(float joyH, float joyV, bool btnA, bool btnB, bool shiel
         animationIndex = 0;
         frameIndex = 0;
 
+        xAnimationOffset = 0;
+        yAnimationOffset = 0;
+        x_mirroredOffset = 0;
+
         hitbox.offsetY(-6);
         hitbox.offsetX(0, mirrored);
         hitbox.offsetRadius(-2);

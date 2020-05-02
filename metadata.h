@@ -188,14 +188,14 @@ const char animations[CHARACTERS][64][12] = {
                                                 {"jump"},   //  1
                                                 {"falling"},    //  2
                                                 {"ledge"},  //  1
-                                                {""},
+                                                {"shield"}, //  1
                                                 {""},
                                                 {""},
                                                 {""},
                /*   10  */                      {"dashattack"},     //  5
                                                 {"jab"},    //  5 (first jab) + 3 (second jab)
                                                 {"ftilt"},      //  4
-                                                {""},
+                                                {"dtilt"},  //  2
                                                 {""},
                                                 {""},
                                                 {""},

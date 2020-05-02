@@ -2,14 +2,12 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="2349ddb4-96f3-4450-a885-5dac0c7a4023" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/gif-menu/selectbox.gif" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/gif-valvano/ledge.gif" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../menu/gif/selectbox.gif" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../menu/piskel/selectbox.piskel" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../menu/sources/selectionbox.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../misc/psd/selectionbox.psd" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../valvano/gif/ledge.gif" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../valvano/piskel/ledge.piskel" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/gif-valvano/dtilt.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/gif-valvano/shield.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../valvano/gif/dtilt.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../valvano/gif/shield.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../valvano/piskel/dtilt.piskel" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../valvano/piskel/shield.piskel" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../../../.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../../.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../../../cmake-build-debug/CMakeFiles/EE319K_Final_Project_Initial_Testing.dir/CXX.includecache" beforeDir="false" afterPath="$PROJECT_DIR$/../../../cmake-build-debug/CMakeFiles/EE319K_Final_Project_Initial_Testing.dir/CXX.includecache" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../../../cmake-build-debug/CMakeFiles/EE319K_Final_Project_Initial_Testing.dir/ILI9341.cpp.obj" beforeDir="false" afterPath="$PROJECT_DIR$/../../../cmake-build-debug/CMakeFiles/EE319K_Final_Project_Initial_Testing.dir/ILI9341.cpp.obj" afterDir="false" />
@@ -26,25 +24,14 @@
       <change beforePath="$PROJECT_DIR$/../../../cmake-build-debug/CMakeFiles/EE319K_Final_Project_Initial_Testing.dir/utils.cpp.obj" beforeDir="false" afterPath="$PROJECT_DIR$/../../../cmake-build-debug/CMakeFiles/EE319K_Final_Project_Initial_Testing.dir/utils.cpp.obj" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../../../cmake-build-debug/CMakeFiles/EE319K_Final_Project_Initial_Testing.dir/valvano.cpp.obj" beforeDir="false" afterPath="$PROJECT_DIR$/../../../cmake-build-debug/CMakeFiles/EE319K_Final_Project_Initial_Testing.dir/valvano.cpp.obj" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../../../cmake-build-debug/EE319K_Final_Project_Initial_Testing.exe" beforeDir="false" afterPath="$PROJECT_DIR$/../../../cmake-build-debug/EE319K_Final_Project_Initial_Testing.exe" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../../colors_menu.h" beforeDir="false" afterPath="$PROJECT_DIR$/../../../colors_menu.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../../colors_stagemenu.h" beforeDir="false" afterPath="$PROJECT_DIR$/../../../colors_stagemenu.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../colors_valvano.h" beforeDir="false" afterPath="$PROJECT_DIR$/../../../colors_valvano.h" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/PNGParser.py" beforeDir="false" afterPath="$PROJECT_DIR$/PNGParser.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/colors_menu.h" beforeDir="false" afterPath="$PROJECT_DIR$/colors_menu.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/colors_stagemenu.h" beforeDir="false" afterPath="$PROJECT_DIR$/colors_stagemenu.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/menu.txt" beforeDir="false" afterPath="$PROJECT_DIR$/menu.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/png/stagemenu.png" beforeDir="false" afterPath="$PROJECT_DIR$/png/stagemenu.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/stagemenu.txt" beforeDir="false" afterPath="$PROJECT_DIR$/stagemenu.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/colors_valvano.h" beforeDir="false" afterPath="$PROJECT_DIR$/colors_valvano.h" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/valvano.txt" beforeDir="false" afterPath="$PROJECT_DIR$/valvano.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../menu.txt" beforeDir="false" afterPath="$PROJECT_DIR$/../menu.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../menu/piskel/a.piskel" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../menu/sources/stage select menu.psd" beforeDir="false" afterPath="$PROJECT_DIR$/../menu/sources/stage select menu.psd" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../menu/stagemenu.png" beforeDir="false" afterPath="$PROJECT_DIR$/../menu/stagemenu.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../smenu.txt" beforeDir="false" afterPath="$PROJECT_DIR$/../smenu.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../valvano.txt" beforeDir="false" afterPath="$PROJECT_DIR$/../valvano.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../../../main.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/../../../main.cpp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../../../metadata.h" beforeDir="false" afterPath="$PROJECT_DIR$/../../../metadata.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../../stagemenu.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/../../../stagemenu.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../../stagemenu.h" beforeDir="false" afterPath="$PROJECT_DIR$/../../../stagemenu.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../valvano.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/../../../valvano.cpp" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -205,7 +192,7 @@
     </option>
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
-    <SUITE FILE_PATH="coverage/SpriteParser$GIFParser.coverage" NAME="GIFParser Coverage Results" MODIFIED="1588408764298" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/SpriteParser$GIFParser.coverage" NAME="GIFParser Coverage Results" MODIFIED="1588448946184" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/SpriteParser$PNGParser.coverage" NAME="PNGParser Coverage Results" MODIFIED="1588403631869" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
   </component>
 </project>

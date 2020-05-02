@@ -688,8 +688,8 @@ public:
     Hurtbox forwardTilt3 = Hurtbox((short)32, 7, SHAPE_RECTANGLE,
                                    14, 12, 1,
                                    4, 2.5, 3.5, -1);
-    Hurtbox downTilt = Hurtbox((short)24, 8, SHAPE_RECTANGLE,
-                               9, 23, 1,
+    Hurtbox downTilt = Hurtbox((short)0, 9, SHAPE_RECTANGLE,
+                               7, 32, 1,
                                3, 2.5, 3.7, -1);
     Hurtbox upTilt1 = Hurtbox((short)14, 40, SHAPE_RECTANGLE,
                               23, 23, 1,

@@ -1080,6 +1080,8 @@ void GameandWatch::controlLoop(float joyH, float joyV, bool btnA, bool btnB, boo
         animationIndex = 6;
         frameIndex = 0;
 
+        xAnimationOffset = 0;
+        yAnimationOffset = 0;
         x_mirroredOffset = -3;
 
         hitbox.offsetY(-8);
