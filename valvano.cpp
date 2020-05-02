@@ -221,30 +221,35 @@ void Valvano::controlLoop(float joyH, float joyV, bool btnA, bool btnB, bool shi
         }
     }
     else if(action == VAL_ACTION_FORWARDTILT) {
-        animationIndex = 10;
+        animationIndex = 12;
         mirrored = l_mirrored;
-        x_mirroredOffset = -20;
+        xAnimationOffset = 0;
+        x_mirroredOffset = -25;
+        yAnimationOffset = 0;
 
         hitbox.offsetY(0);
         hitbox.offsetX(0, mirrored);
 
         if(frameIndex == 0) frameExtension = 4;
-        else if(frameIndex == 1) frameExtension = 7;
+        else if(frameIndex == 3) frameExtension = 5;
+        else frameExtension = 0;
         if(frameLengthCounter++ >= frameExtension) {
             frameLengthCounter = 0;
             frameIndex++;
         }
-        if(frameIndex >= 2) {
+        if(frameIndex >= 4) {
             l_action = VAL_ACTION_FORWARDTILT;
             action = VAL_ACTION_RESTING;
             disabledFrames = 2;
             x_mirroredOffset = 0;
         }
         else {
-            if(frameIndex == 1) {
-                hitboxManager->addHurtbox(x + 16, y, mirrored,
-                                          forwardTilt, player);
-            }
+            if(frameIndex == 1) hitboxManager->addHurtbox(x + 7, y, mirrored,
+                                                          forwardTilt1, player);
+            else if(frameIndex == 2) hitboxManager->addHurtbox(x + 7, y, mirrored,
+                                                               forwardTilt2, player);
+            else if(frameIndex == 3 && frameLengthCounter < 2) hitboxManager->addHurtbox(x + 7, y, mirrored,
+                                                                                         forwardTilt3, player);
         }
     }
     else if(action == VAL_ACTION_UPTILT) {
@@ -1035,15 +1040,16 @@ void Valvano::controlLoop(float joyH, float joyV, bool btnA, bool btnB, bool shi
         frameIndex = 0;
         frameLengthCounter = 0;
     }
-//        //  forward tilt
-//    else if(disabledFrames == 0 && y == floor && (action == VAL_ACTION_RUNNING || action == VAL_ACTION_RESTING)
-//            && currentTime - l_btnARise_t == 0 && absVal(joyH) < 0.6 && absVal(joyH) > 0.1) {
-//        action = VAL_ACTION_FORWARDTILT;
-//        mirrored = joyH < 0;
-//        disabledFrames = 2;
-//        frameIndex = 0;
-//        frameLengthCounter = 0;
-//    }
+        //  forward tilt
+    else if(disabledFrames == 0 && y == floor && (action == VAL_ACTION_RUNNING || action == VAL_ACTION_RESTING)
+            && currentTime - l_btnARise_t == 0
+            && ((absVal(joyH) < 0.5 && absVal(joyH) > 0.1) || absVal(joyH - l_joyH) > 0.5)) {
+        action = VAL_ACTION_FORWARDTILT;
+        mirrored = joyH < 0;
+        disabledFrames = 2;
+        frameIndex = 0;
+        frameLengthCounter = 0;
+    }
 //        //  up tilt
 //    else if(disabledFrames == 0 && y == floor && (action == VAL_ACTION_RUNNING || action == VAL_ACTION_RESTING)
 //            && currentTime - l_btnARise_t == 0 && joyV > 0) {

@@ -16,19 +16,19 @@ class Collider {
 #define SHAPE_RECTANGLE 1
 
 public:
-    float x, y;
-    float xOffset, yOffset;
+    short x, y;
+    short xOffset, yOffset;
     uint8_t shape;
-    float height=0, width=0, radius=0;
+    short height=0, width=0, radius=0;
 
-    Collider(float x, float y, uint8_t shape, float radius) {
+    Collider(short x, short y, uint8_t shape, short radius) {
         this->x = x;
         this->y = y;
         this->shape = shape;
         this->radius = radius;
     }
 
-    Collider(float x, float y, uint8_t shape, float length, float width) {
+    Collider(short x, short y, uint8_t shape, short length, short width) {
         this->x = x;
         this->y = y;
         this->shape = shape;
@@ -51,8 +51,8 @@ public:
 
     Hurtbox() : Collider(0,0,0,0) {}
 
-    Hurtbox(bool circle, float cX, float cY,
-            uint8_t boxShape, float radius,
+    Hurtbox(bool circle, short cX, short cY,
+            uint8_t boxShape, short radius,
             int8_t frames=1, float damage=0,
             float xknockback=0, float yknockback=0,
             int16_t stunFrames=0, bool isProjectile=false)
@@ -66,7 +66,7 @@ public:
         this->isProjectile = isProjectile;
     }
 
-    Hurtbox(float cX, float cY, uint8_t boxShape, float height, float width,
+    Hurtbox(short cX, short cY, uint8_t boxShape, short height, short width,
             int8_t frames=1, float damage=0,
             float xknockback=0, float yknockback=0,
             int16_t stunFrames=0, bool isProjectile=false, bool* activationFlag=nullptr)
@@ -352,31 +352,31 @@ public:
     Hurtbox forwardTilt = Hurtbox(true,10, 11, SHAPE_CIRCLE,
                                   8, 1,
                                   3, 3.0, 2.5, -1);
-    Hurtbox upTilt = Hurtbox((float)-6., 21, SHAPE_RECTANGLE,
+    Hurtbox upTilt = Hurtbox((short)-6, 21, SHAPE_RECTANGLE,
                              25, 18, 1,
                              3, 1.5, 3.3, -1);
-    Hurtbox downTilt = Hurtbox((float)4., 5, SHAPE_RECTANGLE,
+    Hurtbox downTilt = Hurtbox((short)4, 5, SHAPE_RECTANGLE,
                                10, 33, 1,
                                3, 1, 2.6, -1);
-    Hurtbox forwardSmash = Hurtbox((float)25., 5, SHAPE_RECTANGLE,
+    Hurtbox forwardSmash = Hurtbox((short)25, 5, SHAPE_RECTANGLE,
                                    20, 20, 1,
                                    3.9, 3.7, 3.1, -1);
     Hurtbox upSmash = Hurtbox(true, 0., 26, SHAPE_CIRCLE,
                               14, 1,
                               3.9,3.1, 4.1,-1);
-    Hurtbox downSmash = Hurtbox((float)0., 5, SHAPE_RECTANGLE,
+    Hurtbox downSmash = Hurtbox((short)0, 5, SHAPE_RECTANGLE,
                                 10, 35, 1,
                                 3.9,4.2, 1.5, -1);
-    Hurtbox upSpecialRising = Hurtbox((float)25., 18, SHAPE_RECTANGLE,
+    Hurtbox upSpecialRising = Hurtbox((short)25, 18, SHAPE_RECTANGLE,
                                       20, 30, 1,
                                       3, 2.1, 3.2, -1);
-    Hurtbox upSpecialTop = Hurtbox((float)0., 40, SHAPE_RECTANGLE,
+    Hurtbox upSpecialTop = Hurtbox((short)0, 40, SHAPE_RECTANGLE,
                                    20, 40, 1,
                                    2.2, 2.8, 3.3, -1);
-    Hurtbox upSpecialFalling = Hurtbox((float)25., 18, SHAPE_RECTANGLE,
+    Hurtbox upSpecialFalling = Hurtbox((short)25, 18, SHAPE_RECTANGLE,
                                       20, 30, 1,
                                       1.2, 2.8, -0.8, -1);
-    Hurtbox upSpecialProjectile = Hurtbox((float)4., 16, SHAPE_RECTANGLE,
+    Hurtbox upSpecialProjectile = Hurtbox((short)4, 16, SHAPE_RECTANGLE,
                                           32, 20, 1,
                                           4, 3.2, 2.9, 7, true);
     Hurtbox downSpecial = Hurtbox(true,0, 5, SHAPE_CIRCLE,
@@ -394,7 +394,7 @@ public:
     Hurtbox upAir = Hurtbox(true,0, 28, SHAPE_CIRCLE,
                             16, 1,
                             6, 1.6, 2.7, -1);
-    Hurtbox downAir = Hurtbox((float)5., -2, SHAPE_RECTANGLE,
+    Hurtbox downAir = Hurtbox((short)5, -2, SHAPE_RECTANGLE,
                               17, 10, 1,
                               0.8, 0.6, 0.1, 2);
     Hurtbox dashAttack = Hurtbox(true,2, 13, SHAPE_CIRCLE,
@@ -524,55 +524,55 @@ protected:
 
 public:
 
-    Hurtbox neutralAttack = Hurtbox((float)29., 12, SHAPE_RECTANGLE,
+    Hurtbox neutralAttack = Hurtbox((short)29, 12, SHAPE_RECTANGLE,
                                     20, 20, 1,
                                     0.8, 0.8, 0, 3);
-    Hurtbox dashAttack = Hurtbox((float)0., 15, SHAPE_RECTANGLE,
+    Hurtbox dashAttack = Hurtbox((short)0, 15, SHAPE_RECTANGLE,
                                     28, 32, 1,
                                     3, 3.1, 2.5, -1);
-    Hurtbox forwardTilt = Hurtbox((float)35., 11, SHAPE_RECTANGLE,
+    Hurtbox forwardTilt = Hurtbox((short)35, 11, SHAPE_RECTANGLE,
                                   20, 30, 1,
                                   4  , 2.5, 3.5, -1);
-    Hurtbox downTilt = Hurtbox((float)24., 8, SHAPE_RECTANGLE,
+    Hurtbox downTilt = Hurtbox((short)24, 8, SHAPE_RECTANGLE,
                                   9, 23, 1,
                                   3, 2.5, 3.7, -1);
-    Hurtbox upTilt1 = Hurtbox((float)14., 40, SHAPE_RECTANGLE,
+    Hurtbox upTilt1 = Hurtbox((short)14, 40, SHAPE_RECTANGLE,
                               23, 23, 1,
                               7, 3.3, 4.1, -1);
-    Hurtbox upTilt2 = Hurtbox((float)-21., 43, SHAPE_RECTANGLE,
+    Hurtbox upTilt2 = Hurtbox((short)-21, 43, SHAPE_RECTANGLE,
                               23, 23, 1,
                               7, 3.3, 4.1, -1);
-    Hurtbox forwardSmash = Hurtbox((float)30., 18, SHAPE_RECTANGLE,
+    Hurtbox forwardSmash = Hurtbox((short)30, 18, SHAPE_RECTANGLE,
                                   20, 20, 1,
                                   10, 3.5, 3.8, -1);
-    Hurtbox upSmash = Hurtbox((float)1., 20, SHAPE_RECTANGLE,
+    Hurtbox upSmash = Hurtbox((short)1, 20, SHAPE_RECTANGLE,
                               23, 46, 1,
                               10, 3.7, 3.9, -1);
-    Hurtbox downSmash = Hurtbox((float)0., 12, SHAPE_RECTANGLE,
+    Hurtbox downSmash = Hurtbox((short)0, 12, SHAPE_RECTANGLE,
                               24, 66, 1,
                               8, 4.0, 3.2, -1);
-    Hurtbox forwardAir = Hurtbox((float)24., 20, SHAPE_RECTANGLE,
+    Hurtbox forwardAir = Hurtbox((short)24, 20, SHAPE_RECTANGLE,
                                   15, 25, 1,
                                   6, 3.9, 3.5, -1);
-    Hurtbox downAir = Hurtbox((float)5., 12, SHAPE_RECTANGLE,
+    Hurtbox downAir = Hurtbox((short)5, 12, SHAPE_RECTANGLE,
                                26, 14, 1,
                                7, 3.7, 3.1, -1);
-    Hurtbox upAir = Hurtbox((float)-4., 44, SHAPE_RECTANGLE,
+    Hurtbox upAir = Hurtbox((short)-4, 44, SHAPE_RECTANGLE,
                               19, 20, 1,
                               3, 2.2, 3.7, -1);
-    Hurtbox backAir = Hurtbox((float)-25., 15, SHAPE_RECTANGLE,
+    Hurtbox backAir = Hurtbox((short)-25, 15, SHAPE_RECTANGLE,
                                  21, 31, 1,
                                  8, 3.7, 3.0, -1);
-    Hurtbox neutralAir = Hurtbox((float)1., 34, SHAPE_RECTANGLE,
+    Hurtbox neutralAir = Hurtbox((short)1, 34, SHAPE_RECTANGLE,
                                 30, 40, 1,
                                 5, 3.3, 3.3, -1);
-    Hurtbox sideSpecial = Hurtbox((float)21., 28, SHAPE_RECTANGLE,
+    Hurtbox sideSpecial = Hurtbox((short)21, 28, SHAPE_RECTANGLE,
                                   16, 24, 1,
                                   7, 2.8, 2.8, -1);
     Hurtbox neutralSpecialProjectile = Hurtbox(true,0, 5, SHAPE_CIRCLE,
                                  8, 1,
                                  2, 1.2, 1.5, -1);
-    Hurtbox downSpecialProjectile = Hurtbox((float)62., 20, SHAPE_RECTANGLE,
+    Hurtbox downSpecialProjectile = Hurtbox((short)62, 20, SHAPE_RECTANGLE,
                                   40, 90, 1,
                                   7, 4.8, 4.8, -1);
 
@@ -669,55 +669,49 @@ public:
     Hurtbox jab = Hurtbox(true,13, 14, SHAPE_CIRCLE,
                                                5, 1,
                                                2, 1.9, 1.5, 2);
-    Hurtbox dashAttack = Hurtbox((float)16., 17, SHAPE_RECTANGLE,
+    Hurtbox dashAttack = Hurtbox((short)21, 17, SHAPE_RECTANGLE,
                                  34, 10, 1,
                                  3, 3.1, 2.5, -1);
-    Hurtbox forwardTilt = Hurtbox((float)35., 11, SHAPE_RECTANGLE,
-                                  20, 30, 1,
-                                  4  , 2.5, 3.5, -1);
-    Hurtbox downTilt = Hurtbox((float)24., 8, SHAPE_RECTANGLE,
+    Hurtbox forwardTilt1 = Hurtbox((short)16, 25, SHAPE_RECTANGLE,
+                                   12, 18, 1,
+                                   4, 2.5, 3.5, -1);
+    Hurtbox forwardTilt2 = Hurtbox((short)26, 11, SHAPE_RECTANGLE,
+                                   14, 16, 1,
+                                   4, 2.5, 3.5, -1);
+    Hurtbox forwardTilt3 = Hurtbox((short)32, 7, SHAPE_RECTANGLE,
+                                   14, 12, 1,
+                                   4, 2.5, 3.5, -1);
+    Hurtbox downTilt = Hurtbox((short)24, 8, SHAPE_RECTANGLE,
                                9, 23, 1,
                                3, 2.5, 3.7, -1);
-    Hurtbox upTilt1 = Hurtbox((float)14., 40, SHAPE_RECTANGLE,
+    Hurtbox upTilt1 = Hurtbox((short)14, 40, SHAPE_RECTANGLE,
                               23, 23, 1,
                               7, 3.3, 4.1, -1);
-    Hurtbox upTilt2 = Hurtbox((float)-21., 43, SHAPE_RECTANGLE,
+    Hurtbox upTilt2 = Hurtbox((short)-21, 43, SHAPE_RECTANGLE,
                               23, 23, 1,
                               7, 3.3, 4.1, -1);
-    Hurtbox forwardSmash = Hurtbox((float)30., 18, SHAPE_RECTANGLE,
-                                   20, 20, 1,
-                                   10, 3.5, 3.8, -1);
-    Hurtbox upSmash = Hurtbox((float)1., 20, SHAPE_RECTANGLE,
-                              23, 46, 1,
-                              10, 3.7, 3.9, -1);
-    Hurtbox downSmash = Hurtbox((float)0., 12, SHAPE_RECTANGLE,
-                                24, 66, 1,
-                                8, 4.0, 3.2, -1);
     Hurtbox forwardAir =  Hurtbox(true,25, 14, SHAPE_CIRCLE,
                                   11, 1,
                                   2, 1.9, 1.5, 2);
     Hurtbox downAir = Hurtbox(true,0, 0, SHAPE_CIRCLE,
                               11, 1,
                               2, 1.9, 1.5, 2);
-    Hurtbox upAir = Hurtbox((float)-4., 44, SHAPE_RECTANGLE,
+    Hurtbox upAir = Hurtbox((short)-4, 44, SHAPE_RECTANGLE,
                             19, 20, 1,
                             3, 2.2, 3.7, -1);
-    Hurtbox backAir = Hurtbox((float)-25., 15, SHAPE_RECTANGLE,
-                              21, 31, 1,
-                              8, 3.7, 3.0, -1);
-    Hurtbox neutralAir = Hurtbox((float)0., 22, SHAPE_RECTANGLE,
+    Hurtbox neutralAir = Hurtbox((short)0, 22, SHAPE_RECTANGLE,
                                  42, 50, 1,
                                  5, 3.3, 3.3, -1);
-    Hurtbox sideSpecial1 = Hurtbox((float)13., 20, SHAPE_RECTANGLE,
+    Hurtbox sideSpecial1 = Hurtbox((short)13, 20, SHAPE_RECTANGLE,
                                    5, 16, 1,
                                    7, 2.8, 2.8, -1);
-    Hurtbox sideSpecial2 = Hurtbox((float)26., 17, SHAPE_RECTANGLE,
+    Hurtbox sideSpecial2 = Hurtbox((short)26, 17, SHAPE_RECTANGLE,
                                    6, 18, 1,
                                    7, 2.8, 2.8, -1);
-    Hurtbox sideSpecial3 = Hurtbox((float)33., 17, SHAPE_RECTANGLE,
+    Hurtbox sideSpecial3 = Hurtbox((short)33, 17, SHAPE_RECTANGLE,
                                    6, 48, 1,
                                    7, 2.8, 2.8, -1);
-    Hurtbox sideSpecial4 = Hurtbox((float)25., 17, SHAPE_RECTANGLE,
+    Hurtbox sideSpecial4 = Hurtbox((short)25, 17, SHAPE_RECTANGLE,
                                    8, 36, 1,
                                    7, 2.8, 2.8, -1);
     Hurtbox laserProjectile = Hurtbox((float)0., 1, SHAPE_RECTANGLE,

@@ -194,7 +194,7 @@ const char animations[CHARACTERS][64][12] = {
                                                 {""},
                /*   10  */                      {"dashattack"},     //  5
                                                 {"jab"},    //  5 (first jab) + 3 (second jab)
-                                                {""},
+                                                {"ftilt"},      //  4
                                                 {""},
                                                 {""},
                                                 {""},
