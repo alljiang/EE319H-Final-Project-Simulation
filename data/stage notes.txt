@@ -22,9 +22,9 @@ Battlefield:
 Smashville:
 
     Top floor: (35, 65) to (295, 65)
-    Left slope: (35, 65) to (47, 23)        a=-3.5  b=187.5
-    Right slope: (295, 65) to (274, 23)     a=2  b=-525
-    Floor ceiling: (47, 23) to (274, 23)
+    Left slope: (15, 65) to (80, 20)        a=-0.6923    b=75.38
+    Right slope: (315, 65) to (252, 20)     a=0.4369     b= -72.62
+    Floor ceiling: (100, 5) to (232, 5)
 
 EER:
 
