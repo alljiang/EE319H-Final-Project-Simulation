@@ -69,12 +69,18 @@ CMakeFiles/EE319K_Final_Project_Initial_Testing.dir/WinScreen.cpp.obj
  C:/Users/Allen/Documents/GitHub/EE319H-Final-Project-Simulation/WinScreen.cpp
  C:/Users/Allen/Documents/GitHub/EE319H-Final-Project-Simulation/WinScreen.h
  C:/Users/Allen/Documents/GitHub/EE319H-Final-Project-Simulation/animator.h
- C:/Users/Allen/Documents/GitHub/EE319H-Final-Project-Simulation/colors_winp1gaw.h
- C:/Users/Allen/Documents/GitHub/EE319H-Final-Project-Simulation/colors_winp1kirby.h
- C:/Users/Allen/Documents/GitHub/EE319H-Final-Project-Simulation/colors_winp1val.h
- C:/Users/Allen/Documents/GitHub/EE319H-Final-Project-Simulation/colors_winp2gaw.h
- C:/Users/Allen/Documents/GitHub/EE319H-Final-Project-Simulation/colors_winp2kirby.h
- C:/Users/Allen/Documents/GitHub/EE319H-Final-Project-Simulation/colors_winp2val.h
+ C:/Users/Allen/Documents/GitHub/EE319H-Final-Project-Simulation/colors_w1gw.h
+ C:/Users/Allen/Documents/GitHub/EE319H-Final-Project-Simulation/colors_w1gwc.h
+ C:/Users/Allen/Documents/GitHub/EE319H-Final-Project-Simulation/colors_w1kb.h
+ C:/Users/Allen/Documents/GitHub/EE319H-Final-Project-Simulation/colors_w1kbc.h
+ C:/Users/Allen/Documents/GitHub/EE319H-Final-Project-Simulation/colors_w1va.h
+ C:/Users/Allen/Documents/GitHub/EE319H-Final-Project-Simulation/colors_w1vac.h
+ C:/Users/Allen/Documents/GitHub/EE319H-Final-Project-Simulation/colors_w2gw.h
+ C:/Users/Allen/Documents/GitHub/EE319H-Final-Project-Simulation/colors_w2gwc.h
+ C:/Users/Allen/Documents/GitHub/EE319H-Final-Project-Simulation/colors_w2kb.h
+ C:/Users/Allen/Documents/GitHub/EE319H-Final-Project-Simulation/colors_w2kbc.h
+ C:/Users/Allen/Documents/GitHub/EE319H-Final-Project-Simulation/colors_w2va.h
+ C:/Users/Allen/Documents/GitHub/EE319H-Final-Project-Simulation/colors_w2vac.h
  C:/Users/Allen/Documents/GitHub/EE319H-Final-Project-Simulation/metadata.h
 CMakeFiles/EE319K_Final_Project_Initial_Testing.dir/animator.cpp.obj
  C:/Users/Allen/Documents/GitHub/EE319H-Final-Project-Simulation/Flash.h

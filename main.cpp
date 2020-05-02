@@ -46,7 +46,7 @@ Kirby kirby2;
 
 int8_t winner, winningCharacter;
 int8_t p1char, p2char;
-bool english;
+bool english = false;
 bool inCharMenu = false, inStageSelect = true, inWinScreen = false;
 bool quit, countdown, gameOver;
 uint8_t frameIndex, frameLength;
@@ -285,13 +285,13 @@ void startup() {
     ILI9341_init();
 
     if(inStageSelect) {
-        stageMenu.start();
+        stageMenu.start(english);
     }
     else if(inCharMenu) {
         characterMenu.start();
     }
     else if(inWinScreen) {
-        winScreen.start(winner, winningCharacter);
+        winScreen.start(winner, winningCharacter, english);
     }
     else {
         game_startup();

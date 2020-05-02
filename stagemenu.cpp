@@ -7,11 +7,12 @@
 #include "metadata.h"
 #include "colors_stagemenu.h"
 
-void StageMenu::start() {
+void StageMenu::start(bool isEnglish) {
     reset();
     animator_setBackgroundColors(colors_stagemenu);
     animator_readPersistentSprite(persistentSprites[BACKGROUND_STAGEMENU], 0, 0);
     animator_readCharacterSDCard(4);
+    englishSelected = isEnglish;
 }
 
 void StageMenu::loop(double joyH1, double joyV1, double joyH2, double joyV2, bool btnA,
@@ -73,7 +74,6 @@ void StageMenu::reset() {
     currentTime = 0;
     cursorX = 145;
     cursorY = 25;
-    englishSelected = true;
 }
 
 int8_t StageMenu::getStage(double x, double y) {

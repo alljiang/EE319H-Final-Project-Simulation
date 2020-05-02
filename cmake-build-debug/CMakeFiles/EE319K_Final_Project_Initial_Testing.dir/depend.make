@@ -68,12 +68,18 @@ CMakeFiles/EE319K_Final_Project_Initial_Testing.dir/UART.cpp.obj: ../metadata.h
 CMakeFiles/EE319K_Final_Project_Initial_Testing.dir/WinScreen.cpp.obj: ../WinScreen.cpp
 CMakeFiles/EE319K_Final_Project_Initial_Testing.dir/WinScreen.cpp.obj: ../WinScreen.h
 CMakeFiles/EE319K_Final_Project_Initial_Testing.dir/WinScreen.cpp.obj: ../animator.h
-CMakeFiles/EE319K_Final_Project_Initial_Testing.dir/WinScreen.cpp.obj: ../colors_winp1gaw.h
-CMakeFiles/EE319K_Final_Project_Initial_Testing.dir/WinScreen.cpp.obj: ../colors_winp1kirby.h
-CMakeFiles/EE319K_Final_Project_Initial_Testing.dir/WinScreen.cpp.obj: ../colors_winp1val.h
-CMakeFiles/EE319K_Final_Project_Initial_Testing.dir/WinScreen.cpp.obj: ../colors_winp2gaw.h
-CMakeFiles/EE319K_Final_Project_Initial_Testing.dir/WinScreen.cpp.obj: ../colors_winp2kirby.h
-CMakeFiles/EE319K_Final_Project_Initial_Testing.dir/WinScreen.cpp.obj: ../colors_winp2val.h
+CMakeFiles/EE319K_Final_Project_Initial_Testing.dir/WinScreen.cpp.obj: ../colors_w1gw.h
+CMakeFiles/EE319K_Final_Project_Initial_Testing.dir/WinScreen.cpp.obj: ../colors_w1gwc.h
+CMakeFiles/EE319K_Final_Project_Initial_Testing.dir/WinScreen.cpp.obj: ../colors_w1kb.h
+CMakeFiles/EE319K_Final_Project_Initial_Testing.dir/WinScreen.cpp.obj: ../colors_w1kbc.h
+CMakeFiles/EE319K_Final_Project_Initial_Testing.dir/WinScreen.cpp.obj: ../colors_w1va.h
+CMakeFiles/EE319K_Final_Project_Initial_Testing.dir/WinScreen.cpp.obj: ../colors_w1vac.h
+CMakeFiles/EE319K_Final_Project_Initial_Testing.dir/WinScreen.cpp.obj: ../colors_w2gw.h
+CMakeFiles/EE319K_Final_Project_Initial_Testing.dir/WinScreen.cpp.obj: ../colors_w2gwc.h
+CMakeFiles/EE319K_Final_Project_Initial_Testing.dir/WinScreen.cpp.obj: ../colors_w2kb.h
+CMakeFiles/EE319K_Final_Project_Initial_Testing.dir/WinScreen.cpp.obj: ../colors_w2kbc.h
+CMakeFiles/EE319K_Final_Project_Initial_Testing.dir/WinScreen.cpp.obj: ../colors_w2va.h
+CMakeFiles/EE319K_Final_Project_Initial_Testing.dir/WinScreen.cpp.obj: ../colors_w2vac.h
 CMakeFiles/EE319K_Final_Project_Initial_Testing.dir/WinScreen.cpp.obj: ../metadata.h
 
 CMakeFiles/EE319K_Final_Project_Initial_Testing.dir/animator.cpp.obj: ../Flash.h
