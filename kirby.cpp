@@ -639,6 +639,7 @@ void Kirby::controlLoop(float joyH, float joyV, bool btnA, bool btnB, bool shiel
         if(frameIndex >= 5 && frameLengthCounter == frameExtension) {
             l_action = action;
             action = KIRBY_ACTION_UPSPECIALFALLING;
+            upb_projectile_activated = false;
         }
 
         switch(frameIndex) {
@@ -709,9 +710,10 @@ void Kirby::controlLoop(float joyH, float joyV, bool btnA, bool btnB, bool shiel
         disabledFrames = 2;
 
         if(y <= floor) {
-            if(!upb_projectile_active) {
+            if(!upb_projectile_active && !upb_projectile_activated) {
                 //  start projectile
                 upb_projectile_active = true;
+                upb_projectile_activated = true;
                 upb_projectile_mirrored = mirrored;
                 upb_projectile_startX = x;
                 upb_projectile_startY = y;

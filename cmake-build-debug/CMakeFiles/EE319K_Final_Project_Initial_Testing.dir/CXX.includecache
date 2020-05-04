@@ -652,6 +652,16 @@ C:/Users/Allen/Documents/GitHub/EE319H-Final-Project-Simulation/stdint.h
 stdio.h
 C:/Users/Allen/Documents/GitHub/EE319H-Final-Project-Simulation/stdio.h
 
+C:/Users/Allen/Documents/GitHub/EE319H-Final-Project-Simulation/collider.cpp
+cstdio
+-
+entities.h
+C:/Users/Allen/Documents/GitHub/EE319H-Final-Project-Simulation/entities.h
+utils.h
+C:/Users/Allen/Documents/GitHub/EE319H-Final-Project-Simulation/utils.h
+ILI9341.h
+C:/Users/Allen/Documents/GitHub/EE319H-Final-Project-Simulation/ILI9341.h
+
 C:/Users/Allen/Documents/GitHub/EE319H-Final-Project-Simulation/colors_battlefield.h
 stdint.h
 -
@@ -672,10 +682,6 @@ C:/Users/Allen/Documents/GitHub/EE319H-Final-Project-Simulation/colors_smashvill
 stdint.h
 -
 
-C:/Users/Allen/Documents/GitHub/EE319H-Final-Project-Simulation/colors_stagemenu.h
-stdint.h
--
-
 C:/Users/Allen/Documents/GitHub/EE319H-Final-Project-Simulation/colors_tower.h
 stdint.h
 -
@@ -685,6 +691,32 @@ C:/Users/Allen/Documents/GitHub/EE319H-Final-Project-Simulation/controller.h
 C:/Users/Allen/Documents/GitHub/EE319H-Final-Project-Simulation/entities.h
 stdint.h
 C:/Users/Allen/Documents/GitHub/EE319H-Final-Project-Simulation/stdint.h
+
+C:/Users/Allen/Documents/GitHub/EE319H-Final-Project-Simulation/gameandwatch.cpp
+entities.h
+C:/Users/Allen/Documents/GitHub/EE319H-Final-Project-Simulation/entities.h
+utils.h
+C:/Users/Allen/Documents/GitHub/EE319H-Final-Project-Simulation/utils.h
+metadata.h
+C:/Users/Allen/Documents/GitHub/EE319H-Final-Project-Simulation/metadata.h
+UART.h
+C:/Users/Allen/Documents/GitHub/EE319H-Final-Project-Simulation/UART.h
+stage.h
+C:/Users/Allen/Documents/GitHub/EE319H-Final-Project-Simulation/stage.h
+
+C:/Users/Allen/Documents/GitHub/EE319H-Final-Project-Simulation/kirby.cpp
+cstdio
+-
+entities.h
+C:/Users/Allen/Documents/GitHub/EE319H-Final-Project-Simulation/entities.h
+utils.h
+C:/Users/Allen/Documents/GitHub/EE319H-Final-Project-Simulation/utils.h
+metadata.h
+C:/Users/Allen/Documents/GitHub/EE319H-Final-Project-Simulation/metadata.h
+UART.h
+C:/Users/Allen/Documents/GitHub/EE319H-Final-Project-Simulation/UART.h
+stage.h
+C:/Users/Allen/Documents/GitHub/EE319H-Final-Project-Simulation/stage.h
 
 C:/Users/Allen/Documents/GitHub/EE319H-Final-Project-Simulation/main.cpp
 SDL.h
@@ -734,21 +766,21 @@ C:/Users/Allen/Documents/GitHub/EE319H-Final-Project-Simulation/metadata.h
 stdbool.h
 -
 
+C:/Users/Allen/Documents/GitHub/EE319H-Final-Project-Simulation/stage.cpp
+stage.h
+C:/Users/Allen/Documents/GitHub/EE319H-Final-Project-Simulation/stage.h
+metadata.h
+C:/Users/Allen/Documents/GitHub/EE319H-Final-Project-Simulation/metadata.h
+entities.h
+C:/Users/Allen/Documents/GitHub/EE319H-Final-Project-Simulation/entities.h
+UART.h
+C:/Users/Allen/Documents/GitHub/EE319H-Final-Project-Simulation/UART.h
+
 C:/Users/Allen/Documents/GitHub/EE319H-Final-Project-Simulation/stage.h
 cstdint
 -
 entities.h
 C:/Users/Allen/Documents/GitHub/EE319H-Final-Project-Simulation/entities.h
-
-C:/Users/Allen/Documents/GitHub/EE319H-Final-Project-Simulation/stagemenu.cpp
-stagemenu.h
-C:/Users/Allen/Documents/GitHub/EE319H-Final-Project-Simulation/stagemenu.h
-UART.h
-C:/Users/Allen/Documents/GitHub/EE319H-Final-Project-Simulation/UART.h
-metadata.h
-C:/Users/Allen/Documents/GitHub/EE319H-Final-Project-Simulation/metadata.h
-colors_stagemenu.h
-C:/Users/Allen/Documents/GitHub/EE319H-Final-Project-Simulation/colors_stagemenu.h
 
 C:/Users/Allen/Documents/GitHub/EE319H-Final-Project-Simulation/stagemenu.h
 stdlib.h
@@ -765,4 +797,16 @@ cstdlib
 -
 cstdio
 -
+
+C:/Users/Allen/Documents/GitHub/EE319H-Final-Project-Simulation/valvano.cpp
+entities.h
+C:/Users/Allen/Documents/GitHub/EE319H-Final-Project-Simulation/entities.h
+utils.h
+C:/Users/Allen/Documents/GitHub/EE319H-Final-Project-Simulation/utils.h
+metadata.h
+C:/Users/Allen/Documents/GitHub/EE319H-Final-Project-Simulation/metadata.h
+UART.h
+C:/Users/Allen/Documents/GitHub/EE319H-Final-Project-Simulation/UART.h
+stage.h
+C:/Users/Allen/Documents/GitHub/EE319H-Final-Project-Simulation/stage.h
 
