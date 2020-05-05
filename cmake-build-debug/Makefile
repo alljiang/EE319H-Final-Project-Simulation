@@ -527,6 +527,33 @@ stagemenu.cpp.s:
 	$(MAKE) -f CMakeFiles\EE319K_Final_Project_Initial_Testing.dir\build.make CMakeFiles/EE319K_Final_Project_Initial_Testing.dir/stagemenu.cpp.s
 .PHONY : stagemenu.cpp.s
 
+title.obj: title.cpp.obj
+
+.PHONY : title.obj
+
+# target to build an object file
+title.cpp.obj:
+	$(MAKE) -f CMakeFiles\EE319K_Final_Project_Initial_Testing.dir\build.make CMakeFiles/EE319K_Final_Project_Initial_Testing.dir/title.cpp.obj
+.PHONY : title.cpp.obj
+
+title.i: title.cpp.i
+
+.PHONY : title.i
+
+# target to preprocess a source file
+title.cpp.i:
+	$(MAKE) -f CMakeFiles\EE319K_Final_Project_Initial_Testing.dir\build.make CMakeFiles/EE319K_Final_Project_Initial_Testing.dir/title.cpp.i
+.PHONY : title.cpp.i
+
+title.s: title.cpp.s
+
+.PHONY : title.s
+
+# target to generate assembly for a file
+title.cpp.s:
+	$(MAKE) -f CMakeFiles\EE319K_Final_Project_Initial_Testing.dir\build.make CMakeFiles/EE319K_Final_Project_Initial_Testing.dir/title.cpp.s
+.PHONY : title.cpp.s
+
 utils.obj: utils.cpp.obj
 
 .PHONY : utils.obj
@@ -635,6 +662,9 @@ help:
 	@echo ... stagemenu.obj
 	@echo ... stagemenu.i
 	@echo ... stagemenu.s
+	@echo ... title.obj
+	@echo ... title.i
+	@echo ... title.s
 	@echo ... utils.obj
 	@echo ... utils.i
 	@echo ... utils.s

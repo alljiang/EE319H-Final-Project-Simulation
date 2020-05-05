@@ -19,6 +19,7 @@
 #include "Audio.h"
 #include "charactermenu.h"
 #include "stagemenu.h"
+#include "title.h"
 #include "WinScreen.h"
 
 using namespace std;
@@ -26,6 +27,7 @@ using namespace chrono;
 
 SDL_Event event;
 
+Title titleScreen;
 StageMenu stageMenu;
 CharacterMenu characterMenu;
 WinScreen winScreen;
@@ -47,7 +49,7 @@ Kirby kirby2;
 int8_t winner, winningCharacter;
 int8_t p1char, p2char;
 bool english = false;
-bool inCharMenu = false, inStageSelect = true, inWinScreen = false;
+bool inTitleScreen = true, inCharMenu = false, inStageSelect = false, inWinScreen = false;
 bool quit, countdown, gameOver;
 uint8_t frameIndex, frameLength;
 long long loopsCompleted;
@@ -284,7 +286,10 @@ void startup() {
 //    SD_startSDCard();
     ILI9341_init();
 
-    if(inStageSelect) {
+    if(inTitleScreen) {
+        titleScreen.start();
+    }
+    else if(inStageSelect) {
         stageMenu.start(english);
     }
     else if(inCharMenu) {
@@ -296,6 +301,12 @@ void startup() {
     else {
         game_startup();
     }
+}
+
+void switchTitleToStageMenu() {
+    inTitleScreen = false;
+    inStageSelect = true;
+    startup();
 }
 
 void switchStageMenuToCharMenu(int8_t stageSelect, bool isEnglish) {
@@ -342,7 +353,11 @@ void loop() {
     if(millis() - lastUpdate >= 1. / UPDATERATE * 1000) {
         lastUpdate = millis();
 
-        if(inStageSelect) {
+        if(inTitleScreen) {
+            titleScreen.loop(getBtn_a(1) || getBtn_a(2) || getBtn_b(1) || getBtn_b(2)
+            || getBtn_start(1) || getBtn_start(2), &switchTitleToStageMenu);
+        }
+        else if(inStageSelect) {
             stageMenu.loop(getJoystick_h(1), getJoystick_v(1),
                            getJoystick_h(2), getJoystick_v(2),
                            getBtn_a(1) || getBtn_a(2),
