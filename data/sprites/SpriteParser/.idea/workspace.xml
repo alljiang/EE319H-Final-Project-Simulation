@@ -2,15 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="2349ddb4-96f3-4450-a885-5dac0c7a4023" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/gif-valvano/stun.gif" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/gif-valvano/utilt.gif" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../valvano/gif/stun.gif" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../valvano/gif/utilt.gif" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../valvano/piskel/stun.piskel" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../valvano/piskel/uptilt.piskel" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/colors_valvano.h" beforeDir="false" afterPath="$PROJECT_DIR$/colors_valvano.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/valvano.txt" beforeDir="false" afterPath="$PROJECT_DIR$/valvano.txt" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -151,7 +143,7 @@
       <workItem from="1587283007002" duration="1297000" />
       <workItem from="1587426169691" duration="833000" />
       <workItem from="1587510132015" duration="28781000" />
-      <workItem from="1588498248405" duration="1296000" />
+      <workItem from="1588498248405" duration="1944000" />
     </task>
     <servers />
   </component>

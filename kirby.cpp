@@ -1235,6 +1235,7 @@ void Kirby::controlLoop(float joyH, float joyV, bool btnA, bool btnB, bool shiel
         shieldDamage += PLAYER_SHIELD_DEGEN;
 
         if(currentTime - l_shieldFall_t == 0) {
+            shieldDrop_t = currentTime;
             if(y == floor) action = KIRBY_ACTION_RESTING;
             else action = KIRBY_ACTION_FALLING;
         }
@@ -1803,7 +1804,8 @@ void Kirby::controlLoop(float joyH, float joyV, bool btnA, bool btnB, bool shiel
                action == KIRBY_ACTION_MULTIJUMPING) ||
               (y == floor && (action == KIRBY_ACTION_RESTING || action == KIRBY_ACTION_RUNNING ||
               action == KIRBY_ACTION_CROUCHING)) )
-              && shield && !l_shield && (PLAYER_SHIELD_MAXDAMAGE - shieldDamage > 10)) {
+              && shield && !l_shield && (PLAYER_SHIELD_MAXDAMAGE - shieldDamage > 10)
+              && currentTime - shieldDrop_t > 300) {
         action = KIRBY_ACTION_SHIELD;
         disabledFrames = 2;
     }
@@ -1908,7 +1910,7 @@ void Kirby::collide(Hurtbox *hurtbox, Player *otherPlayer) {
         disabledFrames = hurtbox->stunFrames;
         damage += hurtbox->damage;
 
-        float knockbackMultiplier = damage / 200. + 1.0;
+        float knockbackMultiplier = damage / 130. + 1.0;
 
         if (otherPlayer->x < x) xVel = hurtbox->xKnockback * knockbackMultiplier;
         else xVel = -hurtbox->xKnockback * knockbackMultiplier;
