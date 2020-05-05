@@ -2,120 +2,15 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="2349ddb4-96f3-4450-a885-5dac0c7a4023" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/../../../colors_w1gw.h" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../../colors_w1gwc.h" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../../colors_w1kb.h" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../../colors_w1kbc.h" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../../colors_w1va.h" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../../colors_w1vac.h" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../../colors_w2gw.h" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../../colors_w2gwc.h" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../../colors_w2kb.h" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../../colors_w2kbc.h" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../../colors_w2va.h" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../../colors_w2vac.h" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/colors_w1gw.h" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/colors_w1gwc.h" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/colors_w1kb.h" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/colors_w1kbc.h" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/colors_w1va.h" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/colors_w1vac.h" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/colors_w2gw.h" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/colors_w2gwc.h" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/colors_w2kb.h" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/colors_w2kbc.h" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/colors_w2va.h" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/colors_w2vac.h" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/png/w1gwc.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/png/w1kbc.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/png/w1vac.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/png/w2gwc.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/png/w2kbc.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/png/w2vac.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/w1gwc.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/w1kbc.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/w1vac.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/w2gwc.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/w2kbc.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/w2vac.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../misc/w1gw.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../misc/w1gwc.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../misc/w1kb.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../misc/w1kbc.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../misc/w1va.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../misc/w1vac.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../misc/w2gw.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../misc/w2gwc.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../misc/w2kb.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../misc/w2kbc.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../misc/w2va.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../misc/w2vac.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../w1gwc.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../w1kbc.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../w1vac.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../w2gwc.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../w2kbc.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../w2vac.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../../.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../../.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../../CMakeLists.txt" beforeDir="false" afterPath="$PROJECT_DIR$/../../../CMakeLists.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../../WinScreen.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/../../../WinScreen.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../../WinScreen.h" beforeDir="false" afterPath="$PROJECT_DIR$/../../../WinScreen.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../../cmake-build-debug/CMakeFiles/EE319K_Final_Project_Initial_Testing.dir/CXX.includecache" beforeDir="false" afterPath="$PROJECT_DIR$/../../../cmake-build-debug/CMakeFiles/EE319K_Final_Project_Initial_Testing.dir/CXX.includecache" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../../cmake-build-debug/CMakeFiles/EE319K_Final_Project_Initial_Testing.dir/ILI9341.cpp.obj" beforeDir="false" afterPath="$PROJECT_DIR$/../../../cmake-build-debug/CMakeFiles/EE319K_Final_Project_Initial_Testing.dir/ILI9341.cpp.obj" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../../cmake-build-debug/CMakeFiles/EE319K_Final_Project_Initial_Testing.dir/UART.cpp.obj" beforeDir="false" afterPath="$PROJECT_DIR$/../../../cmake-build-debug/CMakeFiles/EE319K_Final_Project_Initial_Testing.dir/UART.cpp.obj" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../../cmake-build-debug/CMakeFiles/EE319K_Final_Project_Initial_Testing.dir/WinScreen.cpp.obj" beforeDir="false" afterPath="$PROJECT_DIR$/../../../cmake-build-debug/CMakeFiles/EE319K_Final_Project_Initial_Testing.dir/WinScreen.cpp.obj" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../../cmake-build-debug/CMakeFiles/EE319K_Final_Project_Initial_Testing.dir/animator.cpp.obj" beforeDir="false" afterPath="$PROJECT_DIR$/../../../cmake-build-debug/CMakeFiles/EE319K_Final_Project_Initial_Testing.dir/animator.cpp.obj" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../../cmake-build-debug/CMakeFiles/EE319K_Final_Project_Initial_Testing.dir/charactermenu.cpp.obj" beforeDir="false" afterPath="$PROJECT_DIR$/../../../cmake-build-debug/CMakeFiles/EE319K_Final_Project_Initial_Testing.dir/charactermenu.cpp.obj" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../../cmake-build-debug/CMakeFiles/EE319K_Final_Project_Initial_Testing.dir/depend.internal" beforeDir="false" afterPath="$PROJECT_DIR$/../../../cmake-build-debug/CMakeFiles/EE319K_Final_Project_Initial_Testing.dir/depend.internal" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../../cmake-build-debug/CMakeFiles/EE319K_Final_Project_Initial_Testing.dir/depend.make" beforeDir="false" afterPath="$PROJECT_DIR$/../../../cmake-build-debug/CMakeFiles/EE319K_Final_Project_Initial_Testing.dir/depend.make" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../../cmake-build-debug/CMakeFiles/EE319K_Final_Project_Initial_Testing.dir/gameandwatch.cpp.obj" beforeDir="false" afterPath="$PROJECT_DIR$/../../../cmake-build-debug/CMakeFiles/EE319K_Final_Project_Initial_Testing.dir/gameandwatch.cpp.obj" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../../cmake-build-debug/CMakeFiles/EE319K_Final_Project_Initial_Testing.dir/kirby.cpp.obj" beforeDir="false" afterPath="$PROJECT_DIR$/../../../cmake-build-debug/CMakeFiles/EE319K_Final_Project_Initial_Testing.dir/kirby.cpp.obj" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../../cmake-build-debug/CMakeFiles/EE319K_Final_Project_Initial_Testing.dir/main.cpp.obj" beforeDir="false" afterPath="$PROJECT_DIR$/../../../cmake-build-debug/CMakeFiles/EE319K_Final_Project_Initial_Testing.dir/main.cpp.obj" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../../cmake-build-debug/CMakeFiles/EE319K_Final_Project_Initial_Testing.dir/objects.a" beforeDir="false" afterPath="$PROJECT_DIR$/../../../cmake-build-debug/CMakeFiles/EE319K_Final_Project_Initial_Testing.dir/objects.a" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../../cmake-build-debug/CMakeFiles/EE319K_Final_Project_Initial_Testing.dir/stage.cpp.obj" beforeDir="false" afterPath="$PROJECT_DIR$/../../../cmake-build-debug/CMakeFiles/EE319K_Final_Project_Initial_Testing.dir/stage.cpp.obj" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../../cmake-build-debug/CMakeFiles/EE319K_Final_Project_Initial_Testing.dir/stagemenu.cpp.obj" beforeDir="false" afterPath="$PROJECT_DIR$/../../../cmake-build-debug/CMakeFiles/EE319K_Final_Project_Initial_Testing.dir/stagemenu.cpp.obj" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../../cmake-build-debug/CMakeFiles/EE319K_Final_Project_Initial_Testing.dir/utils.cpp.obj" beforeDir="false" afterPath="$PROJECT_DIR$/../../../cmake-build-debug/CMakeFiles/EE319K_Final_Project_Initial_Testing.dir/utils.cpp.obj" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../../cmake-build-debug/CMakeFiles/EE319K_Final_Project_Initial_Testing.dir/valvano.cpp.obj" beforeDir="false" afterPath="$PROJECT_DIR$/../../../cmake-build-debug/CMakeFiles/EE319K_Final_Project_Initial_Testing.dir/valvano.cpp.obj" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../../cmake-build-debug/EE319K_Final_Project_Initial_Testing.cbp" beforeDir="false" afterPath="$PROJECT_DIR$/../../../cmake-build-debug/EE319K_Final_Project_Initial_Testing.cbp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../../cmake-build-debug/EE319K_Final_Project_Initial_Testing.exe" beforeDir="false" afterPath="$PROJECT_DIR$/../../../cmake-build-debug/EE319K_Final_Project_Initial_Testing.exe" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../../colors_winp1gaw.h" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../../colors_winp1kirby.h" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../../colors_winp1val.h" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../../colors_winp2gaw.h" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../../colors_winp2kirby.h" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../../colors_winp2val.h" beforeDir="false" />
+      <change afterPath="$PROJECT_DIR$/gif-valvano/stun.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/gif-valvano/utilt.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../valvano/gif/stun.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../valvano/gif/utilt.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../valvano/piskel/stun.piskel" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../valvano/piskel/uptilt.piskel" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/PNGParser.py" beforeDir="false" afterPath="$PROJECT_DIR$/PNGParser.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/colors_winp1gaw.h" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/colors_winp1kirby.h" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/colors_winp1val.h" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/colors_winp2gaw.h" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/colors_winp2kirby.h" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/colors_winp2val.h" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/png/winp1gaw.png" beforeDir="false" afterPath="$PROJECT_DIR$/png/w1gw.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/png/winp1kirby.png" beforeDir="false" afterPath="$PROJECT_DIR$/png/w1kb.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/png/winp1val.png" beforeDir="false" afterPath="$PROJECT_DIR$/png/w1va.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/png/winp2gaw.png" beforeDir="false" afterPath="$PROJECT_DIR$/png/w2gw.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/png/winp2kirby.png" beforeDir="false" afterPath="$PROJECT_DIR$/png/w2kb.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/png/winp2val.png" beforeDir="false" afterPath="$PROJECT_DIR$/png/w2va.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/winp1gaw.txt" beforeDir="false" afterPath="$PROJECT_DIR$/w1gw.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/winp1kirby.txt" beforeDir="false" afterPath="$PROJECT_DIR$/w1kb.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/winp1val.txt" beforeDir="false" afterPath="$PROJECT_DIR$/w1va.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/winp2gaw.txt" beforeDir="false" afterPath="$PROJECT_DIR$/w2gw.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/winp2kirby.txt" beforeDir="false" afterPath="$PROJECT_DIR$/w2kb.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/winp2val.txt" beforeDir="false" afterPath="$PROJECT_DIR$/w2va.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../menu/sources/stage select menu.psd" beforeDir="false" afterPath="$PROJECT_DIR$/../menu/sources/stage select menu.psd" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../misc/psd/win gameandwatch.psd" beforeDir="false" afterPath="$PROJECT_DIR$/../misc/psd/win gameandwatch.psd" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../misc/psd/win kirby.psd" beforeDir="false" afterPath="$PROJECT_DIR$/../misc/psd/win kirby.psd" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../misc/psd/win valvano.psd" beforeDir="false" afterPath="$PROJECT_DIR$/../misc/psd/win valvano.psd" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../misc/winp1gaw.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../misc/winp1kirby.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../misc/winp1val.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../misc/winp2gaw.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../misc/winp2kirby.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../misc/winp2val.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../../main.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/../../../main.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../../metadata.h" beforeDir="false" afterPath="$PROJECT_DIR$/../../../metadata.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/colors_valvano.h" beforeDir="false" afterPath="$PROJECT_DIR$/colors_valvano.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/valvano.txt" beforeDir="false" afterPath="$PROJECT_DIR$/valvano.txt" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -135,25 +30,25 @@
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/png" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/gif-valvano" />
     <property name="project.structure.last.edited" value="Project" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.2" />
     <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable" />
   </component>
   <component name="RecentsManager">
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="C:\Users\Allen\Documents\GitHub\EE319H-Final-Project-Simulation\data\sprites\SpriteParser\png" />
-      <recent name="C:\Users\Allen\Documents\GitHub\EE319H-Final-Project-Simulation\data\sprites\SpriteParser\gif-valvano" />
-      <recent name="C:\Users\Allen\Documents\GitHub\EE319H-Final-Project-Simulation\data\sprites\SpriteParser" />
-      <recent name="C:\Users\Allen\Documents\GitHub\EE319H-Final-Project-Simulation\data\sprites\SpriteParser\gif-menu" />
-      <recent name="C:\Users\Allen\Documents\GitHub\EE319H-Final-Project-Simulation\data\sprites\SpriteParser\gif-misc" />
-    </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\Users\Allen\Documents\GitHub\EE319H-Final-Project-Simulation\data\sprites\SpriteParser\gif-gameandwatch" />
       <recent name="C:\Users\Allen\Documents\GitHub\EE319H-Final-Project-Simulation\data\sprites\SpriteParser\png-misc" />
       <recent name="C:\Users\Allen\Documents\GitHub\EE319H-Final-Project-Simulation\data\sprites\SpriteParser" />
       <recent name="C:\Users\Allen\Documents\GitHub\EE319H-Final-Project-Simulation\data\sprites\SpriteParser\gif-kirby" />
+    </key>
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\Allen\Documents\GitHub\EE319H-Final-Project-Simulation\data\sprites\SpriteParser\gif-valvano" />
+      <recent name="C:\Users\Allen\Documents\GitHub\EE319H-Final-Project-Simulation\data\sprites\SpriteParser\png" />
+      <recent name="C:\Users\Allen\Documents\GitHub\EE319H-Final-Project-Simulation\data\sprites\SpriteParser" />
+      <recent name="C:\Users\Allen\Documents\GitHub\EE319H-Final-Project-Simulation\data\sprites\SpriteParser\gif-menu" />
+      <recent name="C:\Users\Allen\Documents\GitHub\EE319H-Final-Project-Simulation\data\sprites\SpriteParser\gif-misc" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -168,7 +63,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Python.PNGParser">
+  <component name="RunManager" selected="Python.GIFParser">
     <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="ALTERNATIVE_JRE_PATH" value="1.8.0_221" />
       <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="true" />
@@ -228,8 +123,8 @@
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="Python.PNGParser" />
         <item itemvalue="Python.GIFParser" />
+        <item itemvalue="Python.PNGParser" />
       </list>
     </recent_temporary>
   </component>
@@ -256,6 +151,7 @@
       <workItem from="1587283007002" duration="1297000" />
       <workItem from="1587426169691" duration="833000" />
       <workItem from="1587510132015" duration="28781000" />
+      <workItem from="1588498248405" duration="1296000" />
     </task>
     <servers />
   </component>
@@ -276,7 +172,7 @@
     </option>
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
-    <SUITE FILE_PATH="coverage/SpriteParser$GIFParser.coverage" NAME="GIFParser Coverage Results" MODIFIED="1588454703031" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/SpriteParser$GIFParser.coverage" NAME="GIFParser Coverage Results" MODIFIED="1588638554510" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/SpriteParser$PNGParser.coverage" NAME="PNGParser Coverage Results" MODIFIED="1588454968273" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
   </component>
 </project>
