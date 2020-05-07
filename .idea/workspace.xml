@@ -12,8 +12,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="fe664a67-824c-4cd3-aff1-f4bbf75b53a6" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/kirby.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/kirby.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/valvano.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/valvano.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/EE319K_Final_Project_Initial_Testing.exe" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/EE319K_Final_Project_Initial_Testing.exe" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -110,6 +110,8 @@
       <workItem from="1587510567343" duration="12000" />
       <workItem from="1588403707309" duration="19846000" />
       <workItem from="1588711843171" duration="2764000" />
+      <workItem from="1588820014612" duration="207000" />
+      <workItem from="1588838055689" duration="1423000" />
     </task>
     <servers />
   </component>
