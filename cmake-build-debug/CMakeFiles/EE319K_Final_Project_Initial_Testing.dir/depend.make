@@ -235,6 +235,7 @@ CMakeFiles/EE319K_Final_Project_Initial_Testing.dir/main.cpp.obj: ../main.cpp
 CMakeFiles/EE319K_Final_Project_Initial_Testing.dir/main.cpp.obj: ../metadata.h
 CMakeFiles/EE319K_Final_Project_Initial_Testing.dir/main.cpp.obj: ../stage.h
 CMakeFiles/EE319K_Final_Project_Initial_Testing.dir/main.cpp.obj: ../stagemenu.h
+CMakeFiles/EE319K_Final_Project_Initial_Testing.dir/main.cpp.obj: ../title.h
 CMakeFiles/EE319K_Final_Project_Initial_Testing.dir/main.cpp.obj: ../utils.h
 
 CMakeFiles/EE319K_Final_Project_Initial_Testing.dir/stage.cpp.obj: ../UART.h
@@ -250,6 +251,13 @@ CMakeFiles/EE319K_Final_Project_Initial_Testing.dir/stagemenu.cpp.obj: ../colors
 CMakeFiles/EE319K_Final_Project_Initial_Testing.dir/stagemenu.cpp.obj: ../metadata.h
 CMakeFiles/EE319K_Final_Project_Initial_Testing.dir/stagemenu.cpp.obj: ../stagemenu.cpp
 CMakeFiles/EE319K_Final_Project_Initial_Testing.dir/stagemenu.cpp.obj: ../stagemenu.h
+
+CMakeFiles/EE319K_Final_Project_Initial_Testing.dir/title.cpp.obj: ../UART.h
+CMakeFiles/EE319K_Final_Project_Initial_Testing.dir/title.cpp.obj: ../animator.h
+CMakeFiles/EE319K_Final_Project_Initial_Testing.dir/title.cpp.obj: ../colors_title.h
+CMakeFiles/EE319K_Final_Project_Initial_Testing.dir/title.cpp.obj: ../metadata.h
+CMakeFiles/EE319K_Final_Project_Initial_Testing.dir/title.cpp.obj: ../title.cpp
+CMakeFiles/EE319K_Final_Project_Initial_Testing.dir/title.cpp.obj: ../title.h
 
 CMakeFiles/EE319K_Final_Project_Initial_Testing.dir/utils.cpp.obj: ../UART.h
 CMakeFiles/EE319K_Final_Project_Initial_Testing.dir/utils.cpp.obj: ../animator.h

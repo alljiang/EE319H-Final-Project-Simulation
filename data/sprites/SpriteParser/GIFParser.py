@@ -20,7 +20,7 @@ import os
 
 #   CONFIG
 backgroundColor = 0x00FF00
-characterName = "valvano"
+characterName = "menu"
 imageDirectory = "./gif-" + characterName.lower() + "/"
 
 # color index list
